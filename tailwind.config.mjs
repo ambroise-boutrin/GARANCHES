@@ -36,6 +36,8 @@ const config = {
             },
             // Montserrat en 700 écrase le Cormorant : le « gras » du site est un semi-gras.
             fontWeight: {
+                // Montserrat en 300 devient trop fin et peu lisible sur écran Windows.
+                light: '400',
                 bold: '600',
             },
             fontFamily: {
