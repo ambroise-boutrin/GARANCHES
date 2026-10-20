@@ -16,10 +16,15 @@ export async function getWines() {
 }
 
 export async function getPageContent(page: string) {
-    const content = await client.fetch(
-        `*[_type == "pageContent" && page == $page]`,
-        { page }
-    );
+    let content = [];
+    try {
+        content = await client.fetch(
+            `*[_type == "pageContent" && page == $page]`,
+            { page }
+        );
+    } catch (error) {
+        console.error('Sanity: contenu de page indisponible', error);
+    }
 
     // Convert array of sections into a key-value object for easier use
     return content.reduce((acc: any, item: any) => {
@@ -32,13 +37,13 @@ export async function getPageContent(page: string) {
     }, {});
 }
 
-export type BlocOverride = { titre?: string; texte?: string; image?: any; bouton?: string };
+export type BlocOverride = { titre?: string; texte?: string; image?: any; bouton?: string; pratique?: { label: string; value: string }[] };
 
 // Blocs de texte modifiés dans le studio, indexés par clé « chemin#bloc ».
 // En cas d'erreur Sanity, le site affiche les textes par défaut.
 export async function getBlocs(): Promise<Record<string, BlocOverride>> {
     try {
-        const blocs = await client.fetch(`*[_type == "bloc" && defined(cle)]{ cle, titre, texte, image, bouton }`);
+        const blocs = await client.fetch(`*[_type == "bloc" && defined(cle)]{ cle, titre, texte, image, bouton, pratique }`);
         return Object.fromEntries(blocs.map((b: any) => [b.cle, b]));
     } catch (error) {
         console.error('Sanity: blocs indisponibles', error);

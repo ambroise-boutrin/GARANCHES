@@ -20,6 +20,7 @@ function BlocSection({ bloc, override, index }: { bloc: Bloc; override?: BlocOve
     const action = bloc.booking
         ? { label: override?.bouton || bloc.booking.label, href: bookingHref(bloc.booking.sujet) }
         : bloc.cta && { label: override?.bouton || bloc.cta.label, href: bloc.cta.href };
+    const pratique = override?.pratique?.length ? override.pratique : bloc.pratique;
     const imageFirst = index % 2 === 1;
     // Mêmes fonds alternés que l'accueil.
     const background = ["bg-stone-50", "bg-white", "bg-stone-100"][index % 3];
@@ -31,6 +32,16 @@ function BlocSection({ bloc, override, index }: { bloc: Bloc; override?: BlocOve
                 <RichText text={body} className="text-gray-600 leading-loose text-base md:text-lg font-light" />
             ) : (
                 <p className="text-gray-400 italic font-light">Texte à venir.</p>
+            )}
+            {pratique && (
+                <dl className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-10 text-left">
+                    {pratique.map((item) => (
+                        <div key={item.label} className="bg-white border border-stone-200 rounded-lg p-4 shadow-sm">
+                            <dt className="text-amber-700 uppercase tracking-widest text-[10px] font-bold mb-1">{item.label}</dt>
+                            <dd className="text-gray-700 text-sm">{item.value}</dd>
+                        </div>
+                    ))}
+                </dl>
             )}
             {action && (bloc.booking ? (
                 <Link

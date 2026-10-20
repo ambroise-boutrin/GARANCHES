@@ -18,6 +18,7 @@ const SUJETS = [
     "Déguster au domaine",
     "Découvrir les vignes",
     "Expérience privée",
+    "Événements",
     "Commande & Expédition",
     "Partenariat Professionnel",
     "Autre demande",
@@ -40,7 +41,7 @@ export default function ContactContent({ sujet }: { sujet?: string }) {
         window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     };
 
-    const isBooking = SUJETS.slice(0, 4).includes(subject);
+    const isBooking = SUJETS.slice(0, 5).includes(subject);
 
     return (
         <main className="min-h-screen bg-paper pt-32 pb-20">

@@ -37,6 +37,22 @@ export default {
             title: 'Texte du bouton',
             type: 'string',
         },
+        {
+            name: 'pratique',
+            title: 'Informations pratiques',
+            description: 'Durée, personnes, tarifs, accès… Remplace toute la liste prévue pour ce bloc.',
+            type: 'array',
+            of: [
+                {
+                    type: 'object',
+                    fields: [
+                        { name: 'label', title: 'Intitulé', type: 'string' },
+                        { name: 'value', title: 'Valeur', type: 'string' },
+                    ],
+                    preview: { select: { title: 'label', subtitle: 'value' } },
+                },
+            ],
+        },
     ],
     preview: {
         select: { title: 'cle', subtitle: 'titre', media: 'image' },

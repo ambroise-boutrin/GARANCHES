@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import FadeIn from "@/components/FadeIn";
 import ParallaxImage from "@/components/ParallaxImage";
 import AddToCartButton from "@/components/AddToCartButton";
+import { HOME_PORTES, SIGNATURE } from "@/data/architecture";
 
 export default function HomePageClient({ products, content }: { products: any[], content?: any }) {
     const [isLoading, setIsLoading] = useState(true);
@@ -154,6 +155,44 @@ export default function HomePageClient({ products, content }: { products: any[],
                             </Link>
                         </div>
                     </motion.div>
+                </div>
+            </section>
+
+            <section id="portes" className="scroll-mt-20 py-20 md:py-32 bg-white">
+                <div className="max-w-7xl mx-auto px-6">
+                    <FadeIn direction="up" className="text-center mb-16">
+                        <span className="text-amber-700 font-serif italic text-xl md:text-2xl mb-2 block">Garanches</span>
+                        <h2 className="text-4xl md:text-5xl font-serif text-red-900 leading-tight mb-6">{SIGNATURE}</h2>
+                        <div className="w-24 h-1 bg-wine-900 mx-auto opacity-20"></div>
+                    </FadeIn>
+
+                    <div className="grid md:grid-cols-3 gap-8">
+                        {HOME_PORTES.map(({ path, image, page, entrees }, index) => (
+                            <FadeIn key={path} delay={0.1 + index * 0.15} className="flex flex-col">
+                                <Link href={`/${path}`} className="group relative block h-[380px] rounded-t-lg overflow-hidden">
+                                    <Image
+                                        src={image}
+                                        alt=""
+                                        fill
+                                        sizes="(max-width: 768px) 100vw, 33vw"
+                                        className="object-cover brightness-[.6] group-hover:brightness-75 group-hover:scale-105 transition-all duration-700"
+                                    />
+                                    <div className="absolute inset-0 flex flex-col justify-end p-8 text-white">
+                                        <h3 className="text-4xl font-serif mb-3">{page.label}</h3>
+                                        <span className="text-xs uppercase tracking-widest font-bold text-amber-400">{page.cta} →</span>
+                                    </div>
+                                </Link>
+                                <div className="bg-stone-50 border border-t-0 border-stone-200 rounded-b-lg p-6 space-y-5 flex-grow">
+                                    {entrees.map((entree) => (
+                                        <Link key={entree.label} href={entree.href} className="group block">
+                                            <span className="block text-xl font-serif text-wine-900 group-hover:text-amber-700 transition-colors">{entree.label}</span>
+                                            <span className="block text-xs text-gray-500 tracking-wide mt-1">{entree.motsCles}</span>
+                                        </Link>
+                                    ))}
+                                </div>
+                            </FadeIn>
+                        ))}
+                    </div>
                 </div>
             </section>
 
