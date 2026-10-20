@@ -93,7 +93,7 @@ export default function CartPage() {
 
                                     <div className="flex-grow text-center sm:text-left">
                                         <h3 className="font-serif text-2xl text-wine-900">{item.name}</h3>
-                                        <p className="text-stone-500 font-medium">{(item.price / 100).toFixed(2)} € <span className="text-xs font-light">/ bouteille</span></p>
+                                        <p className="text-stone-500 font-medium">{(item.price / 100).toFixed(2).replace('.', ',')} € <span className="text-xs font-light">/ bouteille</span></p>
                                     </div>
 
                                     <div className="flex flex-col items-center gap-3">

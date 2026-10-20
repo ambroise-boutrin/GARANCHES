@@ -28,7 +28,7 @@ export type Page = {
     children?: string[];
 };
 
-export type Porte = { path: string; label: string; children: { label: string; href: string }[] };
+export type Porte = { path: string; label: string; children: { label: string; href: string; motsCles?: string }[] };
 
 const PAGE_LIST: Page[] = [
     // ─────────────── LE LIEU ───────────────
@@ -497,12 +497,35 @@ export function card(path: string) {
     return { path, label: p.label, description: p.description, image: p.image, cta: p.cta };
 }
 
-// Les trois portes du menu.
-export const PORTES: Porte[] = ["le-lieu", "les-vins", "rencontrons-garanches"].map((path) => ({
+// Les trois portes du menu et leurs sous-menus (seulement les pages propres à chaque porte).
+const SOUS_MENUS: Record<string, { path: string; motsCles: string }[]> = {
+    "le-lieu": [
+        { path: "le-lieu/le-domaine", motsCles: "Odenas • paysage • granit" },
+        { path: "le-lieu/histoire", motsCles: "Bender • Jean Buy • archives" },
+        { path: "le-lieu/traces", motsCles: "Plants anciens • documents" },
+        { path: "le-lieu/ceux-qui-le-font-vivre", motsCles: "Personnes • gestes • transmission" },
+    ],
+    "les-vins": [
+        { path: "les-vins/notre-facon-de-faire", motsCles: "Terre • saisons • millésimes" },
+        { path: "les-vins/cuvees", motsCles: "Parcelles • assemblages" },
+        { path: "les-vins/terroirs", motsCles: "Sols • granit • parcelles" },
+        { path: "les-vins/a-table", motsCles: "Plats • accords • moments" },
+    ],
+    "rencontrons-garanches": [
+        { path: "rencontrons-garanches/les-rencontres", motsCles: "Table d'hôtes • conversations" },
+        { path: "rencontrons-garanches/deguster-au-domaine", motsCles: "La cave • les vins" },
+        { path: "rencontrons-garanches/decouvrir-les-vignes", motsCles: "Parcours • saisons" },
+        { path: "rencontrons-garanches/experiences-privees", motsCles: "Famille • amis • groupes" },
+        { path: "rencontrons-garanches/evenements", motsCles: "Repas • rencontres" },
+    ],
+};
+
+export const PORTES: Porte[] = Object.entries(SOUS_MENUS).map(([path, items]) => ({
     path: `/${path}`,
     label: PAGES[path].label,
-    children: PAGES[path].children!.map((child) => ({ label: card(child).label, href: `/${child}` })),
+    children: items.map((item) => ({ label: PAGES[item.path].label, href: `/${item.path}`, motsCles: item.motsCles })),
 }));
+
 
 // Clés proposées dans le studio pour remplacer un bloc.
 export const BLOC_KEYS = PAGE_LIST.flatMap((p) =>
