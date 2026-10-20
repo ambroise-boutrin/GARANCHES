@@ -2,12 +2,13 @@ import type { Metadata } from "next";
 import ContactContent from "./ContactContent";
 
 export const metadata: Metadata = {
-    title: "Contact & Accès | Domaine de Garanches",
-    description: "Contactez le Domaine de Garanches à Odenas. Vente directe, dégustation et expédition de vins du Beaujolais.",
+    title: "Contact",
+    description: "Venir, écrire, appeler, réserver : contactez le Domaine de Garanches à Odenas.",
+    alternates: { canonical: "/contact" },
 };
 
-export default function ContactPage() {
+export default function ContactPage({ searchParams }: { searchParams: { sujet?: string } }) {
     return (
-        <ContactContent />
+        <ContactContent sujet={searchParams.sujet} />
     );
 }

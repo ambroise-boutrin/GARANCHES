@@ -1,16 +1,54 @@
 "use client";
 
+import { useState, type FormEvent } from "react";
+import dynamic from "next/dynamic";
 import FadeIn from "@/components/FadeIn";
 import FAQ from "@/components/FAQ";
+import OpeningStatus from "@/components/OpeningStatus";
 
-export default function ContactContent() {
+const InteractiveMap = dynamic(() => import("@/components/InteractiveMap"), {
+    loading: () => <div className="w-full h-[500px] bg-stone-100 rounded-lg animate-pulse" />,
+    ssr: false
+});
+
+const EMAIL = "contact@domainedegaranches.com";
+
+const SUJETS = [
+    "Les Rencontres de Garanches",
+    "Déguster au domaine",
+    "Découvrir les vignes",
+    "Expérience privée",
+    "Commande & Expédition",
+    "Partenariat Professionnel",
+    "Autre demande",
+];
+
+export default function ContactContent({ sujet }: { sujet?: string }) {
+    const [subject, setSubject] = useState(sujet && SUJETS.includes(sujet) ? sujet : SUJETS[SUJETS.length - 1]);
+
+    // Pas de serveur d'envoi : le message s'ouvre, pré-rempli, dans la messagerie du visiteur.
+    const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        const data = new FormData(event.currentTarget);
+        const details = [
+            data.get("nom"),
+            data.get("telephone") && `Tél. : ${data.get("telephone")}`,
+            data.get("date") && `Date souhaitée : ${data.get("date")}`,
+            data.get("personnes") && `Nombre de personnes : ${data.get("personnes")}`,
+        ].filter(Boolean);
+        const body = `${data.get("message") || ""}\n\n${details.join("\n")}`;
+        window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    };
+
+    const isBooking = SUJETS.slice(0, 4).includes(subject);
+
     return (
         <main className="min-h-screen bg-paper pt-32 pb-20">
             <FadeIn direction="down" className="text-center px-6 mb-16">
                 <span className="text-amber-700 font-serif italic text-lg mb-2 block">Une question ?</span>
-                <h1 className="text-4xl md:text-5xl font-serif text-wine-900 mb-6 font-medium">Contact & Accès</h1>
+                <h1 className="text-4xl md:text-5xl font-serif text-wine-900 mb-6 font-medium">Contact</h1>
                 <p className="max-w-xl mx-auto text-gray-600 font-light text-lg">
-                    Nous sommes à votre écoute pour toute demande d'information, commande ou réservation de visite.
+                    Venir, écrire, appeler, réserver : nous sommes à votre écoute.
                 </p>
             </FadeIn>
 
@@ -80,29 +118,28 @@ export default function ContactContent() {
                 </FadeIn>
 
                 <FadeIn direction="left" delay={0.4}>
-                    <div className="bg-gradient-to-br from-wine-50 to-white p-10 rounded-lg shadow-lg border border-white">
-                        <h2 className="text-3xl font-serif text-wine-900 mb-8">Envoyez-nous un message</h2>
+                    <div id="formulaire" className="scroll-mt-28 bg-gradient-to-br from-wine-50 to-white p-10 rounded-lg shadow-lg border border-white">
+                        <h2 className="text-3xl font-serif text-wine-900 mb-8">{isBooking ? "Réserver" : "Envoyez-nous un message"}</h2>
 
-                        <form className="space-y-6">
+                        <form className="space-y-6" onSubmit={handleSubmit}>
                             <div className="grid md:grid-cols-2 gap-6">
                                 <div>
                                     <label className="block text-xs uppercase tracking-widest text-gray-500 mb-2 font-bold ml-2">Nom</label>
-                                    <input type="text" className="w-full bg-white border border-gray-100 p-4 rounded-md focus:outline-none focus:ring-2 focus:ring-wine-100 focus:border-wine-300 transition-all shadow-sm" placeholder="Votre nom" />
+                                    <input type="text" name="nom" required className="w-full bg-white border border-gray-100 p-4 rounded-md focus:outline-none focus:ring-2 focus:ring-wine-100 focus:border-wine-300 transition-all shadow-sm" placeholder="Votre nom" />
                                 </div>
                                 <div>
                                     <label className="block text-xs uppercase tracking-widest text-gray-500 mb-2 font-bold ml-2">Email</label>
-                                    <input type="email" className="w-full bg-white border border-gray-100 p-4 rounded-md focus:outline-none focus:ring-2 focus:ring-wine-100 focus:border-wine-300 transition-all shadow-sm" placeholder="votre@email.com" />
+                                    <input type="email" name="email" className="w-full bg-white border border-gray-100 p-4 rounded-md focus:outline-none focus:ring-2 focus:ring-wine-100 focus:border-wine-300 transition-all shadow-sm" placeholder="votre@email.com" />
                                 </div>
                             </div>
 
                             <div>
                                 <label className="block text-xs uppercase tracking-widest text-gray-500 mb-2 font-bold ml-2">Sujet</label>
                                 <div className="relative">
-                                    <select className="w-full bg-white border border-gray-100 p-4 rounded-md focus:outline-none focus:ring-2 focus:ring-wine-100 focus:border-wine-300 transition-all shadow-sm text-gray-700 appearance-none cursor-pointer">
-                                        <option>Commande & Expédition</option>
-                                        <option>Visite & Dégustation</option>
-                                        <option>Partenariat Professionnel</option>
-                                        <option>Autre demande</option>
+                                    <select value={subject} onChange={(e) => setSubject(e.target.value)} className="w-full bg-white border border-gray-100 p-4 rounded-md focus:outline-none focus:ring-2 focus:ring-wine-100 focus:border-wine-300 transition-all shadow-sm text-gray-700 appearance-none cursor-pointer">
+                                        {SUJETS.map((s) => (
+                                            <option key={s}>{s}</option>
+                                        ))}
                                     </select>
                                     <div className="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none">
                                         <svg className="h-4 w-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -112,22 +149,52 @@ export default function ContactContent() {
                                 </div>
                             </div>
 
+                            {isBooking && (
+                                <div className="grid md:grid-cols-3 gap-6">
+                                    <div>
+                                        <label className="block text-xs uppercase tracking-widest text-gray-500 mb-2 font-bold ml-2">Date souhaitée</label>
+                                        <input type="date" name="date" className="w-full bg-white border border-gray-100 p-4 rounded-md focus:outline-none focus:ring-2 focus:ring-wine-100 focus:border-wine-300 transition-all shadow-sm" />
+                                    </div>
+                                    <div>
+                                        <label className="block text-xs uppercase tracking-widest text-gray-500 mb-2 font-bold ml-2">Personnes</label>
+                                        <input type="number" name="personnes" min={1} max={30} className="w-full bg-white border border-gray-100 p-4 rounded-md focus:outline-none focus:ring-2 focus:ring-wine-100 focus:border-wine-300 transition-all shadow-sm" />
+                                    </div>
+                                    <div>
+                                        <label className="block text-xs uppercase tracking-widest text-gray-500 mb-2 font-bold ml-2">Téléphone</label>
+                                        <input type="tel" name="telephone" className="w-full bg-white border border-gray-100 p-4 rounded-md focus:outline-none focus:ring-2 focus:ring-wine-100 focus:border-wine-300 transition-all shadow-sm" />
+                                    </div>
+                                </div>
+                            )}
+
                             <div>
                                 <label className="block text-xs uppercase tracking-widest text-gray-500 mb-2 font-bold ml-2">Message</label>
-                                <textarea rows={5} className="w-full bg-white border border-gray-100 p-4 rounded-md focus:outline-none focus:ring-2 focus:ring-wine-100 focus:border-wine-300 transition-all shadow-sm resize-none" placeholder="Comment pouvons-nous vous aider ?"></textarea>
+                                <textarea name="message" rows={5} className="w-full bg-white border border-gray-100 p-4 rounded-md focus:outline-none focus:ring-2 focus:ring-wine-100 focus:border-wine-300 transition-all shadow-sm resize-none" placeholder="Comment pouvons-nous vous aider ?"></textarea>
                             </div>
 
                             <button type="submit" className="w-full bg-wine-900 text-white py-4 uppercase tracking-widest text-xs font-bold hover:bg-amber-600 transition-colors rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 duration-300">
-                                Envoyer le message
+                                {isBooking ? "Envoyer ma demande" : "Envoyer le message"}
                             </button>
 
                             <p className="text-xs text-gray-400 text-center mt-4 italic">
-                                * Ceci est une démonstration, le formulaire n'est pas actif.
+                                Votre messagerie s'ouvre avec le message prêt à envoyer à {EMAIL}.
                             </p>
                         </form>
                     </div>
                 </FadeIn>
             </div>
+
+            <section className="max-w-6xl mx-auto px-6 mt-24 grid md:grid-cols-2 gap-12 items-center">
+                <FadeIn direction="right">
+                    <h2 className="text-3xl md:text-4xl font-serif text-wine-900 mb-6">Venir à Garanches</h2>
+                    <p className="text-gray-700 font-light leading-relaxed text-lg mb-6">
+                        345 chemin de Garanches, 69460 Odenas, au pied du Mont Brouilly.
+                    </p>
+                    <OpeningStatus />
+                </FadeIn>
+                <FadeIn direction="left" delay={0.2}>
+                    <InteractiveMap />
+                </FadeIn>
+            </section>
 
             <FAQ />
         </main >
