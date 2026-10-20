@@ -203,7 +203,7 @@ export default function HomePageClient({ products, content }: { products: any[],
                         <div>
                             <span className="text-amber-700 font-serif italic text-xl md:text-2xl mb-2 block">Notre Philosophie</span>
                             <h2 className="text-4xl md:text-5xl font-serif text-red-900 mb-6 md:mb-8 leading-tight">Un Terroir <br />d'Exception</h2>
-                            <div className="text-gray-600 leading-loose text-base md:text-lg font-light mb-8 text-justify space-y-4">
+                            <div className="text-gray-600 leading-loose text-base md:text-lg font-light mb-8 space-y-4">
                                 {content?.philosophy?.content ? (
                                     <p>{content.philosophy.content}</p>
                                 ) : (
@@ -250,21 +250,21 @@ export default function HomePageClient({ products, content }: { products: any[],
                     <div className="grid md:grid-cols-3 gap-12">
                         <FadeIn delay={0.1} className="bg-white p-8 rounded-lg shadow-sm border border-stone-200">
                             <h3 className="text-2xl font-serif text-wine-900 mb-4">Le Gamay Noir</h3>
-                            <p className="text-gray-600 font-light leading-relaxed text-sm text-justify">
+                            <p className="text-gray-600 font-light leading-relaxed text-sm">
                                 Emblème de notre domaine, le Gamay Noir à Jus Blanc s'épanouit sur nos coteaux granitiques. Il offre à nos Brouilly cette robe rubis profond et ces arômes de fruits rouges (fraise, framboise) et noirs, soulignés par des notes épicées et minérales typiques du Mont Brouilly.
                             </p>
                         </FadeIn>
 
                         <FadeIn delay={0.2} className="bg-white p-8 rounded-lg shadow-sm border border-stone-200">
                             <h3 className="text-2xl font-serif text-wine-900 mb-4">Le Chardonnay</h3>
-                            <p className="text-gray-600 font-light leading-relaxed text-sm text-justify">
+                            <p className="text-gray-600 font-light leading-relaxed text-sm">
                                 Nos vignes de Chardonnay, cultivées sur des parcelles argilo-calcaires choisies, donnent naissance à un Bourgogne Blanc d'une grande finesse. Un vin ample et floral, aux notes d'agrumes et de fleurs blanches, qui révèle toute l'élégance de ce cépage noble.
                             </p>
                         </FadeIn>
 
                         <FadeIn delay={0.3} className="bg-white p-8 rounded-lg shadow-sm border border-stone-200">
                             <h3 className="text-2xl font-serif text-wine-900 mb-4">Viticulture Durable</h3>
-                            <p className="text-gray-600 font-light leading-relaxed text-sm text-justify">
+                            <p className="text-gray-600 font-light leading-relaxed text-sm">
                                 Vignerons indépendants, nous pratiquons une viticulture raisonnée certifiée HVE (Haute Valeur Environnementale). Enherbement des rangs, travail mécanique des sols et vendanges manuelles : chaque intervention vise à préserver la biodiversité et garantir la pureté de nos vins.
                             </p>
                         </FadeIn>
