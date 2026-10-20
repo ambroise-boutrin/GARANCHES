@@ -111,13 +111,13 @@ export default async function CuveePage({ params }: Props) {
                 <section className="py-20 bg-stone-100">
                     <div className="max-w-6xl mx-auto px-6">
                         <h2 className="text-3xl font-serif text-wine-900 text-center mb-12">Les autres cuvées</h2>
-                        <div className="flex flex-wrap justify-center gap-6">
+                        <div className="grid grid-cols-2 gap-4 sm:flex sm:flex-wrap sm:justify-center sm:gap-6">
                             {autres.map((w: any) => (
-                                <Link key={w.id} href={cuveeHref(w)} className="group w-44 text-center">
-                                    <div className="relative h-40 bg-white rounded-lg shadow-sm mb-3">
+                                <Link key={w.id} href={cuveeHref(w)} className="group sm:w-44 text-center">
+                                    <div className="relative h-28 sm:h-40 bg-white rounded-lg shadow-sm mb-3">
                                         <Image src={w.image || "/images/36_brouilly-h.jpg"} alt="" fill sizes="176px" className="object-contain p-3" />
                                     </div>
-                                    <span className="font-serif text-lg text-wine-900 group-hover:text-amber-700 transition-colors">{w.name}</span>
+                                    <span className="font-serif text-base sm:text-lg text-wine-900 group-hover:text-amber-700 transition-colors">{w.name}</span>
                                 </Link>
                             ))}
                         </div>

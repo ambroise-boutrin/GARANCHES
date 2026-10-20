@@ -91,9 +91,9 @@ export default function CartPage() {
                         <FadeIn>
                             <ul className="border-t border-stone-300">
                                 {cart.map((item) => (
-                                    <li key={item.id} className="grid grid-cols-[64px_1fr] sm:grid-cols-[80px_1fr_auto] gap-x-6 gap-y-4 items-center py-8 border-b border-stone-300">
-                                        <Link href={cuveeHref(item)} className="row-span-2 sm:row-span-1 h-32 relative block">
-                                            <Image src={item.image} alt={item.name} fill sizes="80px" className="object-contain mix-blend-multiply" />
+                                    <li key={item.id} className="grid grid-cols-[88px_1fr] sm:grid-cols-[96px_1fr_auto] gap-x-6 gap-y-4 items-center py-8 border-b border-stone-300">
+                                        <Link href={cuveeHref(item)} className="row-span-2 sm:row-span-1 h-24 sm:h-32 relative block">
+                                            <Image src={item.image} alt={item.name} fill sizes="96px" className="object-contain mix-blend-multiply" />
                                         </Link>
 
                                         <div>
