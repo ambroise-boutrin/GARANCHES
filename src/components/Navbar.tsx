@@ -150,7 +150,7 @@ export default function Navbar() {
 
 
                     <Link
-                        href="/acheter"
+                        href="/les-vins/cuvees"
                         // Couleur conditionnelle :
                         // - DarkMode (Page blanche sans scroll) : Texte Noir / Bord Noir
                         // - Scrolled ou Home : Texte Blanc / Bord Blanc (ou style "scrolled" spécifique si besoin)
@@ -159,7 +159,7 @@ export default function Navbar() {
                             : "border-white text-white hover:bg-white hover:text-stone-900"
                             } ${scrolled ? "bg-transparent border-white text-white hover:!bg-white hover:!text-stone-900 hover:!border-white" : ""}`}
                     >
-                        Acheter
+                        Boutique
                     </Link>
                 </div>
 
@@ -250,10 +250,10 @@ export default function Navbar() {
                                 className="mt-8"
                             >
                                 <Link
-                                    href="/acheter"
+                                    href="/les-vins/cuvees"
                                     className="px-8 py-4 bg-amber-600 text-white uppercase tracking-widest text-sm font-bold"
                                 >
-                                    Acheter / Trouver Garanches
+                                    Boutique
                                 </Link>
                             </motion.div>
                         </div>
