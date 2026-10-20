@@ -212,7 +212,7 @@ export default function Navbar() {
                                         <Link
                                             href={link.href}
                                             onClick={() => setIsOpen(false)}
-                                            className="block py-1 text-3xl font-serif text-white hover:text-amber-500 transition-colors"
+                                            className="block py-1 text-[1.7rem] sm:text-3xl font-serif text-white hover:text-amber-500 transition-colors"
                                         >
                                             {link.name}
                                         </Link>
@@ -257,7 +257,7 @@ export default function Navbar() {
                                 >
                                     Mon Panier
                                     {totalItems > 0 && (
-                                        <span className="bg-amber-600 text-white text-sm px-2 py-0.5 rounded-full">
+                                        <span className="bg-amber-500 text-stone-900 text-xs font-bold px-2 py-0.5 rounded-full">
                                             {totalItems}
                                         </span>
                                     )}
@@ -273,7 +273,7 @@ export default function Navbar() {
                             >
                                 <Link
                                     href="/les-vins/cuvees"
-                                    className="px-8 py-4 bg-amber-600 text-white uppercase tracking-widest text-sm font-bold"
+                                    className="px-10 py-3 border border-white text-white uppercase tracking-widest text-xs font-bold hover:bg-white hover:text-stone-900 transition-colors"
                                 >
                                     Boutique
                                 </Link>

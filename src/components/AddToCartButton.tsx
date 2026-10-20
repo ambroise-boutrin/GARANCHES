@@ -37,24 +37,24 @@ export default function AddToCartButton({ wine }: { wine: Wine }) {
     const decrement = () => setQuantity(q => q > 1 ? q - 1 : 1);
 
     return (
-        <div className="flex flex-row items-center justify-between md:justify-start gap-4 mt-6 w-full">
+        <div className="flex flex-row items-center justify-between md:justify-start gap-3 md:gap-4 mt-6 w-full">
 
 
             <div className="flex items-center border border-wine-900 w-fit overflow-hidden shrink-0 bg-white">
                 <button
                     onClick={decrement}
                     aria-label="Réduire la quantité"
-                    className="px-4 py-3 text-wine-900 hover:bg-wine-50 transition-colors"
+                    className="px-3 md:px-4 py-3 text-wine-900 hover:bg-wine-50 transition-colors"
                 >
                     -
                 </button>
-                <span className="px-2 py-3 min-w-[3rem] text-center text-wine-900 font-bold">
+                <span className="px-1 py-3 min-w-[2.5rem] text-center text-wine-900 font-bold">
                     {quantity}
                 </span>
                 <button
                     onClick={increment}
                     aria-label="Augmenter la quantité"
-                    className="px-4 py-3 text-wine-900 hover:bg-wine-50 transition-colors"
+                    className="px-3 md:px-4 py-3 text-wine-900 hover:bg-wine-50 transition-colors"
                 >
                     +
                 </button>
@@ -65,7 +65,7 @@ export default function AddToCartButton({ wine }: { wine: Wine }) {
                 onClick={handleAddToCart}
                 whileTap={{ scale: 0.95 }}
                 className={`
-                    relative overflow-hidden px-8 py-3
+                    relative overflow-hidden flex-1 md:flex-none px-4 md:px-8 py-3 whitespace-nowrap
                     text-xs uppercase tracking-widest font-bold 
                     transition-colors duration-300 border border-wine-900
                     bg-wine-900 text-white hover:bg-white hover:text-wine-900
