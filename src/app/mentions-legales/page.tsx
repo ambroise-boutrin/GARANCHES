@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Mentions Légales | Domaine de Garanches",
+    title: "Mentions Légales",
     description: "Mentions légales du Domaine de Garanches. Informations sur l'éditeur, l'hébergeur et les conditions d'utilisation du site domainedegaranches.com.",
+    alternates: { canonical: "/mentions-legales" },
 };
 
 export default function MentionsLegales() {

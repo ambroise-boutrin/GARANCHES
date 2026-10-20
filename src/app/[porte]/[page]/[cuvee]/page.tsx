@@ -22,11 +22,27 @@ async function load({ porte, page, cuvee }: Props["params"]) {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const wine = (await load(params))?.wine;
     if (!wine) return {};
+    const title = wine.subtitle ? `${wine.name} – ${wine.subtitle}` : wine.name;
     return {
-        title: wine.name,
-        description: wine.description,
+        title,
+        description: resume(`${wine.name} du domaine de Garanches, à Odenas au pied du Mont Brouilly. ${wine.description || ""}`),
         alternates: { canonical: cuveeHref(wine) },
+        openGraph: { title: `${wine.name} | Domaine de Garanches`, images: [image(wine)], url: cuveeHref(wine) },
     };
+}
+
+const SITE = "https://domainedegaranches.com";
+
+// Description pour Google : coupée proprement vers 155 caractères.
+function resume(texte: string) {
+    const propre = texte.replace(/\s+/g, " ").trim();
+    if (propre.length <= 155) return propre;
+    return propre.slice(0, 154).replace(/\s+\S*$/, "") + "…";
+}
+
+function image(wine: any): string {
+    const src = wine.image || "/images/36_brouilly-h.jpg";
+    return src.startsWith("http") ? src : `${SITE}${src}`;
 }
 
 function Section({ title, text, background }: { title: string; text?: string; background: string }) {
@@ -52,6 +68,27 @@ export default async function CuveePage({ params }: Props) {
 
     return (
         <main className="min-h-screen text-gray-800 font-sans">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "Product",
+                        name: wine.name,
+                        description: wine.description,
+                        image: image(wine),
+                        url: `${SITE}${cuveeHref(wine)}`,
+                        brand: { "@type": "Brand", name: "Domaine de Garanches" },
+                        offers: {
+                            "@type": "Offer",
+                            priceCurrency: "EUR",
+                            price: (wine.price / 100).toFixed(2),
+                            availability: "https://schema.org/InStock",
+                            url: `${SITE}${cuveeHref(wine)}`,
+                        },
+                    }),
+                }}
+            />
             <section className="relative h-[60vh] min-h-[420px] flex flex-col justify-center items-center overflow-hidden">
                 <div className="absolute inset-0 z-0">
                     <Image src="/images/23_slide002.jpg" alt="" fill sizes="100vw" priority quality={75} className="object-cover brightness-[.6]" />
