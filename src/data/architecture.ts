@@ -12,6 +12,8 @@ export type Bloc = {
     cta?: { label: string; href: string };
     // Sujet pré-rempli dans le formulaire de contact pour le bouton « Réserver ».
     booking?: { label: string; sujet: string };
+    // Informations pratiques (durée, personnes, tarifs, accès) pour rassurer avant d'agir.
+    pratique?: { label: string; value: string }[];
 };
 
 export type Page = {
@@ -48,7 +50,7 @@ Et aujourd'hui, par celles et ceux qui viennent la découvrir, goûter ses vins 
                 alt: "Le domaine de Garanches et ses vignes",
             },
         ],
-        children: ["le-lieu/le-domaine", "le-lieu/histoire", "le-lieu/ceux-qui-le-font-vivre", "carnets"],
+        children: ["le-lieu/le-domaine", "le-lieu/histoire", "le-lieu/traces", "le-lieu/ceux-qui-le-font-vivre", "carnets"],
     },
     {
         path: "le-lieu/le-domaine",
@@ -111,8 +113,18 @@ Parce qu'un lieu se comprend aussi à travers celles et ceux qui l'ont façonné
                 image: "/images/34_slide001.jpg",
                 alt: "Cave du domaine de Garanches",
             },
+        ],
+        children: ["le-lieu/traces", "le-lieu/ceux-qui-le-font-vivre"],
+    },
+    {
+        path: "le-lieu/traces",
+        label: "Traces",
+        description: "Plants anciens, documents, photographies et archives de Garanches.",
+        image: "/images/10_slide003.jpg",
+        cta: "Voir les traces",
+        blocs: [
             {
-                id: "traces-et-archives",
+                id: "introduction",
                 title: "Ce que le temps nous a laissé.",
                 body: `Documents, photographies, textes, objets et archives racontent une autre façon d'entrer dans l'histoire de Garanches.
 
@@ -125,8 +137,10 @@ Ici, l'histoire se découvre au fil des traces.`,
                 alt: "Traces et objets du domaine",
                 cta: { label: "Voir les Carnets", href: "/carnets" },
             },
+            { id: "plants-anciens", title: "Plants anciens", image: "/images/16_image.jpg", alt: "Vieilles vignes de Garanches" },
+            { id: "documents", title: "Documents", image: "/images/10_slide003.jpg", alt: "Archives manuscrites du domaine" },
         ],
-        children: ["le-lieu/ceux-qui-le-font-vivre", "carnets"],
+        children: ["le-lieu/histoire", "carnets"],
     },
     {
         path: "le-lieu/ceux-qui-le-font-vivre",
@@ -253,6 +267,7 @@ Parce qu'ici, les vins se découvrent aussi avec le lieu et avec ceux qui le fon
             "rencontrons-garanches/deguster-au-domaine",
             "rencontrons-garanches/decouvrir-les-vignes",
             "rencontrons-garanches/experiences-privees",
+            "rencontrons-garanches/evenements",
         ],
     },
     {
@@ -277,6 +292,12 @@ Partageons nos impressions, nos questions, nos découvertes, et laissons la conv
             {
                 id: "comment-ca-se-passe",
                 title: "Comment ça se passe ?",
+                pratique: [
+                    { label: "Durée", value: "À préciser" },
+                    { label: "Personnes", value: "À préciser" },
+                    { label: "Tarifs", value: "À préciser" },
+                    { label: "Accès", value: "345 chemin de Garanches, Odenas" },
+                ],
                 booking: { label: "Réserver", sujet: "Les Rencontres de Garanches" },
             },
         ],
@@ -315,6 +336,12 @@ Puis goûtons quelques cuvées au cœur de leur histoire.
 Nous recevons avec plaisir les visiteurs individuels comme les groupes. Pour vous garantir le meilleur accueil, **une réservation est conseillée**, par téléphone au 04 74 03 44 80 ou avec le bouton ci-dessous.
 
 345 chemin de Garanches, 69460 Odenas.`,
+                pratique: [
+                    { label: "Durée", value: "À préciser" },
+                    { label: "Personnes", value: "Individuels et groupes" },
+                    { label: "Tarifs", value: "À préciser" },
+                    { label: "Accès", value: "345 chemin de Garanches, Odenas" },
+                ],
                 booking: { label: "Réserver", sujet: "Déguster au domaine" },
             },
         ],
@@ -341,6 +368,12 @@ Puis quatre vins à goûter, pour retrouver dans le verre ce que nous venons de 
             {
                 id: "comment-ca-se-passe",
                 title: "Comment ça se passe ?",
+                pratique: [
+                    { label: "Durée", value: "À préciser" },
+                    { label: "Personnes", value: "À préciser" },
+                    { label: "Tarifs", value: "À préciser" },
+                    { label: "Accès", value: "345 chemin de Garanches, Odenas" },
+                ],
                 booking: { label: "Réserver", sujet: "Découvrir les vignes" },
             },
         ],
@@ -376,10 +409,39 @@ Un repas, quelques bouteilles, une promenade dans les vignes, une découverte de
 Nous choisissons ensemble ce qui donnera à ce moment sa couleur.
 
 **Un lieu à partager, un moment à garder.**`,
-                booking: { label: "Nous contacter", sujet: "Expérience privée" },
+                pratique: [
+                    { label: "Durée", value: "À imaginer ensemble" },
+                    { label: "Personnes", value: "Jusqu'à une vingtaine" },
+                    { label: "Tarifs", value: "Sur demande" },
+                    { label: "Accès", value: "345 chemin de Garanches, Odenas" },
+                ],
+                booking: { label: "Demander", sujet: "Expérience privée" },
             },
         ],
         children: ["rencontrons-garanches/les-rencontres", "rencontrons-garanches/decouvrir-les-vignes"],
+    },
+
+    {
+        path: "rencontrons-garanches/evenements",
+        label: "Événements",
+        description: "Repas et rencontres au domaine de Garanches, au fil de l'année.",
+        image: "/images/21_image.jpg",
+        cta: "Découvrir les événements",
+        blocs: [
+            { id: "introduction", title: "Événements", image: "/images/3_image.jpg", alt: "Un repas au domaine" },
+            {
+                id: "comment-ca-se-passe",
+                title: "Comment ça se passe ?",
+                pratique: [
+                    { label: "Dates", value: "À préciser" },
+                    { label: "Personnes", value: "À préciser" },
+                    { label: "Tarifs", value: "À préciser" },
+                    { label: "Accès", value: "345 chemin de Garanches, Odenas" },
+                ],
+                booking: { label: "Réserver", sujet: "Événements" },
+            },
+        ],
+        children: ["rencontrons-garanches/les-rencontres", "carnets"],
     },
 
     // ─────────────── TRANSVERSAL ───────────────
@@ -449,3 +511,33 @@ export const BLOC_KEYS = PAGE_LIST.flatMap((p) =>
 
 // Pages dont le chemin est servi par la route générique /[porte]/[page].
 export const GENERIC_PATHS = PAGE_LIST.map((p) => p.path);
+
+// Accueil, d'après le schéma « Architecture générale du site ».
+export const SIGNATURE = "Un lieu. Des vins. Une histoire à vivre.";
+
+export const HOME_PORTES = [
+    {
+        path: "le-lieu",
+        image: "/images/23_slide002.jpg",
+        entrees: [
+            { label: "Le domaine", motsCles: "Odenas • paysage • granit • vignes", href: "/le-lieu/le-domaine" },
+            { label: "L'histoire", motsCles: "Bender • Jean Buy • archives • traces", href: "/le-lieu/histoire" },
+        ],
+    },
+    {
+        path: "les-vins",
+        image: "/images/34_slide001.jpg",
+        entrees: [
+            { label: "Notre façon de faire", motsCles: "Terre • saisons • millésimes • temps", href: "/les-vins/notre-facon-de-faire" },
+            { label: "Les cuvées", motsCles: "Terroirs • assemblages • à table", href: "/les-vins/cuvees" },
+        ],
+    },
+    {
+        path: "rencontrons-garanches",
+        image: "/images/40_image.jpg",
+        entrees: [
+            { label: "Les Rencontres", motsCles: "Table d'hôtes • vins • conversations", href: "/rencontrons-garanches/les-rencontres" },
+            { label: "Expériences", motsCles: "Dégustations • vignes • privé • événements", href: "/rencontrons-garanches" },
+        ],
+    },
+].map((porte) => ({ ...porte, page: PAGES[porte.path] }));

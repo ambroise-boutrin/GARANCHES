@@ -6,6 +6,7 @@ import { PortableText, type PortableTextComponents } from "next-sanity";
 import { getCarnet } from "@/sanity/lib/queries";
 import { urlFor } from "@/sanity/lib/image";
 import { formatDate, themeLabel } from "@/lib/carnets";
+import PageCards from "@/components/editorial/PageCards";
 
 type Props = { params: { slug: string } };
 
@@ -43,7 +44,7 @@ export default async function CarnetPage({ params }: Props) {
     if (!carnet) notFound();
 
     return (
-        <main className="min-h-screen bg-paper pt-32 pb-20">
+        <main className="min-h-screen bg-paper pt-32">
             <article className="max-w-3xl mx-auto px-6">
                 <Link href="/carnets" className="text-amber-700 font-serif italic text-xl hover:text-wine-900 transition-colors">
                     Les Carnets de Garanches
@@ -61,6 +62,11 @@ export default async function CarnetPage({ params }: Props) {
                     {carnet.contenu && <PortableText value={carnet.contenu} components={components} />}
                 </div>
             </article>
+
+            {/* Un Carnet renvoie vers les autres univers. */}
+            <div className="bg-stone-100 mt-20">
+                <PageCards paths={["le-lieu", "les-vins", "rencontrons-garanches"]} title="Poursuivre" />
+            </div>
         </main>
     );
 }
