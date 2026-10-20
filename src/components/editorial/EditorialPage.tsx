@@ -47,7 +47,7 @@ function BlocSection({ bloc, override, index }: { bloc: Bloc; override?: BlocOve
             {action && (bloc.booking ? (
                 <Link
                     href={action.href}
-                    className="inline-block mt-10 px-10 py-3 bg-red-900/90 hover:bg-red-800 text-white uppercase tracking-widest text-xs font-bold transition-all border border-red-900 hover:scale-105 duration-300 rounded-full shadow-lg"
+                    className="inline-block mt-10 px-10 py-3 bg-red-900/90 hover:bg-red-800 text-white uppercase tracking-widest text-xs font-bold transition-all border border-red-900 duration-300 shadow-lg"
                 >
                     {action.label}
                 </Link>

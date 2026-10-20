@@ -4,13 +4,13 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
-interface AgeGateProps {
-    initialShow: boolean;
-}
+export default function AgeGate() {
 
-export default function AgeGate({ initialShow }: AgeGateProps) {
+    const [isVisible, setIsVisible] = useState(true);
 
-    const [isVisible, setIsVisible] = useState(initialShow);
+    useEffect(() => {
+        if (document.documentElement.classList.contains("age-ok")) setIsVisible(false);
+    }, []);
 
     useEffect(() => {
 
@@ -57,6 +57,7 @@ export default function AgeGate({ initialShow }: AgeGateProps) {
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0, transition: { duration: 0.8 } }}
 
+                    data-age-gate
                     className="fixed inset-0 z-[2000] flex items-center justify-center bg-[#1c1917] px-4"
                     role="dialog"
                     aria-modal="true"

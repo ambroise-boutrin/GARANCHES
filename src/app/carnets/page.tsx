@@ -34,7 +34,7 @@ export default async function CarnetsPage({ searchParams }: { searchParams: { th
                     <Link
                         key={t.value}
                         href={t.value ? `/carnets?theme=${t.value}` : "/carnets"}
-                        className={`px-4 py-2 rounded-full text-xs uppercase tracking-widest border transition-colors ${
+                        className={`px-4 py-2 text-xs uppercase tracking-widest border transition-colors ${
                             (theme || "") === t.value ? "bg-wine-900 text-white border-wine-900" : "border-stone-300 text-gray-600 hover:border-wine-900"
                         }`}
                     >

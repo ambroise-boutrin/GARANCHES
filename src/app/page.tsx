@@ -4,6 +4,8 @@ import { PRODUCTS } from "@/data/products";
 import { getPageContent } from "@/sanity/lib/queries";
 import HomePageClient from "@/components/HomePageClient";
 
+export const revalidate = 60;
+
 export const metadata: Metadata = {
   description: "Domaine viticole historique à Odenas depuis 1788. Vins de Brouilly et Bourgogne Blanc par Romain Martinache & Aurélie Crozet. Dégustation et vente directe au pied du Mont Brouilly.",
 };

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Montserrat } from "next/font/google";
-import { cookies } from "next/headers";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -153,11 +152,17 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const cookieStore = await cookies();
-  const hasConfirmed = cookieStore.get("age-confirmed")?.value === "true";
-
   return (
-    <html lang="fr" className={`${cormorant.variable} ${montserrat.variable}`}>
+    <html lang="fr" suppressHydrationWarning className={`${cormorant.variable} ${montserrat.variable}`}>
+      <head>
+        {/* Masque la vérification d'âge avant l'affichage si elle a déjà été validée,
+            sans lire les cookies côté serveur (les pages restent en cache et s'ouvrent instantanément). */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{if(document.cookie.indexOf("age-confirmed=true")>-1||localStorage.getItem("age-confirmed"))document.documentElement.classList.add("age-ok")}catch(e){}`,
+          }}
+        />
+      </head>
       <body className="bg-white text-stone-900 antialiased overflow-x-hidden selection:bg-wine-900 selection:text-white">
         <Script
           id="json-ld"
@@ -170,7 +175,7 @@ export default async function RootLayout({
 
         <Providers>
           <CustomCursor />
-          <AgeGate initialShow={!hasConfirmed} />
+          <AgeGate />
 
           <CookieConsent />
           <SmoothScroll />

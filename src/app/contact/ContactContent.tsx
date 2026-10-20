@@ -56,12 +56,11 @@ export default function ContactContent({ sujet }: { sujet?: string }) {
             <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-start">
                 <FadeIn direction="right" delay={0.2}>
                     <div className="bg-white p-10 border border-gray-100 shadow-lg rounded-lg relative overflow-hidden group">
-                        <div className="absolute top-0 right-0 w-24 h-24 bg-amber-50 rounded-bl-full -mr-12 -mt-12 transition-transform group-hover:scale-150 duration-700"></div>
                         <h2 className="text-3xl font-serif text-wine-900 mb-10 relative z-10">Nos Coordonnées</h2>
 
                         <div className="space-y-10 relative z-10">
                             <div className="flex gap-4">
-                                <div className="w-12 h-12 bg-wine-50 rounded-full flex items-center justify-center shrink-0">
+                                <div className="w-6 shrink-0 pt-1">
                                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-wine-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -79,7 +78,7 @@ export default function ContactContent({ sujet }: { sujet?: string }) {
                             </div>
 
                             <div className="flex gap-4">
-                                <div className="w-12 h-12 bg-wine-50 rounded-full flex items-center justify-center shrink-0">
+                                <div className="w-6 shrink-0 pt-1">
                                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-wine-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                                     </svg>
@@ -93,7 +92,7 @@ export default function ContactContent({ sujet }: { sujet?: string }) {
                             </div>
 
                             <div className="flex gap-4">
-                                <div className="w-12 h-12 bg-wine-50 rounded-full flex items-center justify-center shrink-0">
+                                <div className="w-6 shrink-0 pt-1">
                                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-wine-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>
@@ -172,7 +171,7 @@ export default function ContactContent({ sujet }: { sujet?: string }) {
                                 <textarea name="message" rows={5} className="w-full bg-white border border-gray-100 p-4 rounded-md focus:outline-none focus:ring-2 focus:ring-wine-100 focus:border-wine-300 transition-all shadow-sm resize-none" placeholder="Comment pouvons-nous vous aider ?"></textarea>
                             </div>
 
-                            <button type="submit" className="w-full bg-wine-900 text-white py-4 uppercase tracking-widest text-xs font-bold hover:bg-amber-600 transition-colors rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 duration-300">
+                            <button type="submit" className="w-full bg-wine-900 text-white py-4 uppercase tracking-widest text-xs font-bold hover:bg-amber-600 transition-colors">
                                 {isBooking ? "Envoyer ma demande" : "Envoyer le message"}
                             </button>
 

@@ -19,6 +19,21 @@ const config = {
                 },
                 'paper': '#FDFBF7', // Blanc cassé élégant
             },
+            // Style sobre de maison de vin : angles presque droits et ombres discrètes,
+            // plutôt que des cartes arrondies et flottantes.
+            borderRadius: {
+                md: '2px',
+                lg: '2px',
+                xl: '2px',
+                '2xl': '2px',
+            },
+            boxShadow: {
+                sm: 'none',
+                md: '0 1px 2px rgb(0 0 0 / 0.06)',
+                lg: '0 8px 24px -12px rgb(0 0 0 / 0.18)',
+                xl: '0 12px 32px -14px rgb(0 0 0 / 0.22)',
+                '2xl': '0 16px 40px -16px rgb(0 0 0 / 0.28)',
+            },
             // Montserrat en 700 écrase le Cormorant : le « gras » du site est un semi-gras.
             fontWeight: {
                 bold: '600',

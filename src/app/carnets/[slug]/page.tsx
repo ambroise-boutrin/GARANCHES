@@ -8,6 +8,8 @@ import { urlFor } from "@/sanity/lib/image";
 import { formatDate, themeLabel } from "@/lib/carnets";
 import PageCards from "@/components/editorial/PageCards";
 
+export const revalidate = 60;
+
 type Props = { params: { slug: string } };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

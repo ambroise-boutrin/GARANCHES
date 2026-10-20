@@ -144,13 +144,13 @@ export default function HomePageClient({ products, content }: { products: any[],
                         <div className="flex flex-col sm:flex-row gap-4 md:gap-8 justify-center items-center w-full">
                             <Link
                                 href="/les-vins/cuvees"
-                                className="w-[260px] px-8 py-3 bg-red-900/90 hover:bg-red-800 text-white uppercase tracking-widest text-xs font-bold transition-all border border-red-900 hover:scale-105 duration-300 rounded-full text-center shadow-lg"
+                                className="w-[260px] px-8 py-3 bg-red-900/90 hover:bg-red-800 text-white uppercase tracking-widest text-xs font-bold transition-all border border-red-900 duration-300 text-center shadow-lg"
                             >
                                 Découvrir nos vins
                             </Link>
                             <Link
                                 href="/rencontrons-garanches"
-                                className="w-[260px] px-8 py-3 bg-transparent hover:bg-white/10 text-white uppercase tracking-widest text-xs font-bold transition-all border border-white hover:scale-105 duration-300 rounded-full text-center backdrop-blur-sm"
+                                className="w-[260px] px-8 py-3 bg-transparent hover:bg-white/10 text-white uppercase tracking-widest text-xs font-bold transition-all border border-white duration-300 text-center backdrop-blur-sm"
                             >
                                 Venir au domaine
                             </Link>
