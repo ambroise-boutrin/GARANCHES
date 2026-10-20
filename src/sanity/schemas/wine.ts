@@ -59,5 +59,15 @@ export default {
             title: 'Allergènes',
             type: 'string',
         },
+        {
+            name: 'parcelle',
+            title: 'Parcelle et terroir',
+            type: 'text',
+        },
+        {
+            name: 'vinification',
+            title: 'Assemblage et élevage',
+            type: 'text',
+        },
     ],
 };

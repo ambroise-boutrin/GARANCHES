@@ -3,6 +3,8 @@ import { client } from './client';
 export async function getWines() {
     return await client.fetch(`*[_type == "wine"] {
     _id,
+    "id": _id,
+    "slug": slug.current,
     name,
     subtitle,
     price,
@@ -11,7 +13,9 @@ export async function getWines() {
     tags,
     alcohol,
     volume,
-    allergens
+    allergens,
+    parcelle,
+    vinification
   }`);
 }
 
