@@ -5,6 +5,7 @@ import FadeIn from "@/components/FadeIn";
 import ParallaxImage from "@/components/ParallaxImage";
 import RichText from "./RichText";
 import PageCards from "./PageCards";
+import SousNav from "./SousNav";
 import { PAGES, type Bloc, type Page } from "@/data/architecture";
 import type { BlocOverride } from "@/sanity/lib/queries";
 import { urlFor } from "@/sanity/lib/image";
@@ -115,6 +116,8 @@ export default function EditorialPage({
                     <div className="w-16 h-0.5 md:w-24 md:h-1 bg-amber-500"></div>
                 </FadeIn>
             </section>
+
+            <SousNav path={page.path} />
 
             {page.blocs.map((bloc, i) => (
                 <BlocSection key={bloc.id} bloc={bloc} override={overrides[`${page.path}#${bloc.id}`]} index={i} />

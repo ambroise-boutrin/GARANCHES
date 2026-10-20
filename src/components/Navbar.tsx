@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useCart } from "@/context/CartContext";
-import { PORTES, GENERIC_PATHS } from "@/data/architecture";
+import { PORTES, GENERIC_PATHS, type Porte } from "@/data/architecture";
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
@@ -68,11 +68,13 @@ export default function Navbar() {
     }, [pathname]);
 
     // Les trois portes, puis les entrées transversales.
-    const navLinks = [
+    const navLinks: { name: string; href: string; children: Porte["children"] }[] = [
         ...PORTES.map((porte) => ({ name: porte.label, href: porte.path, children: porte.children })),
         { name: "Les Carnets", href: "/carnets", children: [] },
         { name: "Contact", href: "/contact", children: [] },
     ];
+    // Menu mobile : une seule porte dépliée à la fois.
+    const [openPorte, setOpenPorte] = useState<string | null>(null);
     const isActive = (href: string) => pathname === href || pathname.startsWith(`${href}/`);
 
     return (
@@ -114,17 +116,29 @@ export default function Navbar() {
                                 <span className={`absolute -bottom-0 left-0 w-0 h-px transition-all duration-300 group-hover:w-full ${isActive(link.href) ? "w-full" : ""} ${useDarkText ? "bg-stone-900" : "bg-amber-500"}`}></span>
                             </Link>
                             {link.children.length > 0 && (
-                                <div className="absolute left-1/2 -translate-x-1/2 top-full pt-4 opacity-0 invisible group-hover/menu:opacity-100 group-hover/menu:visible group-focus-within/menu:opacity-100 group-focus-within/menu:visible transition-all duration-300">
-                                    <div className="bg-stone-900/95 backdrop-blur-md rounded-lg shadow-xl py-3 min-w-[240px]">
-                                        {link.children.map((child) => (
-                                            <Link
-                                                key={child.href}
-                                                href={child.href}
-                                                className={`block px-5 py-2 text-sm font-serif transition-colors ${pathname === child.href ? "text-amber-500" : "text-white hover:text-amber-400"}`}
-                                            >
-                                                {child.label}
-                                            </Link>
-                                        ))}
+                                <div className="absolute left-1/2 -translate-x-1/2 top-full pt-5 opacity-0 invisible translate-y-2 group-hover/menu:opacity-100 group-hover/menu:visible group-hover/menu:translate-y-0 group-focus-within/menu:opacity-100 group-focus-within/menu:visible group-focus-within/menu:translate-y-0 transition-all duration-300">
+                                    <div className="relative bg-paper rounded-lg shadow-2xl border-t-2 border-amber-500 w-[340px] overflow-hidden">
+                                        <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-3 h-3 bg-amber-500 rotate-45" aria-hidden />
+                                        <Link href={link.href} className="group/entry flex items-center justify-between px-6 pt-5 pb-4 border-b border-stone-200">
+                                            <span className="font-serif text-2xl text-wine-900">{link.name}</span>
+                                            <span className="text-[10px] uppercase tracking-widest font-bold text-amber-700 group-hover/entry:translate-x-1 transition-transform">Entrer →</span>
+                                        </Link>
+                                        <ul className="py-2">
+                                            {link.children.map((child) => {
+                                                const active = pathname === child.href;
+                                                return (
+                                                    <li key={child.href}>
+                                                        <Link
+                                                            href={child.href}
+                                                            className={`block px-6 py-3 border-l-2 transition-colors ${active ? "border-amber-500 bg-stone-100" : "border-transparent hover:border-amber-500 hover:bg-stone-50"}`}
+                                                        >
+                                                            <span className={`block font-serif text-lg leading-tight ${active ? "text-amber-700" : "text-stone-900"}`}>{child.label}</span>
+                                                            {child.motsCles && <span className="block text-xs text-gray-500 mt-1">{child.motsCles}</span>}
+                                                        </Link>
+                                                    </li>
+                                                );
+                                            })}
+                                        </ul>
                                     </div>
                                 </div>
                             )}
@@ -199,21 +213,34 @@ export default function Navbar() {
                                     transition={{ delay: 0.1 + i * 0.08 }}
                                     className="text-center"
                                 >
-                                    <Link
-                                        href={link.href}
-                                        onClick={() => setIsOpen(false)}
-                                        className="block py-1 text-3xl font-serif text-white hover:text-amber-500 transition-colors"
-                                    >
-                                        {link.name}
-                                    </Link>
-                                    {link.children.length > 0 && (
-                                        <div className="flex flex-col gap-1 mt-1">
+                                    <div className="flex items-center justify-center gap-3">
+                                        <Link
+                                            href={link.href}
+                                            onClick={() => setIsOpen(false)}
+                                            className="block py-1 text-3xl font-serif text-white hover:text-amber-500 transition-colors"
+                                        >
+                                            {link.name}
+                                        </Link>
+                                        {link.children.length > 0 && (
+                                            <button
+                                                type="button"
+                                                onClick={() => setOpenPorte(openPorte === link.href ? null : link.href)}
+                                                aria-expanded={openPorte === link.href}
+                                                aria-label={`Afficher les pages de ${link.name}`}
+                                                className="w-9 h-9 flex items-center justify-center rounded-full border border-white/30 text-white"
+                                            >
+                                                <svg className={`w-4 h-4 transition-transform ${openPorte === link.href ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+                                            </button>
+                                        )}
+                                    </div>
+                                    {openPorte === link.href && (
+                                        <div className="flex flex-col gap-2 mt-3 mb-2">
                                             {link.children.map((child) => (
                                                 <Link
                                                     key={child.href}
                                                     href={child.href}
                                                     onClick={() => setIsOpen(false)}
-                                                    className="text-sm text-white/60 hover:text-amber-500 transition-colors"
+                                                    className={`text-base font-serif transition-colors ${pathname === child.href ? "text-amber-500" : "text-white/70 hover:text-amber-500"}`}
                                                 >
                                                     {child.label}
                                                 </Link>
