@@ -15,15 +15,12 @@ export default function CartPage() {
     const handleCheckout = async () => {
         setIsLoading(true);
         try {
-            const wineName = cart.length === 1 ? cart[0].name : "Panier Domaine de Garanches";
-
+            // Le serveur recalcule le prix : on n'envoie que les vins et les quantités.
             const res = await fetch('/api/checkout', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    amount: totalPrice / 100,
-                    currency: 'EUR',
-                    wineName: wineName
+                    items: cart.map(({ id, quantity }) => ({ id, quantity }))
                 })
             });
 

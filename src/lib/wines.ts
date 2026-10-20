@@ -1,3 +1,4 @@
+import { wineSlug } from "@/lib/wineSlug";
 import { PRODUCTS } from "@/data/products";
 import { getSumUpProducts } from "@/lib/sumup";
 import { getWines as getSanityWines } from "@/sanity/lib/queries";
@@ -18,4 +19,9 @@ export async function getWines() {
         return wines;
     }
     return PRODUCTS;
+}
+
+export async function getWine(slug: string) {
+    const wines = await getWines();
+    return { wine: wines.find((w: any) => wineSlug(w) === slug), wines };
 }

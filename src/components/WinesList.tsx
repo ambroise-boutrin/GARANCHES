@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import AddToCartButton from "@/components/AddToCartButton";
 import FadeIn from "@/components/FadeIn";
+import { cuveeHref } from "@/lib/wineSlug";
 
 export default function WinesList({ wines }: { wines: any[] }) {
 
@@ -33,7 +34,7 @@ export default function WinesList({ wines }: { wines: any[] }) {
 
                                 <div className="w-full md:w-2/3 text-center md:text-left">
                                     <div className="flex flex-col md:flex-row justify-between items-center mb-2">
-                                        <h2 className="text-3xl font-serif text-wine-900">{wine.name}</h2>
+                                        <h2 className="text-3xl font-serif text-wine-900"><Link href={cuveeHref(wine)} className="hover:text-amber-700 transition-colors">{wine.name}</Link></h2>
                                         <span className="text-xl font-bold text-gold-500 mt-2 md:mt-0 whitespace-nowrap">
                                             {(wine.price / 100).toFixed(2).replace('.', ',')} €
                                         </span>
@@ -47,6 +48,10 @@ export default function WinesList({ wines }: { wines: any[] }) {
                                         {/* Description non traduite car dynamique */}
                                         {wine.description}
                                     </p>
+
+                                    <Link href={cuveeHref(wine)} className="inline-block mb-6 text-xs uppercase tracking-widest font-bold text-red-900 hover:text-amber-600 transition-colors">
+                                        Découvrir la cuvée →
+                                    </Link>
 
                                     <div className="flex flex-wrap justify-center md:justify-start items-center gap-x-4 gap-y-2 text-xs text-gray-500 mb-6 font-light">
                                         {wine.volume && <span>{wine.volume}</span>}

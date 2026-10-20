@@ -20,8 +20,8 @@ const config = {
                 'paper': '#FDFBF7', // Blanc cassé élégant
             },
             fontFamily: {
-                serif: ['var(--font-playfair)', 'serif'],
-                sans: ['var(--font-lato)', 'sans-serif'],
+                serif: ['var(--font-serif)', 'serif'],
+                sans: ['var(--font-sans)', 'sans-serif'],
             },
             backgroundImage: {
                 'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

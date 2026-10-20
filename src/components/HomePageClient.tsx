@@ -8,6 +8,7 @@ import FadeIn from "@/components/FadeIn";
 import ParallaxImage from "@/components/ParallaxImage";
 import AddToCartButton from "@/components/AddToCartButton";
 import { HOME_PORTES, SIGNATURE } from "@/data/architecture";
+import { cuveeHref } from "@/lib/wineSlug";
 
 export default function HomePageClient({ products, content }: { products: any[], content?: any }) {
     const [isLoading, setIsLoading] = useState(true);
@@ -287,7 +288,7 @@ export default function HomePageClient({ products, content }: { products: any[],
                         {/* DYNAMIC PRODUCTS */}
                         {products.slice(0, 3).map((wine, index) => (
                             <FadeIn key={wine.id} delay={0.1 + index * 0.2} className="group flex flex-col h-full">
-                                <Link href="/les-vins/cuvees" className="flex-grow">
+                                <Link href={cuveeHref(wine)} className="flex-grow">
                                     <div className="relative h-[400px] md:h-[500px] overflow-hidden mb-6 bg-gray-50 flex items-center justify-center p-8 border border-transparent hover:border-gray-100 transition-colors rounded-sm">
                                         <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors z-10 duration-500"></div>
                                         <Image
