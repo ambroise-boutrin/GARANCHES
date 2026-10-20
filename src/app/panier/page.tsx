@@ -77,7 +77,7 @@ export default function CartPage() {
                     <FadeIn delay={0.1}>
                         <div className="text-center py-20 bg-white shadow-sm rounded-lg border border-gray-100">
                             <h2 className="text-xl font-bold text-gray-800 mb-2">Votre panier est vide</h2>
-                            <Link href="/nos-vins" className="inline-block mt-6 px-10 py-4 bg-wine-900 text-white uppercase font-bold tracking-widest hover:bg-wine-800 transition-colors rounded-full">
+                            <Link href="/les-vins/cuvees" className="inline-block mt-6 px-10 py-4 bg-wine-900 text-white uppercase font-bold tracking-widest hover:bg-wine-800 transition-colors rounded-full">
                                 Voir la boutique
                             </Link>
                         </div>

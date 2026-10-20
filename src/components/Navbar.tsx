@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useCart } from "@/context/CartContext";
+import { PORTES } from "@/data/architecture";
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
@@ -64,12 +65,13 @@ export default function Navbar() {
         setIsOpen(false);
     }, [pathname]);
 
+    // Les trois portes, puis les entrées transversales.
     const navLinks = [
-        { name: "Le Domaine", href: "/" },
-        { name: "Notre Histoire", href: "/notre-histoire" },
-        { name: "Visite & Dégustation", href: "/visite" },
-        { name: "Contact", href: "/contact" },
+        ...PORTES.map((porte) => ({ name: porte.label, href: porte.path, children: porte.children })),
+        { name: "Les Carnets", href: "/carnets", children: [] },
+        { name: "Contact", href: "/contact", children: [] },
     ];
+    const isActive = (href: string) => pathname === href || pathname.startsWith(`${href}/`);
 
     return (
         <nav
@@ -98,17 +100,33 @@ export default function Navbar() {
                 </Link>
 
 
-                <div className="hidden md:flex items-center gap-8">
+                <div className="hidden lg:flex items-center gap-7">
                     {navLinks.map((link) => (
-                        <Link
-                            key={link.href}
-                            href={link.href}
-                            className={`text-xs uppercase tracking-[0.15em] font-medium transition-colors duration-300 relative group ${pathname === link.href ? "text-amber-500" : (useDarkText ? "text-stone-900 hover:text-amber-600" : "text-white hover:text-amber-400")
-                                }`}
-                        >
-                            {link.name}
-                            <span className={`absolute -bottom-2 left-0 w-0 h-px transition-all duration-300 group-hover:w-full ${pathname === link.href ? "w-full" : ""} ${useDarkText ? "bg-stone-900" : "bg-amber-500"}`}></span>
-                        </Link>
+                        <div key={link.href} className="relative group/menu">
+                            <Link
+                                href={link.href}
+                                className={`text-xs uppercase tracking-[0.15em] font-medium transition-colors duration-300 relative group py-2 ${isActive(link.href) ? "text-amber-500" : (useDarkText ? "text-stone-900 hover:text-amber-600" : "text-white hover:text-amber-400")
+                                    }`}
+                            >
+                                {link.name}
+                                <span className={`absolute -bottom-0 left-0 w-0 h-px transition-all duration-300 group-hover:w-full ${isActive(link.href) ? "w-full" : ""} ${useDarkText ? "bg-stone-900" : "bg-amber-500"}`}></span>
+                            </Link>
+                            {link.children.length > 0 && (
+                                <div className="absolute left-1/2 -translate-x-1/2 top-full pt-4 opacity-0 invisible group-hover/menu:opacity-100 group-hover/menu:visible group-focus-within/menu:opacity-100 group-focus-within/menu:visible transition-all duration-300">
+                                    <div className="bg-stone-900/95 backdrop-blur-md rounded-lg shadow-xl py-3 min-w-[240px]">
+                                        {link.children.map((child) => (
+                                            <Link
+                                                key={child.href}
+                                                href={child.href}
+                                                className={`block px-5 py-2 text-sm font-serif transition-colors ${pathname === child.href ? "text-amber-500" : "text-white hover:text-amber-400"}`}
+                                            >
+                                                {child.label}
+                                            </Link>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
+                        </div>
                     ))}
 
 
@@ -130,7 +148,7 @@ export default function Navbar() {
 
 
                     <Link
-                        href="/nos-vins"
+                        href="/acheter"
                         // Couleur conditionnelle :
                         // - DarkMode (Page blanche sans scroll) : Texte Noir / Bord Noir
                         // - Scrolled ou Home : Texte Blanc / Bord Blanc (ou style "scrolled" spécifique si besoin)
@@ -139,12 +157,12 @@ export default function Navbar() {
                             : "border-white text-white hover:bg-white hover:text-stone-900"
                             } ${scrolled ? "bg-transparent border-white text-white hover:!bg-white hover:!text-stone-900 hover:!border-white" : ""}`}
                     >
-                        Boutique
+                        Acheter
                     </Link>
                 </div>
 
 
-                <div className="md:hidden flex items-center gap-5 z-[101]">
+                <div className="lg:hidden flex items-center gap-5 z-[101]">
 
 
 
@@ -168,23 +186,38 @@ export default function Navbar() {
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -20 }}
-                        className="fixed inset-0 bg-stone-900 z-[100] flex flex-col items-center justify-start pt-32"
+                        className="fixed inset-0 bg-stone-900 z-[100] flex flex-col items-center justify-start pt-28"
                     >
-                        <div className="flex flex-col items-center gap-8">
+                        <div className="flex flex-col items-center gap-6 overflow-y-auto max-h-full pb-16 w-full">
                             {navLinks.map((link, i) => (
                                 <motion.div
                                     key={link.href}
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: 0.1 + i * 0.1 }}
+                                    transition={{ delay: 0.1 + i * 0.08 }}
+                                    className="text-center"
                                 >
                                     <Link
                                         href={link.href}
                                         onClick={() => setIsOpen(false)}
-                                        className="block py-2 text-3xl font-serif text-white hover:text-amber-500 transition-colors"
+                                        className="block py-1 text-3xl font-serif text-white hover:text-amber-500 transition-colors"
                                     >
                                         {link.name}
                                     </Link>
+                                    {link.children.length > 0 && (
+                                        <div className="flex flex-col gap-1 mt-1">
+                                            {link.children.map((child) => (
+                                                <Link
+                                                    key={child.href}
+                                                    href={child.href}
+                                                    onClick={() => setIsOpen(false)}
+                                                    className="text-sm text-white/60 hover:text-amber-500 transition-colors"
+                                                >
+                                                    {child.label}
+                                                </Link>
+                                            ))}
+                                        </div>
+                                    )}
                                 </motion.div>
                             ))}
 
@@ -215,10 +248,10 @@ export default function Navbar() {
                                 className="mt-8"
                             >
                                 <Link
-                                    href="/nos-vins"
+                                    href="/acheter"
                                     className="px-8 py-4 bg-amber-600 text-white uppercase tracking-widest text-sm font-bold"
                                 >
-                                    Accéder à la boutique
+                                    Acheter / Trouver Garanches
                                 </Link>
                             </motion.div>
                         </div>
