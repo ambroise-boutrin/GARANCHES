@@ -1,0 +1,1435 @@
+  ▲ Next.js 14.2.16
+  - Local:        http://localhost:3132
+
+ ✓ Starting...
+ ✓ Ready in 393ms
+ ⚠ For production Image Optimization with Next.js, the optional 'sharp' package is strongly recommended. Run 'npm i sharp', and Next.js will use it automatically for Image Optimization.
+Read more: https://nextjs.org/docs/messages/sharp-missing-in-production
+Sanity: blocs indisponibles TypeError: fetch failed
+    at node:internal/deps/undici/undici:14902:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5) {
+  isNetworkError: true,
+  request: {
+    timeout: { connect: 300000, socket: 300000 },
+    maxRedirects: 0,
+    maxRetries: undefined,
+    retryDelay: undefined,
+    lineage: undefined,
+    method: 'GET',
+    uri: '/data/query/production?query=*%5B_type+%3D%3D+%22bloc%22+%26%26+defined%28cle%29%5D%7B+cle%2C+titre%2C+texte%2C+image%2C+bouton%2C+pratique+%7D',
+    json: true,
+    body: undefined,
+    query: { returnQuery: 'false' },
+    headers: { Accept: 'application/json' },
+    token: undefined,
+    tag: undefined,
+    returnQuery: false,
+    perspective: undefined,
+    resultSourceMap: undefined,
+    lastLiveEventId: undefined,
+    cacheMode: undefined,
+    canUseCdn: true,
+    signal: undefined,
+    fetch: undefined,
+    useAbortSignal: false,
+    useCdn: undefined,
+    url: 'https://abc123.api.sanity.io/v2024-02-13/data/query/production?query=*%5B_type+%3D%3D+%22bloc%22+%26%26+defined%28cle%29%5D%7B+cle%2C+titre%2C+texte%2C+image%2C+bouton%2C+pratique+%7D&returnQuery=false',
+    proxy: undefined,
+    withCredentials: false,
+    attemptNumber: 5
+  },
+  [cause]: Error: getaddrinfo ENOTFOUND abc123.api.sanity.io
+      at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+      at GetAddrInfoReqWrap.callbackTrampoline (node:internal/async_hooks:130:17) {
+    errno: -3008,
+    code: 'ENOTFOUND',
+    syscall: 'getaddrinfo',
+    hostname: 'abc123.api.sanity.io'
+  }
+}
+Sanity: blocs indisponibles TypeError: fetch failed
+    at node:internal/deps/undici/undici:14902:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5) {
+  isNetworkError: true,
+  request: {
+    timeout: { connect: 300000, socket: 300000 },
+    maxRedirects: 0,
+    maxRetries: undefined,
+    retryDelay: undefined,
+    lineage: undefined,
+    method: 'GET',
+    uri: '/data/query/production?query=*%5B_type+%3D%3D+%22bloc%22+%26%26+defined%28cle%29%5D%7B+cle%2C+titre%2C+texte%2C+image%2C+bouton%2C+pratique+%7D',
+    json: true,
+    body: undefined,
+    query: { returnQuery: 'false' },
+    headers: { Accept: 'application/json' },
+    token: undefined,
+    tag: undefined,
+    returnQuery: false,
+    perspective: undefined,
+    resultSourceMap: undefined,
+    lastLiveEventId: undefined,
+    cacheMode: undefined,
+    canUseCdn: true,
+    signal: undefined,
+    fetch: undefined,
+    useAbortSignal: false,
+    useCdn: undefined,
+    url: 'https://abc123.api.sanity.io/v2024-02-13/data/query/production?query=*%5B_type+%3D%3D+%22bloc%22+%26%26+defined%28cle%29%5D%7B+cle%2C+titre%2C+texte%2C+image%2C+bouton%2C+pratique+%7D&returnQuery=false',
+    proxy: undefined,
+    withCredentials: false,
+    attemptNumber: 5
+  },
+  [cause]: Error: getaddrinfo ENOTFOUND abc123.api.sanity.io
+      at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+      at GetAddrInfoReqWrap.callbackTrampoline (node:internal/async_hooks:130:17) {
+    errno: -3008,
+    code: 'ENOTFOUND',
+    syscall: 'getaddrinfo',
+    hostname: 'abc123.api.sanity.io'
+  }
+}
+Sanity: blocs indisponibles TypeError: fetch failed
+    at node:internal/deps/undici/undici:14902:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5) {
+  isNetworkError: true,
+  request: {
+    timeout: { connect: 300000, socket: 300000 },
+    maxRedirects: 0,
+    maxRetries: undefined,
+    retryDelay: undefined,
+    lineage: undefined,
+    method: 'GET',
+    uri: '/data/query/production?query=*%5B_type+%3D%3D+%22bloc%22+%26%26+defined%28cle%29%5D%7B+cle%2C+titre%2C+texte%2C+image%2C+bouton%2C+pratique+%7D',
+    json: true,
+    body: undefined,
+    query: { returnQuery: 'false' },
+    headers: { Accept: 'application/json' },
+    token: undefined,
+    tag: undefined,
+    returnQuery: false,
+    perspective: undefined,
+    resultSourceMap: undefined,
+    lastLiveEventId: undefined,
+    cacheMode: undefined,
+    canUseCdn: true,
+    signal: undefined,
+    fetch: undefined,
+    useAbortSignal: false,
+    useCdn: undefined,
+    url: 'https://abc123.api.sanity.io/v2024-02-13/data/query/production?query=*%5B_type+%3D%3D+%22bloc%22+%26%26+defined%28cle%29%5D%7B+cle%2C+titre%2C+texte%2C+image%2C+bouton%2C+pratique+%7D&returnQuery=false',
+    proxy: undefined,
+    withCredentials: false,
+    attemptNumber: 5
+  },
+  [cause]: Error: getaddrinfo ENOTFOUND abc123.api.sanity.io
+      at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+      at GetAddrInfoReqWrap.callbackTrampoline (node:internal/async_hooks:130:17) {
+    errno: -3008,
+    code: 'ENOTFOUND',
+    syscall: 'getaddrinfo',
+    hostname: 'abc123.api.sanity.io'
+  }
+}
+Sanity: blocs indisponibles TypeError: fetch failed
+    at node:internal/deps/undici/undici:14902:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5) {
+  isNetworkError: true,
+  request: {
+    timeout: { connect: 300000, socket: 300000 },
+    maxRedirects: 0,
+    maxRetries: undefined,
+    retryDelay: undefined,
+    lineage: undefined,
+    method: 'GET',
+    uri: '/data/query/production?query=*%5B_type+%3D%3D+%22bloc%22+%26%26+defined%28cle%29%5D%7B+cle%2C+titre%2C+texte%2C+image%2C+bouton%2C+pratique+%7D',
+    json: true,
+    body: undefined,
+    query: { returnQuery: 'false' },
+    headers: { Accept: 'application/json' },
+    token: undefined,
+    tag: undefined,
+    returnQuery: false,
+    perspective: undefined,
+    resultSourceMap: undefined,
+    lastLiveEventId: undefined,
+    cacheMode: undefined,
+    canUseCdn: true,
+    signal: undefined,
+    fetch: undefined,
+    useAbortSignal: false,
+    useCdn: undefined,
+    url: 'https://abc123.api.sanity.io/v2024-02-13/data/query/production?query=*%5B_type+%3D%3D+%22bloc%22+%26%26+defined%28cle%29%5D%7B+cle%2C+titre%2C+texte%2C+image%2C+bouton%2C+pratique+%7D&returnQuery=false',
+    proxy: undefined,
+    withCredentials: false,
+    attemptNumber: 5
+  },
+  [cause]: Error: getaddrinfo ENOTFOUND abc123.api.sanity.io
+      at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+      at GetAddrInfoReqWrap.callbackTrampoline (node:internal/async_hooks:130:17) {
+    errno: -3008,
+    code: 'ENOTFOUND',
+    syscall: 'getaddrinfo',
+    hostname: 'abc123.api.sanity.io'
+  }
+}
+Sanity: blocs indisponibles TypeError: fetch failed
+    at node:internal/deps/undici/undici:14902:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5) {
+  isNetworkError: true,
+  request: {
+    timeout: { connect: 300000, socket: 300000 },
+    maxRedirects: 0,
+    maxRetries: undefined,
+    retryDelay: undefined,
+    lineage: undefined,
+    method: 'GET',
+    uri: '/data/query/production?query=*%5B_type+%3D%3D+%22bloc%22+%26%26+defined%28cle%29%5D%7B+cle%2C+titre%2C+texte%2C+image%2C+bouton%2C+pratique+%7D',
+    json: true,
+    body: undefined,
+    query: { returnQuery: 'false' },
+    headers: { Accept: 'application/json' },
+    token: undefined,
+    tag: undefined,
+    returnQuery: false,
+    perspective: undefined,
+    resultSourceMap: undefined,
+    lastLiveEventId: undefined,
+    cacheMode: undefined,
+    canUseCdn: true,
+    signal: undefined,
+    fetch: undefined,
+    useAbortSignal: false,
+    useCdn: undefined,
+    url: 'https://abc123.api.sanity.io/v2024-02-13/data/query/production?query=*%5B_type+%3D%3D+%22bloc%22+%26%26+defined%28cle%29%5D%7B+cle%2C+titre%2C+texte%2C+image%2C+bouton%2C+pratique+%7D&returnQuery=false',
+    proxy: undefined,
+    withCredentials: false,
+    attemptNumber: 5
+  },
+  [cause]: Error: getaddrinfo ENOTFOUND abc123.api.sanity.io
+      at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+      at GetAddrInfoReqWrap.callbackTrampoline (node:internal/async_hooks:130:17) {
+    errno: -3008,
+    code: 'ENOTFOUND',
+    syscall: 'getaddrinfo',
+    hostname: 'abc123.api.sanity.io'
+  }
+}
+Sanity: blocs indisponibles TypeError: fetch failed
+    at node:internal/deps/undici/undici:14902:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5) {
+  isNetworkError: true,
+  request: {
+    timeout: { connect: 300000, socket: 300000 },
+    maxRedirects: 0,
+    maxRetries: undefined,
+    retryDelay: undefined,
+    lineage: undefined,
+    method: 'GET',
+    uri: '/data/query/production?query=*%5B_type+%3D%3D+%22bloc%22+%26%26+defined%28cle%29%5D%7B+cle%2C+titre%2C+texte%2C+image%2C+bouton%2C+pratique+%7D',
+    json: true,
+    body: undefined,
+    query: { returnQuery: 'false' },
+    headers: { Accept: 'application/json' },
+    token: undefined,
+    tag: undefined,
+    returnQuery: false,
+    perspective: undefined,
+    resultSourceMap: undefined,
+    lastLiveEventId: undefined,
+    cacheMode: undefined,
+    canUseCdn: true,
+    signal: undefined,
+    fetch: undefined,
+    useAbortSignal: false,
+    useCdn: undefined,
+    url: 'https://abc123.api.sanity.io/v2024-02-13/data/query/production?query=*%5B_type+%3D%3D+%22bloc%22+%26%26+defined%28cle%29%5D%7B+cle%2C+titre%2C+texte%2C+image%2C+bouton%2C+pratique+%7D&returnQuery=false',
+    proxy: undefined,
+    withCredentials: false,
+    attemptNumber: 5
+  },
+  [cause]: Error: getaddrinfo ENOTFOUND abc123.api.sanity.io
+      at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+      at GetAddrInfoReqWrap.callbackTrampoline (node:internal/async_hooks:130:17) {
+    errno: -3008,
+    code: 'ENOTFOUND',
+    syscall: 'getaddrinfo',
+    hostname: 'abc123.api.sanity.io'
+  }
+}
+Sanity: blocs indisponibles TypeError: fetch failed
+    at node:internal/deps/undici/undici:14902:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5) {
+  isNetworkError: true,
+  request: {
+    timeout: { connect: 300000, socket: 300000 },
+    maxRedirects: 0,
+    maxRetries: undefined,
+    retryDelay: undefined,
+    lineage: undefined,
+    method: 'GET',
+    uri: '/data/query/production?query=*%5B_type+%3D%3D+%22bloc%22+%26%26+defined%28cle%29%5D%7B+cle%2C+titre%2C+texte%2C+image%2C+bouton%2C+pratique+%7D',
+    json: true,
+    body: undefined,
+    query: { returnQuery: 'false' },
+    headers: { Accept: 'application/json' },
+    token: undefined,
+    tag: undefined,
+    returnQuery: false,
+    perspective: undefined,
+    resultSourceMap: undefined,
+    lastLiveEventId: undefined,
+    cacheMode: undefined,
+    canUseCdn: true,
+    signal: undefined,
+    fetch: undefined,
+    useAbortSignal: false,
+    useCdn: undefined,
+    url: 'https://abc123.api.sanity.io/v2024-02-13/data/query/production?query=*%5B_type+%3D%3D+%22bloc%22+%26%26+defined%28cle%29%5D%7B+cle%2C+titre%2C+texte%2C+image%2C+bouton%2C+pratique+%7D&returnQuery=false',
+    proxy: undefined,
+    withCredentials: false,
+    attemptNumber: 5
+  },
+  [cause]: Error: getaddrinfo ENOTFOUND abc123.api.sanity.io
+      at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+      at GetAddrInfoReqWrap.callbackTrampoline (node:internal/async_hooks:130:17) {
+    errno: -3008,
+    code: 'ENOTFOUND',
+    syscall: 'getaddrinfo',
+    hostname: 'abc123.api.sanity.io'
+  }
+}
+Sanity: blocs indisponibles TypeError: fetch failed
+    at node:internal/deps/undici/undici:14902:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5) {
+  isNetworkError: true,
+  request: {
+    timeout: { connect: 300000, socket: 300000 },
+    maxRedirects: 0,
+    maxRetries: undefined,
+    retryDelay: undefined,
+    lineage: undefined,
+    method: 'GET',
+    uri: '/data/query/production?query=*%5B_type+%3D%3D+%22bloc%22+%26%26+defined%28cle%29%5D%7B+cle%2C+titre%2C+texte%2C+image%2C+bouton%2C+pratique+%7D',
+    json: true,
+    body: undefined,
+    query: { returnQuery: 'false' },
+    headers: { Accept: 'application/json' },
+    token: undefined,
+    tag: undefined,
+    returnQuery: false,
+    perspective: undefined,
+    resultSourceMap: undefined,
+    lastLiveEventId: undefined,
+    cacheMode: undefined,
+    canUseCdn: true,
+    signal: undefined,
+    fetch: undefined,
+    useAbortSignal: false,
+    useCdn: undefined,
+    url: 'https://abc123.api.sanity.io/v2024-02-13/data/query/production?query=*%5B_type+%3D%3D+%22bloc%22+%26%26+defined%28cle%29%5D%7B+cle%2C+titre%2C+texte%2C+image%2C+bouton%2C+pratique+%7D&returnQuery=false',
+    proxy: undefined,
+    withCredentials: false,
+    attemptNumber: 5
+  },
+  [cause]: Error: getaddrinfo ENOTFOUND abc123.api.sanity.io
+      at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+      at GetAddrInfoReqWrap.callbackTrampoline (node:internal/async_hooks:130:17) {
+    errno: -3008,
+    code: 'ENOTFOUND',
+    syscall: 'getaddrinfo',
+    hostname: 'abc123.api.sanity.io'
+  }
+}
+Sanity: blocs indisponibles TypeError: fetch failed
+    at node:internal/deps/undici/undici:14902:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5) {
+  isNetworkError: true,
+  request: {
+    timeout: { connect: 300000, socket: 300000 },
+    maxRedirects: 0,
+    maxRetries: undefined,
+    retryDelay: undefined,
+    lineage: undefined,
+    method: 'GET',
+    uri: '/data/query/production?query=*%5B_type+%3D%3D+%22bloc%22+%26%26+defined%28cle%29%5D%7B+cle%2C+titre%2C+texte%2C+image%2C+bouton%2C+pratique+%7D',
+    json: true,
+    body: undefined,
+    query: { returnQuery: 'false' },
+    headers: { Accept: 'application/json' },
+    token: undefined,
+    tag: undefined,
+    returnQuery: false,
+    perspective: undefined,
+    resultSourceMap: undefined,
+    lastLiveEventId: undefined,
+    cacheMode: undefined,
+    canUseCdn: true,
+    signal: undefined,
+    fetch: undefined,
+    useAbortSignal: false,
+    useCdn: undefined,
+    url: 'https://abc123.api.sanity.io/v2024-02-13/data/query/production?query=*%5B_type+%3D%3D+%22bloc%22+%26%26+defined%28cle%29%5D%7B+cle%2C+titre%2C+texte%2C+image%2C+bouton%2C+pratique+%7D&returnQuery=false',
+    proxy: undefined,
+    withCredentials: false,
+    attemptNumber: 5
+  },
+  [cause]: Error: getaddrinfo ENOTFOUND abc123.api.sanity.io
+      at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+      at GetAddrInfoReqWrap.callbackTrampoline (node:internal/async_hooks:130:17) {
+    errno: -3008,
+    code: 'ENOTFOUND',
+    syscall: 'getaddrinfo',
+    hostname: 'abc123.api.sanity.io'
+  }
+}
+Sanity: blocs indisponibles TypeError: fetch failed
+    at node:internal/deps/undici/undici:14902:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5) {
+  isNetworkError: true,
+  request: {
+    timeout: { connect: 300000, socket: 300000 },
+    maxRedirects: 0,
+    maxRetries: undefined,
+    retryDelay: undefined,
+    lineage: undefined,
+    method: 'GET',
+    uri: '/data/query/production?query=*%5B_type+%3D%3D+%22bloc%22+%26%26+defined%28cle%29%5D%7B+cle%2C+titre%2C+texte%2C+image%2C+bouton%2C+pratique+%7D',
+    json: true,
+    body: undefined,
+    query: { returnQuery: 'false' },
+    headers: { Accept: 'application/json' },
+    token: undefined,
+    tag: undefined,
+    returnQuery: false,
+    perspective: undefined,
+    resultSourceMap: undefined,
+    lastLiveEventId: undefined,
+    cacheMode: undefined,
+    canUseCdn: true,
+    signal: undefined,
+    fetch: undefined,
+    useAbortSignal: false,
+    useCdn: undefined,
+    url: 'https://abc123.api.sanity.io/v2024-02-13/data/query/production?query=*%5B_type+%3D%3D+%22bloc%22+%26%26+defined%28cle%29%5D%7B+cle%2C+titre%2C+texte%2C+image%2C+bouton%2C+pratique+%7D&returnQuery=false',
+    proxy: undefined,
+    withCredentials: false,
+    attemptNumber: 5
+  },
+  [cause]: Error: getaddrinfo ENOTFOUND abc123.api.sanity.io
+      at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+      at GetAddrInfoReqWrap.callbackTrampoline (node:internal/async_hooks:130:17) {
+    errno: -3008,
+    code: 'ENOTFOUND',
+    syscall: 'getaddrinfo',
+    hostname: 'abc123.api.sanity.io'
+  }
+}
+Sanity: blocs indisponibles TypeError: fetch failed
+    at node:internal/deps/undici/undici:14902:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5) {
+  isNetworkError: true,
+  request: {
+    timeout: { connect: 300000, socket: 300000 },
+    maxRedirects: 0,
+    maxRetries: undefined,
+    retryDelay: undefined,
+    lineage: undefined,
+    method: 'GET',
+    uri: '/data/query/production?query=*%5B_type+%3D%3D+%22bloc%22+%26%26+defined%28cle%29%5D%7B+cle%2C+titre%2C+texte%2C+image%2C+bouton%2C+pratique+%7D',
+    json: true,
+    body: undefined,
+    query: { returnQuery: 'false' },
+    headers: { Accept: 'application/json' },
+    token: undefined,
+    tag: undefined,
+    returnQuery: false,
+    perspective: undefined,
+    resultSourceMap: undefined,
+    lastLiveEventId: undefined,
+    cacheMode: undefined,
+    canUseCdn: true,
+    signal: undefined,
+    fetch: undefined,
+    useAbortSignal: false,
+    useCdn: undefined,
+    url: 'https://abc123.api.sanity.io/v2024-02-13/data/query/production?query=*%5B_type+%3D%3D+%22bloc%22+%26%26+defined%28cle%29%5D%7B+cle%2C+titre%2C+texte%2C+image%2C+bouton%2C+pratique+%7D&returnQuery=false',
+    proxy: undefined,
+    withCredentials: false,
+    attemptNumber: 5
+  },
+  [cause]: Error: getaddrinfo ENOTFOUND abc123.api.sanity.io
+      at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+      at GetAddrInfoReqWrap.callbackTrampoline (node:internal/async_hooks:130:17) {
+    errno: -3008,
+    code: 'ENOTFOUND',
+    syscall: 'getaddrinfo',
+    hostname: 'abc123.api.sanity.io'
+  }
+}
+Sanity: blocs indisponibles TypeError: fetch failed
+    at node:internal/deps/undici/undici:14902:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5) {
+  isNetworkError: true,
+  request: {
+    timeout: { connect: 300000, socket: 300000 },
+    maxRedirects: 0,
+    maxRetries: undefined,
+    retryDelay: undefined,
+    lineage: undefined,
+    method: 'GET',
+    uri: '/data/query/production?query=*%5B_type+%3D%3D+%22bloc%22+%26%26+defined%28cle%29%5D%7B+cle%2C+titre%2C+texte%2C+image%2C+bouton%2C+pratique+%7D',
+    json: true,
+    body: undefined,
+    query: { returnQuery: 'false' },
+    headers: { Accept: 'application/json' },
+    token: undefined,
+    tag: undefined,
+    returnQuery: false,
+    perspective: undefined,
+    resultSourceMap: undefined,
+    lastLiveEventId: undefined,
+    cacheMode: undefined,
+    canUseCdn: true,
+    signal: undefined,
+    fetch: undefined,
+    useAbortSignal: false,
+    useCdn: undefined,
+    url: 'https://abc123.api.sanity.io/v2024-02-13/data/query/production?query=*%5B_type+%3D%3D+%22bloc%22+%26%26+defined%28cle%29%5D%7B+cle%2C+titre%2C+texte%2C+image%2C+bouton%2C+pratique+%7D&returnQuery=false',
+    proxy: undefined,
+    withCredentials: false,
+    attemptNumber: 5
+  },
+  [cause]: Error: getaddrinfo ENOTFOUND abc123.api.sanity.io
+      at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+      at GetAddrInfoReqWrap.callbackTrampoline (node:internal/async_hooks:130:17) {
+    errno: -3008,
+    code: 'ENOTFOUND',
+    syscall: 'getaddrinfo',
+    hostname: 'abc123.api.sanity.io'
+  }
+}
+Sanity: vins indisponibles TypeError: fetch failed
+    at node:internal/deps/undici/undici:14902:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5) {
+  isNetworkError: true,
+  request: {
+    timeout: { connect: 300000, socket: 300000 },
+    maxRedirects: 0,
+    maxRetries: undefined,
+    retryDelay: undefined,
+    lineage: undefined,
+    method: 'GET',
+    uri: '/data/query/production?query=*%5B_type+%3D%3D+%22wine%22%5D+%7B%0A++++_id%2C%0A++++%22id%22%3A+_id%2C%0A++++%22slug%22%3A+slug.current%2C%0A++++name%2C%0A++++subtitle%2C%0A++++price%2C%0A++++description%2C%0A++++%22image%22%3A+image.asset-%3Eurl%2C%0A++++tags%2C%0A++++alcohol%2C%0A++++volume%2C%0A++++allergens%2C%0A++++parcelle%2C%0A++++vinification%0A++%7D',
+    json: true,
+    body: undefined,
+    query: { returnQuery: 'false' },
+    headers: { Accept: 'application/json' },
+    token: undefined,
+    tag: undefined,
+    returnQuery: false,
+    perspective: undefined,
+    resultSourceMap: undefined,
+    lastLiveEventId: undefined,
+    cacheMode: undefined,
+    canUseCdn: true,
+    signal: undefined,
+    fetch: undefined,
+    useAbortSignal: false,
+    useCdn: undefined,
+    url: 'https://abc123.api.sanity.io/v2024-02-13/data/query/production?query=*%5B_type+%3D%3D+%22wine%22%5D+%7B%0A++++_id%2C%0A++++%22id%22%3A+_id%2C%0A++++%22slug%22%3A+slug.current%2C%0A++++name%2C%0A++++subtitle%2C%0A++++price%2C%0A++++description%2C%0A++++%22image%22%3A+image.asset-%3Eurl%2C%0A++++tags%2C%0A++++alcohol%2C%0A++++volume%2C%0A++++allergens%2C%0A++++parcelle%2C%0A++++vinification%0A++%7D&returnQuery=false',
+    proxy: undefined,
+    withCredentials: false,
+    attemptNumber: 5
+  },
+  [cause]: Error: getaddrinfo ENOTFOUND abc123.api.sanity.io
+      at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+      at GetAddrInfoReqWrap.callbackTrampoline (node:internal/async_hooks:130:17) {
+    errno: -3008,
+    code: 'ENOTFOUND',
+    syscall: 'getaddrinfo',
+    hostname: 'abc123.api.sanity.io'
+  }
+}
+Sanity: vins indisponibles TypeError: fetch failed
+    at node:internal/deps/undici/undici:14902:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5) {
+  isNetworkError: true,
+  request: {
+    timeout: { connect: 300000, socket: 300000 },
+    maxRedirects: 0,
+    maxRetries: undefined,
+    retryDelay: undefined,
+    lineage: undefined,
+    method: 'GET',
+    uri: '/data/query/production?query=*%5B_type+%3D%3D+%22wine%22%5D+%7B%0A++++_id%2C%0A++++%22id%22%3A+_id%2C%0A++++%22slug%22%3A+slug.current%2C%0A++++name%2C%0A++++subtitle%2C%0A++++price%2C%0A++++description%2C%0A++++%22image%22%3A+image.asset-%3Eurl%2C%0A++++tags%2C%0A++++alcohol%2C%0A++++volume%2C%0A++++allergens%2C%0A++++parcelle%2C%0A++++vinification%0A++%7D',
+    json: true,
+    body: undefined,
+    query: { returnQuery: 'false' },
+    headers: { Accept: 'application/json' },
+    token: undefined,
+    tag: undefined,
+    returnQuery: false,
+    perspective: undefined,
+    resultSourceMap: undefined,
+    lastLiveEventId: undefined,
+    cacheMode: undefined,
+    canUseCdn: true,
+    signal: undefined,
+    fetch: undefined,
+    useAbortSignal: false,
+    useCdn: undefined,
+    url: 'https://abc123.api.sanity.io/v2024-02-13/data/query/production?query=*%5B_type+%3D%3D+%22wine%22%5D+%7B%0A++++_id%2C%0A++++%22id%22%3A+_id%2C%0A++++%22slug%22%3A+slug.current%2C%0A++++name%2C%0A++++subtitle%2C%0A++++price%2C%0A++++description%2C%0A++++%22image%22%3A+image.asset-%3Eurl%2C%0A++++tags%2C%0A++++alcohol%2C%0A++++volume%2C%0A++++allergens%2C%0A++++parcelle%2C%0A++++vinification%0A++%7D&returnQuery=false',
+    proxy: undefined,
+    withCredentials: false,
+    attemptNumber: 5
+  },
+  [cause]: Error: getaddrinfo ENOTFOUND abc123.api.sanity.io
+      at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+      at GetAddrInfoReqWrap.callbackTrampoline (node:internal/async_hooks:130:17) {
+    errno: -3008,
+    code: 'ENOTFOUND',
+    syscall: 'getaddrinfo',
+    hostname: 'abc123.api.sanity.io'
+  }
+}
+Sanity: blocs indisponibles TypeError: fetch failed
+    at node:internal/deps/undici/undici:14902:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5) {
+  isNetworkError: true,
+  request: {
+    timeout: { connect: 300000, socket: 300000 },
+    maxRedirects: 0,
+    maxRetries: undefined,
+    retryDelay: undefined,
+    lineage: undefined,
+    method: 'GET',
+    uri: '/data/query/production?query=*%5B_type+%3D%3D+%22bloc%22+%26%26+defined%28cle%29%5D%7B+cle%2C+titre%2C+texte%2C+image%2C+bouton%2C+pratique+%7D',
+    json: true,
+    body: undefined,
+    query: { returnQuery: 'false' },
+    headers: { Accept: 'application/json' },
+    token: undefined,
+    tag: undefined,
+    returnQuery: false,
+    perspective: undefined,
+    resultSourceMap: undefined,
+    lastLiveEventId: undefined,
+    cacheMode: undefined,
+    canUseCdn: true,
+    signal: undefined,
+    fetch: undefined,
+    useAbortSignal: false,
+    useCdn: undefined,
+    url: 'https://abc123.api.sanity.io/v2024-02-13/data/query/production?query=*%5B_type+%3D%3D+%22bloc%22+%26%26+defined%28cle%29%5D%7B+cle%2C+titre%2C+texte%2C+image%2C+bouton%2C+pratique+%7D&returnQuery=false',
+    proxy: undefined,
+    withCredentials: false,
+    attemptNumber: 5
+  },
+  [cause]: Error: getaddrinfo ENOTFOUND abc123.api.sanity.io
+      at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+      at GetAddrInfoReqWrap.callbackTrampoline (node:internal/async_hooks:130:17) {
+    errno: -3008,
+    code: 'ENOTFOUND',
+    syscall: 'getaddrinfo',
+    hostname: 'abc123.api.sanity.io'
+  }
+}
+Sanity: blocs indisponibles TypeError: fetch failed
+    at node:internal/deps/undici/undici:14902:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5) {
+  isNetworkError: true,
+  request: {
+    timeout: { connect: 300000, socket: 300000 },
+    maxRedirects: 0,
+    maxRetries: undefined,
+    retryDelay: undefined,
+    lineage: undefined,
+    method: 'GET',
+    uri: '/data/query/production?query=*%5B_type+%3D%3D+%22bloc%22+%26%26+defined%28cle%29%5D%7B+cle%2C+titre%2C+texte%2C+image%2C+bouton%2C+pratique+%7D',
+    json: true,
+    body: undefined,
+    query: { returnQuery: 'false' },
+    headers: { Accept: 'application/json' },
+    token: undefined,
+    tag: undefined,
+    returnQuery: false,
+    perspective: undefined,
+    resultSourceMap: undefined,
+    lastLiveEventId: undefined,
+    cacheMode: undefined,
+    canUseCdn: true,
+    signal: undefined,
+    fetch: undefined,
+    useAbortSignal: false,
+    useCdn: undefined,
+    url: 'https://abc123.api.sanity.io/v2024-02-13/data/query/production?query=*%5B_type+%3D%3D+%22bloc%22+%26%26+defined%28cle%29%5D%7B+cle%2C+titre%2C+texte%2C+image%2C+bouton%2C+pratique+%7D&returnQuery=false',
+    proxy: undefined,
+    withCredentials: false,
+    attemptNumber: 5
+  },
+  [cause]: Error: getaddrinfo ENOTFOUND abc123.api.sanity.io
+      at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+      at GetAddrInfoReqWrap.callbackTrampoline (node:internal/async_hooks:130:17) {
+    errno: -3008,
+    code: 'ENOTFOUND',
+    syscall: 'getaddrinfo',
+    hostname: 'abc123.api.sanity.io'
+  }
+}
+Sanity: blocs indisponibles TypeError: fetch failed
+    at node:internal/deps/undici/undici:14902:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5) {
+  isNetworkError: true,
+  request: {
+    timeout: { connect: 300000, socket: 300000 },
+    maxRedirects: 0,
+    maxRetries: undefined,
+    retryDelay: undefined,
+    lineage: undefined,
+    method: 'GET',
+    uri: '/data/query/production?query=*%5B_type+%3D%3D+%22bloc%22+%26%26+defined%28cle%29%5D%7B+cle%2C+titre%2C+texte%2C+image%2C+bouton%2C+pratique+%7D',
+    json: true,
+    body: undefined,
+    query: { returnQuery: 'false' },
+    headers: { Accept: 'application/json' },
+    token: undefined,
+    tag: undefined,
+    returnQuery: false,
+    perspective: undefined,
+    resultSourceMap: undefined,
+    lastLiveEventId: undefined,
+    cacheMode: undefined,
+    canUseCdn: true,
+    signal: undefined,
+    fetch: undefined,
+    useAbortSignal: false,
+    useCdn: undefined,
+    url: 'https://abc123.api.sanity.io/v2024-02-13/data/query/production?query=*%5B_type+%3D%3D+%22bloc%22+%26%26+defined%28cle%29%5D%7B+cle%2C+titre%2C+texte%2C+image%2C+bouton%2C+pratique+%7D&returnQuery=false',
+    proxy: undefined,
+    withCredentials: false,
+    attemptNumber: 5
+  },
+  [cause]: Error: getaddrinfo ENOTFOUND abc123.api.sanity.io
+      at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+      at GetAddrInfoReqWrap.callbackTrampoline (node:internal/async_hooks:130:17) {
+    errno: -3008,
+    code: 'ENOTFOUND',
+    syscall: 'getaddrinfo',
+    hostname: 'abc123.api.sanity.io'
+  }
+}
+Sanity: blocs indisponibles TypeError: fetch failed
+    at node:internal/deps/undici/undici:14902:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5) {
+  isNetworkError: true,
+  request: {
+    timeout: { connect: 300000, socket: 300000 },
+    maxRedirects: 0,
+    maxRetries: undefined,
+    retryDelay: undefined,
+    lineage: undefined,
+    method: 'GET',
+    uri: '/data/query/production?query=*%5B_type+%3D%3D+%22bloc%22+%26%26+defined%28cle%29%5D%7B+cle%2C+titre%2C+texte%2C+image%2C+bouton%2C+pratique+%7D',
+    json: true,
+    body: undefined,
+    query: { returnQuery: 'false' },
+    headers: { Accept: 'application/json' },
+    token: undefined,
+    tag: undefined,
+    returnQuery: false,
+    perspective: undefined,
+    resultSourceMap: undefined,
+    lastLiveEventId: undefined,
+    cacheMode: undefined,
+    canUseCdn: true,
+    signal: undefined,
+    fetch: undefined,
+    useAbortSignal: false,
+    useCdn: undefined,
+    url: 'https://abc123.api.sanity.io/v2024-02-13/data/query/production?query=*%5B_type+%3D%3D+%22bloc%22+%26%26+defined%28cle%29%5D%7B+cle%2C+titre%2C+texte%2C+image%2C+bouton%2C+pratique+%7D&returnQuery=false',
+    proxy: undefined,
+    withCredentials: false,
+    attemptNumber: 5
+  },
+  [cause]: Error: getaddrinfo ENOTFOUND abc123.api.sanity.io
+      at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+      at GetAddrInfoReqWrap.callbackTrampoline (node:internal/async_hooks:130:17) {
+    errno: -3008,
+    code: 'ENOTFOUND',
+    syscall: 'getaddrinfo',
+    hostname: 'abc123.api.sanity.io'
+  }
+}
+Sanity: blocs indisponibles TypeError: fetch failed
+    at node:internal/deps/undici/undici:14902:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5) {
+  isNetworkError: true,
+  request: {
+    timeout: { connect: 300000, socket: 300000 },
+    maxRedirects: 0,
+    maxRetries: undefined,
+    retryDelay: undefined,
+    lineage: undefined,
+    method: 'GET',
+    uri: '/data/query/production?query=*%5B_type+%3D%3D+%22bloc%22+%26%26+defined%28cle%29%5D%7B+cle%2C+titre%2C+texte%2C+image%2C+bouton%2C+pratique+%7D',
+    json: true,
+    body: undefined,
+    query: { returnQuery: 'false' },
+    headers: { Accept: 'application/json' },
+    token: undefined,
+    tag: undefined,
+    returnQuery: false,
+    perspective: undefined,
+    resultSourceMap: undefined,
+    lastLiveEventId: undefined,
+    cacheMode: undefined,
+    canUseCdn: true,
+    signal: undefined,
+    fetch: undefined,
+    useAbortSignal: false,
+    useCdn: undefined,
+    url: 'https://abc123.api.sanity.io/v2024-02-13/data/query/production?query=*%5B_type+%3D%3D+%22bloc%22+%26%26+defined%28cle%29%5D%7B+cle%2C+titre%2C+texte%2C+image%2C+bouton%2C+pratique+%7D&returnQuery=false',
+    proxy: undefined,
+    withCredentials: false,
+    attemptNumber: 5
+  },
+  [cause]: Error: getaddrinfo ENOTFOUND abc123.api.sanity.io
+      at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+      at GetAddrInfoReqWrap.callbackTrampoline (node:internal/async_hooks:130:17) {
+    errno: -3008,
+    code: 'ENOTFOUND',
+    syscall: 'getaddrinfo',
+    hostname: 'abc123.api.sanity.io'
+  }
+}
+Sanity: blocs indisponibles TypeError: fetch failed
+    at node:internal/deps/undici/undici:14902:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5) {
+  isNetworkError: true,
+  request: {
+    timeout: { connect: 300000, socket: 300000 },
+    maxRedirects: 0,
+    maxRetries: undefined,
+    retryDelay: undefined,
+    lineage: undefined,
+    method: 'GET',
+    uri: '/data/query/production?query=*%5B_type+%3D%3D+%22bloc%22+%26%26+defined%28cle%29%5D%7B+cle%2C+titre%2C+texte%2C+image%2C+bouton%2C+pratique+%7D',
+    json: true,
+    body: undefined,
+    query: { returnQuery: 'false' },
+    headers: { Accept: 'application/json' },
+    token: undefined,
+    tag: undefined,
+    returnQuery: false,
+    perspective: undefined,
+    resultSourceMap: undefined,
+    lastLiveEventId: undefined,
+    cacheMode: undefined,
+    canUseCdn: true,
+    signal: undefined,
+    fetch: undefined,
+    useAbortSignal: false,
+    useCdn: undefined,
+    url: 'https://abc123.api.sanity.io/v2024-02-13/data/query/production?query=*%5B_type+%3D%3D+%22bloc%22+%26%26+defined%28cle%29%5D%7B+cle%2C+titre%2C+texte%2C+image%2C+bouton%2C+pratique+%7D&returnQuery=false',
+    proxy: undefined,
+    withCredentials: false,
+    attemptNumber: 5
+  },
+  [cause]: Error: getaddrinfo ENOTFOUND abc123.api.sanity.io
+      at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+      at GetAddrInfoReqWrap.callbackTrampoline (node:internal/async_hooks:130:17) {
+    errno: -3008,
+    code: 'ENOTFOUND',
+    syscall: 'getaddrinfo',
+    hostname: 'abc123.api.sanity.io'
+  }
+}
+Sanity: blocs indisponibles TypeError: fetch failed
+    at node:internal/deps/undici/undici:14902:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5) {
+  isNetworkError: true,
+  request: {
+    timeout: { connect: 300000, socket: 300000 },
+    maxRedirects: 0,
+    maxRetries: undefined,
+    retryDelay: undefined,
+    lineage: undefined,
+    method: 'GET',
+    uri: '/data/query/production?query=*%5B_type+%3D%3D+%22bloc%22+%26%26+defined%28cle%29%5D%7B+cle%2C+titre%2C+texte%2C+image%2C+bouton%2C+pratique+%7D',
+    json: true,
+    body: undefined,
+    query: { returnQuery: 'false' },
+    headers: { Accept: 'application/json' },
+    token: undefined,
+    tag: undefined,
+    returnQuery: false,
+    perspective: undefined,
+    resultSourceMap: undefined,
+    lastLiveEventId: undefined,
+    cacheMode: undefined,
+    canUseCdn: true,
+    signal: undefined,
+    fetch: undefined,
+    useAbortSignal: false,
+    useCdn: undefined,
+    url: 'https://abc123.api.sanity.io/v2024-02-13/data/query/production?query=*%5B_type+%3D%3D+%22bloc%22+%26%26+defined%28cle%29%5D%7B+cle%2C+titre%2C+texte%2C+image%2C+bouton%2C+pratique+%7D&returnQuery=false',
+    proxy: undefined,
+    withCredentials: false,
+    attemptNumber: 5
+  },
+  [cause]: Error: getaddrinfo ENOTFOUND abc123.api.sanity.io
+      at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+      at GetAddrInfoReqWrap.callbackTrampoline (node:internal/async_hooks:130:17) {
+    errno: -3008,
+    code: 'ENOTFOUND',
+    syscall: 'getaddrinfo',
+    hostname: 'abc123.api.sanity.io'
+  }
+}
+Sanity: blocs indisponibles TypeError: fetch failed
+    at node:internal/deps/undici/undici:14902:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5) {
+  isNetworkError: true,
+  request: {
+    timeout: { connect: 300000, socket: 300000 },
+    maxRedirects: 0,
+    maxRetries: undefined,
+    retryDelay: undefined,
+    lineage: undefined,
+    method: 'GET',
+    uri: '/data/query/production?query=*%5B_type+%3D%3D+%22bloc%22+%26%26+defined%28cle%29%5D%7B+cle%2C+titre%2C+texte%2C+image%2C+bouton%2C+pratique+%7D',
+    json: true,
+    body: undefined,
+    query: { returnQuery: 'false' },
+    headers: { Accept: 'application/json' },
+    token: undefined,
+    tag: undefined,
+    returnQuery: false,
+    perspective: undefined,
+    resultSourceMap: undefined,
+    lastLiveEventId: undefined,
+    cacheMode: undefined,
+    canUseCdn: true,
+    signal: undefined,
+    fetch: undefined,
+    useAbortSignal: false,
+    useCdn: undefined,
+    url: 'https://abc123.api.sanity.io/v2024-02-13/data/query/production?query=*%5B_type+%3D%3D+%22bloc%22+%26%26+defined%28cle%29%5D%7B+cle%2C+titre%2C+texte%2C+image%2C+bouton%2C+pratique+%7D&returnQuery=false',
+    proxy: undefined,
+    withCredentials: false,
+    attemptNumber: 5
+  },
+  [cause]: Error: getaddrinfo ENOTFOUND abc123.api.sanity.io
+      at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+      at GetAddrInfoReqWrap.callbackTrampoline (node:internal/async_hooks:130:17) {
+    errno: -3008,
+    code: 'ENOTFOUND',
+    syscall: 'getaddrinfo',
+    hostname: 'abc123.api.sanity.io'
+  }
+}
+Sanity: blocs indisponibles TypeError: fetch failed
+    at node:internal/deps/undici/undici:14902:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5) {
+  isNetworkError: true,
+  request: {
+    timeout: { connect: 300000, socket: 300000 },
+    maxRedirects: 0,
+    maxRetries: undefined,
+    retryDelay: undefined,
+    lineage: undefined,
+    method: 'GET',
+    uri: '/data/query/production?query=*%5B_type+%3D%3D+%22bloc%22+%26%26+defined%28cle%29%5D%7B+cle%2C+titre%2C+texte%2C+image%2C+bouton%2C+pratique+%7D',
+    json: true,
+    body: undefined,
+    query: { returnQuery: 'false' },
+    headers: { Accept: 'application/json' },
+    token: undefined,
+    tag: undefined,
+    returnQuery: false,
+    perspective: undefined,
+    resultSourceMap: undefined,
+    lastLiveEventId: undefined,
+    cacheMode: undefined,
+    canUseCdn: true,
+    signal: undefined,
+    fetch: undefined,
+    useAbortSignal: false,
+    useCdn: undefined,
+    url: 'https://abc123.api.sanity.io/v2024-02-13/data/query/production?query=*%5B_type+%3D%3D+%22bloc%22+%26%26+defined%28cle%29%5D%7B+cle%2C+titre%2C+texte%2C+image%2C+bouton%2C+pratique+%7D&returnQuery=false',
+    proxy: undefined,
+    withCredentials: false,
+    attemptNumber: 5
+  },
+  [cause]: Error: getaddrinfo ENOTFOUND abc123.api.sanity.io
+      at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+      at GetAddrInfoReqWrap.callbackTrampoline (node:internal/async_hooks:130:17) {
+    errno: -3008,
+    code: 'ENOTFOUND',
+    syscall: 'getaddrinfo',
+    hostname: 'abc123.api.sanity.io'
+  }
+}
+Sanity: blocs indisponibles TypeError: fetch failed
+    at node:internal/deps/undici/undici:14902:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5) {
+  isNetworkError: true,
+  request: {
+    timeout: { connect: 300000, socket: 300000 },
+    maxRedirects: 0,
+    maxRetries: undefined,
+    retryDelay: undefined,
+    lineage: undefined,
+    method: 'GET',
+    uri: '/data/query/production?query=*%5B_type+%3D%3D+%22bloc%22+%26%26+defined%28cle%29%5D%7B+cle%2C+titre%2C+texte%2C+image%2C+bouton%2C+pratique+%7D',
+    json: true,
+    body: undefined,
+    query: { returnQuery: 'false' },
+    headers: { Accept: 'application/json' },
+    token: undefined,
+    tag: undefined,
+    returnQuery: false,
+    perspective: undefined,
+    resultSourceMap: undefined,
+    lastLiveEventId: undefined,
+    cacheMode: undefined,
+    canUseCdn: true,
+    signal: undefined,
+    fetch: undefined,
+    useAbortSignal: false,
+    useCdn: undefined,
+    url: 'https://abc123.api.sanity.io/v2024-02-13/data/query/production?query=*%5B_type+%3D%3D+%22bloc%22+%26%26+defined%28cle%29%5D%7B+cle%2C+titre%2C+texte%2C+image%2C+bouton%2C+pratique+%7D&returnQuery=false',
+    proxy: undefined,
+    withCredentials: false,
+    attemptNumber: 5
+  },
+  [cause]: Error: getaddrinfo ENOTFOUND abc123.api.sanity.io
+      at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+      at GetAddrInfoReqWrap.callbackTrampoline (node:internal/async_hooks:130:17) {
+    errno: -3008,
+    code: 'ENOTFOUND',
+    syscall: 'getaddrinfo',
+    hostname: 'abc123.api.sanity.io'
+  }
+}
+Sanity: blocs indisponibles TypeError: fetch failed
+    at node:internal/deps/undici/undici:14902:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5) {
+  isNetworkError: true,
+  request: {
+    timeout: { connect: 300000, socket: 300000 },
+    maxRedirects: 0,
+    maxRetries: undefined,
+    retryDelay: undefined,
+    lineage: undefined,
+    method: 'GET',
+    uri: '/data/query/production?query=*%5B_type+%3D%3D+%22bloc%22+%26%26+defined%28cle%29%5D%7B+cle%2C+titre%2C+texte%2C+image%2C+bouton%2C+pratique+%7D',
+    json: true,
+    body: undefined,
+    query: { returnQuery: 'false' },
+    headers: { Accept: 'application/json' },
+    token: undefined,
+    tag: undefined,
+    returnQuery: false,
+    perspective: undefined,
+    resultSourceMap: undefined,
+    lastLiveEventId: undefined,
+    cacheMode: undefined,
+    canUseCdn: true,
+    signal: undefined,
+    fetch: undefined,
+    useAbortSignal: false,
+    useCdn: undefined,
+    url: 'https://abc123.api.sanity.io/v2024-02-13/data/query/production?query=*%5B_type+%3D%3D+%22bloc%22+%26%26+defined%28cle%29%5D%7B+cle%2C+titre%2C+texte%2C+image%2C+bouton%2C+pratique+%7D&returnQuery=false',
+    proxy: undefined,
+    withCredentials: false,
+    attemptNumber: 5
+  },
+  [cause]: Error: getaddrinfo ENOTFOUND abc123.api.sanity.io
+      at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+      at GetAddrInfoReqWrap.callbackTrampoline (node:internal/async_hooks:130:17) {
+    errno: -3008,
+    code: 'ENOTFOUND',
+    syscall: 'getaddrinfo',
+    hostname: 'abc123.api.sanity.io'
+  }
+}
+Sanity: blocs indisponibles TypeError: fetch failed
+    at node:internal/deps/undici/undici:14902:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5) {
+  isNetworkError: true,
+  request: {
+    timeout: { connect: 300000, socket: 300000 },
+    maxRedirects: 0,
+    maxRetries: undefined,
+    retryDelay: undefined,
+    lineage: undefined,
+    method: 'GET',
+    uri: '/data/query/production?query=*%5B_type+%3D%3D+%22bloc%22+%26%26+defined%28cle%29%5D%7B+cle%2C+titre%2C+texte%2C+image%2C+bouton%2C+pratique+%7D',
+    json: true,
+    body: undefined,
+    query: { returnQuery: 'false' },
+    headers: { Accept: 'application/json' },
+    token: undefined,
+    tag: undefined,
+    returnQuery: false,
+    perspective: undefined,
+    resultSourceMap: undefined,
+    lastLiveEventId: undefined,
+    cacheMode: undefined,
+    canUseCdn: true,
+    signal: undefined,
+    fetch: undefined,
+    useAbortSignal: false,
+    useCdn: undefined,
+    url: 'https://abc123.api.sanity.io/v2024-02-13/data/query/production?query=*%5B_type+%3D%3D+%22bloc%22+%26%26+defined%28cle%29%5D%7B+cle%2C+titre%2C+texte%2C+image%2C+bouton%2C+pratique+%7D&returnQuery=false',
+    proxy: undefined,
+    withCredentials: false,
+    attemptNumber: 5
+  },
+  [cause]: Error: getaddrinfo ENOTFOUND abc123.api.sanity.io
+      at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+      at GetAddrInfoReqWrap.callbackTrampoline (node:internal/async_hooks:130:17) {
+    errno: -3008,
+    code: 'ENOTFOUND',
+    syscall: 'getaddrinfo',
+    hostname: 'abc123.api.sanity.io'
+  }
+}
+Sanity: blocs indisponibles TypeError: fetch failed
+    at node:internal/deps/undici/undici:14902:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5) {
+  isNetworkError: true,
+  request: {
+    timeout: { connect: 300000, socket: 300000 },
+    maxRedirects: 0,
+    maxRetries: undefined,
+    retryDelay: undefined,
+    lineage: undefined,
+    method: 'GET',
+    uri: '/data/query/production?query=*%5B_type+%3D%3D+%22bloc%22+%26%26+defined%28cle%29%5D%7B+cle%2C+titre%2C+texte%2C+image%2C+bouton%2C+pratique+%7D',
+    json: true,
+    body: undefined,
+    query: { returnQuery: 'false' },
+    headers: { Accept: 'application/json' },
+    token: undefined,
+    tag: undefined,
+    returnQuery: false,
+    perspective: undefined,
+    resultSourceMap: undefined,
+    lastLiveEventId: undefined,
+    cacheMode: undefined,
+    canUseCdn: true,
+    signal: undefined,
+    fetch: undefined,
+    useAbortSignal: false,
+    useCdn: undefined,
+    url: 'https://abc123.api.sanity.io/v2024-02-13/data/query/production?query=*%5B_type+%3D%3D+%22bloc%22+%26%26+defined%28cle%29%5D%7B+cle%2C+titre%2C+texte%2C+image%2C+bouton%2C+pratique+%7D&returnQuery=false',
+    proxy: undefined,
+    withCredentials: false,
+    attemptNumber: 5
+  },
+  [cause]: Error: getaddrinfo ENOTFOUND abc123.api.sanity.io
+      at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+      at GetAddrInfoReqWrap.callbackTrampoline (node:internal/async_hooks:130:17) {
+    errno: -3008,
+    code: 'ENOTFOUND',
+    syscall: 'getaddrinfo',
+    hostname: 'abc123.api.sanity.io'
+  }
+}
+Sanity: blocs indisponibles TypeError: fetch failed
+    at node:internal/deps/undici/undici:14902:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5) {
+  isNetworkError: true,
+  request: {
+    timeout: { connect: 300000, socket: 300000 },
+    maxRedirects: 0,
+    maxRetries: undefined,
+    retryDelay: undefined,
+    lineage: undefined,
+    method: 'GET',
+    uri: '/data/query/production?query=*%5B_type+%3D%3D+%22bloc%22+%26%26+defined%28cle%29%5D%7B+cle%2C+titre%2C+texte%2C+image%2C+bouton%2C+pratique+%7D',
+    json: true,
+    body: undefined,
+    query: { returnQuery: 'false' },
+    headers: { Accept: 'application/json' },
+    token: undefined,
+    tag: undefined,
+    returnQuery: false,
+    perspective: undefined,
+    resultSourceMap: undefined,
+    lastLiveEventId: undefined,
+    cacheMode: undefined,
+    canUseCdn: true,
+    signal: undefined,
+    fetch: undefined,
+    useAbortSignal: false,
+    useCdn: undefined,
+    url: 'https://abc123.api.sanity.io/v2024-02-13/data/query/production?query=*%5B_type+%3D%3D+%22bloc%22+%26%26+defined%28cle%29%5D%7B+cle%2C+titre%2C+texte%2C+image%2C+bouton%2C+pratique+%7D&returnQuery=false',
+    proxy: undefined,
+    withCredentials: false,
+    attemptNumber: 5
+  },
+  [cause]: Error: getaddrinfo ENOTFOUND abc123.api.sanity.io
+      at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+      at GetAddrInfoReqWrap.callbackTrampoline (node:internal/async_hooks:130:17) {
+    errno: -3008,
+    code: 'ENOTFOUND',
+    syscall: 'getaddrinfo',
+    hostname: 'abc123.api.sanity.io'
+  }
+}
+Sanity: blocs indisponibles TypeError: fetch failed
+    at node:internal/deps/undici/undici:14902:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5) {
+  isNetworkError: true,
+  request: {
+    timeout: { connect: 300000, socket: 300000 },
+    maxRedirects: 0,
+    maxRetries: undefined,
+    retryDelay: undefined,
+    lineage: undefined,
+    method: 'GET',
+    uri: '/data/query/production?query=*%5B_type+%3D%3D+%22bloc%22+%26%26+defined%28cle%29%5D%7B+cle%2C+titre%2C+texte%2C+image%2C+bouton%2C+pratique+%7D',
+    json: true,
+    body: undefined,
+    query: { returnQuery: 'false' },
+    headers: { Accept: 'application/json' },
+    token: undefined,
+    tag: undefined,
+    returnQuery: false,
+    perspective: undefined,
+    resultSourceMap: undefined,
+    lastLiveEventId: undefined,
+    cacheMode: undefined,
+    canUseCdn: true,
+    signal: undefined,
+    fetch: undefined,
+    useAbortSignal: false,
+    useCdn: undefined,
+    url: 'https://abc123.api.sanity.io/v2024-02-13/data/query/production?query=*%5B_type+%3D%3D+%22bloc%22+%26%26+defined%28cle%29%5D%7B+cle%2C+titre%2C+texte%2C+image%2C+bouton%2C+pratique+%7D&returnQuery=false',
+    proxy: undefined,
+    withCredentials: false,
+    attemptNumber: 5
+  },
+  [cause]: Error: getaddrinfo ENOTFOUND abc123.api.sanity.io
+      at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+      at GetAddrInfoReqWrap.callbackTrampoline (node:internal/async_hooks:130:17) {
+    errno: -3008,
+    code: 'ENOTFOUND',
+    syscall: 'getaddrinfo',
+    hostname: 'abc123.api.sanity.io'
+  }
+}
+Sanity: blocs indisponibles TypeError: fetch failed
+    at node:internal/deps/undici/undici:14902:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5) {
+  isNetworkError: true,
+  request: {
+    timeout: { connect: 300000, socket: 300000 },
+    maxRedirects: 0,
+    maxRetries: undefined,
+    retryDelay: undefined,
+    lineage: undefined,
+    method: 'GET',
+    uri: '/data/query/production?query=*%5B_type+%3D%3D+%22bloc%22+%26%26+defined%28cle%29%5D%7B+cle%2C+titre%2C+texte%2C+image%2C+bouton%2C+pratique+%7D',
+    json: true,
+    body: undefined,
+    query: { returnQuery: 'false' },
+    headers: { Accept: 'application/json' },
+    token: undefined,
+    tag: undefined,
+    returnQuery: false,
+    perspective: undefined,
+    resultSourceMap: undefined,
+    lastLiveEventId: undefined,
+    cacheMode: undefined,
+    canUseCdn: true,
+    signal: undefined,
+    fetch: undefined,
+    useAbortSignal: false,
+    useCdn: undefined,
+    url: 'https://abc123.api.sanity.io/v2024-02-13/data/query/production?query=*%5B_type+%3D%3D+%22bloc%22+%26%26+defined%28cle%29%5D%7B+cle%2C+titre%2C+texte%2C+image%2C+bouton%2C+pratique+%7D&returnQuery=false',
+    proxy: undefined,
+    withCredentials: false,
+    attemptNumber: 5
+  },
+  [cause]: Error: getaddrinfo ENOTFOUND abc123.api.sanity.io
+      at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+      at GetAddrInfoReqWrap.callbackTrampoline (node:internal/async_hooks:130:17) {
+    errno: -3008,
+    code: 'ENOTFOUND',
+    syscall: 'getaddrinfo',
+    hostname: 'abc123.api.sanity.io'
+  }
+}
+Sanity: blocs indisponibles TypeError: fetch failed
+    at node:internal/deps/undici/undici:14902:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5) {
+  isNetworkError: true,
+  request: {
+    timeout: { connect: 300000, socket: 300000 },
+    maxRedirects: 0,
+    maxRetries: undefined,
+    retryDelay: undefined,
+    lineage: undefined,
+    method: 'GET',
+    uri: '/data/query/production?query=*%5B_type+%3D%3D+%22bloc%22+%26%26+defined%28cle%29%5D%7B+cle%2C+titre%2C+texte%2C+image%2C+bouton%2C+pratique+%7D',
+    json: true,
+    body: undefined,
+    query: { returnQuery: 'false' },
+    headers: { Accept: 'application/json' },
+    token: undefined,
+    tag: undefined,
+    returnQuery: false,
+    perspective: undefined,
+    resultSourceMap: undefined,
+    lastLiveEventId: undefined,
+    cacheMode: undefined,
+    canUseCdn: true,
+    signal: undefined,
+    fetch: undefined,
+    useAbortSignal: false,
+    useCdn: undefined,
+    url: 'https://abc123.api.sanity.io/v2024-02-13/data/query/production?query=*%5B_type+%3D%3D+%22bloc%22+%26%26+defined%28cle%29%5D%7B+cle%2C+titre%2C+texte%2C+image%2C+bouton%2C+pratique+%7D&returnQuery=false',
+    proxy: undefined,
+    withCredentials: false,
+    attemptNumber: 5
+  },
+  [cause]: Error: getaddrinfo ENOTFOUND abc123.api.sanity.io
+      at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+      at GetAddrInfoReqWrap.callbackTrampoline (node:internal/async_hooks:130:17) {
+    errno: -3008,
+    code: 'ENOTFOUND',
+    syscall: 'getaddrinfo',
+    hostname: 'abc123.api.sanity.io'
+  }
+}
+Sanity: blocs indisponibles TypeError: fetch failed
+    at node:internal/deps/undici/undici:14902:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5) {
+  isNetworkError: true,
+  request: {
+    timeout: { connect: 300000, socket: 300000 },
+    maxRedirects: 0,
+    maxRetries: undefined,
+    retryDelay: undefined,
+    lineage: undefined,
+    method: 'GET',
+    uri: '/data/query/production?query=*%5B_type+%3D%3D+%22bloc%22+%26%26+defined%28cle%29%5D%7B+cle%2C+titre%2C+texte%2C+image%2C+bouton%2C+pratique+%7D',
+    json: true,
+    body: undefined,
+    query: { returnQuery: 'false' },
+    headers: { Accept: 'application/json' },
+    token: undefined,
+    tag: undefined,
+    returnQuery: false,
+    perspective: undefined,
+    resultSourceMap: undefined,
+    lastLiveEventId: undefined,
+    cacheMode: undefined,
+    canUseCdn: true,
+    signal: undefined,
+    fetch: undefined,
+    useAbortSignal: false,
+    useCdn: undefined,
+    url: 'https://abc123.api.sanity.io/v2024-02-13/data/query/production?query=*%5B_type+%3D%3D+%22bloc%22+%26%26+defined%28cle%29%5D%7B+cle%2C+titre%2C+texte%2C+image%2C+bouton%2C+pratique+%7D&returnQuery=false',
+    proxy: undefined,
+    withCredentials: false,
+    attemptNumber: 5
+  },
+  [cause]: Error: getaddrinfo ENOTFOUND abc123.api.sanity.io
+      at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+      at GetAddrInfoReqWrap.callbackTrampoline (node:internal/async_hooks:130:17) {
+    errno: -3008,
+    code: 'ENOTFOUND',
+    syscall: 'getaddrinfo',
+    hostname: 'abc123.api.sanity.io'
+  }
+}
+Sanity: blocs indisponibles TypeError: fetch failed
+    at node:internal/deps/undici/undici:14902:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5) {
+  isNetworkError: true,
+  request: {
+    timeout: { connect: 300000, socket: 300000 },
+    maxRedirects: 0,
+    maxRetries: undefined,
+    retryDelay: undefined,
+    lineage: undefined,
+    method: 'GET',
+    uri: '/data/query/production?query=*%5B_type+%3D%3D+%22bloc%22+%26%26+defined%28cle%29%5D%7B+cle%2C+titre%2C+texte%2C+image%2C+bouton%2C+pratique+%7D',
+    json: true,
+    body: undefined,
+    query: { returnQuery: 'false' },
+    headers: { Accept: 'application/json' },
+    token: undefined,
+    tag: undefined,
+    returnQuery: false,
+    perspective: undefined,
+    resultSourceMap: undefined,
+    lastLiveEventId: undefined,
+    cacheMode: undefined,
+    canUseCdn: true,
+    signal: undefined,
+    fetch: undefined,
+    useAbortSignal: false,
+    useCdn: undefined,
+    url: 'https://abc123.api.sanity.io/v2024-02-13/data/query/production?query=*%5B_type+%3D%3D+%22bloc%22+%26%26+defined%28cle%29%5D%7B+cle%2C+titre%2C+texte%2C+image%2C+bouton%2C+pratique+%7D&returnQuery=false',
+    proxy: undefined,
+    withCredentials: false,
+    attemptNumber: 5
+  },
+  [cause]: Error: getaddrinfo ENOTFOUND abc123.api.sanity.io
+      at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+      at GetAddrInfoReqWrap.callbackTrampoline (node:internal/async_hooks:130:17) {
+    errno: -3008,
+    code: 'ENOTFOUND',
+    syscall: 'getaddrinfo',
+    hostname: 'abc123.api.sanity.io'
+  }
+}
+Sanity: blocs indisponibles TypeError: fetch failed
+    at node:internal/deps/undici/undici:14902:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5) {
+  isNetworkError: true,
+  request: {
+    timeout: { connect: 300000, socket: 300000 },
+    maxRedirects: 0,
+    maxRetries: undefined,
+    retryDelay: undefined,
+    lineage: undefined,
+    method: 'GET',
+    uri: '/data/query/production?query=*%5B_type+%3D%3D+%22bloc%22+%26%26+defined%28cle%29%5D%7B+cle%2C+titre%2C+texte%2C+image%2C+bouton%2C+pratique+%7D',
+    json: true,
+    body: undefined,
+    query: { returnQuery: 'false' },
+    headers: { Accept: 'application/json' },
+    token: undefined,
+    tag: undefined,
+    returnQuery: false,
+    perspective: undefined,
+    resultSourceMap: undefined,
+    lastLiveEventId: undefined,
+    cacheMode: undefined,
+    canUseCdn: true,
+    signal: undefined,
+    fetch: undefined,
+    useAbortSignal: false,
+    useCdn: undefined,
+    url: 'https://abc123.api.sanity.io/v2024-02-13/data/query/production?query=*%5B_type+%3D%3D+%22bloc%22+%26%26+defined%28cle%29%5D%7B+cle%2C+titre%2C+texte%2C+image%2C+bouton%2C+pratique+%7D&returnQuery=false',
+    proxy: undefined,
+    withCredentials: false,
+    attemptNumber: 5
+  },
+  [cause]: Error: getaddrinfo ENOTFOUND abc123.api.sanity.io
+      at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+      at GetAddrInfoReqWrap.callbackTrampoline (node:internal/async_hooks:130:17) {
+    errno: -3008,
+    code: 'ENOTFOUND',
+    syscall: 'getaddrinfo',
+    hostname: 'abc123.api.sanity.io'
+  }
+}

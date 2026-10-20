@@ -6,6 +6,7 @@ import { useCart } from "@/context/CartContext";
 import FadeIn from "@/components/FadeIn";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { cuveeHref } from "@/lib/wineSlug";
 
 export default function CartPage() {
     const { cart, removeFromCart, updateQuantity, totalPrice } = useCart();
@@ -65,115 +66,113 @@ export default function CartPage() {
         }
     };
 
+    const euros = (cents: number) => (cents / 100).toFixed(2).replace('.', ',') + " €";
+    const bouteilles = cart.reduce((acc, i) => acc + i.quantity, 0);
+    const manquant = bouteilles % 6 === 0 ? 0 : 6 - (bouteilles % 6);
+
     return (
-        <main className="min-h-screen pt-32 pb-20 bg-paper">
-            <FadeIn direction="down" className="max-w-5xl mx-auto px-6">
-                <h1 className="text-4xl font-serif text-wine-900 mb-8 border-b border-gray-200 pb-4">Votre Panier</h1>
+        <main className="min-h-screen pt-36 pb-24 bg-paper">
+            <div className="max-w-5xl mx-auto px-6">
+                <FadeIn direction="down" className="text-center mb-16">
+                    <span className="text-amber-700 font-serif italic text-xl md:text-2xl mb-2 block">Garanches</span>
+                    <h1 className="text-4xl md:text-6xl font-serif text-wine-900">Votre panier</h1>
+                    <div className="w-16 h-0.5 bg-amber-500 mx-auto mt-6" />
+                </FadeIn>
 
                 {cart.length === 0 ? (
-                    <FadeIn delay={0.1}>
-                        <div className="text-center py-20 bg-white shadow-sm rounded-lg border border-gray-100">
-                            <h2 className="text-xl font-bold text-gray-800 mb-2">Votre panier est vide</h2>
-                            <Link href="/les-vins/cuvees" className="inline-block mt-6 px-10 py-4 bg-wine-900 text-white uppercase font-bold tracking-widest hover:bg-wine-800 transition-colors rounded-full">
-                                Voir la boutique
-                            </Link>
-                        </div>
+                    <FadeIn delay={0.1} className="text-center py-12">
+                        <p className="font-serif italic text-2xl text-stone-600">Aucune bouteille pour l&apos;instant.</p>
+                        <Link href="/les-vins/cuvees" className="inline-block mt-10 px-10 py-3 bg-red-900/90 hover:bg-red-800 text-white uppercase tracking-widest text-xs font-bold transition-colors border border-red-900">
+                            Découvrir les cuvées
+                        </Link>
                     </FadeIn>
                 ) : (
-                    <div className="grid md:grid-cols-3 gap-8">
-                        <FadeIn className="md:col-span-2 space-y-6">
+                    <div className="grid lg:grid-cols-[1fr_320px] gap-16">
+                        <FadeIn>
+                            <ul className="border-t border-stone-300">
+                                {cart.map((item) => (
+                                    <li key={item.id} className="grid grid-cols-[64px_1fr] sm:grid-cols-[80px_1fr_auto] gap-x-6 gap-y-4 items-center py-8 border-b border-stone-300">
+                                        <Link href={cuveeHref(item)} className="row-span-2 sm:row-span-1 h-32 relative block">
+                                            <Image src={item.image} alt={item.name} fill sizes="80px" className="object-contain mix-blend-multiply" />
+                                        </Link>
 
-
-
-                            {cart.map((item) => (
-                                <div key={item.id} className="flex flex-col sm:flex-row items-center gap-6 bg-white p-6 shadow-sm border border-gray-100 rounded-lg transition-shadow hover:shadow-md">
-                                    <div className="h-32 w-24 relative flex-shrink-0 bg-gray-50 rounded-md overflow-hidden">
-                                        <Image src={item.image} alt={item.name} fill className="object-contain mix-blend-multiply p-2" />
-                                    </div>
-
-                                    <div className="flex-grow text-center sm:text-left">
-                                        <h3 className="font-serif text-2xl text-wine-900">{item.name}</h3>
-                                        <p className="text-stone-500 font-medium">{(item.price / 100).toFixed(2).replace('.', ',')} € <span className="text-xs font-light">/ bouteille</span></p>
-                                    </div>
-
-                                    <div className="flex flex-col items-center gap-3">
-                                        <div className="flex items-center border border-gray-200 rounded-full bg-white shadow-sm">
+                                        <div>
+                                            <Link href={cuveeHref(item)} className="font-serif text-2xl md:text-3xl text-wine-900 hover:text-amber-700 transition-colors">
+                                                {item.name}
+                                            </Link>
+                                            <p className="text-sm text-stone-500 mt-1">{euros(item.price)} la bouteille</p>
                                             <button
-                                                onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                                                className="w-10 h-10 flex items-center justify-center text-gray-500 hover:text-wine-900 hover:bg-gray-50 rounded-full transition-colors"
+                                                onClick={() => removeFromCart(item.id)}
+                                                className="mt-3 text-xs text-stone-400 underline underline-offset-4 hover:text-red-900 transition-colors"
                                             >
-                                                -
-                                            </button>
-                                            <span className="w-8 text-center font-bold text-wine-900">{item.quantity}</span>
-                                            <button
-                                                onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                                                className="w-10 h-10 flex items-center justify-center text-gray-500 hover:text-wine-900 hover:bg-gray-50 rounded-full transition-colors"
-                                            >
-                                                +
+                                                Retirer
                                             </button>
                                         </div>
-                                        <button
-                                            onClick={() => removeFromCart(item.id)}
-                                            className="text-xs uppercase tracking-wider text-red-400 hover:text-red-600 border-b border-transparent hover:border-red-600 transition-all font-medium"
-                                        >
-                                            Supprimer
-                                        </button>
-                                    </div>
-                                </div>
-                            ))}
+
+                                        <div className="flex items-center justify-between sm:justify-end gap-8">
+                                            <div className="flex items-center border border-stone-300" aria-label={`Quantité de ${item.name}`}>
+                                                <button
+                                                    onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                                                    aria-label="Retirer une bouteille"
+                                                    className="w-9 h-9 text-stone-500 hover:text-wine-900 hover:bg-stone-100 transition-colors"
+                                                >
+                                                    −
+                                                </button>
+                                                <span className="w-8 text-center text-sm text-stone-900">{item.quantity}</span>
+                                                <button
+                                                    onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                                                    aria-label="Ajouter une bouteille"
+                                                    className="w-9 h-9 text-stone-500 hover:text-wine-900 hover:bg-stone-100 transition-colors"
+                                                >
+                                                    +
+                                                </button>
+                                            </div>
+                                            <span className="w-24 text-right text-stone-900">{euros(item.price * item.quantity)}</span>
+                                        </div>
+                                    </li>
+                                ))}
+                            </ul>
+
+                            <Link href="/les-vins/cuvees" className="group inline-flex items-center mt-8 text-red-900 uppercase text-xs font-bold tracking-widest hover:text-amber-600 transition-colors">
+                                <span className="mr-2 group-hover:-translate-x-1 transition-transform">←</span> Continuer mes achats
+                            </Link>
                         </FadeIn>
 
-                        <FadeIn className="h-fit" delay={0.2}>
-                            <div className="bg-white p-8 shadow-sm border border-gray-100 rounded-lg sticky top-32">
-                                <h3 className="font-serif text-2xl text-wine-900 mb-6 border-b border-gray-100 pb-4">Résumé</h3>
+                        <FadeIn delay={0.15} className="h-fit lg:sticky lg:top-32">
+                            <div className="border-t-2 border-wine-900 pt-6">
+                                <dl className="space-y-3 text-sm">
+                                    <div className="flex justify-between text-stone-600">
+                                        <dt>{bouteilles} bouteille{bouteilles > 1 ? "s" : ""}</dt>
+                                        <dd>{euros(totalPrice)}</dd>
+                                    </div>
+                                    <div className="flex justify-between items-baseline pt-4 border-t border-stone-300">
+                                        <dt className="font-serif text-2xl text-wine-900">Total</dt>
+                                        <dd className="font-serif text-2xl text-wine-900">{euros(totalPrice)}</dd>
+                                    </div>
+                                </dl>
 
-                                <div className="flex justify-between mb-2">
-                                    <span className="text-gray-600">Sous-total</span>
-                                    <span className="font-bold text-wine-900">{(totalPrice / 100).toFixed(2).replace('.', ',')} €</span>
-                                </div>
-
-
-                                <div className="flex justify-between mb-8 border-t border-gray-100 pt-6">
-                                    <span className="font-serif text-2xl text-wine-900">Total</span>
-                                    <span className="font-bold text-2xl text-wine-900">{(totalPrice / 100).toFixed(2).replace('.', ',')} €</span>
-                                </div>
+                                {manquant > 0 && (
+                                    <p className="font-serif italic text-lg text-stone-600 leading-snug mt-8">
+                                        Nos vins voyagent par cartons de six : encore {manquant} bouteille{manquant > 1 ? "s" : ""} pour compléter le vôtre.
+                                    </p>
+                                )}
 
                                 <button
                                     onClick={handleCheckout}
                                     disabled={isLoading}
-                                    className="w-full py-4 bg-wine-900 text-white uppercase font-bold tracking-widest hover:bg-wine-800 transition-all rounded-full shadow-md hover:shadow-lg transform active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed mb-4"
+                                    className="w-full mt-8 px-8 py-4 bg-red-900/90 hover:bg-red-800 text-white uppercase tracking-widest text-xs font-bold transition-colors border border-red-900 disabled:opacity-50 disabled:cursor-not-allowed"
                                 >
-                                    {isLoading ? "Chargement..." : "Valider mon panier"}
+                                    {isLoading ? "Un instant…" : "Passer au paiement"}
                                 </button>
 
+                                <div id="sumup-card" className="mt-6" />
 
-                                {(() => {
-                                    const total = cart.reduce((acc, i) => acc + i.quantity, 0);
-                                    const reste = total % 6;
-                                    const manquant = 6 - reste;
-
-                                    if (total > 0 && reste !== 0) {
-                                        return (
-                                            <div className="text-center mt-3">
-                                                <p className="text-[11px] text-stone-500 italic leading-tight">
-                                                    Pour un transport optimal (carton de 6),<br />
-                                                    il vous manque <span className="font-semibold text-wine-800">{manquant} bouteille{manquant > 1 ? 's' : ''}</span>.
-                                                </p>
-                                            </div>
-                                        );
-                                    }
-                                    return null;
-                                })()}
-
-                                <p className="text-center text-[10px] text-gray-400 mt-6 flex justify-center items-center gap-2">
-                                    <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
-                                    Paiement sécurisé par SumUp
-                                </p>
+                                <p className="text-xs text-stone-400 mt-4 text-center">Paiement sécurisé par SumUp</p>
                             </div>
                         </FadeIn>
                     </div>
                 )}
-            </FadeIn>
+            </div>
         </main>
     );
 }

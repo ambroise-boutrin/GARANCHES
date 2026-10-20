@@ -9,6 +9,8 @@ import PageCards from "@/components/editorial/PageCards";
 import { getWine } from "@/lib/wines";
 import { cuveeHref } from "@/lib/wineSlug";
 
+export const revalidate = 60;
+
 // Une page par cuvée, sous Les Vins › Les cuvées.
 type Props = { params: { porte: string; page: string; cuvee: string } };
 

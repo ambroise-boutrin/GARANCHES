@@ -116,30 +116,22 @@ export default function Navbar() {
                                 <span className={`absolute -bottom-0 left-0 w-0 h-px transition-all duration-300 group-hover:w-full ${isActive(link.href) ? "w-full" : ""} ${useDarkText ? "bg-stone-900" : "bg-amber-500"}`}></span>
                             </Link>
                             {link.children.length > 0 && (
-                                <div className="absolute left-1/2 -translate-x-1/2 top-full pt-5 opacity-0 invisible translate-y-2 group-hover/menu:opacity-100 group-hover/menu:visible group-hover/menu:translate-y-0 group-focus-within/menu:opacity-100 group-focus-within/menu:visible group-focus-within/menu:translate-y-0 transition-all duration-300">
-                                    <div className="relative bg-paper rounded-lg shadow-2xl border-t-2 border-amber-500 w-[340px] overflow-hidden">
-                                        <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-3 h-3 bg-amber-500 rotate-45" aria-hidden />
-                                        <Link href={link.href} className="group/entry flex items-center justify-between px-6 pt-5 pb-4 border-b border-stone-200">
-                                            <span className="font-serif text-2xl text-wine-900">{link.name}</span>
-                                            <span className="text-[10px] uppercase tracking-widest font-bold text-amber-700 group-hover/entry:translate-x-1 transition-transform">Entrer →</span>
-                                        </Link>
-                                        <ul className="py-2">
-                                            {link.children.map((child) => {
-                                                const active = pathname === child.href;
-                                                return (
-                                                    <li key={child.href}>
-                                                        <Link
-                                                            href={child.href}
-                                                            className={`block px-6 py-3 border-l-2 transition-colors ${active ? "border-amber-500 bg-stone-100" : "border-transparent hover:border-amber-500 hover:bg-stone-50"}`}
-                                                        >
-                                                            <span className={`block font-serif text-lg leading-tight ${active ? "text-amber-700" : "text-stone-900"}`}>{child.label}</span>
-                                                            {child.motsCles && <span className="block text-xs text-gray-500 mt-1">{child.motsCles}</span>}
-                                                        </Link>
-                                                    </li>
-                                                );
-                                            })}
-                                        </ul>
-                                    </div>
+                                <div className="absolute -left-5 top-full pt-4 opacity-0 invisible group-hover/menu:opacity-100 group-hover/menu:visible group-focus-within/menu:opacity-100 group-focus-within/menu:visible transition-opacity duration-200">
+                                    <ul className="min-w-[230px] bg-stone-950/95 backdrop-blur-sm py-3">
+                                        {link.children.map((child) => {
+                                            const active = pathname === child.href;
+                                            return (
+                                                <li key={child.href}>
+                                                    <Link
+                                                        href={child.href}
+                                                        className={`block px-5 py-2.5 text-[11px] uppercase tracking-[0.15em] transition-colors ${active ? "text-amber-400" : "text-white/80 hover:text-amber-400"}`}
+                                                    >
+                                                        {child.label}
+                                                    </Link>
+                                                </li>
+                                            );
+                                        })}
+                                    </ul>
                                 </div>
                             )}
                         </div>
@@ -152,7 +144,7 @@ export default function Navbar() {
                             // Couleur conditionnelle :
                             // - DarkMode (Page blanche sans scroll) : Texte Noir / Bord Noir
                             // - Scrolled ou Home : Texte Blanc / Bord Blanc (ou style "scrolled" spécifique si besoin)
-                            className={`px-6 py-2 border text-xs uppercase tracking-widest font-bold transition-all duration-300 rounded-full ${useDarkText
+                            className={`px-6 py-2 border text-xs uppercase tracking-widest font-bold transition-all duration-300 ${useDarkText
                                 ? "border-stone-900 text-stone-900 hover:bg-stone-900 hover:text-white"
                                 : "border-white text-white hover:bg-white hover:text-stone-900"
                                 } ${scrolled ? "bg-transparent border-white text-white hover:!bg-white hover:!text-stone-900 hover:!border-white" : ""}`}

@@ -40,7 +40,7 @@ export default function AddToCartButton({ wine }: { wine: Wine }) {
         <div className="flex flex-row items-center justify-between md:justify-start gap-4 mt-6 w-full">
 
 
-            <div className="flex items-center border border-wine-900 w-fit rounded-full overflow-hidden shrink-0 bg-white">
+            <div className="flex items-center border border-wine-900 w-fit overflow-hidden shrink-0 bg-white">
                 <button
                     onClick={decrement}
                     aria-label="Réduire la quantité"
@@ -65,7 +65,7 @@ export default function AddToCartButton({ wine }: { wine: Wine }) {
                 onClick={handleAddToCart}
                 whileTap={{ scale: 0.95 }}
                 className={`
-                    relative overflow-hidden px-8 py-3 rounded-full
+                    relative overflow-hidden px-8 py-3
                     text-xs uppercase tracking-widest font-bold 
                     transition-colors duration-300 border border-wine-900
                     bg-wine-900 text-white hover:bg-white hover:text-wine-900

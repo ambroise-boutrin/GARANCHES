@@ -23,5 +23,5 @@ export async function getWines() {
 
 export async function getWine(slug: string) {
     const wines = await getWines();
-    return { wine: wines.find((w: any) => wineSlug(w) === slug), wines };
+    return { wine: wines.find((w: any) => wineSlug(w) === slug) ?? wines.find((w: any) => w.id === slug), wines };
 }

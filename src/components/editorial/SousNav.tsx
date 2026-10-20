@@ -10,7 +10,7 @@ export default function SousNav({ path }: { path: string }) {
     return (
         <nav aria-label={porte.label} className="bg-paper border-b border-stone-200">
             <ul className="max-w-7xl mx-auto px-6 flex gap-8 overflow-x-auto whitespace-nowrap">
-                {[{ label: "Accueil", href: porte.path }, ...porte.children].map((item) => {
+                {[{ label: porte.label, href: porte.path }, ...porte.children].map((item) => {
                     const active = item.href === current;
                     return (
                         <li key={item.href}>

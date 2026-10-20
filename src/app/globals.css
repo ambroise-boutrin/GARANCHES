@@ -8,6 +8,11 @@ html {
   font-size-adjust: 0.46;
 }
 
+/* Vérification d'âge déjà validée : voir le script dans layout.tsx. */
+.age-ok [data-age-gate] {
+  display: none;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
