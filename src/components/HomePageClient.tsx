@@ -276,7 +276,7 @@ export default function HomePageClient({ products, content }: { products: any[],
                 <div className="max-w-7xl mx-auto px-6">
                     <div className="text-center mb-12 md:mb-20">
                         <FadeIn direction="down">
-                            <span className="text-amber-700 text-sm font-bold uppercase tracking-widest mb-4 block">Boutique en ligne</span>
+                            <span className="text-amber-700 font-serif italic text-xl md:text-2xl mb-2 block">Boutique en ligne</span>
                             <h2 className="text-4xl md:text-5xl font-serif text-gray-900 mb-6">Nos Grandes Cuvées</h2>
                             <p className="max-w-2xl mx-auto text-gray-500 font-light leading-relaxed mb-8">
                                 Du cep à votre verre, sans intermédiaire. Découvrez nos Crus du Beaujolais et nos vins de Bourgogne, élevés avec patience et passion. L'expression authentique de notre terroir, disponible en direct de la propriété.

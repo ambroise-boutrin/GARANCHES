@@ -19,6 +19,10 @@ const config = {
                 },
                 'paper': '#FDFBF7', // Blanc cassé élégant
             },
+            // Montserrat en 700 écrase le Cormorant : le « gras » du site est un semi-gras.
+            fontWeight: {
+                bold: '600',
+            },
             fontFamily: {
                 serif: ['var(--font-serif)', 'serif'],
                 sans: ['var(--font-sans)', 'sans-serif'],

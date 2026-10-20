@@ -146,35 +146,34 @@ export default function Navbar() {
                     ))}
 
 
-                    <Link
-                        href="/panier"
-                        aria-label={`Panier${totalItems > 0 ? ` (${totalItems} article${totalItems > 1 ? 's' : ''})` : ''}`}
-                        className={`relative group flex items-center justify-center w-10 h-10 transition-colors duration-300 ${useDarkText ? "text-stone-900 hover:text-amber-600" : "text-white hover:text-amber-400"}`}
-                    >
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
-                        </svg>
-                        {totalItems > 0 && (
-                            <span className="absolute -top-1 -right-1 bg-red-600 text-white text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full">
-                                {totalItems}
-                            </span>
-                        )}
-                    </Link>
-
-
-
-                    <Link
-                        href="/les-vins/cuvees"
-                        // Couleur conditionnelle :
-                        // - DarkMode (Page blanche sans scroll) : Texte Noir / Bord Noir
-                        // - Scrolled ou Home : Texte Blanc / Bord Blanc (ou style "scrolled" spécifique si besoin)
-                        className={`px-6 py-2 border text-xs uppercase tracking-widest font-bold transition-all duration-300 rounded-full ${useDarkText
-                            ? "border-stone-900 text-stone-900 hover:bg-stone-900 hover:text-white"
-                            : "border-white text-white hover:bg-white hover:text-stone-900"
-                            } ${scrolled ? "bg-transparent border-white text-white hover:!bg-white hover:!text-stone-900 hover:!border-white" : ""}`}
-                    >
-                        Boutique
-                    </Link>
+                    <div className={`flex items-center gap-3 pl-7 border-l ${useDarkText ? "border-stone-300" : "border-white/30"}`}>
+                        <Link
+                            href="/les-vins/cuvees"
+                            // Couleur conditionnelle :
+                            // - DarkMode (Page blanche sans scroll) : Texte Noir / Bord Noir
+                            // - Scrolled ou Home : Texte Blanc / Bord Blanc (ou style "scrolled" spécifique si besoin)
+                            className={`px-6 py-2 border text-xs uppercase tracking-widest font-bold transition-all duration-300 rounded-full ${useDarkText
+                                ? "border-stone-900 text-stone-900 hover:bg-stone-900 hover:text-white"
+                                : "border-white text-white hover:bg-white hover:text-stone-900"
+                                } ${scrolled ? "bg-transparent border-white text-white hover:!bg-white hover:!text-stone-900 hover:!border-white" : ""}`}
+                        >
+                            Boutique
+                        </Link>
+                        <Link
+                            href="/panier"
+                            aria-label={`Panier${totalItems > 0 ? ` (${totalItems} article${totalItems > 1 ? 's' : ''})` : ''}`}
+                            className={`relative group flex items-center justify-center w-10 h-10 transition-colors duration-300 ${useDarkText ? "text-stone-900 hover:text-amber-600" : "text-white hover:text-amber-400"}`}
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+                            </svg>
+                            {totalItems > 0 && (
+                                <span className="absolute -top-1 -right-1 bg-amber-500 text-stone-900 text-[10px] font-bold min-w-4 h-4 px-1 flex items-center justify-center rounded-full">
+                                    {totalItems}
+                                </span>
+                            )}
+                        </Link>
+                    </div>
                 </div>
 
 

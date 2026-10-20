@@ -48,7 +48,7 @@ export default function AddToCartButton({ wine }: { wine: Wine }) {
                 >
                     -
                 </button>
-                <span className="px-2 py-3 font-serif min-w-[3rem] text-center text-wine-900 font-bold">
+                <span className="px-2 py-3 min-w-[3rem] text-center text-wine-900 font-bold">
                     {quantity}
                 </span>
                 <button

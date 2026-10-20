@@ -128,14 +128,14 @@ export default function CartPage() {
                                 <h3 className="font-serif text-2xl text-wine-900 mb-6 border-b border-gray-100 pb-4">Résumé</h3>
 
                                 <div className="flex justify-between mb-2">
-                                    <span className="text-gray-600 font-serif">Sous-total</span>
+                                    <span className="text-gray-600">Sous-total</span>
                                     <span className="font-bold text-wine-900">{(totalPrice / 100).toFixed(2).replace('.', ',')} €</span>
                                 </div>
 
 
                                 <div className="flex justify-between mb-8 border-t border-gray-100 pt-6">
-                                    <span className="font-bold text-xl text-wine-900">Total</span>
-                                    <span className="font-bold text-3xl text-wine-900">{(totalPrice / 100).toFixed(2).replace('.', ',')} €</span>
+                                    <span className="font-serif text-2xl text-wine-900">Total</span>
+                                    <span className="font-bold text-2xl text-wine-900">{(totalPrice / 100).toFixed(2).replace('.', ',')} €</span>
                                 </div>
 
                                 <button
