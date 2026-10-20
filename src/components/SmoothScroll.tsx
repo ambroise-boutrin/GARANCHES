@@ -2,6 +2,7 @@
 import { useEffect, useRef } from 'react';
 import Lenis from 'lenis';
 import { usePathname } from 'next/navigation';
+import { SOUS_NAV_ID } from '@/components/editorial/SousNav';
 
 export default function SmoothScroll() {
     const pathname = usePathname();
@@ -28,12 +29,19 @@ export default function SmoothScroll() {
         };
     }, []);
 
-    // Reset du scroll à chaque changement de page
+    // Reset du scroll à chaque changement de page, sauf depuis la barre d'un univers :
+    // on reste alors au niveau de cette barre.
     useEffect(() => {
+        let top = 0;
+        if (sessionStorage.getItem("garder-sous-nav")) {
+            sessionStorage.removeItem("garder-sous-nav");
+            const barre = document.getElementById(SOUS_NAV_ID);
+            if (barre) top = barre.getBoundingClientRect().top + window.scrollY - 64;
+        }
         if (lenisRef.current) {
-            lenisRef.current.scrollTo(0, { immediate: true });
+            lenisRef.current.scrollTo(top, { immediate: true });
         } else {
-            window.scrollTo(0, 0);
+            window.scrollTo(0, top);
         }
     }, [pathname]);
 

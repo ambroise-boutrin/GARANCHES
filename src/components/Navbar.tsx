@@ -14,6 +14,8 @@ export default function Navbar() {
     const pathname = usePathname();
     const isHome = pathname === "/";
     const { totalItems } = useCart();
+    // Menu déroulant refermé après un clic, jusqu'à ce que la souris quitte l'onglet.
+    const [menuFerme, setMenuFerme] = useState<string | null>(null);
 
     // Visibilité de la navbar :
     // - Sur Home : Cachée par défaut, s'affiche quand l'intro est finie
@@ -106,9 +108,10 @@ export default function Navbar() {
 
                 <div className="hidden lg:flex items-center gap-7">
                     {navLinks.map((link) => (
-                        <div key={link.href} className="relative group/menu">
+                        <div key={link.href} className="relative group/menu" onMouseLeave={() => setMenuFerme(null)}>
                             <Link
                                 href={link.href}
+                                onClick={(e) => { e.currentTarget.blur(); setMenuFerme(link.href); }}
                                 className={`text-xs uppercase tracking-[0.15em] font-medium transition-colors duration-300 relative group py-2 ${isActive(link.href) ? "text-amber-500" : (useDarkText ? "text-stone-900 hover:text-amber-600" : "text-white hover:text-amber-400")
                                     }`}
                             >
@@ -116,7 +119,7 @@ export default function Navbar() {
                                 <span className={`absolute -bottom-0 left-0 w-0 h-px transition-all duration-300 group-hover:w-full ${isActive(link.href) ? "w-full" : ""} ${useDarkText ? "bg-stone-900" : "bg-amber-500"}`}></span>
                             </Link>
                             {link.children.length > 0 && (
-                                <div className="absolute -left-5 top-full pt-4 opacity-0 invisible group-hover/menu:opacity-100 group-hover/menu:visible group-focus-within/menu:opacity-100 group-focus-within/menu:visible transition-opacity duration-200">
+                                <div className={`absolute -left-5 top-full pt-4 opacity-0 invisible transition-opacity duration-200 ${menuFerme === link.href ? "" : "group-hover/menu:opacity-100 group-hover/menu:visible group-focus-within/menu:opacity-100 group-focus-within/menu:visible"}`}>
                                     <ul className="min-w-[230px] bg-stone-950/95 backdrop-blur-sm py-3">
                                         {link.children.map((child) => {
                                             const active = pathname === child.href;
@@ -124,6 +127,7 @@ export default function Navbar() {
                                                 <li key={child.href}>
                                                     <Link
                                                         href={child.href}
+                                                        onClick={(e) => { e.currentTarget.blur(); setMenuFerme(link.href); }}
                                                         className={`block px-5 py-2.5 text-[11px] uppercase tracking-[0.15em] transition-colors ${active ? "text-amber-400" : "text-white/80 hover:text-amber-400"}`}
                                                     >
                                                         {child.label}
