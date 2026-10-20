@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useCart } from "@/context/CartContext";
-import { PORTES } from "@/data/architecture";
+import { PORTES, GENERIC_PATHS } from "@/data/architecture";
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
@@ -24,7 +24,9 @@ export default function Navbar() {
     // - Home : Blanc au début (sur fond sombre) -> Blanc au scroll (sur fond sombre)
     // - Autres : Noir au début (sur fond blanc) -> Blanc au scroll (sur fond sombre)
     // - Mobile Open : Toujours blanc (car l'overlay est sombre)
-    const useDarkText = !isHome && !scrolled && !isOpen;
+    // Les pages de l'arborescence ouvrent sur une grande photo sombre, comme l'accueil.
+    const hasDarkHero = isHome || GENERIC_PATHS.includes(pathname.slice(1));
+    const useDarkText = !hasDarkHero && !scrolled && !isOpen;
 
     useEffect(() => {
         if (isOpen) {

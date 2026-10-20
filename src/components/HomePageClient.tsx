@@ -5,16 +5,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import FadeIn from "@/components/FadeIn";
+import ParallaxImage from "@/components/ParallaxImage";
 import AddToCartButton from "@/components/AddToCartButton";
-import { PAGES, CARNETS_INTRO } from "@/data/architecture";
 
-const PORTES = [
-    { path: "le-lieu", image: "/images/23_slide002.jpg" },
-    { path: "les-vins", image: "/images/34_slide001.jpg" },
-    { path: "rencontrons-garanches", image: "/images/40_image.jpg" },
-].map((p) => ({ ...p, page: PAGES[p.path] }));
-
-export default function HomePageClient({ products }: { products: any[] }) {
+export default function HomePageClient({ products, content }: { products: any[], content?: any }) {
     const [isLoading, setIsLoading] = useState(true);
     const [mounted, setMounted] = useState(false);
 
@@ -141,46 +135,99 @@ export default function HomePageClient({ products }: { products: any[] }) {
                     >
                         <div className="w-16 h-0.5 md:w-24 md:h-1 bg-amber-500 mb-6"></div>
 
-                        <p className="font-serif italic text-2xl md:text-3xl max-w-xl mb-10 leading-relaxed px-2 text-white">
-                            Un lieu. Des vins. Une histoire à vivre.
+                        <p className="text-sm md:text-lg font-light max-w-xl mb-6 text-gray-100 leading-relaxed px-2 text-white">
+                            {content?.hero?.content || "Ancré à Odenas, au pied majestueux du Mont Brouilly, le Domaine de Garanches perpétue la tradition du Gamay. Plongez dans l'univers de nos vins d'exception, où chaque cuvée raconte l'histoire d'une passion familiale."}
                         </p>
 
-                        <a
-                            href="#portes"
-                            className="w-[220px] px-8 py-3 bg-transparent hover:bg-white/10 text-white uppercase tracking-widest text-xs font-bold transition-all border border-white hover:scale-105 duration-300 rounded-full text-center backdrop-blur-sm"
-                        >
-                            Entrer
-                        </a>
+                        <div className="flex flex-col sm:flex-row gap-4 md:gap-8 justify-center items-center w-full">
+                            <Link
+                                href="/les-vins/cuvees"
+                                className="w-[260px] px-8 py-3 bg-red-900/90 hover:bg-red-800 text-white uppercase tracking-widest text-xs font-bold transition-all border border-red-900 hover:scale-105 duration-300 rounded-full text-center shadow-lg"
+                            >
+                                Découvrir nos vins
+                            </Link>
+                            <Link
+                                href="/rencontrons-garanches"
+                                className="w-[260px] px-8 py-3 bg-transparent hover:bg-white/10 text-white uppercase tracking-widest text-xs font-bold transition-all border border-white hover:scale-105 duration-300 rounded-full text-center backdrop-blur-sm"
+                            >
+                                Venir au domaine
+                            </Link>
+                        </div>
                     </motion.div>
                 </div>
             </section>
 
-            <section id="portes" className="scroll-mt-20 py-20 md:py-32 bg-stone-50">
-                <div className="max-w-7xl mx-auto px-6">
-                    <FadeIn direction="up" className="text-center mb-16">
-                        <span className="text-amber-700 font-serif italic text-xl md:text-2xl mb-2 block">Bienvenue à Garanches</span>
-                        <h2 className="text-4xl md:text-5xl font-serif text-wine-900 leading-tight">Trois portes pour entrer</h2>
+            <section className="py-20 md:py-32 bg-stone-50 overflow-hidden">
+                <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 md:gap-20 items-center">
+                    <FadeIn direction="right">
+                        <div>
+                            <span className="text-amber-700 font-serif italic text-xl md:text-2xl mb-2 block">Notre Philosophie</span>
+                            <h2 className="text-4xl md:text-5xl font-serif text-red-900 mb-6 md:mb-8 leading-tight">Un Terroir <br />d'Exception</h2>
+                            <div className="text-gray-600 leading-loose text-base md:text-lg font-light mb-8 text-justify space-y-4">
+                                {content?.philosophy?.content ? (
+                                    <p>{content.philosophy.content}</p>
+                                ) : (
+                                    <>
+                                        <p>
+                                            Ancré sur les terres d'Odenas depuis 1788, le Domaine de Garanches incarne la mémoire vivante du Beaujolais. Cette longévité exceptionnelle témoigne d'une passion inaltérable, transmise de génération en génération au sein de notre famille. Plus qu'un simple héritage, c'est une responsabilité : celle de préserver l'âme d'un domaine qui a traversé les siècles. Aujourd'hui, nous perpétuons cette tradition vigneronne avec humilité et ferveur, honorant le travail de ceux qui ont façonné ces paysages avant nous, tout en écrivant le nouveau chapitre de cette saga familiale séculaire.
+                                        </p>
+                                        <p>
+                                            Notre vignoble tire sa singularité d'un terroir granitique rare, baigné de soleil grâce à une exposition sud-est idéale au pied du Mont Brouilly. C'est dans ce sol pauvre et exigeant que le Gamay Noir et le Chardonnay puisent leur caractère unique, révélant une minéralité racée et une complexité aromatique profonde. Respectueux de cet équilibre fragile, nous accompagnons la nature sans la brusquer, favorisant la biodiversité et la vie des sols pour que chaque grappe puisse exprimer la quintessence pure de notre environnement préservé.
+                                        </p>
+                                    </>
+                                )}
+                            </div>
+                            <Link href="/le-lieu/histoire" className="group inline-flex items-center text-red-900 uppercase text-xs font-bold tracking-widest hover:text-amber-600 transition-colors">
+                                <span className="border-b border-red-900 pb-1 group-hover:border-amber-600">Lire notre histoire</span>
+                                <svg className="w-4 h-4 ml-2 transform group-hover:translate-x-2 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                </svg>
+                            </Link>
+                        </div>
                     </FadeIn>
 
-                    <div className="grid md:grid-cols-3 gap-8">
-                        {PORTES.map(({ path, image, page }, index) => (
-                            <FadeIn key={path} delay={0.1 + index * 0.15}>
-                                <Link href={`/${path}`} className="group relative block h-[480px] md:h-[560px] rounded-lg overflow-hidden shadow-lg">
-                                    <Image
-                                        src={image}
-                                        alt=""
-                                        fill
-                                        sizes="(max-width: 768px) 100vw, 33vw"
-                                        className="object-cover brightness-[.6] group-hover:brightness-75 group-hover:scale-105 transition-all duration-700"
-                                    />
-                                    <div className="absolute inset-0 flex flex-col justify-end p-8 text-white">
-                                        <h3 className="text-4xl font-serif mb-3">{page.label}</h3>
-                                        <p className="font-light text-white/90 leading-relaxed mb-6">{page.blocs[0].title}</p>
-                                        <span className="text-xs uppercase tracking-widest font-bold text-amber-400">{page.cta} →</span>
-                                    </div>
-                                </Link>
-                            </FadeIn>
-                        ))}
+                    <FadeIn direction="left" delay={0.2}>
+                        <div className="h-[500px] w-full relative">
+                            <ParallaxImage
+                                src="/images/23_slide002.jpg"
+                                alt="Grappe de raisin Gamay du Beaujolais sur cep de vigne"
+                                className="h-full w-full rounded-lg shadow-xl"
+                                sizes="(max-width: 768px) 100vw, 50vw"
+                            />
+                        </div>
+                    </FadeIn>
+                </div>
+            </section>
+
+            <section className="py-20 md:py-32 bg-stone-100">
+                <div className="max-w-7xl mx-auto px-6">
+                    <FadeIn direction="up" className="text-center mb-16">
+                        <span className="text-amber-700 font-serif italic text-xl mb-2 block">Savoir-faire & Tradition</span>
+                        <h2 className="text-3xl md:text-4xl font-serif text-wine-900 mb-6">Nos Cépages & Engagements</h2>
+                        <div className="w-24 h-1 bg-wine-900 mx-auto opacity-20"></div>
+                    </FadeIn>
+
+                    <div className="grid md:grid-cols-3 gap-12">
+                        <FadeIn delay={0.1} className="bg-white p-8 rounded-lg shadow-sm border border-stone-200">
+                            <h3 className="text-2xl font-serif text-wine-900 mb-4">Le Gamay Noir</h3>
+                            <p className="text-gray-600 font-light leading-relaxed text-sm text-justify">
+                                Emblème de notre domaine, le Gamay Noir à Jus Blanc s'épanouit sur nos coteaux granitiques. Il offre à nos Brouilly cette robe rubis profond et ces arômes de fruits rouges (fraise, framboise) et noirs, soulignés par des notes épicées et minérales typiques du Mont Brouilly.
+                            </p>
+                        </FadeIn>
+
+                        <FadeIn delay={0.2} className="bg-white p-8 rounded-lg shadow-sm border border-stone-200">
+                            <h3 className="text-2xl font-serif text-wine-900 mb-4">Le Chardonnay</h3>
+                            <p className="text-gray-600 font-light leading-relaxed text-sm text-justify">
+                                Nos vignes de Chardonnay, cultivées sur des parcelles argilo-calcaires choisies, donnent naissance à un Bourgogne Blanc d'une grande finesse. Un vin ample et floral, aux notes d'agrumes et de fleurs blanches, qui révèle toute l'élégance de ce cépage noble.
+                            </p>
+                        </FadeIn>
+
+                        <FadeIn delay={0.3} className="bg-white p-8 rounded-lg shadow-sm border border-stone-200">
+                            <h3 className="text-2xl font-serif text-wine-900 mb-4">Viticulture Durable</h3>
+                            <p className="text-gray-600 font-light leading-relaxed text-sm text-justify">
+                                Vignerons indépendants, nous pratiquons une viticulture raisonnée certifiée HVE (Haute Valeur Environnementale). Enherbement des rangs, travail mécanique des sols et vendanges manuelles : chaque intervention vise à préserver la biodiversité et garantir la pureté de nos vins.
+                            </p>
+                        </FadeIn>
                     </div>
                 </div>
             </section>
@@ -189,8 +236,8 @@ export default function HomePageClient({ products }: { products: any[] }) {
                 <div className="max-w-7xl mx-auto px-6">
                     <div className="text-center mb-12 md:mb-20">
                         <FadeIn direction="down">
-                            <span className="text-amber-700 text-sm font-bold uppercase tracking-widest mb-4 block">Les Vins</span>
-                            <h2 className="text-4xl md:text-5xl font-serif text-gray-900 mb-6">Les cuvées</h2>
+                            <span className="text-amber-700 text-sm font-bold uppercase tracking-widest mb-4 block">Boutique en ligne</span>
+                            <h2 className="text-4xl md:text-5xl font-serif text-gray-900 mb-6">Nos Grandes Cuvées</h2>
                             <p className="max-w-2xl mx-auto text-gray-500 font-light leading-relaxed mb-8">
                                 Du cep à votre verre, sans intermédiaire. Découvrez nos Crus du Beaujolais et nos vins de Bourgogne, élevés avec patience et passion. L'expression authentique de notre terroir, disponible en direct de la propriété.
                             </p>
@@ -247,24 +294,10 @@ export default function HomePageClient({ products }: { products: any[] }) {
                             href="/les-vins/cuvees"
                             className="inline-block px-8 py-3 md:px-12 md:py-4 border border-gray-900 text-gray-900 uppercase tracking-widest text-xs font-bold hover:bg-gray-900 hover:text-white transition-all duration-300 rounded-full"
                         >
-                            Voir les cuvées
+                            Voir toute la cave
                         </Link>
                     </div>
                 </div>
-            </section>
-
-            <section className="py-20 md:py-32 bg-wine-900 text-white text-center px-6">
-                <FadeIn direction="up" className="max-w-2xl mx-auto">
-                    <span className="text-amber-400 font-serif italic text-xl mb-2 block">Les Carnets de Garanches</span>
-                    <h2 className="text-4xl md:text-5xl font-serif mb-6">{CARNETS_INTRO.title}</h2>
-                    <p className="font-light text-white/80 leading-relaxed mb-10 whitespace-pre-line">{CARNETS_INTRO.body}</p>
-                    <Link
-                        href="/carnets"
-                        className="inline-block px-10 py-3 border border-white text-white uppercase tracking-widest text-xs font-bold rounded-full hover:bg-white hover:text-wine-900 transition-colors"
-                    >
-                        Voir les Carnets
-                    </Link>
-                </FadeIn>
             </section>
 
         </main>
