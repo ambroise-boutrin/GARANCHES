@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Politique de Confidentialité | Domaine de Garanches",
+    title: "Politique de Confidentialité",
     description: "Découvrez comment le Domaine de Garanches protège et utilise vos données personnelles conformément au RGPD.",
+    alternates: { canonical: "/politique-confidentialite" },
 };
 
 export default function PolitiqueConfidentialite() {

@@ -4,6 +4,8 @@ import EditorialPage from "./EditorialPage";
 import Team from "./Team";
 import WinesList from "@/components/WinesList";
 import { PAGES } from "@/data/architecture";
+import { SEO } from "@/data/seo";
+import { cuveeHref } from "@/lib/wineSlug";
 import { getBlocs } from "@/sanity/lib/queries";
 import { getWines } from "@/lib/wines";
 
@@ -12,11 +14,12 @@ const SITE = "https://domainedegaranches.com";
 export function pageMetadata(path: string): Metadata {
     const page = PAGES[path];
     if (!page) return {};
+    const seo = SEO[path] ?? { title: page.label, description: page.description };
     return {
-        title: page.label,
-        description: page.description,
+        title: seo.title,
+        description: seo.description,
         alternates: { canonical: `/${path}` },
-        openGraph: { title: page.label, description: page.description, images: [page.image] },
+        openGraph: { title: `${page.label} | Domaine de Garanches`, description: seo.description, images: [page.image], url: `/${path}` },
     };
 }
 
@@ -32,6 +35,7 @@ async function Cuvees() {
             item: {
                 "@type": "Product",
                 name: wine.name,
+                url: `${SITE}${cuveeHref(wine)}`,
                 description: wine.description,
                 image: wine.image?.startsWith("http") ? wine.image : `${SITE}${wine.image || "/images/36_brouilly-h.jpg"}`,
                 brand: { "@type": "Brand", name: "Domaine de Garanches" },
@@ -40,7 +44,7 @@ async function Cuvees() {
                     priceCurrency: "EUR",
                     price: (wine.price / 100).toFixed(2),
                     availability: "https://schema.org/InStock",
-                    url: `${SITE}/les-vins/cuvees`,
+                    url: `${SITE}${cuveeHref(wine)}`,
                 },
             },
         })),

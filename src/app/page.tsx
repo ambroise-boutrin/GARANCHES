@@ -7,7 +7,7 @@ import HomePageClient from "@/components/HomePageClient";
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  description: "Domaine viticole historique à Odenas depuis 1788. Vins de Brouilly et Bourgogne Blanc par Romain Martinache & Aurélie Crozet. Dégustation et vente directe au pied du Mont Brouilly.",
+  description: "Domaine de Garanches, à Odenas au pied du Mont Brouilly : vins de Brouilly et Bourgogne blanc, dégustation au domaine, visite des vignes et vente en ligne.",
 };
 
 export default async function Home() {

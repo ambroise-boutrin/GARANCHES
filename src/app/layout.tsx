@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     default: "Domaine de Garanches | Vins de Brouilly & Bourgogne Blanc - Odenas",
     template: "%s | Domaine de Garanches"
   },
-  description: "Domaine viticole historique à Odenas depuis 1788. Vins de Brouilly et Bourgogne Blanc par Romain Martinache & Aurélie Crozet. Dégustation et vente directe.",
+  description: "Domaine viticole à Odenas, au pied du Mont Brouilly : vins de Brouilly et Bourgogne blanc, dégustation au domaine, visite des vignes et vente en ligne.",
   keywords: ["Brouilly", "Bourgogne Blanc", "Odenas", "Domaine de Garanches", "Romain Martinache", "Aurélie Crozet", "Gamay", "Chardonnay", "Vente vin Beaujolais", "Dégustation Odenas"],
   authors: [{ name: "Domaine de Garanches" }],
   creator: "Domaine de Garanches",
