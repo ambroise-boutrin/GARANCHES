@@ -272,7 +272,7 @@ Parce qu'ici, les vins se découvrent aussi avec le lieu et avec ceux qui le fon
     },
     {
         path: "rencontrons-garanches/les-rencontres",
-        label: "Les Rencontres de Garanches",
+        label: "Les tables d'hôtes",
         description: "Table d'hôtes, vins, repas et conversations au domaine de Garanches.",
         image: "/images/3_image.jpg",
         cta: "Découvrir les Rencontres",
@@ -298,7 +298,7 @@ Partageons nos impressions, nos questions, nos découvertes, et laissons la conv
                     { label: "Tarifs", value: "À préciser" },
                     { label: "Accès", value: "345 chemin de Garanches, Odenas" },
                 ],
-                booking: { label: "Réserver", sujet: "Les Rencontres de Garanches" },
+                booking: { label: "Réserver", sujet: "Les tables d'hôtes" },
             },
         ],
         children: ["rencontrons-garanches/deguster-au-domaine", "rencontrons-garanches/experiences-privees"],

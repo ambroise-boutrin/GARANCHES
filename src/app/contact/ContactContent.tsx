@@ -14,7 +14,7 @@ const InteractiveMap = dynamic(() => import("@/components/InteractiveMap"), {
 const EMAIL = "contact@domainedegaranches.com";
 
 const SUJETS = [
-    "Les Rencontres de Garanches",
+    "Les tables d'hôtes",
     "Déguster au domaine",
     "Découvrir les vignes",
     "Expérience privée",
