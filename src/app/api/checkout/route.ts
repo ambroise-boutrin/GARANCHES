@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { getWines } from "@/lib/wines";
 import { priceCart, type CheckoutItem } from "@/lib/cart";
 import { getStripe } from "@/lib/stripe";
+import { wineSlug } from "@/lib/wineSlug";
 
 // Le montant est toujours recalculé ici à partir du catalogue (le même que celui affiché
 // sur le site) : le navigateur n'envoie que les vins et les quantités, jamais de prix.
@@ -40,8 +41,8 @@ export async function POST(req: Request) {
                     name: wine.name,
                     ...(wine.subtitle ? { description: wine.subtitle } : {}),
                     ...(image ? { images: [image] } : {}),
-                    // Sert à retrouver l'article correspondant dans Odoo (champ « Référence interne »).
-                    metadata: { wine_id: id },
+                    // Sert à retrouver l'article dans Odoo (champ « Référence interne ») : le slug du vin.
+                    metadata: { wine_id: wineSlug(wine) },
                 },
             },
         };
