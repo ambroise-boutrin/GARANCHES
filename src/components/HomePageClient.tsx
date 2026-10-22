@@ -7,12 +7,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import FadeIn from "@/components/FadeIn";
 import ParallaxImage from "@/components/ParallaxImage";
 import AddToCartButton from "@/components/AddToCartButton";
-import { HOME_PORTES, SIGNATURE } from "@/data/architecture";
+import { HOME_PORTES, SIGNATURE, HERO_VIDEO } from "@/data/architecture";
 import { cuveeHref } from "@/lib/wineSlug";
 
 export default function HomePageClient({ products, content }: { products: any[], content?: any }) {
     const [isLoading, setIsLoading] = useState(true);
     const [mounted, setMounted] = useState(false);
+    const heroVideo = content?.hero?.videoUrl || HERO_VIDEO;
 
     useEffect(() => {
         setMounted(true);
@@ -101,6 +102,21 @@ export default function HomePageClient({ products, content }: { products: any[],
                         quality={75}
                         fetchPriority="high"
                     />
+                    {heroVideo && (
+                        // La photo reste en dessous : elle s'affiche le temps du chargement et si le mouvement est réduit.
+                        <video
+                            className="absolute inset-0 h-full w-full object-cover brightness-75 motion-reduce:hidden"
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                            preload="metadata"
+                            poster="/images/34_slide001.jpg"
+                            aria-hidden="true"
+                        >
+                            <source src={heroVideo} type="video/mp4" />
+                        </video>
+                    )}
                 </div>
 
                 <div className="relative text-center px-4 max-w-7xl mx-auto flex flex-col items-center pt-24 md:pt-20">
