@@ -34,6 +34,7 @@ export default function PolitiqueConfidentialite() {
                     <li><strong>Données de commande :</strong> Nom, prénom, adresse de livraison et de facturation, email, numéro de téléphone. Ces données sont nécessaires à l'exécution du contrat de vente.</li>
                     <li><strong>Données de contact :</strong> Informations transmises via notre formulaire de contact ou par email.</li>
                     <li><strong>Données de navigation (Cookies) :</strong> Voir notre gestionnaire de cookies pour plus de détails.</li>
+                    <li id="tranches-age" className="scroll-mt-28"><strong>Vérification de l'âge :</strong> à l'entrée du site, nous vous demandons votre date de naissance pour vérifier que vous êtes majeur. Cette date est utilisée uniquement dans votre navigateur et n'est ni transmise ni conservée. Seule votre tranche d'âge (18-24, 25-34, 35-44, 45-54, 55-64, 65 ans et plus) est ajoutée à un compteur mensuel anonyme, sans adresse IP ni identifiant, pour nous aider à mieux connaître nos visiteurs. Aucune donnée ne permet de vous identifier.</li>
                 </ul>
 
                 <h2 className="text-xl font-serif text-wine-800 mt-8 mb-4">3. Finalités du traitement</h2>
@@ -43,6 +44,7 @@ export default function PolitiqueConfidentialite() {
                     <li>Répondre à vos demandes d'information ou de visite.</li>
                     <li>Respecter nos obligations légales (comptabilité, vérification de l'âge légal).</li>
                     <li>Améliorer notre site et nos services.</li>
+                    <li>Établir des statistiques anonymes sur l'âge de nos visiteurs, pour adapter notre communication.</li>
                 </ul>
 
                 <h2 className="text-xl font-serif text-wine-800 mt-8 mb-4">4. Destinataires des données</h2>
