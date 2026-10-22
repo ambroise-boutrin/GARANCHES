@@ -188,10 +188,6 @@ export default async function RootLayout({
 
 
         <Script
-          src="https://gateway.sumup.com/gateway/ecom/card/v2/sdk.js"
-          strategy="lazyOnload"
-        />
-        <Script
           defer
           data-domain="domainedegaranches.com"
           src="https://plausible.io/js/script.js"

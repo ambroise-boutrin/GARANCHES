@@ -14,14 +14,6 @@ const nextConfig = {
         remotePatterns: [
             {
                 protocol: 'https',
-                hostname: '**.sumup.com',
-            },
-            {
-                protocol: 'https',
-                hostname: '**.sumupusercontent.com',
-            },
-            {
-                protocol: 'https',
                 hostname: 'cdn.sanity.io',
             }
         ],
