@@ -179,8 +179,8 @@ Parfois plusieurs.
 Nous assemblons, élevons et faisons évoluer nos vins avec une même exigence : trouver l'expression juste de chaque cuvée.
 Des vins précis, vivants, en petites quantités.
 Des vins qui racontent Garanches, chacun à leur manière.`,
-                image: "/images/garanches/tancrede-stagnara.jpg",
-                alt: "Tancrède Stagnara dans les vignes de Garanches",
+                image: "/images/garanches/lieu-vignes.jpg", paysage: true,
+                alt: "Les vignes de Garanches et le Mont Brouilly, vus du ciel",
             },
         ],
         children: [
