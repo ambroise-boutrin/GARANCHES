@@ -36,7 +36,7 @@ export default function ParallaxImage({ src, alt, className = "", sizes = "100vw
                     fill
                     sizes={sizes}
                     loading="lazy"
-                    quality={75}
+                    quality={85}
                     style={{ objectPosition: position }}
                     className="object-cover"
                 />
