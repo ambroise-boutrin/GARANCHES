@@ -24,7 +24,7 @@ const SUJETS = [
     "Autre demande",
 ];
 
-export default function ContactContent({ sujet }: { sujet?: string }) {
+export default function ContactContent({ sujet, vin }: { sujet?: string; vin?: string }) {
     const [subject, setSubject] = useState(sujet && SUJETS.includes(sujet) ? sujet : SUJETS[SUJETS.length - 1]);
 
     // Pas de serveur d'envoi : le message s'ouvre, pré-rempli, dans la messagerie du visiteur.
@@ -42,6 +42,11 @@ export default function ContactContent({ sujet }: { sujet?: string }) {
     };
 
     const isBooking = SUJETS.slice(0, 5).includes(subject);
+    // Arrivée depuis le bouton « Demander des bouteilles » d'une cuvée.
+    const vinDemande = vin?.slice(0, 80);
+    const messageInitial = vinDemande
+        ? `Bonjour,\n\nJe souhaiterais prendre des bouteilles de ${vinDemande}.\nNombre de bouteilles : \nRetrait au domaine ou livraison (adresse) : \n\nMerci !`
+        : undefined;
 
     return (
         <main className="min-h-screen bg-paper pt-32 pb-20">
@@ -119,7 +124,7 @@ export default function ContactContent({ sujet }: { sujet?: string }) {
 
                 <FadeIn direction="left" delay={0.4}>
                     <div id="formulaire" className="scroll-mt-28 bg-gradient-to-br from-wine-50 to-white p-10 rounded-lg shadow-lg border border-white">
-                        <h2 className="text-3xl font-serif text-wine-900 mb-8">{isBooking ? "Réserver" : "Envoyez-nous un message"}</h2>
+                        <h2 className="text-3xl font-serif text-wine-900 mb-8">{isBooking ? "Réserver" : vinDemande ? "Demander des bouteilles" : "Envoyez-nous un message"}</h2>
 
                         <form className="space-y-6" onSubmit={handleSubmit}>
                             <div className="grid md:grid-cols-2 gap-6">
@@ -168,7 +173,7 @@ export default function ContactContent({ sujet }: { sujet?: string }) {
 
                             <div>
                                 <label className="block text-xs uppercase tracking-widest text-gray-500 mb-2 font-bold ml-2">Message</label>
-                                <textarea name="message" rows={5} className="w-full bg-white border border-gray-100 p-4 rounded-md focus:outline-none focus:ring-2 focus:ring-wine-100 focus:border-wine-300 transition-all shadow-sm resize-none" placeholder="Comment pouvons-nous vous aider ?"></textarea>
+                                <textarea name="message" rows={vinDemande ? 8 : 5} defaultValue={messageInitial} className="w-full bg-white border border-gray-100 p-4 rounded-md focus:outline-none focus:ring-2 focus:ring-wine-100 focus:border-wine-300 transition-all shadow-sm resize-none" placeholder="Comment pouvons-nous vous aider ?"></textarea>
                             </div>
 
                             <button type="submit" className="w-full bg-wine-900 text-white py-4 uppercase tracking-widest text-xs font-bold hover:bg-amber-600 transition-colors">

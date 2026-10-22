@@ -5,7 +5,6 @@ import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { useCart } from "@/context/CartContext";
 import { PORTES, GENERIC_PATHS, type Porte } from "@/data/architecture";
 
 export default function Navbar() {
@@ -13,7 +12,6 @@ export default function Navbar() {
     const [scrolled, setScrolled] = useState(false);
     const pathname = usePathname();
     const isHome = pathname === "/";
-    const { totalItems } = useCart();
     // Menu déroulant refermé après un clic, jusqu'à ce que la souris quitte l'onglet.
     const [menuFerme, setMenuFerme] = useState<string | null>(null);
 
@@ -153,21 +151,7 @@ export default function Navbar() {
                                 : "border-white text-white hover:bg-white hover:text-stone-900"
                                 } ${scrolled ? "bg-transparent border-white text-white hover:!bg-white hover:!text-stone-900 hover:!border-white" : ""}`}
                         >
-                            Boutique
-                        </Link>
-                        <Link
-                            href="/panier"
-                            aria-label={`Panier${totalItems > 0 ? ` (${totalItems} article${totalItems > 1 ? 's' : ''})` : ''}`}
-                            className={`relative group flex items-center justify-center w-10 h-10 transition-colors duration-300 ${useDarkText ? "text-stone-900 hover:text-amber-600" : "text-white hover:text-amber-400"}`}
-                        >
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
-                            </svg>
-                            {totalItems > 0 && (
-                                <span className="absolute -top-1 -right-1 bg-amber-500 text-stone-900 text-[10px] font-bold min-w-4 h-4 px-1 flex items-center justify-center rounded-full">
-                                    {totalItems}
-                                </span>
-                            )}
+                            Nos vins
                         </Link>
                     </div>
                 </div>
@@ -247,25 +231,6 @@ export default function Navbar() {
 
 
                             <motion.div
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.5 }}
-                            >
-                                <Link
-                                    href="/panier"
-                                    className="text-2xl font-serif text-white hover:text-amber-500 transition-colors flex items-center gap-2"
-                                >
-                                    Mon Panier
-                                    {totalItems > 0 && (
-                                        <span className="bg-amber-500 text-stone-900 text-xs font-bold px-2 py-0.5 rounded-full">
-                                            {totalItems}
-                                        </span>
-                                    )}
-                                </Link>
-                            </motion.div>
-
-
-                            <motion.div
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ delay: 0.6 }}
@@ -275,7 +240,7 @@ export default function Navbar() {
                                     href="/les-vins/cuvees"
                                     className="px-10 py-3 border border-white text-white uppercase tracking-widest text-xs font-bold hover:bg-white hover:text-stone-900 transition-colors"
                                 >
-                                    Boutique
+                                    Nos vins
                                 </Link>
                             </motion.div>
                         </div>

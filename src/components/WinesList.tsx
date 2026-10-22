@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import AddToCartButton from "@/components/AddToCartButton";
+import RequestBottlesButton from "@/components/RequestBottlesButton";
 import FadeIn from "@/components/FadeIn";
 import { cuveeHref } from "@/lib/wineSlug";
 
@@ -84,7 +84,7 @@ export default function WinesList({ wines }: { wines: any[] }) {
                                         ))}
                                     </div>
 
-                                    <AddToCartButton wine={wine} />
+                                    <RequestBottlesButton wine={wine} />
                                 </div>
                             </div>
                         </FadeIn>

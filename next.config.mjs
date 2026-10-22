@@ -7,6 +7,8 @@ const nextConfig = {
             { source: '/nos-vins', destination: '/les-vins/cuvees', permanent: true },
             { source: '/notre-histoire', destination: '/le-lieu/histoire', permanent: true },
             { source: '/visite', destination: '/rencontrons-garanches/deguster-au-domaine', permanent: true },
+            // Pas de boutique en ligne pour l'instant : l'ancien panier renvoie vers les cuvées.
+            { source: '/panier', destination: '/les-vins/cuvees', permanent: false },
         ];
     },
     images: {

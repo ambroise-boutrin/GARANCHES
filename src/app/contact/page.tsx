@@ -7,8 +7,8 @@ export const metadata: Metadata = {
     alternates: { canonical: "/contact" },
 };
 
-export default function ContactPage({ searchParams }: { searchParams: { sujet?: string } }) {
+export default function ContactPage({ searchParams }: { searchParams: { sujet?: string; vin?: string } }) {
     return (
-        <ContactContent sujet={searchParams.sujet} />
+        <ContactContent sujet={searchParams.sujet} vin={searchParams.vin} />
     );
 }

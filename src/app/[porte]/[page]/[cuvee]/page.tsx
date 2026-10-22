@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import FadeIn from "@/components/FadeIn";
-import AddToCartButton from "@/components/AddToCartButton";
+import RequestBottlesButton from "@/components/RequestBottlesButton";
 import RichText from "@/components/editorial/RichText";
 import PageCards from "@/components/editorial/PageCards";
 import { getWine } from "@/lib/wines";
@@ -136,7 +136,7 @@ export default async function CuveePage({ params }: Props) {
                         <p className="text-2xl font-bold text-amber-700 mb-6">
                             {(wine.price / 100).toFixed(2).replace(".", ",")} €
                         </p>
-                        <AddToCartButton wine={wine} />
+                        <RequestBottlesButton wine={wine} />
                     </FadeIn>
                 </div>
             </section>
