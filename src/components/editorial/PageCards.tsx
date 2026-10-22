@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { cadrage } from "@/data/cadrages";
 import Link from "next/link";
 import FadeIn from "@/components/FadeIn";
 import { card } from "@/data/architecture";
@@ -25,6 +26,7 @@ export default function PageCards({ paths, title }: { paths: string[]; title?: s
                                     alt=""
                                     fill
                                     sizes="(max-width: 768px) 100vw, 33vw"
+                                    style={{ objectPosition: cadrage(c.image) }}
                                     className="object-cover group-hover:scale-105 transition-transform duration-700"
                                 />
                             </div>
