@@ -5,7 +5,7 @@ export default function robots(): MetadataRoute.Robots {
         rules: {
             userAgent: "*",
             allow: "/",
-            disallow: ["/api/", "/admin/", "/panier"], // Protège les dossiers techniques
+            disallow: ["/api/", "/admin/"], // Protège les dossiers techniques
         },
         sitemap: "https://domainedegaranches.com/sitemap.xml",
     };

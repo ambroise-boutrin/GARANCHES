@@ -10,7 +10,6 @@ import ScrollToTop from "@/components/ScrollToTop";
 import Script from "next/script";
 import { Providers } from "./providers";
 import CookieConsent from "@/components/CookieConsent";
-import MobileStickyCart from "@/components/MobileStickyCart";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -183,7 +182,6 @@ export default async function RootLayout({
           {children}
           <Footer />
           <ScrollToTop />
-          <MobileStickyCart />
         </Providers>
 
 

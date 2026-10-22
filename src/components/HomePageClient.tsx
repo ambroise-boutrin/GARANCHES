@@ -6,7 +6,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import FadeIn from "@/components/FadeIn";
 import ParallaxImage from "@/components/ParallaxImage";
-import AddToCartButton from "@/components/AddToCartButton";
+import RequestBottlesButton from "@/components/RequestBottlesButton";
 import { HOME_PORTES, SIGNATURE } from "@/data/architecture";
 import { cuveeHref } from "@/lib/wineSlug";
 
@@ -321,9 +321,9 @@ export default function HomePageClient({ products, content }: { products: any[],
                                     </div>
                                 </Link>
 
-                                {/* Add to Cart Button directly on Home */}
+                                {/* Demande de bouteilles via le formulaire de contact */}
                                 <div className="mt-auto px-8 pb-8 flex justify-center w-full">
-                                    <AddToCartButton wine={wine} />
+                                    <RequestBottlesButton wine={wine} />
                                 </div>
                             </FadeIn>
                         ))}
