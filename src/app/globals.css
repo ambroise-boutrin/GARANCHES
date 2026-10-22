@@ -2,6 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Cormorant Garamond a de petites lettres et Montserrat de grandes :
+   on aligne leur hauteur (x-height) pour que les tailles restent équilibrées. */
+html {
+  font-size-adjust: 0.46;
+  /* Les blocs qui glissent depuis le côté (FadeIn) ne doivent pas élargir la page sur téléphone. */
+  overflow-x: clip;
+}
+
+/* Vérification d'âge déjà validée : voir le script dans layout.tsx. */
+.age-ok [data-age-gate] {
+  display: none;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -63,18 +76,6 @@ select {
   pointer-events: auto;
 }
 
-.bg-noise {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
-  z-index: 50;
-  opacity: 0.05;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-}
-
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -99,15 +100,4 @@ select {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-}
-
-.will-animate {
-  will-change: transform, opacity;
-  backface-visibility: hidden;
-  perspective: 1000px;
-}
-
-[class*="animate-"],
-[class*="transition-"] {
-  transform: translateZ(0);
 }

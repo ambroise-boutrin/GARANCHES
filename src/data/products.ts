@@ -4,7 +4,7 @@ export const PRODUCTS = [
         name: "Brouilly",
         subtitle: "Cru du Beaujolais — Rouge",
         price: 1200,
-        description: "Les Brouilly présentent des notes de fleurs et de fruits : rose, violette, framboise, et cassis. Au-delà de ces parfums qui constituent le plaisir du Brouilly, chaque année révèle sa personnalité.",
+        description: "Les Brouilly présentent des notes de fleurs et de fruits : rose, violette, framboise, et cassis. Au-delà de ces parfums qui constituent le plaisir du Brouilly, chaque année révèle sa personnalité.",
         image: "/images/36_brouilly-h.jpg",
         tags: ["Gamay", "Viandes rouges", "Fromages"],
         alcohol: "13%",

@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Mentions Légales | Domaine de Garanches",
+    title: "Mentions Légales",
     description: "Mentions légales du Domaine de Garanches. Informations sur l'éditeur, l'hébergeur et les conditions d'utilisation du site domainedegaranches.com.",
+    alternates: { canonical: "/mentions-legales" },
 };
 
 export default function MentionsLegales() {
@@ -15,15 +16,15 @@ export default function MentionsLegales() {
                 <p>
                     <strong>Domaine de Garanches</strong><br />
                     145 Rue des Garanches, 69460 Odenas<br />
-                    Téléphone : +33 4 74 03 44 80<br />
-                    Email : contact@domainedegaranches.com<br />
+                    Téléphone : +33 4 74 03 44 80<br />
+                    Email : contact@domainedegaranches.com<br />
                     <br />
-                    <strong>Forme juridique :</strong> Exploitation Agricole à Responsabilité Limitée (EARL)<br />
-                    <strong>Capital social :</strong> [Montant du capital] €<br />
-                    <strong>SIRET :</strong> [Numéro SIRET]<br />
-                    <strong>RCS :</strong> Villefranche-Tarare [Numéro RCS]<br />
-                    <strong>TVA Intracommunautaire :</strong> [Numéro TVA]<br />
-                    <strong>Directeur de la publication :</strong> Romain Martinache & Aurélie Crozet
+                    <strong>Forme juridique :</strong> Exploitation Agricole à Responsabilité Limitée (EARL)<br />
+                    <strong>Capital social :</strong> [Montant du capital] €<br />
+                    <strong>SIRET :</strong> [Numéro SIRET]<br />
+                    <strong>RCS :</strong> Villefranche-Tarare [Numéro RCS]<br />
+                    <strong>TVA Intracommunautaire :</strong> [Numéro TVA]<br />
+                    <strong>Directeur de la publication :</strong> Romain Martinache & Aurélie Crozet
                 </p>
 
                 <h3>Hébergement</h3>
