@@ -1,6 +1,5 @@
 import { Metadata } from "next";
-import { getSumUpProducts } from "@/lib/sumup";
-import { PRODUCTS } from "@/data/products";
+import { getWines } from "@/lib/wines";
 import { getPageContent } from "@/sanity/lib/queries";
 import HomePageClient from "@/components/HomePageClient";
 
@@ -11,9 +10,8 @@ export const metadata: Metadata = {
 };
 
 export default async function Home() {
-  // Récupération des produits (SumUp ou Fallback)
-  const sumupProducts = await getSumUpProducts();
-  const products = sumupProducts && sumupProducts.length > 0 ? sumupProducts : PRODUCTS;
+  // Même catalogue que la boutique et le paiement (Sanity, sinon la liste statique)
+  const products = await getWines();
 
   // Récupération du contenu de la page d'accueil depuis Sanity
   const content = await getPageContent('home');

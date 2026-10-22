@@ -5,16 +5,17 @@ import Image from "next/image";
 import { useCart } from "@/context/CartContext";
 import FadeIn from "@/components/FadeIn";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import { cuveeHref } from "@/lib/wineSlug";
 
 export default function CartPage() {
     const { cart, removeFromCart, updateQuantity, totalPrice } = useCart();
-    const router = useRouter();
     const [isLoading, setIsLoading] = useState(false);
+
+    const [error, setError] = useState<string | null>(null);
 
     const handleCheckout = async () => {
         setIsLoading(true);
+        setError(null);
         try {
             // Le serveur recalcule le prix : on n'envoie que les vins et les quantités.
             const res = await fetch('/api/checkout', {
@@ -24,44 +25,19 @@ export default function CartPage() {
                     items: cart.map(({ id, quantity }) => ({ id, quantity }))
                 })
             });
+            const data = await res.json().catch(() => null);
 
-            if (!res.ok) throw new Error('Erreur lors du paiement');
-
-            const data = await res.json();
-
-            if (!data?.id) {
-                console.error("No checkout ID returned", data);
-                alert("Erreur: Impossible d'initialiser le paiement.");
+            if (!res.ok || !data?.url) {
+                setError(data?.error || "Le paiement n'a pas pu démarrer. Merci de réessayer.");
+                setIsLoading(false);
                 return;
             }
 
-            const { id } = data;
-
-            if (id.startsWith('mock-')) {
-                alert("Mode Simulation : Paiement validé (Aucun débit)");
-                return;
-            }
-
-            // @ts-ignore - SumUp SDK is loaded globally via Script tag
-            if (typeof SumUpCard === 'undefined') {
-                console.error("SumUp SDK not loaded");
-                alert("Erreur de chargement du module de paiement. Veuillez recharger la page.");
-                return;
-            }
-
-            // @ts-ignore
-            SumUpCard.mount({
-                id: 'sumup-card',
-                checkoutId: id,
-                onResponse: function (type: any, body: any) {
-                    console.log('SumUp response:', type, body);
-                }
-            });
-
-        } catch (error) {
-            console.error(error);
-            alert("Une erreur est survenue.");
-        } finally {
+            // Direction la page de paiement sécurisée Stripe (carte, Apple Pay, Google Pay).
+            window.location.href = data.url;
+        } catch (e) {
+            console.error(e);
+            setError("Connexion impossible. Vérifiez votre réseau et réessayez.");
             setIsLoading(false);
         }
     };
@@ -162,12 +138,14 @@ export default function CartPage() {
                                     disabled={isLoading}
                                     className="w-full mt-8 px-8 py-4 bg-red-900/90 hover:bg-red-800 text-white uppercase tracking-widest text-xs font-bold transition-colors border border-red-900 disabled:opacity-50 disabled:cursor-not-allowed"
                                 >
-                                    {isLoading ? "Un instant…" : "Passer au paiement"}
+                                    {isLoading ? "Ouverture du paiement…" : "Passer au paiement"}
                                 </button>
 
-                                <div id="sumup-card" className="mt-6" />
+                                {error && (
+                                    <p role="alert" className="text-sm text-red-900 mt-4 text-center">{error}</p>
+                                )}
 
-                                <p className="text-xs text-stone-400 mt-4 text-center">Paiement sécurisé par SumUp</p>
+                                <p className="text-xs text-stone-400 mt-4 text-center">Paiement sécurisé par Stripe : carte bancaire, Apple Pay ou Google Pay</p>
                             </div>
                         </FadeIn>
                     </div>
