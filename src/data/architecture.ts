@@ -512,14 +512,14 @@ export function card(path: string) {
 }
 
 // Les trois portes du menu et leurs sous-menus, dans l'ordre du document maître.
-// Certaines entrées renvoient vers une autre porte (Carnets, L'histoire, Les Rencontres) : le document les place dans plusieurs univers.
+// Certaines entrées renvoient vers une autre porte (L'histoire, Les Rencontres) : le document les place dans plusieurs univers.
+// Les Carnets ont leur propre entrée dans le menu principal.
 const SOUS_MENUS: Record<string, { path: string; motsCles: string; label?: string }[]> = {
     "le-lieu": [
         { path: "le-lieu/le-domaine", motsCles: "Odenas • paysage • granit" },
         { path: "le-lieu/histoire", motsCles: "Bender • Jean Buy • archives" },
         { path: "le-lieu/traces", motsCles: "Plants anciens • documents" },
         { path: "le-lieu/ceux-qui-le-font-vivre", motsCles: "Personnes • gestes • transmission" },
-        { path: "carnets", label: "Les Carnets", motsCles: "Récits • archives • saisons" },
     ],
     "les-vins": [
         { path: "les-vins/notre-facon-de-faire", motsCles: "Terre • saisons • millésimes" },
