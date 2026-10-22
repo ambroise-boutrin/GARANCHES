@@ -9,6 +9,7 @@ import ParallaxImage from "@/components/ParallaxImage";
 import AddToCartButton from "@/components/AddToCartButton";
 import { HOME_PORTES, SIGNATURE, HERO_VIDEO } from "@/data/architecture";
 import { cuveeHref } from "@/lib/wineSlug";
+import { cadrage } from "@/data/cadrages";
 
 export default function HomePageClient({ products, content }: { products: any[], content?: any }) {
     const [isLoading, setIsLoading] = useState(true);
@@ -93,7 +94,7 @@ export default function HomePageClient({ products, content }: { products: any[],
             <section className="relative h-screen flex flex-col justify-center items-center overflow-hidden">
                 <div className="absolute inset-0 z-0">
                     <Image
-                        src="/images/34_slide001.jpg"
+                        src="/images/garanches/video-accueil.jpg"
                         alt="Vignes du Domaine de Garanches s'étendant au pied du Mont Brouilly à Odenas"
                         fill
                         sizes="100vw"
@@ -111,10 +112,11 @@ export default function HomePageClient({ products, content }: { products: any[],
                             loop
                             playsInline
                             preload="metadata"
-                            poster="/images/34_slide001.jpg"
+                            poster="/images/garanches/video-accueil.jpg"
                             aria-hidden="true"
                         >
                             <source src={heroVideo} type="video/mp4" />
+                            {HERO_VIDEO && heroVideo === HERO_VIDEO && <source src={HERO_VIDEO.replace(/\.mp4$/, ".webm")} type="video/webm" />}
                         </video>
                     )}
                 </div>
@@ -192,6 +194,7 @@ export default function HomePageClient({ products, content }: { products: any[],
                                         alt=""
                                         fill
                                         sizes="(max-width: 768px) 100vw, 33vw"
+                                        style={{ objectPosition: cadrage(image) }}
                                         className="object-cover brightness-[.6] group-hover:brightness-75 group-hover:scale-105 transition-all duration-700"
                                     />
                                     <div className="absolute inset-0 flex flex-col justify-end p-8 text-white">
