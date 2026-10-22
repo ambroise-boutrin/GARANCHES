@@ -115,8 +115,9 @@ export default function HomePageClient({ products, content }: { products: any[],
                             poster="/images/garanches/video-accueil.jpg"
                             aria-hidden="true"
                         >
+                            {/* Sur téléphone, une version 720p plus légère ; sur ordinateur, la vidéo en 1080p. */}
+                            {HERO_VIDEO && heroVideo === HERO_VIDEO && <source src={HERO_VIDEO.replace(/\.mp4$/, "-mobile.mp4")} type="video/mp4" media="(max-width: 767px)" />}
                             <source src={heroVideo} type="video/mp4" />
-                            {HERO_VIDEO && heroVideo === HERO_VIDEO && <source src={HERO_VIDEO.replace(/\.mp4$/, ".webm")} type="video/webm" />}
                         </video>
                     )}
                 </div>
