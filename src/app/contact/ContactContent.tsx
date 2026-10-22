@@ -33,9 +33,9 @@ export default function ContactContent({ sujet, vin }: { sujet?: string; vin?: s
         const data = new FormData(event.currentTarget);
         const details = [
             data.get("nom"),
-            data.get("telephone") && `Tél. : ${data.get("telephone")}`,
-            data.get("date") && `Date souhaitée : ${data.get("date")}`,
-            data.get("personnes") && `Nombre de personnes : ${data.get("personnes")}`,
+            data.get("telephone") && `Tél. : ${data.get("telephone")}`,
+            data.get("date") && `Date souhaitée : ${data.get("date")}`,
+            data.get("personnes") && `Nombre de personnes : ${data.get("personnes")}`,
         ].filter(Boolean);
         const body = `${data.get("message") || ""}\n\n${details.join("\n")}`;
         window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
@@ -45,16 +45,16 @@ export default function ContactContent({ sujet, vin }: { sujet?: string; vin?: s
     // Arrivée depuis le bouton « Demander des bouteilles » d'une cuvée.
     const vinDemande = vin?.slice(0, 80);
     const messageInitial = vinDemande
-        ? `Bonjour,\n\nJe souhaiterais prendre des bouteilles de ${vinDemande}.\nNombre de bouteilles : \nRetrait au domaine ou livraison (adresse) : \n\nMerci !`
+        ? `Bonjour,\n\nJe souhaiterais prendre des bouteilles de ${vinDemande}.\nNombre de bouteilles : \nRetrait au domaine ou livraison (adresse) : \n\nMerci !`
         : undefined;
 
     return (
         <main className="min-h-screen bg-paper pt-32 pb-20">
             <FadeIn direction="down" className="text-center px-6 mb-16">
-                <span className="text-amber-700 font-serif italic text-lg mb-2 block">Une question ?</span>
+                <span className="text-amber-700 font-serif italic text-lg mb-2 block">Une question ?</span>
                 <h1 className="text-4xl md:text-5xl font-serif text-wine-900 mb-6 font-medium">Contact</h1>
                 <p className="max-w-xl mx-auto text-gray-600 font-light text-lg">
-                    Venir, écrire, appeler, réserver : nous sommes à votre écoute.
+                    Venir, écrire, appeler, réserver : nous sommes à votre écoute.
                 </p>
             </FadeIn>
 
@@ -105,7 +105,7 @@ export default function ContactContent({ sujet, vin }: { sujet?: string; vin?: s
                                 <div>
                                     <span className="text-amber-700 uppercase tracking-widest text-xs font-bold block mb-1">Horaires d'Ouverture</span>
                                     <p className="text-gray-700 leading-relaxed">
-                                        Lundi au Samedi : 09h00 - 18h00<br />
+                                        Lundi au Samedi : 09h00 - 18h00<br />
                                         <span className="text-sm text-gray-500 italic">Fermé le Dimanche et jours fériés</span>
                                     </p>
                                 </div>
@@ -173,7 +173,7 @@ export default function ContactContent({ sujet, vin }: { sujet?: string; vin?: s
 
                             <div>
                                 <label className="block text-xs uppercase tracking-widest text-gray-500 mb-2 font-bold ml-2">Message</label>
-                                <textarea name="message" rows={vinDemande ? 8 : 5} defaultValue={messageInitial} className="w-full bg-white border border-gray-100 p-4 rounded-md focus:outline-none focus:ring-2 focus:ring-wine-100 focus:border-wine-300 transition-all shadow-sm resize-none" placeholder="Comment pouvons-nous vous aider ?"></textarea>
+                                <textarea name="message" rows={vinDemande ? 8 : 5} defaultValue={messageInitial} className="w-full bg-white border border-gray-100 p-4 rounded-md focus:outline-none focus:ring-2 focus:ring-wine-100 focus:border-wine-300 transition-all shadow-sm resize-none" placeholder="Comment pouvons-nous vous aider ?"></textarea>
                             </div>
 
                             <button type="submit" className="w-full bg-wine-900 text-white py-4 uppercase tracking-widest text-xs font-bold hover:bg-amber-600 transition-colors">

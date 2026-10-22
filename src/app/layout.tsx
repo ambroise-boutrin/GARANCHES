@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     default: "Domaine de Garanches | Vins de Brouilly & Bourgogne Blanc - Odenas",
     template: "%s | Domaine de Garanches"
   },
-  description: "Domaine viticole à Odenas, au pied du Mont Brouilly : vins de Brouilly et Bourgogne blanc, dégustation au domaine, visite des vignes et vente en ligne.",
+  description: "Domaine viticole à Odenas, au pied du Mont Brouilly : vins de Brouilly et Bourgogne blanc, dégustation au domaine, visite des vignes et vente en ligne.",
   keywords: ["Brouilly", "Bourgogne Blanc", "Odenas", "Domaine de Garanches", "Romain Martinache", "Aurélie Crozet", "Gamay", "Chardonnay", "Vente vin Beaujolais", "Dégustation Odenas"],
   authors: [{ name: "Domaine de Garanches" }],
   creator: "Domaine de Garanches",
@@ -112,7 +112,7 @@ const jsonLd = {
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "Où se situe le Domaine de Garanches ?",
+        "name": "Où se situe le Domaine de Garanches ?",
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "Le Domaine de Garanches est situé au 345 chemin de Garanches à Odenas (69460), au pied du Mont Brouilly dans le Beaujolais."
@@ -120,7 +120,7 @@ const jsonLd = {
       },
       {
         "@type": "Question",
-        "name": "Quels types de vins produisez-vous ?",
+        "name": "Quels types de vins produisez-vous ?",
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "Nous produisons principalement des crus du Beaujolais (Brouilly) ainsi que du Bourgogne Blanc (Chardonnay) et du vin pétillant méthode traditionnelle."
@@ -128,7 +128,7 @@ const jsonLd = {
       },
       {
         "@type": "Question",
-        "name": "Proposez-vous des visites et dégustations ?",
+        "name": "Proposez-vous des visites et dégustations ?",
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "Oui, nous accueillons les visiteurs pour des dégustations et des visites du domaine. Nous vous recommandons de nous contacter à l'avance pour une meilleure expérience."
@@ -136,7 +136,7 @@ const jsonLd = {
       },
       {
         "@type": "Question",
-        "name": "Comment commander vos vins ?",
+        "name": "Comment commander vos vins ?",
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "Vous pouvez commander nos vins directement sur notre boutique en ligne avec paiement sécurisé. Nous expédions dans toute la France."

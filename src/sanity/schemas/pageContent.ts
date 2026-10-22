@@ -43,7 +43,7 @@ export default {
             name: 'video',
             title: 'Vidéo',
             type: 'file',
-            description: "Accueil, section « hero » : vidéo en fond du haut de la page. MP4 sans son, moins de 20 Mo.",
+            description: "Accueil, section « hero » : vidéo en fond du haut de la page. MP4 sans son, moins de 20 Mo.",
             options: { accept: 'video/mp4,video/webm' },
         },
     ],

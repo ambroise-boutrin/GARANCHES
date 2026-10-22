@@ -12,7 +12,7 @@ export default function CGVPage() {
             <div className="max-w-3xl mx-auto px-6 prose prose-stone">
                 <h1 className="text-3xl font-serif text-wine-900 mb-8 border-b-2 border-wine-100 pb-4">Conditions Générales de Vente</h1>
 
-                <p className="text-sm font-light italic mb-8">Dernière mise à jour : Février 2026</p>
+                <p className="text-sm font-light italic mb-8">Dernière mise à jour : Février 2026</p>
 
                 <h3>1. Objet</h3>
                 <p>
@@ -54,18 +54,18 @@ export default function CGVPage() {
                 </p>
 
                 <div className="bg-stone-50 p-6 rounded-lg border border-stone-200 my-6 not-prose">
-                    <h4 className="font-bold text-wine-900 mb-4">Modèle de formulaire de rétractation :</h4>
+                    <h4 className="font-bold text-wine-900 mb-4">Modèle de formulaire de rétractation :</h4>
                     <p className="text-sm italic mb-4">(Veuillez compléter et renvoyer le présent formulaire uniquement si vous souhaitez vous rétracter du contrat)</p>
                     <p className="text-sm">
                         À l'attention du <strong>Domaine de Garanches</strong>,<br />
                         345 chemin de Garanches, 69460 Odenas<br />
-                        Email : contact@domainedegaranches.com<br /><br />
-                        Je/nous (*) vous notifie/notifions (*) par la présente ma/notre (*) rétractation du contrat portant sur la vente du bien (*)/pour la prestation de services (*) ci-dessous :<br /><br />
-                        Commandé le (*)/reçu le (*) : ..........................................................................<br />
-                        Nom du (des) consommateur(s) : ..........................................................................<br />
-                        Adresse du (des) consommateur(s) : ..........................................................................<br />
-                        Signature du (des) consommateur(s) (uniquement en cas de notification du présent formulaire sur papier) :<br /><br />
-                        Date : ..........................................................................<br />
+                        Email : contact@domainedegaranches.com<br /><br />
+                        Je/nous (*) vous notifie/notifions (*) par la présente ma/notre (*) rétractation du contrat portant sur la vente du bien (*)/pour la prestation de services (*) ci-dessous :<br /><br />
+                        Commandé le (*)/reçu le (*) : ..........................................................................<br />
+                        Nom du (des) consommateur(s) : ..........................................................................<br />
+                        Adresse du (des) consommateur(s) : ..........................................................................<br />
+                        Signature du (des) consommateur(s) (uniquement en cas de notification du présent formulaire sur papier) :<br /><br />
+                        Date : ..........................................................................<br />
                         <span className="text-xs">(*) Rayez la mention inutile.</span>
                     </p>
                 </div>
@@ -75,12 +75,12 @@ export default function CGVPage() {
                     Conformément aux articles L.616-1 et R.616-1 du code de la consommation, nous proposons un dispositif de médiation de la consommation.
                     En cas de litige non résolu par une réclamation préalable auprès de notre service client, vous pouvez contacter le médiateur de la consommation compétent.
                     <br /><br />
-                    <strong>Médiateur de la consommation :</strong><br />
+                    <strong>Médiateur de la consommation :</strong><br />
                     [Nom et coordonnées du médiateur à renseigner]<br />
                     [Site web du médiateur]
                 </p>
                 <p>
-                    À défaut, vous pouvez utiliser la plateforme européenne de règlement en ligne des litiges (RLL) disponible à l'adresse suivante :
+                    À défaut, vous pouvez utiliser la plateforme européenne de règlement en ligne des litiges (RLL) disponible à l'adresse suivante :
                     <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener noreferrer" className="text-wine-800 underline">https://ec.europa.eu/consumers/odr</a>.
                 </p>
 

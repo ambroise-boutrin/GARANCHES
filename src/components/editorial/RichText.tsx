@@ -1,9 +1,10 @@
 import { Fragment } from "react";
+import { typo } from "@/lib/typo";
 
 // Affiche un texte du document maître : une ligne vide sépare deux paragraphes,
 // un simple retour à la ligne est conservé, **texte** passe en gras.
 export default function RichText({ text, className = "" }: { text: string; className?: string }) {
-    const paragraphs = text.trim().split(/\n\s*\n/);
+    const paragraphs = typo(text).trim().split(/\n\s*\n/);
 
     return (
         <div className={`space-y-5 ${className}`}>

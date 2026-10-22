@@ -231,7 +231,7 @@ export default function HomePageClient({ products, content }: { products: any[],
                                             Garanches porte une histoire qui dépasse largement celle d'une propriété. Des hommes et des femmes y ont travaillé, réfléchi, transmis et parfois dû inventer pour que la vigne puisse continuer.
                                         </p>
                                         <p>
-                                            Ici, le granit se décline du bleu au rose, et les générations de vignes se côtoient : certaines ont près de 150 ans, d'autres n'ont que quelques années. Nous les regardons vivre au fil des saisons, avec ce qu'elles portent du passé et ce qu'elles promettent pour demain.
+                                            Ici, le granit se décline du bleu au rose, et les générations de vignes se côtoient : certaines ont près de 150 ans, d'autres n'ont que quelques années. Nous les regardons vivre au fil des saisons, avec ce qu'elles portent du passé et ce qu'elles promettent pour demain.
                                         </p>
                                     </>
                                 )}
@@ -284,7 +284,7 @@ export default function HomePageClient({ products, content }: { products: any[],
                         <FadeIn delay={0.3} className="bg-white p-8 rounded-lg shadow-sm border border-stone-200">
                             <h3 className="text-2xl font-serif text-wine-900 mb-4">Notre façon de faire</h3>
                             <p className="text-gray-600 font-light leading-relaxed text-sm">
-                                Vignerons indépendants, certifiés HVE. Rangs enherbés, sols travaillés, vendanges à la main : nous suivons la vigne au fil des saisons.
+                                Vignerons indépendants, certifiés HVE. Rangs enherbés, sols travaillés, vendanges à la main : nous suivons la vigne au fil des saisons.
                             </p>
                         </FadeIn>
                     </div>

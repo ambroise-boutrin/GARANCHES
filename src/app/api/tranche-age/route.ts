@@ -29,7 +29,7 @@ export async function POST(request: Request) {
             .patch(id, (p) => p.setIfMissing({ [champ]: 0, total: 0 }).inc({ [champ]: 1, total: 1 }))
             .commit();
     } catch (e) {
-        console.error('Statistiques d\'âge :', e);
+        console.error('Statistiques d\'âge :', e);
     }
     return new NextResponse(null, { status: 204 });
 }

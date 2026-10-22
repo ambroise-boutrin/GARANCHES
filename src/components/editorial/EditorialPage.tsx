@@ -10,13 +10,14 @@ import { PAGES, type Bloc, type Page } from "@/data/architecture";
 import type { BlocOverride } from "@/sanity/lib/queries";
 import { urlFor } from "@/sanity/lib/image";
 import { cadrage } from "@/data/cadrages";
+import { typo } from "@/lib/typo";
 
 export function bookingHref(sujet: string) {
     return `/contact?sujet=${encodeURIComponent(sujet)}#formulaire`;
 }
 
 function BlocSection({ bloc, override, index }: { bloc: Bloc; override?: BlocOverride; index: number }) {
-    const title = override?.titre || bloc.title;
+    const title = typo(override?.titre || bloc.title || "");
     const body = override?.texte || bloc.body;
     const image = override?.image?.asset ? urlFor(override.image).width(1400).url() : bloc.image;
     const action = bloc.booking
