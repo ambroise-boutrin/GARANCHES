@@ -9,6 +9,10 @@ export type Bloc = {
     body?: string;
     image?: string;
     alt?: string;
+    // Archive ou diplôme : image montrée en entier plutôt que recadrée.
+    document?: boolean;
+    /** Photo en largeur : cadre moins haut, surtout sur téléphone. */
+    paysage?: boolean;
     cta?: { label: string; href: string };
     // Sujet pré-rempli dans le formulaire de contact pour le bouton « Réserver ».
     booking?: { label: string; sujet: string };
@@ -56,7 +60,7 @@ Et aujourd'hui, par celles et ceux qui viennent la découvrir, goûter ses vins 
         path: "le-lieu/le-domaine",
         label: "Le domaine",
         description: "Odenas, le Mont Brouilly, le granit et les vignes de Garanches.",
-        image: "/images/garanches/maison-granit.jpg",
+        image: "/images/23_slide002.jpg",
         cta: "Découvrir le domaine",
         blocs: [
             {
@@ -84,7 +88,7 @@ Nous les regardons vivre au fil des saisons, avec ce qu'elles portent du passé 
         path: "le-lieu/histoire",
         label: "L'histoire",
         description: "Histoire du domaine de Garanches, personnages clés et archives.",
-        image: "/images/garanches/diplome-lyon-1894.jpg",
+        image: "/images/10_slide003.jpg",
         cta: "Entrer dans l'histoire",
         blocs: [
             {
@@ -99,6 +103,7 @@ Certaines de leurs histoires ont même dépassé Garanches et rejoint celle du v
 Aujourd'hui, nous en gardons les traces et nous continuons à les faire vivre.`,
                 image: "/images/garanches/diplome-lyon-1894.jpg",
                 alt: "Diplôme de l'Exposition universelle et coloniale de Lyon, 1894",
+                document: true,
             },
             {
                 id: "personnages-cles",
@@ -120,7 +125,7 @@ Parce qu'un lieu se comprend aussi à travers celles et ceux qui l'ont façonné
         path: "le-lieu/traces",
         label: "Traces",
         description: "Plants anciens, documents, photographies et archives de Garanches.",
-        image: "/images/garanches/loquet-porte.jpg",
+        image: "/images/10_slide003.jpg",
         cta: "Voir les traces",
         blocs: [
             {
@@ -138,7 +143,7 @@ Ici, l'histoire se découvre au fil des traces.`,
                 cta: { label: "Voir les Carnets", href: "/carnets" },
             },
             { id: "plants-anciens", title: "Plants anciens", image: "/images/16_image.jpg", alt: "Vieilles vignes de Garanches" },
-            { id: "documents", title: "Documents", image: "/images/garanches/concours-macon-1968.jpg", alt: "Diplôme du concours des grands vins de France, Mâcon 1968" },
+            { id: "documents", title: "Documents", image: "/images/garanches/concours-macon-1968.jpg", alt: "Diplôme du concours des grands vins de France, Mâcon 1968", document: true },
         ],
         children: ["le-lieu/histoire", "carnets"],
     },
@@ -146,7 +151,7 @@ Ici, l'histoire se découvre au fil des traces.`,
         path: "le-lieu/ceux-qui-le-font-vivre",
         label: "Ceux qui le font vivre",
         description: "Les personnes, les gestes et la transmission qui font vivre Garanches.",
-        image: "/images/garanches/vignerons-garanches.jpg",
+        image: "/images/22_image.jpg",
         cta: "Découvrir",
         blocs: [
             {
@@ -176,7 +181,7 @@ Parfois plusieurs.
 Nous assemblons, élevons et faisons évoluer nos vins avec une même exigence : trouver l'expression juste de chaque cuvée.
 Des vins précis, vivants, en petites quantités.
 Des vins qui racontent Garanches, chacun à leur manière.`,
-                image: "/images/garanches/vendanges-raisins.jpg",
+                image: "/images/garanches/vendanges-raisins.jpg", paysage: true,
                 alt: "Raisins de gamay versés à l'arrivée des vendanges",
             },
         ],
@@ -193,7 +198,7 @@ Des vins qui racontent Garanches, chacun à leur manière.`,
         path: "les-vins/notre-facon-de-faire",
         label: "Notre façon de faire",
         description: "Terre, vignes, saisons, millésimes, élevage et assemblages à Garanches.",
-        image: "/images/garanches/vendanges-geste.jpg",
+        image: "/images/0_image.jpg",
         cta: "Découvrir notre façon de faire",
         blocs: [
             { id: "introduction", title: "Notre façon de faire", image: "/images/garanches/vendanges-geste.jpg", alt: "Le raisin poussé à la fourche au moment des vendanges" },
@@ -206,7 +211,7 @@ Des vins qui racontent Garanches, chacun à leur manière.`,
             {
                 id: "millesime-et-temps",
                 title: "Millésime et temps",
-                image: "/images/garanches/vendanges-chai.jpg",
+                image: "/images/garanches/vendanges-chai.jpg", paysage: true,
                 alt: "Un vigneron au chai pendant les vendanges",
             },
         ],
@@ -227,7 +232,7 @@ Des vins qui racontent Garanches, chacun à leur manière.`,
         description: "Parcelles, sols et granit : les terroirs de Garanches.",
         image: "/images/23_slide002.jpg",
         cta: "Découvrir les terroirs",
-        blocs: [{ id: "introduction", title: "Les terroirs", image: "/images/19_image.jpg", alt: "Parcelles du domaine" }],
+        blocs: [{ id: "introduction", title: "Les terroirs", image: "/images/19_image.jpg", paysage: true, alt: "Parcelles du domaine" }],
         children: ["le-lieu/le-domaine", "rencontrons-garanches/decouvrir-les-vignes"],
     },
     {
@@ -288,7 +293,7 @@ Partageons nos impressions, nos questions, nos découvertes, et laissons la conv
                 image: "/images/3_image.jpg",
                 alt: "Autour d'une table à Garanches",
             },
-            { id: "esprit", title: "L'esprit de la rencontre", image: "/images/34_slide001.jpg", alt: "La cave de Garanches" },
+            { id: "esprit", title: "L'esprit de la rencontre", image: "/images/34_slide001.jpg", paysage: true, alt: "La cave de Garanches" },
             {
                 id: "comment-ca-se-passe",
                 title: "Comment ça se passe ?",
@@ -307,7 +312,7 @@ Partageons nos impressions, nos questions, nos découvertes, et laissons la conv
         path: "rencontrons-garanches/deguster-au-domaine",
         label: "Déguster au domaine",
         description: "Visite de la cave et dégustation au domaine de Garanches, à Odenas.",
-        image: "/images/garanches/degustation-foudre.jpg",
+        image: "/images/34_slide001.jpg",
         cta: "Déguster au domaine",
         blocs: [
             {
@@ -324,7 +329,7 @@ Découvrons les vinifications, les élevages et les choix qui façonnent nos cuv
 Puis goûtons quelques cuvées au cœur de leur histoire.
 
 **Du chai au verre, partageons le chemin du vin.**`,
-                image: "/images/garanches/degustation-foudre.jpg",
+                image: "/images/garanches/degustation-foudre.jpg", paysage: true,
                 alt: "Un verre tiré directement du foudre, dans la cave",
             },
             {
@@ -396,7 +401,7 @@ Une réunion d'association, un rendez-vous d'équipe, une rencontre entre amis�
 Autour d'une table, dans les vignes ou au cœur du domaine, nous imaginons ensemble un moment simple, convivial et vivant.
 
 **Un lieu pour se retrouver, échanger et prendre le temps.**`,
-                image: "/images/11_image.jpg",
+                image: "/images/11_image.jpg", paysage: true,
                 alt: "Un groupe réuni dans les vignes de Garanches",
             },
             {
@@ -456,7 +461,7 @@ Nous choisissons ensemble ce qui donnera à ce moment sa couleur.
                 id: "commander",
                 title: "Commander",
                 body: `Nos vins sont expédiés directement depuis notre cave à Odenas, partout en France.`,
-                image: "/images/34_slide001.jpg",
+                image: "/images/34_slide001.jpg", paysage: true,
                 alt: "La cave de Garanches",
                 cta: { label: "Commander", href: "/les-vins/cuvees" },
             },
