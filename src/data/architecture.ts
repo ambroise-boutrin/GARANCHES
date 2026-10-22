@@ -237,9 +237,9 @@ Des vins qui racontent Garanches, chacun à leur manière.`,
         path: "les-vins/a-table",
         label: "À table",
         description: "Plats, accords et moments de dégustation avec les vins de Garanches.",
-        image: "/images/3_image.jpg",
+        image: "/images/garanches/domaine-colline.jpg",
         cta: "À table",
-        blocs: [{ id: "introduction", title: "À table", image: "/images/garanches/ambroise-verre.jpg", alt: "Ambroise Stagnara, un verre de Garanches à la main" }],
+        blocs: [{ id: "introduction", title: "À table" }],
         children: ["les-vins/cuvees", "rencontrons-garanches/les-rencontres"],
     },
 
@@ -277,7 +277,7 @@ Parce qu'ici, les vins se découvrent aussi avec le lieu et avec ceux qui le fon
         path: "rencontrons-garanches/les-rencontres",
         label: "Les tables d'hôtes",
         description: "Table d'hôtes, vins, repas et conversations au domaine de Garanches.",
-        image: "/images/garanches/accueil-cave.jpg",
+        image: "/images/garanches/domaine-soir.jpg",
         cta: "Découvrir les Rencontres",
         blocs: [
             {
@@ -288,8 +288,6 @@ Un plat rencontre un vin.
 Un vin raconte une histoire.
 Une histoire en appelle une autre...
 Partageons nos impressions, nos questions, nos découvertes, et laissons la conversation nous emmener.`,
-                image: "/images/garanches/michel-portrait.jpg",
-                alt: "Michel Stagnara, au domaine de Garanches",
             },
             { id: "esprit", title: "L'esprit de la rencontre" },
             {
@@ -365,8 +363,8 @@ Nous recevons avec plaisir les visiteurs individuels comme les groupes. Pour vou
 Puis quatre vins à goûter, pour retrouver dans le verre ce que nous venons de découvrir dans les vignes.
 
 **Du sol au verre, entrez dans l'univers de Garanches.**`,
-                image: "/images/garanches/terrasse-vignes.jpg",
-                alt: "Sur la terrasse, face aux vignes de Garanches",
+                image: "/images/garanches/vignes-plaine.jpg", paysage: true,
+                alt: "Les parcelles de Garanches, entre vignes et chemins",
             },
             {
                 id: "comment-ca-se-passe",
@@ -399,8 +397,8 @@ Une réunion d'association, un rendez-vous d'équipe, une rencontre entre amis�
 Autour d'une table, dans les vignes ou au cœur du domaine, nous imaginons ensemble un moment simple, convivial et vivant.
 
 **Un lieu pour se retrouver, échanger et prendre le temps.**`,
-                image: "/images/garanches/terrasse-domaine.jpg",
-                alt: "Sur la terrasse du domaine, face aux vignes",
+                image: "/images/garanches/domaine-bois.jpg", paysage: true,
+                alt: "Le domaine de Garanches au cœur des vignes",
             },
             {
                 id: "comment-ca-se-passe",
@@ -431,7 +429,7 @@ Nous choisissons ensemble ce qui donnera à ce moment sa couleur.
         image: "/images/garanches/maison-parc.jpg",
         cta: "Découvrir les événements",
         blocs: [
-            { id: "introduction", title: "Événements", image: "/images/garanches/accueil-terrasse.jpg", alt: "Accueil sur la terrasse de Garanches" },
+            { id: "introduction", title: "Événements", image: "/images/garanches/vignes-or.jpg", paysage: true, alt: "Les vignes de Garanches dans la lumière dorée du soir" },
             {
                 id: "comment-ca-se-passe",
                 title: "Comment ça se passe ?",
@@ -577,7 +575,7 @@ export const HOME_PORTES = [
     },
     {
         path: "rencontrons-garanches",
-        image: "/images/garanches/accueil-cave.jpg",
+        image: "/images/garanches/maison-jardin.jpg",
         entrees: [
             { label: "Les Rencontres", motsCles: "Table d'hôtes • vins • conversations", href: "/rencontrons-garanches/les-rencontres" },
             { label: "Expériences", motsCles: "Dégustations • vignes • privé • événements", href: "/rencontrons-garanches" },
