@@ -1,18 +1,19 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Politique de Confidentialité | Domaine de Garanches",
+    title: "Politique de Confidentialité",
     description: "Découvrez comment le Domaine de Garanches protège et utilise vos données personnelles conformément au RGPD.",
+    alternates: { canonical: "/politique-confidentialite" },
 };
 
 export default function PolitiqueConfidentialite() {
     return (
         <main className="min-h-screen pt-32 pb-20 bg-white">
-            <div className="max-w-3xl mx-auto px-6 prose prose-stone text-justify">
+            <div className="max-w-3xl mx-auto px-6 prose prose-stone">
                 <h1 className="text-3xl font-serif text-wine-900 mb-8 border-b-2 border-wine-100 pb-4">Politique de Confidentialité</h1>
 
                 <p className="text-sm text-stone-500 italic mb-8">
-                    Dernière mise à jour : {new Date().toLocaleDateString('fr-FR', { year: 'numeric', month: 'long' })}
+                    Dernière mise à jour : {new Date().toLocaleDateString('fr-FR', { year: 'numeric', month: 'long' })}
                 </p>
 
                 <p>
@@ -21,27 +22,29 @@ export default function PolitiqueConfidentialite() {
 
                 <h2 className="text-xl font-serif text-wine-800 mt-8 mb-4">1. Responsable du traitement</h2>
                 <p>
-                    Les données personnelles collectées sur ce site sont traitées par :<br />
+                    Les données personnelles collectées sur ce site sont traitées par :<br />
                     <strong>Domaine de Garanches</strong><br />
                     345 chemin de Garanches, 69460 Odenas<br />
-                    Email : contact@domainedegaranches.com
+                    Email : contact@domainedegaranches.com
                 </p>
 
                 <h2 className="text-xl font-serif text-wine-800 mt-8 mb-4">2. Données collectées</h2>
-                <p>Nous pouvons collecter les données suivantes :</p>
+                <p>Nous pouvons collecter les données suivantes :</p>
                 <ul className="list-disc pl-5 space-y-2">
-                    <li><strong>Données de commande :</strong> Nom, prénom, adresse de livraison et de facturation, email, numéro de téléphone. Ces données sont nécessaires à l'exécution du contrat de vente.</li>
-                    <li><strong>Données de contact :</strong> Informations transmises via notre formulaire de contact ou par email.</li>
-                    <li><strong>Données de navigation (Cookies) :</strong> Voir notre gestionnaire de cookies pour plus de détails.</li>
+                    <li><strong>Données de commande :</strong> Nom, prénom, adresse de livraison et de facturation, email, numéro de téléphone. Ces données sont nécessaires à l'exécution du contrat de vente.</li>
+                    <li><strong>Données de contact :</strong> Informations transmises via notre formulaire de contact ou par email.</li>
+                    <li><strong>Données de navigation (Cookies) :</strong> Voir notre gestionnaire de cookies pour plus de détails.</li>
+                    <li id="tranches-age" className="scroll-mt-28"><strong>Vérification de l'âge :</strong> à l'entrée du site, nous vous demandons votre date de naissance pour vérifier que vous êtes majeur. Cette date est utilisée uniquement dans votre navigateur et n'est ni transmise ni conservée. Seule votre tranche d'âge (18-24, 25-34, 35-44, 45-54, 55-64, 65 ans et plus) est ajoutée à un compteur mensuel anonyme, sans adresse IP ni identifiant, pour nous aider à mieux connaître nos visiteurs. Aucune donnée ne permet de vous identifier.</li>
                 </ul>
 
                 <h2 className="text-xl font-serif text-wine-800 mt-8 mb-4">3. Finalités du traitement</h2>
-                <p>Vos données sont collectées pour :</p>
+                <p>Vos données sont collectées pour :</p>
                 <ul className="list-disc pl-5 space-y-2">
                     <li>Gérer et expédier vos commandes de vin.</li>
                     <li>Répondre à vos demandes d'information ou de visite.</li>
                     <li>Respecter nos obligations légales (comptabilité, vérification de l'âge légal).</li>
                     <li>Améliorer notre site et nos services.</li>
+                    <li>Établir des statistiques anonymes sur l'âge de nos visiteurs, pour adapter notre communication.</li>
                 </ul>
 
                 <h2 className="text-xl font-serif text-wine-800 mt-8 mb-4">4. Destinataires des données</h2>
@@ -52,9 +55,9 @@ export default function PolitiqueConfidentialite() {
 
                 <h2 className="text-xl font-serif text-wine-800 mt-8 mb-4">5. Conservation des données</h2>
                 <ul className="list-disc pl-5 space-y-2">
-                    <li><strong>Commandes :</strong> Conservées pendant 10 ans (obligation légale comptable).</li>
-                    <li><strong>Demandes de contact :</strong> Conservées pendant 3 ans maximum après le dernier contact.</li>
-                    <li><strong>Cookies :</strong> Conservés 13 mois maximum.</li>
+                    <li><strong>Commandes :</strong> Conservées pendant 10 ans (obligation légale comptable).</li>
+                    <li><strong>Demandes de contact :</strong> Conservées pendant 3 ans maximum après le dernier contact.</li>
+                    <li><strong>Cookies :</strong> Conservés 13 mois maximum.</li>
                 </ul>
 
                 <h2 className="text-xl font-serif text-wine-800 mt-8 mb-4">6. Vos droits (RGPD)</h2>

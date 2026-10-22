@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Montserrat } from "next/font/google";
-import { cookies } from "next/headers";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -11,11 +10,10 @@ import ScrollToTop from "@/components/ScrollToTop";
 import Script from "next/script";
 import { Providers } from "./providers";
 import CookieConsent from "@/components/CookieConsent";
-import MobileStickyCart from "@/components/MobileStickyCart";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600"],
   variable: "--font-serif",
   display: 'swap',
 });
@@ -36,7 +34,7 @@ export const metadata: Metadata = {
     default: "Domaine de Garanches | Vins de Brouilly & Bourgogne Blanc - Odenas",
     template: "%s | Domaine de Garanches"
   },
-  description: "Domaine viticole historique à Odenas depuis 1788. Vins de Brouilly et Bourgogne Blanc par Romain Martinache & Aurélie Crozet. Dégustation et vente directe.",
+  description: "Domaine viticole à Odenas, au pied du Mont Brouilly : vins de Brouilly et Bourgogne blanc, dégustation au domaine, visite des vignes et vente en ligne.",
   keywords: ["Brouilly", "Bourgogne Blanc", "Odenas", "Domaine de Garanches", "Romain Martinache", "Aurélie Crozet", "Gamay", "Chardonnay", "Vente vin Beaujolais", "Dégustation Odenas"],
   authors: [{ name: "Domaine de Garanches" }],
   creator: "Domaine de Garanches",
@@ -114,7 +112,7 @@ const jsonLd = {
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "Où se situe le Domaine de Garanches ?",
+        "name": "Où se situe le Domaine de Garanches ?",
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "Le Domaine de Garanches est situé au 345 chemin de Garanches à Odenas (69460), au pied du Mont Brouilly dans le Beaujolais."
@@ -122,7 +120,7 @@ const jsonLd = {
       },
       {
         "@type": "Question",
-        "name": "Quels types de vins produisez-vous ?",
+        "name": "Quels types de vins produisez-vous ?",
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "Nous produisons principalement des crus du Beaujolais (Brouilly) ainsi que du Bourgogne Blanc (Chardonnay) et du vin pétillant méthode traditionnelle."
@@ -130,7 +128,7 @@ const jsonLd = {
       },
       {
         "@type": "Question",
-        "name": "Proposez-vous des visites et dégustations ?",
+        "name": "Proposez-vous des visites et dégustations ?",
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "Oui, nous accueillons les visiteurs pour des dégustations et des visites du domaine. Nous vous recommandons de nous contacter à l'avance pour une meilleure expérience."
@@ -138,7 +136,7 @@ const jsonLd = {
       },
       {
         "@type": "Question",
-        "name": "Comment commander vos vins ?",
+        "name": "Comment commander vos vins ?",
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "Vous pouvez commander nos vins directement sur notre boutique en ligne avec paiement sécurisé. Nous expédions dans toute la France."
@@ -153,11 +151,17 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const cookieStore = await cookies();
-  const hasConfirmed = cookieStore.get("age-confirmed")?.value === "true";
-
   return (
-    <html lang="fr" className={`${cormorant.variable} ${montserrat.variable}`}>
+    <html lang="fr" suppressHydrationWarning className={`${cormorant.variable} ${montserrat.variable}`}>
+      <head>
+        {/* Masque la vérification d'âge avant l'affichage si elle a déjà été validée,
+            sans lire les cookies côté serveur (les pages restent en cache et s'ouvrent instantanément). */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{if(document.cookie.indexOf("age-confirmed=true")>-1||localStorage.getItem("age-confirmed"))document.documentElement.classList.add("age-ok")}catch(e){}`,
+          }}
+        />
+      </head>
       <body className="bg-white text-stone-900 antialiased overflow-x-hidden selection:bg-wine-900 selection:text-white">
         <Script
           id="json-ld"
@@ -170,7 +174,7 @@ export default async function RootLayout({
 
         <Providers>
           <CustomCursor />
-          <AgeGate initialShow={!hasConfirmed} />
+          <AgeGate />
 
           <CookieConsent />
           <SmoothScroll />
@@ -178,14 +182,9 @@ export default async function RootLayout({
           {children}
           <Footer />
           <ScrollToTop />
-          <MobileStickyCart />
         </Providers>
 
 
-        <Script
-          src="https://gateway.sumup.com/gateway/ecom/card/v2/sdk.js"
-          strategy="lazyOnload"
-        />
         <Script
           defer
           data-domain="domainedegaranches.com"

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from 'next/link';
+import { PORTES } from '@/data/architecture';
 
 export default function Footer() {
     const currentYear = new Date().getFullYear();
@@ -23,9 +24,11 @@ export default function Footer() {
 
 
                 <div className="flex flex-col items-center gap-4 text-sm uppercase tracking-widest font-semibold text-gray-300">
-                    <Link href="/notre-histoire" className="hover:text-gold-500 transition-colors">Notre Histoire</Link>
-                    <Link href="/nos-vins" className="hover:text-gold-500 transition-colors">Boutique</Link>
-                    <Link href="/visite" className="hover:text-gold-500 transition-colors">Visite & Dégustation</Link>
+                    {PORTES.map((porte) => (
+                        <Link key={porte.path} href={porte.path} className="hover:text-gold-500 transition-colors">{porte.label}</Link>
+                    ))}
+                    <Link href="/carnets" className="hover:text-gold-500 transition-colors">Les Carnets</Link>
+                    <Link href="/acheter" className="hover:text-gold-500 transition-colors">Acheter / Trouver Garanches</Link>
                 </div>
 
 

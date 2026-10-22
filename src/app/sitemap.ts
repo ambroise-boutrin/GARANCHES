@@ -1,56 +1,31 @@
 import { MetadataRoute } from 'next';
+import { GENERIC_PATHS } from '@/data/architecture';
+import { getCarnets } from '@/sanity/lib/queries';
+import { getWines } from '@/lib/wines';
+import { cuveeHref } from '@/lib/wineSlug';
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export const revalidate = 3600;
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const baseUrl = 'https://domainedegaranches.com';
+    const [carnets, wines] = await Promise.all([getCarnets(), getWines()]);
+
+    const entry = (path: string, priority: number, changeFrequency: 'weekly' | 'monthly' | 'yearly' = 'yearly', lastModified = new Date()) => ({
+        url: `${baseUrl}${path}`,
+        lastModified,
+        changeFrequency,
+        priority,
+    });
 
     return [
-        {
-            url: baseUrl,
-            lastModified: new Date(),
-            changeFrequency: 'yearly',
-            priority: 1,
-        },
-        {
-            url: `${baseUrl}/nos-vins`,
-            lastModified: new Date(),
-            changeFrequency: 'monthly',
-            priority: 0.8,
-        },
-        {
-            url: `${baseUrl}/notre-histoire`,
-            lastModified: new Date(),
-            changeFrequency: 'yearly',
-            priority: 0.8,
-        },
-        {
-            url: `${baseUrl}/visite`,
-            lastModified: new Date(),
-            changeFrequency: 'yearly',
-            priority: 0.7,
-        },
-        {
-            url: `${baseUrl}/contact`,
-            lastModified: new Date(),
-            changeFrequency: 'yearly',
-            priority: 0.6,
-        },
-        {
-            url: `${baseUrl}/mentions-legales`,
-            lastModified: new Date(),
-            changeFrequency: 'yearly',
-            priority: 0.3,
-        },
-        {
-            url: `${baseUrl}/cgv`,
-            lastModified: new Date(),
-            changeFrequency: 'yearly',
-            priority: 0.3,
-        },
-        {
-            url: `${baseUrl}/politique-confidentialite`,
-            lastModified: new Date(),
-            changeFrequency: 'yearly',
-            priority: 0.3,
-        },
+        entry('', 1),
+        ...GENERIC_PATHS.map((path) => entry(`/${path}`, path.includes('/') ? 0.7 : 0.9, path === 'les-vins/cuvees' ? 'monthly' : 'yearly')),
+        ...wines.map((wine: any) => entry(cuveeHref(wine), 0.7, 'monthly')),
+        entry('/carnets', 0.8, 'weekly'),
+        ...carnets.map((c: any) => entry(`/carnets/${c.slug}`, 0.6, 'yearly', c.date ? new Date(c.date) : new Date())),
+        entry('/contact', 0.6),
+        entry('/mentions-legales', 0.3),
+        entry('/cgv', 0.3),
+        entry('/politique-confidentialite', 0.3),
     ];
 }

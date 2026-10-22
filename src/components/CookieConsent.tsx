@@ -82,7 +82,7 @@ export default function CookieConsent() {
                                     </h3>
                                 </div>
                                 <p className="text-sm text-stone-600 leading-relaxed max-w-2xl">
-                                    Nous utilisons des cookies essentiels pour le bon fonctionnement du site (panier, vérification d'âge).
+                                    Nous utilisons des cookies essentiels pour le bon fonctionnement du site (vérification d'âge).
                                     D'autres cookies peuvent être utilisés pour améliorer votre expérience.
                                     <Link href="/mentions-legales" className="ml-1 text-wine-900 underline underline-offset-2 hover:text-wine-700 font-medium">
                                         En savoir plus
@@ -157,7 +157,7 @@ export default function CookieConsent() {
                                             <span className="text-[10px] font-bold uppercase tracking-wider text-wine-900 bg-wine-50 px-2 py-0.5 rounded-full border border-wine-100">Toujours actif</span>
                                         </div>
                                         <p className="text-sm text-stone-500">
-                                            Indispensables au bon fonctionnement du site (panier, sécurité).
+                                            Indispensables au bon fonctionnement du site (vérification d'âge, sécurité).
                                         </p>
                                     </div>
                                     <Switch checked={true} disabled />
