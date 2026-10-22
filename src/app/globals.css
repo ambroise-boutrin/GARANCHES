@@ -6,6 +6,8 @@
    on aligne leur hauteur (x-height) pour que les tailles restent équilibrées. */
 html {
   font-size-adjust: 0.46;
+  /* Les blocs qui glissent depuis le côté (FadeIn) ne doivent pas élargir la page sur téléphone. */
+  overflow-x: clip;
 }
 
 /* Vérification d'âge déjà validée : voir le script dans layout.tsx. */
