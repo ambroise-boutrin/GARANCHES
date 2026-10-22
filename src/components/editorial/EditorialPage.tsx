@@ -70,14 +70,29 @@ function BlocSection({ bloc, override, index }: { bloc: Bloc; override?: BlocOve
                         {text}
                     </FadeIn>
                     <FadeIn direction={imageFirst ? "right" : "left"} delay={0.2} className={imageFirst ? "md:order-1" : ""}>
-                        <div className="h-[500px] w-full relative">
-                            <ParallaxImage
-                                src={image}
-                                alt={bloc.alt || ""}
-                                className="h-full w-full rounded-lg shadow-xl"
-                                sizes="(max-width: 768px) 100vw, 50vw"
-                            />
-                        </div>
+                        {bloc.document ? (
+                            // Archives et diplômes : montrés en entier, comme posés sur une table.
+                            <div className="relative w-full aspect-[4/3] bg-stone-200/60">
+                                <Image
+                                    src={image}
+                                    alt={bloc.alt || ""}
+                                    fill
+                                    sizes="(max-width: 768px) 100vw, 50vw"
+                                    quality={80}
+                                    className="object-contain p-5 md:p-8"
+                                />
+                            </div>
+                        ) : (
+                            // Cadre au format de la photo, pour ne pas couper les visages sur téléphone.
+                            <div className={`w-full relative ${bloc.paysage ? "aspect-[4/3] md:aspect-auto md:h-[420px]" : "aspect-[4/5] md:aspect-auto md:h-[560px]"}`}>
+                                <ParallaxImage
+                                    src={image}
+                                    alt={bloc.alt || ""}
+                                    className="h-full w-full rounded-lg shadow-xl"
+                                    sizes="(max-width: 768px) 100vw, 50vw"
+                                />
+                            </div>
+                        )}
                     </FadeIn>
                 </div>
             ) : (
