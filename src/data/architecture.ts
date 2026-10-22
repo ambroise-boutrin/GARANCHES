@@ -60,7 +60,7 @@ Et aujourd'hui, par celles et ceux qui viennent la découvrir, goûter ses vins 
         path: "le-lieu/le-domaine",
         label: "Le domaine",
         description: "Odenas, le Mont Brouilly, le granit et les vignes de Garanches.",
-        image: "/images/23_slide002.jpg",
+        image: "/images/garanches/vue-mont-brouilly.jpg",
         cta: "Découvrir le domaine",
         blocs: [
             {
@@ -77,8 +77,8 @@ Et aujourd'hui, par celles et ceux qui viennent la découvrir, goûter ses vins 
 Chaque parcelle, chaque âge de vigne, chaque exposition apporte sa propre lecture du lieu.
 
 Nous les regardons vivre au fil des saisons, avec ce qu'elles portent du passé et ce qu'elles promettent pour demain.`,
-                image: "/images/42_image.jpg",
-                alt: "Vignes au pied du Mont Brouilly",
+                image: "/images/garanches/domaine-vignes.jpg", paysage: true,
+                alt: "Les vignes de Garanches au pied du Mont Brouilly, vues du ciel",
                 cta: { label: "Découvrir les vignes", href: "/rencontrons-garanches/decouvrir-les-vignes" },
             },
         ],
@@ -205,8 +205,8 @@ Des vins qui racontent Garanches, chacun à leur manière.`,
             {
                 id: "terre-vignes-saisons",
                 title: "Terre, vignes et saisons",
-                image: "/images/19_image.jpg", paysage: true,
-                alt: "Les vendanges dans les vignes de Garanches",
+                image: "/images/garanches/vignes-lumiere.jpg", paysage: true,
+                alt: "Les vignes de Garanches dans la lumière du soir",
             },
             {
                 id: "millesime-et-temps",
@@ -230,9 +230,9 @@ Des vins qui racontent Garanches, chacun à leur manière.`,
         path: "les-vins/terroirs",
         label: "Les terroirs",
         description: "Parcelles, sols et granit : les terroirs de Garanches.",
-        image: "/images/11_image.jpg",
+        image: "/images/garanches/parcelles.jpg",
         cta: "Découvrir les terroirs",
-        blocs: [{ id: "introduction", title: "Les terroirs", image: "/images/16_image.jpg", alt: "Rangs de vigne dans une parcelle de Garanches" }],
+        blocs: [{ id: "introduction", title: "Les terroirs", image: "/images/garanches/parcelles-automne.jpg", paysage: true, alt: "Les parcelles de Garanches vues du ciel" }],
         children: ["le-lieu/le-domaine", "rencontrons-garanches/decouvrir-les-vignes"],
     },
     {
@@ -250,7 +250,7 @@ Des vins qui racontent Garanches, chacun à leur manière.`,
         path: "rencontrons-garanches",
         label: "Rencontrons Garanches",
         description: "Entrez, goûtez, échangez : table d'hôtes, dégustations, visites et expériences privées à Garanches.",
-        image: "/images/garanches/maison-jardin.jpg",
+        image: "/images/34_slide001.jpg",
         cta: "Découvrir les Rencontres",
         blocs: [
             {
@@ -263,8 +263,8 @@ Une dégustation.
 Une conversation.
 Que l'on connaisse déjà le vin ou que l'on ait simplement envie de découvrir, nous aimons ouvrir Garanches et prendre le temps de vous accueillir.
 Parce qu'ici, les vins se découvrent aussi avec le lieu et avec ceux qui le font vivre.`,
-                image: "/images/garanches/accueil-cave.jpg", paysage: true,
-                alt: "Accueil dans la cave de Garanches",
+                image: "/images/garanches/hotes-couple.jpg", paysage: true,
+                alt: "Les vignerons de Garanches, vos hôtes",
             },
         ],
         children: [
@@ -279,7 +279,7 @@ Parce qu'ici, les vins se découvrent aussi avec le lieu et avec ceux qui le fon
         path: "rencontrons-garanches/les-rencontres",
         label: "Les tables d'hôtes",
         description: "Table d'hôtes, vins, repas et conversations au domaine de Garanches.",
-        image: "/images/garanches/hotes-couple.jpg",
+        image: "/images/garanches/degustation-verre.jpg",
         cta: "Découvrir les Rencontres",
         blocs: [
             {
@@ -290,8 +290,8 @@ Un plat rencontre un vin.
 Un vin raconte une histoire.
 Une histoire en appelle une autre...
 Partageons nos impressions, nos questions, nos découvertes, et laissons la conversation nous emmener.`,
-                image: "/images/garanches/degustation-verre.jpg",
-                alt: "Un verre de vin de Garanches",
+                image: "/images/garanches/accueil-cave.jpg", paysage: true,
+                alt: "Accueil dans la cave de Garanches",
             },
             { id: "esprit", title: "L'esprit de la rencontre" },
             {
@@ -356,7 +356,7 @@ Nous recevons avec plaisir les visiteurs individuels comme les groupes. Pour vou
         path: "rencontrons-garanches/decouvrir-les-vignes",
         label: "Découvrir les vignes",
         description: "Une promenade dans les parcelles de Garanches, puis quatre vins à goûter.",
-        image: "/images/garanches/vignes-vigneron.jpg",
+        image: "/images/garanches/chemins-vignes.jpg",
         cta: "Découvrir les vignes",
         blocs: [
             {
@@ -388,7 +388,7 @@ Puis quatre vins à goûter, pour retrouver dans le verre ce que nous venons de 
         path: "rencontrons-garanches/experiences-privees",
         label: "Expériences privées",
         description: "Famille, amis, associations, équipes : des moments privés à Garanches, jusqu'à une vingtaine de personnes.",
-        image: "/images/garanches/maison-parc.jpg",
+        image: "/images/garanches/maison-jardin.jpg",
         cta: "Imaginer une expérience",
         blocs: [
             {
@@ -430,7 +430,7 @@ Nous choisissons ensemble ce qui donnera à ce moment sa couleur.
         path: "rencontrons-garanches/evenements",
         label: "Événements",
         description: "Repas et rencontres au domaine de Garanches, au fil de l'année.",
-        image: "/images/34_slide001.jpg",
+        image: "/images/garanches/maison-parc.jpg",
         cta: "Découvrir les événements",
         blocs: [
             { id: "introduction", title: "Événements", image: "/images/garanches/accueil-terrasse.jpg", alt: "Accueil sur la terrasse de Garanches" },
@@ -481,7 +481,7 @@ export const PAGES: Record<string, Page> = Object.fromEntries(PAGE_LIST.map((p) 
 
 // Les Carnets ont leur propre route (articles publiés dans Sanity).
 // Vidéo en fond du haut de l'accueil (fichier dans public/videos). Une vidéo envoyée dans le studio la remplace.
-export const HERO_VIDEO: string | null = null;
+export const HERO_VIDEO: string | null = "/videos/garanches-accueil.mp4";
 
 export const CARNETS_CARD = {
     path: "carnets",
