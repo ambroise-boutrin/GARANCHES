@@ -10,7 +10,7 @@ interface Props {
     className?: string;
 }
 
-export default function ParallaxImage({ src, alt, className = "", sizes = "100vw" }: Props & { sizes?: string }) {
+export default function ParallaxImage({ src, alt, className = "", sizes = "100vw", position }: Props & { sizes?: string; position?: string }) {
     const ref = useRef(null);
 
     const { scrollYProgress } = useScroll({
@@ -37,6 +37,7 @@ export default function ParallaxImage({ src, alt, className = "", sizes = "100vw
                     sizes={sizes}
                     loading="lazy"
                     quality={75}
+                    style={{ objectPosition: position }}
                     className="object-cover"
                 />
             </motion.div>
