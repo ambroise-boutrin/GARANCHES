@@ -72,7 +72,7 @@ Et aujourd'hui, par celles et ceux qui viennent la découvrir, goûter ses vins 
             {
                 id: "les-vignes",
                 title: "Mont Brouilly.",
-                body: `Ici, le granit se décline du bleu au rose, et les générations de vignes se côtoient : certaines ont près de 150 ans, d'autres n'ont que quelques années.
+                body: `Ici, le granit se décline du bleu au rose, et les générations de vignes se côtoient : certaines ont près de 150 ans, d'autres n'ont que quelques années.
 
 Chaque parcelle, chaque âge de vigne, chaque exposition apporte sa propre lecture du lieu.
 
@@ -135,7 +135,7 @@ Parce qu'un lieu se comprend aussi à travers celles et ceux qui l'ont façonné
 
 Certaines traces sont précises. D'autres ouvrent des questions.
 
-Nous les conservons parce qu'elles donnent à voir le domaine autrement : à travers ceux qui l'ont connu, travaillé et pensé avant nous.
+Nous les conservons parce qu'elles donnent à voir le domaine autrement : à travers ceux qui l'ont connu, travaillé et pensé avant nous.
 
 Ici, l'histoire se découvre au fil des traces.`,
                 image: "/images/garanches/diplome-honneur.jpg", document: true,
@@ -166,7 +166,7 @@ Ici, l'histoire se découvre au fil des traces.`,
     {
         path: "les-vins",
         label: "Les Vins",
-        description: "Les vins du domaine de Garanches : notre façon de faire, nos cuvées, nos terroirs.",
+        description: "Les vins du domaine de Garanches : notre façon de faire, nos cuvées, nos terroirs.",
         image: "/images/garanches/vendanges-raisins.jpg",
         cta: "Découvrir les vins",
         blocs: [
@@ -176,7 +176,7 @@ Ici, l'histoire se découvre au fil des traces.`,
                 body: `À Garanches, chaque vin commence par une attention portée à la terre, aux vignes et aux saisons.
 Parfois une parcelle.
 Parfois plusieurs.
-Nous assemblons, élevons et faisons évoluer nos vins avec une même exigence : trouver l'expression juste de chaque cuvée.
+Nous assemblons, élevons et faisons évoluer nos vins avec une même exigence : trouver l'expression juste de chaque cuvée.
 Des vins précis, vivants, en petites quantités.
 Des vins qui racontent Garanches, chacun à leur manière.`,
                 image: "/images/garanches/tancrede-stagnara.jpg",
@@ -218,7 +218,7 @@ Des vins qui racontent Garanches, chacun à leur manière.`,
     {
         path: "les-vins/cuvees",
         label: "Les cuvées",
-        description: "Les cuvées du domaine de Garanches : Brouilly, Bourgogne blanc, rosé et méthode traditionnelle.",
+        description: "Les cuvées du domaine de Garanches : Brouilly, Bourgogne blanc, rosé et méthode traditionnelle.",
         image: "/images/5_image.jpg",
         cta: "Voir les cuvées",
         blocs: [{ id: "introduction", title: "Les cuvées" }],
@@ -227,7 +227,7 @@ Des vins qui racontent Garanches, chacun à leur manière.`,
     {
         path: "les-vins/terroirs",
         label: "Les terroirs",
-        description: "Parcelles, sols et granit : les terroirs de Garanches.",
+        description: "Parcelles, sols et granit : les terroirs de Garanches.",
         image: "/images/garanches/parcelles.jpg",
         cta: "Découvrir les terroirs",
         blocs: [{ id: "introduction", title: "Les terroirs", image: "/images/garanches/parcelles-automne.jpg", paysage: true, alt: "Les parcelles de Garanches vues du ciel" }],
@@ -247,7 +247,7 @@ Des vins qui racontent Garanches, chacun à leur manière.`,
     {
         path: "rencontrons-garanches",
         label: "Rencontrons Garanches",
-        description: "Entrez, goûtez, échangez : table d'hôtes, dégustations, visites et expériences privées à Garanches.",
+        description: "Entrez, goûtez, échangez : table d'hôtes, dégustations, visites et expériences privées à Garanches.",
         image: "/images/garanches/maison-jardin.jpg",
         cta: "Découvrir les Rencontres",
         blocs: [
@@ -282,7 +282,7 @@ Parce qu'ici, les vins se découvrent aussi avec le lieu et avec ceux qui le fon
         blocs: [
             {
                 id: "introduction",
-                title: "Ensemble, passons à table !",
+                title: "Ensemble, passons à table !",
                 body: `Autour de la table, une bouteille s'ouvre, les verres se remplissent, les conversations commencent.
 Un plat rencontre un vin.
 Un vin raconte une histoire.
@@ -294,7 +294,7 @@ Partageons nos impressions, nos questions, nos découvertes, et laissons la conv
             { id: "esprit", title: "L'esprit de la rencontre" },
             {
                 id: "comment-ca-se-passe",
-                title: "Comment ça se passe ?",
+                title: "Comment ça se passe ?",
                 pratique: [
                     { label: "Durée", value: "À préciser" },
                     { label: "Personnes", value: "À préciser" },
@@ -332,7 +332,7 @@ Puis goûtons quelques cuvées au cœur de leur histoire.
             },
             {
                 id: "comment-ca-se-passe",
-                title: "Comment ça se passe ?",
+                title: "Comment ça se passe ?",
                 // Informations pratiques reprises de l'ancienne page « Visite ».
                 body: `Le domaine est ouvert du lundi au samedi, de 9h à 18h. Il est fermé le dimanche et les jours fériés.
 
@@ -359,7 +359,7 @@ Nous recevons avec plaisir les visiteurs individuels comme les groupes. Pour vou
         blocs: [
             {
                 id: "introduction",
-                title: "Enfilez vos bottes et devenez vigneron le temps d'une visite !",
+                title: "Enfilez vos bottes et devenez vigneron le temps d'une visite !",
                 body: `Une promenade dans nos parcelles pour découvrir la vigne au fil des saisons, comprendre nos gestes et regarder le terroir autrement.
 
 Puis quatre vins à goûter, pour retrouver dans le verre ce que nous venons de découvrir dans les vignes.
@@ -370,7 +370,7 @@ Puis quatre vins à goûter, pour retrouver dans le verre ce que nous venons de 
             },
             {
                 id: "comment-ca-se-passe",
-                title: "Comment ça se passe ?",
+                title: "Comment ça se passe ?",
                 pratique: [
                     { label: "Durée", value: "À préciser" },
                     { label: "Personnes", value: "À préciser" },
@@ -385,13 +385,13 @@ Puis quatre vins à goûter, pour retrouver dans le verre ce que nous venons de 
     {
         path: "rencontrons-garanches/experiences-privees",
         label: "Expériences privées",
-        description: "Famille, amis, associations, équipes : des moments privés à Garanches, jusqu'à une vingtaine de personnes.",
+        description: "Famille, amis, associations, équipes : des moments privés à Garanches, jusqu'à une vingtaine de personnes.",
         image: "/images/garanches/domaine-ciel.jpg",
         cta: "Imaginer une expérience",
         blocs: [
             {
                 id: "introduction",
-                title: "Retrouvons-nous autrement !",
+                title: "Retrouvons-nous autrement !",
                 body: `À Garanches, nous accueillons de petits groupes, jusqu'à une vingtaine de personnes, pour partager un moment qui nous ressemble.
 
 Une réunion d'association, un rendez-vous d'équipe, une rencontre entre amis…
@@ -404,7 +404,7 @@ Autour d'une table, dans les vignes ou au cœur du domaine, nous imaginons ensem
             },
             {
                 id: "comment-ca-se-passe",
-                title: "Et si nous prenions le temps de nous retrouver ?",
+                title: "Et si nous prenions le temps de nous retrouver ?",
                 body: `À Garanches, nous imaginons des moments privés pour les petits groupes, jusqu'à une vingtaine de personnes.
 
 Un repas, quelques bouteilles, une promenade dans les vignes, une découverte de la cave…
@@ -434,7 +434,7 @@ Nous choisissons ensemble ce qui donnera à ce moment sa couleur.
             { id: "introduction", title: "Événements", image: "/images/garanches/accueil-terrasse.jpg", alt: "Accueil sur la terrasse de Garanches" },
             {
                 id: "comment-ca-se-passe",
-                title: "Comment ça se passe ?",
+                title: "Comment ça se passe ?",
                 pratique: [
                     { label: "Dates", value: "À préciser" },
                     { label: "Personnes", value: "À préciser" },
@@ -467,7 +467,7 @@ Nous choisissons ensemble ce qui donnera à ce moment sa couleur.
             {
                 id: "professionnels",
                 title: "Professionnels",
-                body: `Restaurateurs, cavistes, entreprises : écrivez-nous pour recevoir nos tarifs et organiser une dégustation.`,
+                body: `Restaurateurs, cavistes, entreprises : écrivez-nous pour recevoir nos tarifs et organiser une dégustation.`,
                 cta: { label: "Nous contacter", href: "/contact?sujet=Partenariat%20Professionnel" },
             },
         ],

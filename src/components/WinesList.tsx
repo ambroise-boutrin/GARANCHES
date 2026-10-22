@@ -95,7 +95,7 @@ export default function WinesList({ wines }: { wines: any[] }) {
 
             <FadeIn direction="up">
                 <div className="mt-32 py-16 bg-wine-900 text-white text-center px-4">
-                    <h3 className="text-3xl font-serif mb-4">Une question sur un millésime ?</h3>
+                    <h3 className="text-3xl font-serif mb-4">Une question sur un millésime ?</h3>
                     <p className="font-light opacity-80 mb-8 max-w-xl mx-auto">
                         N'hésitez pas à nous contacter pour connaître les tarifs d'expédition ou pour passer commande directement.
                     </p>

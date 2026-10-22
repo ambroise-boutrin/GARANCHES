@@ -6,23 +6,23 @@ import FadeIn from "@/components/FadeIn";
 
 const faqs = [
     {
-        question: "Où se situe le Domaine de Garanches ?",
+        question: "Où se situe le Domaine de Garanches ?",
         answer: "Le Domaine de Garanches est situé au 345 chemin de Garanches à Odenas (69460), au pied du Mont Brouilly, en plein cœur du Beaujolais."
     },
     {
-        question: "Quels types de vins produisez-vous ?",
+        question: "Quels types de vins produisez-vous ?",
         answer: "Nous produisons principalement des vins rouges en appellation Brouilly (Gamay), ainsi que du Bourgogne Blanc (Chardonnay) et une méthode traditionnelle brut."
     },
     {
-        question: "Proposez-vous des visites et dégustations ?",
+        question: "Proposez-vous des visites et dégustations ?",
         answer: "Oui, nous accueillons les visiteurs pour des dégustations et des visites du domaine sur rendez-vous, du lundi au samedi. N'hésitez pas à nous contacter avant votre venue."
     },
     {
-        question: "Puis-je commander vos vins en ligne ?",
+        question: "Puis-je commander vos vins en ligne ?",
         answer: "Tout à fait. Notre boutique en ligne vous permet de commander nos cuvées avec paiement sécurisé. Nous assurons l'expédition dans toute la France dans des emballages protégés."
     },
     {
-        question: "Acceptez-vous les groupes ?",
+        question: "Acceptez-vous les groupes ?",
         answer: "Oui, nous pouvons accueillir des groupes pour des dégustations commentées. Merci de nous contacter via le formulaire pour organiser votre venue."
     }
 ];
