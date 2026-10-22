@@ -125,7 +125,7 @@ Parce qu'un lieu se comprend aussi à travers celles et ceux qui l'ont façonné
         path: "le-lieu/traces",
         label: "Traces",
         description: "Plants anciens, documents, photographies et archives de Garanches.",
-        image: "/images/garanches/loquet-porte.jpg",
+        image: "/images/garanches/diplome-honneur.jpg",
         cta: "Voir les traces",
         blocs: [
             {
@@ -138,8 +138,8 @@ Certaines traces sont précises. D'autres ouvrent des questions.
 Nous les conservons parce qu'elles donnent à voir le domaine autrement : à travers ceux qui l'ont connu, travaillé et pensé avant nous.
 
 Ici, l'histoire se découvre au fil des traces.`,
-                image: "/images/garanches/diplome-honneur.jpg", document: true,
-                alt: "Diplôme d'honneur encadré, conservé au domaine",
+                image: "/images/garanches/loquet-porte.jpg",
+                alt: "Un vieux loquet sur une porte du domaine",
                 cta: { label: "Voir les Carnets", href: "/carnets" },
             },
             { id: "plants-anciens", title: "Plants anciens" },
@@ -209,8 +209,8 @@ Des vins qui racontent Garanches, chacun à leur manière.`,
             {
                 id: "millesime-et-temps",
                 title: "Millésime et temps",
-                image: "/images/12_image.jpg", paysage: true,
-                alt: "Les cuves anciennes du chai de Garanches",
+                image: "/images/garanches/vignes-saisons.jpg", paysage: true,
+                alt: "Les vignes de Garanches à l'approche de l'automne",
             },
         ],
         children: ["les-vins/cuvees", "les-vins/terroirs"],
@@ -219,7 +219,7 @@ Des vins qui racontent Garanches, chacun à leur manière.`,
         path: "les-vins/cuvees",
         label: "Les cuvées",
         description: "Les cuvées du domaine de Garanches : Brouilly, Bourgogne blanc, rosé et méthode traditionnelle.",
-        image: "/images/5_image.jpg",
+        image: "/images/garanches/vignes-contre-jour.jpg",
         cta: "Voir les cuvées",
         blocs: [{ id: "introduction", title: "Les cuvées" }],
         children: ["les-vins/a-table", "acheter"],
@@ -325,7 +325,7 @@ Découvrons les vinifications, les élevages et les choix qui façonnent nos cuv
 Puis goûtons quelques cuvées au cœur de leur histoire.
 
 **Du chai au verre, partageons le chemin du vin.**`,
-                image: "/images/31_image.jpg", paysage: true,
+                image: "/images/5_image.jpg", paysage: true,
                 alt: "Les cuves du chai de Garanches",
             },
             {
@@ -512,14 +512,14 @@ export function card(path: string) {
 }
 
 // Les trois portes du menu et leurs sous-menus, dans l'ordre du document maître.
-// Certaines entrées renvoient vers une autre porte (L'histoire, Les Rencontres) : le document les place dans plusieurs univers.
-// Les Carnets ont leur propre entrée dans le menu principal.
+// Certaines entrées renvoient vers une autre porte (Carnets, L'histoire, Les Rencontres) : le document les place dans plusieurs univers.
 const SOUS_MENUS: Record<string, { path: string; motsCles: string; label?: string }[]> = {
     "le-lieu": [
         { path: "le-lieu/le-domaine", motsCles: "Odenas • paysage • granit" },
         { path: "le-lieu/histoire", motsCles: "Bender • Jean Buy • archives" },
         { path: "le-lieu/traces", motsCles: "Plants anciens • documents" },
         { path: "le-lieu/ceux-qui-le-font-vivre", motsCles: "Personnes • gestes • transmission" },
+        { path: "carnets", label: "Les Carnets", motsCles: "Récits • archives • saisons" },
     ],
     "les-vins": [
         { path: "les-vins/notre-facon-de-faire", motsCles: "Terre • saisons • millésimes" },
