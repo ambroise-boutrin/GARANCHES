@@ -23,7 +23,7 @@ export async function getPageContent(page: string) {
     let content = [];
     try {
         content = await client.fetch(
-            `*[_type == "pageContent" && page == $page]`,
+            `*[_type == "pageContent" && page == $page]{ ..., "videoUrl": video.asset->url }`,
             { page }
         );
     } catch (error) {
@@ -35,7 +35,8 @@ export async function getPageContent(page: string) {
         acc[item.section] = {
             title: item.title,
             content: item.content,
-            image: item.image
+            image: item.image,
+            videoUrl: item.videoUrl
         };
         return acc;
     }, {});
