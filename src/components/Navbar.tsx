@@ -67,10 +67,9 @@ export default function Navbar() {
         setIsOpen(false);
     }, [pathname]);
 
-    // Les trois portes, puis les entrées transversales.
+    // Les trois portes, puis Contact (les Carnets sont dans le sous-menu Le Lieu).
     const navLinks: { name: string; href: string; children: Porte["children"] }[] = [
         ...PORTES.map((porte) => ({ name: porte.label, href: porte.path, children: porte.children })),
-        { name: "Les Carnets", href: "/carnets", children: [] },
         { name: "Contact", href: "/contact", children: [] },
     ];
     // Menu mobile : une seule porte dépliée à la fois.
