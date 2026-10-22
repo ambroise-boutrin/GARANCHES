@@ -415,7 +415,7 @@ Nous choisissons ensemble ce qui donnera à ce moment sa couleur.
                     { label: "Tarifs", value: "Sur demande" },
                     { label: "Accès", value: "345 chemin de Garanches, Odenas" },
                 ],
-                booking: { label: "Demander", sujet: "Expérience privée" },
+                booking: { label: "Nous contacter", sujet: "Expérience privée" },
             },
         ],
         children: ["rencontrons-garanches/les-rencontres", "rencontrons-garanches/decouvrir-les-vignes"],
@@ -461,6 +461,12 @@ Nous choisissons ensemble ce qui donnera à ce moment sa couleur.
                 cta: { label: "Commander", href: "/les-vins/cuvees" },
             },
             { id: "restaurants-cavistes", title: "Restaurants et cavistes" },
+            {
+                id: "professionnels",
+                title: "Professionnels",
+                body: `Restaurateurs, cavistes, entreprises : écrivez-nous pour recevoir nos tarifs et organiser une dégustation.`,
+                cta: { label: "Nous contacter", href: "/contact?sujet=Partenariat%20Professionnel" },
+            },
         ],
         children: ["rencontrons-garanches/deguster-au-domaine"],
     },
@@ -479,7 +485,11 @@ export const CARNETS_CARD = {
 
 export const CARNETS_INTRO = {
     title: "Entrer dans le carnet.",
-    body: `Des histoires de vignes, de vins, de rencontres et de ceux qui font vivre Garanches.
+    body: `Garanches se raconte aussi au fil des jours.
+Une vigne, une saison, un vin, une rencontre, une histoire.
+Les Carnets sont notre façon de garder une trace de ces moments et de vous les faire vivre.
+
+Des histoires de vignes, de vins, de rencontres et de ceux qui font vivre Garanches.
 Un regard sur ce qui se passe ici, au fil des saisons.`,
 };
 
@@ -497,18 +507,22 @@ export function card(path: string) {
     return { path, label: p.label, description: p.description, image: p.image, cta: p.cta };
 }
 
-// Les trois portes du menu et leurs sous-menus (seulement les pages propres à chaque porte).
-const SOUS_MENUS: Record<string, { path: string; motsCles: string }[]> = {
+// Les trois portes du menu et leurs sous-menus, dans l'ordre du document maître.
+// Certaines entrées renvoient vers une autre porte (Carnets, L'histoire, Les Rencontres) : le document les place dans plusieurs univers.
+const SOUS_MENUS: Record<string, { path: string; motsCles: string; label?: string }[]> = {
     "le-lieu": [
         { path: "le-lieu/le-domaine", motsCles: "Odenas • paysage • granit" },
         { path: "le-lieu/histoire", motsCles: "Bender • Jean Buy • archives" },
         { path: "le-lieu/traces", motsCles: "Plants anciens • documents" },
         { path: "le-lieu/ceux-qui-le-font-vivre", motsCles: "Personnes • gestes • transmission" },
+        { path: "carnets", label: "Les Carnets", motsCles: "Récits • archives • saisons" },
     ],
     "les-vins": [
         { path: "les-vins/notre-facon-de-faire", motsCles: "Terre • saisons • millésimes" },
         { path: "les-vins/cuvees", motsCles: "Parcelles • assemblages" },
+        { path: "le-lieu/histoire", motsCles: "Emmanuel et Émile Bender • Jean Buy" },
         { path: "les-vins/terroirs", motsCles: "Sols • granit • parcelles" },
+        { path: "rencontrons-garanches/les-rencontres", motsCles: "Le vin pensé pour ceux qui le boiront" },
         { path: "les-vins/a-table", motsCles: "Plats • accords • moments" },
     ],
     "rencontrons-garanches": [
@@ -523,7 +537,7 @@ const SOUS_MENUS: Record<string, { path: string; motsCles: string }[]> = {
 export const PORTES: Porte[] = Object.entries(SOUS_MENUS).map(([path, items]) => ({
     path: `/${path}`,
     label: PAGES[path].label,
-    children: items.map((item) => ({ label: PAGES[item.path].label, href: `/${item.path}`, motsCles: item.motsCles })),
+    children: items.map((item) => ({ label: item.label ?? card(item.path).label, href: `/${item.path}`, motsCles: item.motsCles })),
 }));
 
 
