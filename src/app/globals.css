@@ -19,6 +19,13 @@ h3 {
   letter-spacing: 0.04em;
 }
 
+/* Intertitres des textes longs (pages légales) : écriture normale. */
+.prose h2,
+.prose h3 {
+  text-transform: none;
+  letter-spacing: normal;
+}
+
 /* Vérification d'âge déjà validée : voir le script dans layout.tsx. */
 .age-ok [data-age-gate] {
   display: none;
