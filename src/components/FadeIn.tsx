@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { ReactNode } from "react";
+import { estNavigationDouce } from "@/lib/navigationDouce";
 
 interface FadeInProps {
     children: ReactNode;
@@ -38,7 +39,8 @@ export default function FadeIn({
 
     return (
         <motion.div
-            initial={getInitial()}
+            // Pas d'apparition en fondu après un clic dans la barre d'un univers (effet de rechargement).
+            initial={estNavigationDouce() ? false : getInitial()}
             whileInView={getTarget()}
             viewport={{ once: true, margin: "-100px" }}
             transition={{
