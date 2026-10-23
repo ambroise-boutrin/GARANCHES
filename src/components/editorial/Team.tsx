@@ -14,20 +14,20 @@ const TEAM = [
 
 export default function Team() {
     return (
-        <section className="max-w-7xl mx-auto px-6 py-16">
-            <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-10">
+        <section className="max-w-7xl mx-auto px-4 md:px-6 py-12 md:py-16">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-8 md:gap-10">
                 {TEAM.map((person, i) => (
                     <FadeIn key={person.name} delay={(i % 3) * 0.1} className="text-center group">
-                        <div className="h-96 w-full relative mb-6 overflow-hidden rounded-lg grayscale group-hover:grayscale-0 transition-all duration-700">
+                        <div className="aspect-[4/5] md:aspect-auto md:h-96 w-full relative mb-3 md:mb-6 overflow-hidden rounded-lg grayscale group-hover:grayscale-0 transition-all duration-700">
                             <Image
                                 src={person.image}
                                 alt={person.name}
                                 fill
-                                sizes="(max-width: 768px) 100vw, 33vw"
+                                sizes="(max-width: 768px) 50vw, 33vw"
                                 className="object-cover transition-transform duration-700 group-hover:scale-105"
                             />
                         </div>
-                        <h3 className="text-2xl font-serif text-wine-900">{person.name}</h3>
+                        <h3 className="text-lg md:text-2xl font-serif text-wine-900 leading-tight">{person.name}</h3>
                     </FadeIn>
                 ))}
             </div>

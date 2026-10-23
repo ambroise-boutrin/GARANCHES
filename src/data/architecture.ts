@@ -450,15 +450,15 @@ Nous choisissons ensemble ce qui donnera à ce moment sa couleur.
         path: "acheter",
         label: "Acheter / Trouver Garanches",
         description: "Commander les vins de Garanches en ligne ou les trouver chez les cavistes et restaurants.",
-        image: "/images/36_brouilly-h.jpg",
+        image: "/images/garanches/vignes-automne.jpg",
         cta: "Trouver Garanches",
         blocs: [
             {
                 id: "commander",
                 title: "Commander",
                 body: `Nos vins sont expédiés directement depuis notre cave à Odenas, partout en France.`,
-                image: "/images/34_slide001.jpg", paysage: true,
-                alt: "La cave de Garanches",
+                image: "/images/36_brouilly-h.jpg", paysage: true, document: true,
+                alt: "Une bouteille de Brouilly du domaine de Garanches",
                 cta: { label: "Commander", href: "/les-vins/cuvees" },
             },
             { id: "restaurants-cavistes", title: "Restaurants et cavistes" },

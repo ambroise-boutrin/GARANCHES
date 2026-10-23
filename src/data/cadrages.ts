@@ -12,7 +12,7 @@ const CADRAGES: Record<string, string> = {
     [`${G}terrasse-vignes.jpg`]: "45% 20%",
     [`${G}vue-mont-brouilly.jpg`]: "50% 15%",
     [`${G}domaine-vignes.jpg`]: "40% 30%",
-    [`${G}michel-stagnara.jpg`]: "45% 10%",
+    [`${G}michel-stagnara.jpg`]: "68% 15%",
     [`${G}michel-portrait.jpg`]: "50% 30%",
     [`${G}ambroise-verre.jpg`]: "50% 30%",
     [`${G}isabelle-terrasse.jpg`]: "45% 20%",

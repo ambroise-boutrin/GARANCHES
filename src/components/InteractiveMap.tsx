@@ -2,7 +2,7 @@
 
 export default function InteractiveMap() {
     return (
-        <div className="relative w-full h-[500px] bg-stone-100 rounded-lg overflow-hidden shadow-lg border-4 border-white/50 group">
+        <div className="relative w-full h-[320px] md:h-[500px] bg-stone-100 rounded-lg overflow-hidden shadow-lg border-4 border-white/50 group">
 
             {/* Carte Google Maps avec filtre 'Chaleureux' (Sépia léger) pour s'intégrer au site */}
             <iframe
