@@ -3,7 +3,9 @@ import Image from "next/image";
 import Link from "next/link";
 import FadeIn from "@/components/FadeIn";
 import RichText from "@/components/editorial/RichText";
-import { CARNETS_CARD, CARNETS_INTRO, CARNET_THEMES } from "@/data/architecture";
+import SousNav from "@/components/editorial/SousNav";
+import { PageHero } from "@/components/editorial/EditorialPage";
+import { CARNETS_CARD, CARNETS_INTRO, CARNET_THEMES, PAGES } from "@/data/architecture";
 import { formatDate, themeLabel } from "@/lib/carnets";
 import { getCarnets } from "@/sanity/lib/queries";
 import { urlFor } from "@/sanity/lib/image";
@@ -20,11 +22,12 @@ export default async function CarnetsPage({ searchParams }: { searchParams: { th
     const visible = theme ? carnets.filter((c: any) => c.theme === theme) : carnets;
 
     return (
-        <main className="min-h-screen bg-paper pt-32 pb-20">
-            <FadeIn direction="down" className="text-center px-6 mb-16">
-                <span className="text-red-900 uppercase tracking-[0.3em] text-xs font-bold">Garanches</span>
-                <h1 className="text-4xl md:text-6xl font-serif text-wine-900 mt-4 mb-8">{CARNETS_CARD.label}</h1>
-                <div className="w-24 h-px bg-wine-900 mx-auto opacity-30 mb-10" />
+        <main className="min-h-screen bg-paper pb-20">
+            {/* Même ouverture et même barre que les autres pages du Lieu. */}
+            <PageHero image={CARNETS_CARD.image} label={CARNETS_CARD.label} parent={PAGES["le-lieu"]} />
+            <SousNav path="le-lieu" current="/carnets" />
+
+            <FadeIn direction="down" className="text-center px-6 pt-16 md:pt-24 mb-16">
                 <h2 className="text-2xl md:text-3xl font-serif text-wine-900 mb-6">{CARNETS_INTRO.title}</h2>
                 <RichText text={CARNETS_INTRO.body} className="max-w-2xl mx-auto text-gray-700 font-light leading-relaxed text-lg" />
             </FadeIn>

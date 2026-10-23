@@ -27,7 +27,7 @@ export default function Team() {
                                 className="object-cover transition-transform duration-700 group-hover:scale-105"
                             />
                         </div>
-                        <h3 className="normal-case tracking-normal text-lg md:text-2xl font-serif text-wine-900 leading-tight">{person.name}</h3>
+                        <h3 className="text-lg md:text-2xl font-serif text-wine-900 leading-tight">{person.name}</h3>
                     </FadeIn>
                 ))}
             </div>
