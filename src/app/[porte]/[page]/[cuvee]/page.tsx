@@ -51,7 +51,7 @@ function Section({ title, text, background }: { title: string; text?: string; ba
             <FadeIn className="max-w-3xl mx-auto px-6 text-center">
                 <h2 className="text-3xl md:text-4xl font-serif text-red-900 mb-6">{title}</h2>
                 {text ? (
-                    <RichText text={text} className="text-gray-600 leading-loose text-base md:text-lg font-light" />
+                    <RichText text={text} className="text-gray-600 leading-relaxed text-base md:text-lg font-light" />
                 ) : (
                     <p className="text-gray-400 italic font-light">Texte à venir.</p>
                 )}
@@ -97,7 +97,7 @@ export default async function CuveePage({ params }: Props) {
                     <Link href="/les-vins/cuvees" className="uppercase tracking-[0.3em] text-[10px] md:text-sm text-white font-bold hover:text-white transition-colors">
                         Les cuvées
                     </Link>
-                    <h1 className="font-serif text-4xl sm:text-5xl md:text-7xl leading-tight text-white mt-4 mb-4">{wine.name}</h1>
+                    <h1 className="normal-case tracking-normal font-serif text-4xl sm:text-5xl md:text-7xl leading-tight text-white mt-4 mb-4">{wine.name}</h1>
                     {wine.subtitle && <p className="text-white/80 uppercase tracking-widest text-xs mb-6">{wine.subtitle}</p>}
                     <div className="w-16 h-0.5 md:w-24 md:h-1 bg-white"></div>
                 </FadeIn>
@@ -118,7 +118,7 @@ export default async function CuveePage({ params }: Props) {
                     </FadeIn>
                     <FadeIn direction="left" delay={0.2}>
                         {wine.description && (
-                            <p className="text-gray-600 leading-loose text-base md:text-lg font-light mb-8">{wine.description}</p>
+                            <p className="text-gray-600 leading-relaxed text-base md:text-lg font-light mb-8">{wine.description}</p>
                         )}
                         <dl className="grid grid-cols-2 gap-4 mb-8">
                             {[
@@ -154,7 +154,7 @@ export default async function CuveePage({ params }: Props) {
                                     <div className="relative h-28 sm:h-40 bg-white rounded-lg shadow-sm mb-3">
                                         <Image src={w.image || "/images/36_brouilly-h.jpg"} alt="" fill sizes="176px" className="object-contain p-3" />
                                     </div>
-                                    <span className="font-serif text-base sm:text-lg uppercase tracking-[0.04em] text-wine-900 group-hover:text-red-900 transition-colors">{w.name}</span>
+                                    <span className="font-serif text-base sm:text-lg text-wine-900 group-hover:text-red-900 transition-colors">{w.name}</span>
                                 </Link>
                             ))}
                         </div>
