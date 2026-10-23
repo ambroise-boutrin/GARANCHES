@@ -309,7 +309,7 @@ export default function HomePageClient({ products, content }: { products: any[],
                         {products.slice(0, 3).map((wine, index) => (
                             <FadeIn key={wine.id} delay={0.1 + index * 0.2} className="group flex flex-col h-full">
                                 <Link href={cuveeHref(wine)} className="flex-grow">
-                                    <div className="relative h-[400px] md:h-[500px] overflow-hidden mb-6 bg-gray-50 flex items-center justify-center p-8 border border-transparent hover:border-gray-100 transition-colors rounded-sm">
+                                    <div className="relative h-[220px] sm:h-[320px] md:h-[500px] overflow-hidden mb-6 bg-gray-50 flex items-center justify-center p-4 md:p-8 border border-transparent hover:border-gray-100 transition-colors rounded-sm">
                                         <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors z-10 duration-500"></div>
                                         <Image
                                             src={wine.image || "/images/36_brouilly-h.jpg"}
@@ -342,7 +342,7 @@ export default function HomePageClient({ products, content }: { products: any[],
                                 </Link>
 
                                 {/* Demande de bouteilles via le formulaire de contact */}
-                                <div className="mt-auto px-8 pb-8 flex justify-center w-full">
+                                <div className="mt-auto px-4 md:px-8 pb-4 md:pb-8 flex justify-center w-full">
                                     <RequestBottlesButton wine={wine} />
                                 </div>
                             </FadeIn>
