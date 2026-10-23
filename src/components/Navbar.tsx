@@ -72,9 +72,14 @@ export default function Navbar() {
         ...PORTES.map((porte) => ({ name: porte.label, href: porte.path, children: porte.children })),
         { name: "Contact", href: "/contact", children: [] },
     ];
-    // Menu mobile : une seule porte dépliée à la fois.
+    // Menu mobile : porte dont on affiche les pages (null = liste des portes).
     const [openPorte, setOpenPorte] = useState<string | null>(null);
     const isActive = (href: string) => pathname === href || pathname.startsWith(`${href}/`);
+    const openPorteLink = navLinks.find((link) => link.href === openPorte && link.children.length > 0);
+    // Le menu se rouvre toujours sur la liste des portes.
+    useEffect(() => {
+        if (!isOpen) setOpenPorte(null);
+    }, [isOpen]);
 
     return (
         <nav
@@ -177,72 +182,119 @@ export default function Navbar() {
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -20 }}
-                        className="fixed inset-0 bg-stone-900 z-[100] flex flex-col items-center justify-start pt-28"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.25 }}
+                        className="fixed inset-0 bg-stone-900 z-[100] flex flex-col pt-24 overflow-hidden"
                     >
-                        <div className="flex flex-col items-center gap-6 overflow-y-auto max-h-full pb-16 w-full">
-                            {navLinks.map((link, i) => (
+                        {/* Deux écrans : la liste des portes, puis les pages de la porte choisie. */}
+                        <AnimatePresence mode="wait" initial={false}>
+                            {openPorteLink ? (
                                 <motion.div
-                                    key={link.href}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: 0.1 + i * 0.08 }}
-                                    className="text-center"
+                                    key={openPorteLink.href}
+                                    initial={{ x: 40, opacity: 0 }}
+                                    animate={{ x: 0, opacity: 1 }}
+                                    exit={{ x: 40, opacity: 0 }}
+                                    transition={{ duration: 0.2 }}
+                                    className="flex-1 overflow-y-auto px-6 pb-10"
                                 >
-                                    <div className="flex items-center justify-center gap-3">
-                                        <Link
-                                            href={link.href}
-                                            onClick={() => setIsOpen(false)}
-                                            className="block py-1 text-[1.6rem] sm:text-3xl font-serif text-white hover:text-amber-500 transition-colors"
-                                        >
-                                            {link.name}
-                                        </Link>
-                                        {link.children.length > 0 && (
-                                            <button
-                                                type="button"
-                                                onClick={() => setOpenPorte(openPorte === link.href ? null : link.href)}
-                                                aria-expanded={openPorte === link.href}
-                                                aria-label={`Afficher les pages de ${link.name}`}
-                                                className="w-9 h-9 flex items-center justify-center rounded-full border border-white/30 text-white"
-                                            >
-                                                <svg className={`w-4 h-4 transition-transform ${openPorte === link.href ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
-                                            </button>
-                                        )}
-                                    </div>
-                                    {openPorte === link.href && (
-                                        <div className="flex flex-col mt-2 mb-1">
-                                            {link.children.map((child) => (
+                                    <button
+                                        type="button"
+                                        onClick={() => setOpenPorte(null)}
+                                        className="flex items-center gap-2 py-3 text-xs uppercase tracking-widest text-white/60"
+                                    >
+                                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
+                                        Menu
+                                    </button>
+                                    <Link
+                                        href={openPorteLink.href}
+                                        onClick={() => setIsOpen(false)}
+                                        className="block mt-2 mb-6"
+                                    >
+                                        <span className="block font-serif text-4xl text-white">{openPorteLink.name}</span>
+                                        <span className="mt-2 inline-flex items-center gap-2 text-xs uppercase tracking-widest text-amber-500">
+                                            Voir la page
+                                            <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+                                        </span>
+                                    </Link>
+                                    <ul className="border-t border-white/10">
+                                        {openPorteLink.children.map((child) => (
+                                            <li key={child.href} className="border-b border-white/10">
                                                 <Link
-                                                    key={child.href}
                                                     href={child.href}
                                                     onClick={() => setIsOpen(false)}
-                                                    className={`py-1.5 text-lg font-serif transition-colors ${pathname === child.href ? "text-amber-500" : "text-white/85 hover:text-amber-500"}`}
+                                                    className="flex items-center justify-between gap-4 py-4"
                                                 >
-                                                    {child.label}
+                                                    <span>
+                                                        <span className={`block font-serif text-2xl ${pathname === child.href ? "text-amber-500" : "text-white"}`}>{child.label}</span>
+                                                        {child.motsCles && <span className="block mt-1 text-xs text-white/50">{child.motsCles}</span>}
+                                                    </span>
+                                                    <svg className="w-4 h-4 shrink-0 text-white/40" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
                                                 </Link>
-                                            ))}
-                                        </div>
-                                    )}
+                                            </li>
+                                        ))}
+                                    </ul>
                                 </motion.div>
-                            ))}
-
-
-                            <motion.div
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                transition={{ delay: 0.6 }}
-                                className="mt-8"
-                            >
-                                <Link
-                                    href="/les-vins/cuvees"
-                                    className="px-10 py-3 border border-white text-white uppercase tracking-widest text-xs font-bold hover:bg-white hover:text-stone-900 transition-colors"
+                            ) : (
+                                <motion.div
+                                    key="portes"
+                                    initial={{ x: -40, opacity: 0 }}
+                                    animate={{ x: 0, opacity: 1 }}
+                                    exit={{ x: -40, opacity: 0 }}
+                                    transition={{ duration: 0.2 }}
+                                    className="flex-1 flex flex-col overflow-y-auto px-6 pb-10"
                                 >
-                                    Nos vins
-                                </Link>
-                            </motion.div>
-                        </div>
+                                    <ul className="border-t border-white/10">
+                                        {navLinks.map((link) => {
+                                            const actif = isActive(link.href);
+                                            const contenu = (
+                                                <>
+                                                    <span className={`font-serif text-3xl ${actif ? "text-amber-500" : "text-white"}`}>{link.name}</span>
+                                                    <svg className="w-5 h-5 shrink-0 text-white/40" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+                                                </>
+                                            );
+                                            return (
+                                                <li key={link.href} className="border-b border-white/10">
+                                                    {link.children.length > 0 ? (
+                                                        <button
+                                                            type="button"
+                                                            onClick={() => setOpenPorte(link.href)}
+                                                            aria-label={`Afficher les pages de ${link.name}`}
+                                                            className="w-full flex items-center justify-between gap-4 py-5 text-left"
+                                                        >
+                                                            {contenu}
+                                                        </button>
+                                                    ) : (
+                                                        <Link
+                                                            href={link.href}
+                                                            onClick={() => setIsOpen(false)}
+                                                            className="flex items-center justify-between gap-4 py-5"
+                                                        >
+                                                            {contenu}
+                                                        </Link>
+                                                    )}
+                                                </li>
+                                            );
+                                        })}
+                                    </ul>
+                                    <div className="mt-auto pt-10 space-y-6">
+                                        <Link
+                                            href="/les-vins/cuvees"
+                                            onClick={() => setIsOpen(false)}
+                                            className="block w-full py-4 text-center bg-white text-stone-900 uppercase tracking-widest text-xs font-bold"
+                                        >
+                                            Nos vins
+                                        </Link>
+                                        <p className="text-center text-xs text-white/50 leading-relaxed">
+                                            345 chemin de Garanches, 69460 Odenas
+                                            <br />
+                                            <a href="tel:+33474034480" className="inline-block py-2 text-white/70">04 74 03 44 80</a>
+                                        </p>
+                                    </div>
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
                     </motion.div>
                 )}
             </AnimatePresence>
