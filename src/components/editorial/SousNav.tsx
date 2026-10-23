@@ -33,7 +33,7 @@ export default function SousNav({ path }: { path: string }) {
                                 scroll={false}
                                 onClick={() => sessionStorage.setItem("garder-sous-nav", "1")}
                                 aria-current={active ? "page" : undefined}
-                                className={`block py-5 text-xs uppercase tracking-widest font-medium border-b-2 transition-colors ${active ? "border-amber-500 text-wine-900" : "border-transparent text-gray-500 hover:text-wine-900"}`}
+                                className={`block py-5 text-xs uppercase tracking-widest font-medium border-b-2 transition-colors ${active ? "border-wine-900 text-wine-900" : "border-transparent text-gray-500 hover:text-wine-900"}`}
                             >
                                 {item.label}
                             </Link>

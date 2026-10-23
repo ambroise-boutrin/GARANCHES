@@ -39,7 +39,7 @@ export default function FAQ() {
             <div className="max-w-4xl mx-auto px-6">
                 <FadeIn direction="up">
                     <div className="text-center mb-12">
-                        <span className="text-amber-700 font-serif italic text-lg mb-2 block">Questions Fréquentes</span>
+                        <span className="text-red-900 uppercase tracking-[0.3em] text-xs font-bold mb-3 block">Questions Fréquentes</span>
                         <h2 className="text-4xl font-serif text-wine-900">Tout savoir sur le Domaine</h2>
                     </div>
 
@@ -57,7 +57,7 @@ export default function FAQ() {
                                         {faq.question}
                                     </span>
                                     <span className={`transform transition-transform duration-300 ${openIndex === index ? "rotate-45" : "rotate-0"}`}>
-                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-red-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
                                         </svg>
                                     </span>

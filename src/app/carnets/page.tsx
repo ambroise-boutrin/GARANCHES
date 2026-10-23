@@ -22,7 +22,7 @@ export default async function CarnetsPage({ searchParams }: { searchParams: { th
     return (
         <main className="min-h-screen bg-paper pt-32 pb-20">
             <FadeIn direction="down" className="text-center px-6 mb-16">
-                <span className="text-amber-700 font-serif italic text-xl">Garanches</span>
+                <span className="text-red-900 uppercase tracking-[0.3em] text-xs font-bold">Garanches</span>
                 <h1 className="text-4xl md:text-6xl font-serif text-wine-900 mt-4 mb-8">{CARNETS_CARD.label}</h1>
                 <div className="w-24 h-px bg-wine-900 mx-auto opacity-30 mb-10" />
                 <h2 className="text-2xl md:text-3xl font-serif text-wine-900 mb-6">{CARNETS_INTRO.title}</h2>
@@ -60,10 +60,10 @@ export default async function CarnetsPage({ searchParams }: { searchParams: { th
                                             className="object-cover group-hover:scale-105 transition-transform duration-700"
                                         />
                                     </div>
-                                    <p className="text-xs uppercase tracking-widest text-amber-700 font-bold mb-2">
+                                    <p className="text-xs uppercase tracking-widest text-red-900 font-bold mb-2">
                                         {[themeLabel(c.theme), formatDate(c.date)].filter(Boolean).join(" · ")}
                                     </p>
-                                    <h3 className="text-2xl font-serif text-wine-900 mb-3 group-hover:text-amber-700 transition-colors">{c.titre}</h3>
+                                    <h3 className="text-2xl font-serif text-wine-900 mb-3 group-hover:text-red-900 transition-colors">{c.titre}</h3>
                                     {c.extrait && <p className="text-sm text-gray-600 font-light leading-relaxed">{c.extrait}</p>}
                                 </Link>
                             </FadeIn>

@@ -25,18 +25,18 @@ export default function Footer() {
 
                 <div className="flex flex-col items-center gap-1 md:gap-4 text-sm uppercase tracking-widest font-semibold text-gray-300">
                     {PORTES.map((porte) => (
-                        <Link key={porte.path} href={porte.path} className="py-2 md:py-0 hover:text-gold-500 transition-colors">{porte.label}</Link>
+                        <Link key={porte.path} href={porte.path} className="py-2 md:py-0 hover:text-white transition-colors">{porte.label}</Link>
                     ))}
-                    <Link href="/carnets" className="py-2 md:py-0 hover:text-gold-500 transition-colors">Les Carnets</Link>
-                    <Link href="/acheter" className="py-2 md:py-0 hover:text-gold-500 transition-colors">Acheter / Trouver Garanches</Link>
+                    <Link href="/carnets" className="py-2 md:py-0 hover:text-white transition-colors">Les Carnets</Link>
+                    <Link href="/acheter" className="py-2 md:py-0 hover:text-white transition-colors">Acheter / Trouver Garanches</Link>
                 </div>
 
 
                 <div className="flex flex-col items-center gap-1 md:gap-4 text-sm uppercase tracking-widest font-semibold text-gray-300">
-                    <Link href="/contact" className="py-2 md:py-0 hover:text-gold-500 transition-colors">Contact</Link>
-                    <Link href="/mentions-legales" className="py-2 md:py-0 hover:text-gold-500 transition-colors">Mentions légales</Link>
-                    <Link href="/politique-confidentialite" className="py-2 md:py-0 hover:text-gold-500 transition-colors">Confidentialité</Link>
-                    <Link href="/cgv" className="py-2 md:py-0 hover:text-gold-500 transition-colors">CGV</Link>
+                    <Link href="/contact" className="py-2 md:py-0 hover:text-white transition-colors">Contact</Link>
+                    <Link href="/mentions-legales" className="py-2 md:py-0 hover:text-white transition-colors">Mentions légales</Link>
+                    <Link href="/politique-confidentialite" className="py-2 md:py-0 hover:text-white transition-colors">Confidentialité</Link>
+                    <Link href="/cgv" className="py-2 md:py-0 hover:text-white transition-colors">CGV</Link>
                 </div>
             </div>
 

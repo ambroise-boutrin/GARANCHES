@@ -114,11 +114,11 @@ export default function Navbar() {
                             <Link
                                 href={link.href}
                                 onClick={(e) => { e.currentTarget.blur(); setMenuFerme(link.href); }}
-                                className={`text-xs uppercase tracking-[0.15em] font-medium transition-colors duration-300 relative group py-2 ${isActive(link.href) ? "text-amber-500" : (useDarkText ? "text-stone-900 hover:text-amber-600" : "text-white hover:text-amber-400")
+                                className={`text-xs uppercase tracking-[0.15em] font-medium transition-colors duration-300 relative group py-2 ${useDarkText ? "text-stone-900" : "text-white"}
                                     }`}
                             >
                                 {link.name}
-                                <span className={`absolute -bottom-0 left-0 w-0 h-px transition-all duration-300 group-hover:w-full ${isActive(link.href) ? "w-full" : ""} ${useDarkText ? "bg-stone-900" : "bg-amber-500"}`}></span>
+                                <span className={`absolute -bottom-0 left-0 w-0 h-px transition-all duration-300 group-hover:w-full ${isActive(link.href) ? "w-full" : ""} ${useDarkText ? "bg-stone-900" : "bg-white"}`}></span>
                             </Link>
                             {link.children.length > 0 && (
                                 <div className={`absolute -left-5 top-full pt-4 opacity-0 invisible transition-opacity duration-200 ${menuFerme === link.href ? "" : "group-hover/menu:opacity-100 group-hover/menu:visible group-focus-within/menu:opacity-100 group-focus-within/menu:visible"}`}>
@@ -130,7 +130,7 @@ export default function Navbar() {
                                                     <Link
                                                         href={child.href}
                                                         onClick={(e) => { e.currentTarget.blur(); setMenuFerme(link.href); }}
-                                                        className={`block px-5 py-2.5 text-[11px] uppercase tracking-[0.15em] transition-colors ${active ? "text-amber-400" : "text-white/80 hover:text-amber-400"}`}
+                                                        className={`block px-5 py-2.5 text-[11px] uppercase tracking-[0.15em] transition-colors ${active ? "text-white" : "text-white/80 hover:text-white"}`}
                                                     >
                                                         {child.label}
                                                     </Link>
@@ -146,7 +146,7 @@ export default function Navbar() {
 
                     <div className={`flex items-center gap-3 pl-7 border-l ${useDarkText ? "border-stone-300" : "border-white/30"}`}>
                         <Link
-                            href="/les-vins/cuvees"
+                            href="/acheter"
                             // Couleur conditionnelle :
                             // - DarkMode (Page blanche sans scroll) : Texte Noir / Bord Noir
                             // - Scrolled ou Home : Texte Blanc / Bord Blanc (ou style "scrolled" spécifique si besoin)
@@ -155,7 +155,7 @@ export default function Navbar() {
                                 : "border-white text-white hover:bg-white hover:text-stone-900"
                                 } ${scrolled ? "bg-transparent border-white text-white hover:!bg-white hover:!text-stone-900 hover:!border-white" : ""}`}
                         >
-                            Nos vins
+                            Commander
                         </Link>
                     </div>
                 </div>
@@ -213,7 +213,7 @@ export default function Navbar() {
                                         className="block mt-2 mb-6"
                                     >
                                         <span className="block font-serif text-4xl text-white">{openPorteLink.name}</span>
-                                        <span className="mt-2 inline-flex items-center gap-2 text-xs uppercase tracking-widest text-amber-500">
+                                        <span className="mt-2 inline-flex items-center gap-2 text-xs uppercase tracking-widest text-white">
                                             Voir la page
                                             <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
                                         </span>
@@ -227,7 +227,7 @@ export default function Navbar() {
                                                     className="flex items-center justify-between gap-4 py-4"
                                                 >
                                                     <span>
-                                                        <span className={`block font-serif text-2xl ${pathname === child.href ? "text-amber-500" : "text-white"}`}>{child.label}</span>
+                                                        <span className={`block font-serif text-2xl ${pathname === child.href ? "text-white underline underline-offset-8 decoration-1" : "text-white/80"}`}>{child.label}</span>
                                                         {child.motsCles && <span className="block mt-1 text-xs text-white/50">{child.motsCles}</span>}
                                                     </span>
                                                     <svg className="w-4 h-4 shrink-0 text-white/40" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
@@ -250,7 +250,7 @@ export default function Navbar() {
                                             const actif = isActive(link.href);
                                             const contenu = (
                                                 <>
-                                                    <span className={`font-serif text-3xl ${actif ? "text-amber-500" : "text-white"}`}>{link.name}</span>
+                                                    <span className={`font-serif text-3xl ${actif ? "text-white underline underline-offset-8 decoration-1" : "text-white"}`}>{link.name}</span>
                                                     <svg className="w-5 h-5 shrink-0 text-white/40" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
                                                 </>
                                             );
@@ -280,11 +280,11 @@ export default function Navbar() {
                                     </ul>
                                     <div className="mt-auto pt-10 space-y-6">
                                         <Link
-                                            href="/les-vins/cuvees"
+                                            href="/acheter"
                                             onClick={() => setIsOpen(false)}
                                             className="block w-full py-4 text-center bg-white text-stone-900 uppercase tracking-widest text-xs font-bold"
                                         >
-                                            Nos vins
+                                            Commander
                                         </Link>
                                         <p className="text-center text-xs text-white/50 leading-relaxed">
                                             345 chemin de Garanches, 69460 Odenas
