@@ -77,7 +77,7 @@ export default function CookieConsent() {
                             <div className="flex-1 space-y-2">
                                 <div className="flex items-center gap-3 mb-2">
                                     <CookieIcon className="w-6 h-6 text-wine-900" />
-                                    <h3 className="text-lg font-serif font-semibold text-stone-900">
+                                    <h3 className="normal-case tracking-normal text-lg font-serif font-semibold text-stone-900">
                                         Gestion des cookies
                                     </h3>
                                 </div>
@@ -135,7 +135,7 @@ export default function CookieConsent() {
 
                             <div className="p-6 border-b border-stone-100 bg-stone-50/80 flex justify-between items-center sticky top-0 z-10 backdrop-blur-sm">
                                 <div>
-                                    <h3 className="text-xl font-serif font-bold text-stone-900">Préférences des cookies</h3>
+                                    <h3 className="normal-case tracking-normal text-xl font-serif font-bold text-stone-900">Préférences des cookies</h3>
                                     <p className="text-sm text-stone-500 mt-1">Gérez vos choix de consentement.</p>
                                 </div>
                                 <button

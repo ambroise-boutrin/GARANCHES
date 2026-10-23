@@ -19,6 +19,13 @@ h3 {
   letter-spacing: 0.04em;
 }
 
+/* Intertitres des textes longs (pages légales) : écriture normale. */
+.prose h2,
+.prose h3 {
+  text-transform: none;
+  letter-spacing: normal;
+}
+
 /* Vérification d'âge déjà validée : voir le script dans layout.tsx. */
 .age-ok [data-age-gate] {
   display: none;
@@ -27,6 +34,12 @@ h3 {
 :root {
   --background: #ffffff;
   --foreground: #171717;
+}
+
+/* Fond sombre derrière la page : sur iPhone, les zones des barres de Safari
+   et le rebond du défilement ne sont plus blancs. Le contenu reste sur fond blanc (body). */
+html {
+  background-color: #1c1917;
 }
 
 body {

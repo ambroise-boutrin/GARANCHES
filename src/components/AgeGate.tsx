@@ -145,7 +145,7 @@ export default function AgeGate() {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.3, duration: 0.8 }}
                         >
-                            <div id="age-gate-title" className="text-3xl font-serif text-white mb-2">Bienvenue au Domaine</div>
+                            <div id="age-gate-title" className="text-3xl font-serif text-white mb-2 uppercase tracking-[0.04em]">Bienvenue au Domaine</div>
                             <div className="w-16 h-px bg-white/60 mx-auto mb-6"></div>
 
                             {mineur ? (
