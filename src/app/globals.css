@@ -29,6 +29,12 @@ h3 {
   --foreground: #171717;
 }
 
+/* Fond sombre derrière la page : sur iPhone, les zones des barres de Safari
+   et le rebond du défilement ne sont plus blancs. Le contenu reste sur fond blanc (body). */
+html {
+  background-color: #1c1917;
+}
+
 body {
   user-select: none;
   -webkit-user-select: none;

@@ -154,7 +154,7 @@ export default async function CuveePage({ params }: Props) {
                                     <div className="relative h-28 sm:h-40 bg-white rounded-lg shadow-sm mb-3">
                                         <Image src={w.image || "/images/36_brouilly-h.jpg"} alt="" fill sizes="176px" className="object-contain p-3" />
                                     </div>
-                                    <span className="font-serif text-base sm:text-lg text-wine-900 group-hover:text-red-900 transition-colors">{w.name}</span>
+                                    <span className="font-serif text-base sm:text-lg uppercase tracking-[0.04em] text-wine-900 group-hover:text-red-900 transition-colors">{w.name}</span>
                                 </Link>
                             ))}
                         </div>
