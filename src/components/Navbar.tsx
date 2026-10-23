@@ -195,7 +195,7 @@ export default function Navbar() {
                                         <Link
                                             href={link.href}
                                             onClick={() => setIsOpen(false)}
-                                            className="block py-1 text-[1.7rem] sm:text-3xl font-serif text-white hover:text-amber-500 transition-colors"
+                                            className="block py-1 text-[1.6rem] sm:text-3xl font-serif text-white hover:text-amber-500 transition-colors"
                                         >
                                             {link.name}
                                         </Link>
@@ -212,13 +212,13 @@ export default function Navbar() {
                                         )}
                                     </div>
                                     {openPorte === link.href && (
-                                        <div className="flex flex-col gap-2 mt-3 mb-2">
+                                        <div className="flex flex-col mt-2 mb-1">
                                             {link.children.map((child) => (
                                                 <Link
                                                     key={child.href}
                                                     href={child.href}
                                                     onClick={() => setIsOpen(false)}
-                                                    className={`text-base font-serif transition-colors ${pathname === child.href ? "text-amber-500" : "text-white/70 hover:text-amber-500"}`}
+                                                    className={`py-1.5 text-lg font-serif transition-colors ${pathname === child.href ? "text-amber-500" : "text-white/85 hover:text-amber-500"}`}
                                                 >
                                                     {child.label}
                                                 </Link>
