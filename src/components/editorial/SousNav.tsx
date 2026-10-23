@@ -9,18 +9,18 @@ import { marquerNavigationDouce } from "@/lib/navigationDouce";
 // Un clic change de page sans animation ni retour en haut : on reste au même endroit (voir SmoothScroll).
 export const SOUS_NAV_ID = "sous-nav";
 
-export default function SousNav({ path }: { path: string }) {
+// `current` sert aux pages qui ont leur propre route (les Carnets, rangés sous Le Lieu).
+export default function SousNav({ path, current = `/${path}` }: { path: string; current?: string }) {
     const liste = useRef<HTMLUListElement>(null);
     // Sur téléphone, la barre défile : on amène la page en cours à l'écran.
     useEffect(() => {
         const ul = liste.current;
         const actif = ul?.querySelector<HTMLElement>('[aria-current="page"]');
         if (ul && actif) ul.scrollLeft = actif.offsetLeft - (ul.clientWidth - actif.offsetWidth) / 2;
-    }, [path]);
+    }, [current]);
 
     const porte = PORTES.find((p) => p.path === `/${path.split("/")[0]}`);
     if (!porte) return null;
-    const current = `/${path}`;
 
     return (
         <nav id={SOUS_NAV_ID} aria-label={porte.label} className="relative bg-paper border-b border-stone-200">

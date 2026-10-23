@@ -12,6 +12,28 @@ import { urlFor } from "@/sanity/lib/image";
 import { cadrage } from "@/data/cadrages";
 import { typo } from "@/lib/typo";
 
+// Photo d'ouverture des pages, partagée avec les Carnets.
+export function PageHero({ image, label, parent }: { image: string; label: string; parent?: { path: string; label: string } }) {
+    return (
+        <section className="relative h-[70vh] min-h-[480px] bg-stone-900 flex flex-col justify-center items-center overflow-hidden">
+            <div className="absolute inset-0 z-0">
+                <Image src={image} alt="" fill sizes="100vw" priority quality={85} style={{ objectPosition: cadrage(image) }} className="object-cover brightness-[.6]" />
+            </div>
+            <FadeIn direction="down" className="relative text-center px-4 pt-20 flex flex-col items-center">
+                {parent ? (
+                    <Link href={`/${parent.path}`} className="uppercase tracking-[0.3em] text-[10px] md:text-sm text-white font-bold hover:text-white transition-colors">
+                        {parent.label}
+                    </Link>
+                ) : (
+                    <span className="uppercase tracking-[0.3em] text-[10px] md:text-sm text-white font-bold">Domaine de Garanches</span>
+                )}
+                <h1 className="font-serif text-4xl sm:text-5xl md:text-7xl leading-tight text-white mt-4 mb-8">{label}</h1>
+                <div className="w-16 h-0.5 md:w-24 md:h-1 bg-white"></div>
+            </FadeIn>
+        </section>
+    );
+}
+
 export function bookingHref(sujet: string) {
     return `/contact?sujet=${encodeURIComponent(sujet)}#formulaire`;
 }
@@ -118,22 +140,7 @@ export default function EditorialPage({
 
     return (
         <main className="min-h-screen text-gray-800 font-sans">
-            <section className="relative h-[70vh] min-h-[480px] bg-stone-900 flex flex-col justify-center items-center overflow-hidden">
-                <div className="absolute inset-0 z-0">
-                    <Image src={page.image} alt="" fill sizes="100vw" priority quality={85} style={{ objectPosition: cadrage(page.image) }} className="object-cover brightness-[.6]" />
-                </div>
-                <FadeIn direction="down" className="relative text-center px-4 pt-20 flex flex-col items-center">
-                    {parent ? (
-                        <Link href={`/${parent.path}`} className="uppercase tracking-[0.3em] text-[10px] md:text-sm text-white font-bold hover:text-white transition-colors">
-                            {parent.label}
-                        </Link>
-                    ) : (
-                        <span className="uppercase tracking-[0.3em] text-[10px] md:text-sm text-white font-bold">Domaine de Garanches</span>
-                    )}
-                    <h1 className="font-serif text-4xl sm:text-5xl md:text-7xl leading-tight text-white mt-4 mb-8">{page.label}</h1>
-                    <div className="w-16 h-0.5 md:w-24 md:h-1 bg-white"></div>
-                </FadeIn>
-            </section>
+            <PageHero image={page.image} label={page.label} parent={parent} />
 
             <SousNav path={page.path} />
 
