@@ -53,7 +53,7 @@ export default function FAQ() {
                                     onClick={() => toggleAccordion(index)}
                                     className="w-full flex items-center justify-between p-6 text-left focus:outline-none hover:bg-gray-50 transition-colors"
                                 >
-                                    <span className={`font-serif text-xl uppercase tracking-[0.04em] ${openIndex === index ? "text-wine-900" : "text-gray-800"}`}>
+                                    <span className={`font-serif text-xl ${openIndex === index ? "text-wine-900" : "text-gray-800"}`}>
                                         {faq.question}
                                     </span>
                                     <span className={`transform transition-transform duration-300 ${openIndex === index ? "rotate-45" : "rotate-0"}`}>
