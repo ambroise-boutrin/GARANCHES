@@ -212,7 +212,7 @@ export default function Navbar() {
                                         onClick={() => setIsOpen(false)}
                                         className="block mt-2 mb-6"
                                     >
-                                        <span className="block font-serif text-4xl text-white">{openPorteLink.name}</span>
+                                        <span className="block font-serif text-4xl text-white uppercase tracking-[0.04em]">{openPorteLink.name}</span>
                                         <span className="mt-2 inline-flex items-center gap-2 text-xs uppercase tracking-widest text-white">
                                             Voir la page
                                             <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
@@ -227,7 +227,7 @@ export default function Navbar() {
                                                     className="flex items-center justify-between gap-4 py-4"
                                                 >
                                                     <span>
-                                                        <span className={`block font-serif text-2xl ${pathname === child.href ? "text-white underline underline-offset-8 decoration-1" : "text-white/80"}`}>{child.label}</span>
+                                                        <span className={`block font-serif text-2xl uppercase tracking-[0.04em] ${pathname === child.href ? "text-white underline underline-offset-8 decoration-1" : "text-white/80"}`}>{child.label}</span>
                                                         {child.motsCles && <span className="block mt-1 text-xs text-white/50">{child.motsCles}</span>}
                                                     </span>
                                                     <svg className="w-4 h-4 shrink-0 text-white/40" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
@@ -250,7 +250,7 @@ export default function Navbar() {
                                             const actif = isActive(link.href);
                                             const contenu = (
                                                 <>
-                                                    <span className={`font-serif text-3xl ${actif ? "text-white underline underline-offset-8 decoration-1" : "text-white"}`}>{link.name}</span>
+                                                    <span className={`font-serif text-3xl uppercase tracking-[0.04em] ${actif ? "text-white underline underline-offset-8 decoration-1" : "text-white"}`}>{link.name}</span>
                                                     <svg className="w-5 h-5 shrink-0 text-white/40" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
                                                 </>
                                             );

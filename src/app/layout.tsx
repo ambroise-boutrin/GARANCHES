@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Montserrat } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
@@ -23,6 +23,11 @@ const montserrat = Montserrat({
   variable: "--font-sans",
   display: 'swap',
 });
+
+// Barres de Safari (haut et bas) et rebond du défilement en sombre, pas en blanc.
+export const viewport: Viewport = {
+  themeColor: "#1c1917",
+};
 
 // --- CONFIGURATION SEO ---
 export const metadata: Metadata = {

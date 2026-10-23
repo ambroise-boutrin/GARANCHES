@@ -206,7 +206,7 @@ export default function HomePageClient({ products, content }: { products: any[],
                                 <div className="bg-stone-50 border border-t-0 border-stone-200 rounded-b-lg p-6 space-y-5 flex-grow">
                                     {entrees.map((entree) => (
                                         <Link key={entree.label} href={entree.href} className="group block">
-                                            <span className="block text-xl font-serif text-wine-900 group-hover:text-red-900 transition-colors">{entree.label}</span>
+                                            <span className="block text-xl font-serif uppercase tracking-[0.04em] text-wine-900 group-hover:text-red-900 transition-colors">{entree.label}</span>
                                             <span className="block text-xs text-gray-500 tracking-wide mt-1">{entree.motsCles}</span>
                                         </Link>
                                     ))}
