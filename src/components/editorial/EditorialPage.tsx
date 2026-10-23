@@ -118,7 +118,7 @@ export default function EditorialPage({
 
     return (
         <main className="min-h-screen text-gray-800 font-sans">
-            <section className="relative h-[70vh] min-h-[480px] flex flex-col justify-center items-center overflow-hidden">
+            <section className="relative h-[70vh] min-h-[480px] bg-stone-900 flex flex-col justify-center items-center overflow-hidden">
                 <div className="absolute inset-0 z-0">
                     <Image src={page.image} alt="" fill sizes="100vw" priority quality={85} style={{ objectPosition: cadrage(page.image) }} className="object-cover brightness-[.6]" />
                 </div>
