@@ -10,6 +10,15 @@ html {
   overflow-x: clip;
 }
 
+/* Titres : toujours en majuscules, jamais en italique (demande d'Ambroise). */
+h1,
+h2,
+h3 {
+  text-transform: uppercase;
+  font-style: normal;
+  letter-spacing: 0.04em;
+}
+
 /* Vérification d'âge déjà validée : voir le script dans layout.tsx. */
 .age-ok [data-age-gate] {
   display: none;

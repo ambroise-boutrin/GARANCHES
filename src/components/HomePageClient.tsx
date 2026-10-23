@@ -135,7 +135,7 @@ export default function HomePageClient({ products, content }: { products: any[],
                             className={`font-serif text-4xl sm:text-5xl md:text-7xl lg:text-8xl leading-tight text-center relative transition-colors duration-1000 ${isLoading ? "z-[120] text-red-900" : "z-[70] text-white"}`}
                         >
                             Domaine de <br />
-                            <span className="italic">Garanches</span>
+                            <span>Garanches</span>
                         </motion.h1>
                     )}
 
@@ -144,7 +144,7 @@ export default function HomePageClient({ products, content }: { products: any[],
                         transition={{ duration: 1, delay: 1.6 }}
                         className="mb-8 mt-4"
                     >
-                        <span className="uppercase tracking-[0.3em] text-[10px] md:text-sm text-amber-400 font-bold block">
+                        <span className="uppercase tracking-[0.3em] text-[10px] md:text-sm text-white font-bold block">
                             Odenas — Mont Brouilly
                         </span>
                     </motion.div>
@@ -154,7 +154,7 @@ export default function HomePageClient({ products, content }: { products: any[],
                         transition={{ duration: 1, delay: 1.9 }}
                         className="mt-4 flex flex-col items-center"
                     >
-                        <div className="w-16 h-0.5 md:w-24 md:h-1 bg-amber-500 mb-6"></div>
+                        <div className="w-16 h-0.5 md:w-24 md:h-1 bg-white mb-6"></div>
 
                         <p className="text-sm md:text-lg font-light max-w-xl mb-6 text-gray-100 leading-relaxed px-2 text-white">
                             {content?.hero?.content || "À Odenas, au pied du Mont Brouilly, Garanches est un lieu façonné par le temps, le granit et les générations qui l'ont fait vivre."}
@@ -181,8 +181,8 @@ export default function HomePageClient({ products, content }: { products: any[],
             <section id="portes" className="scroll-mt-20 py-20 md:py-32 bg-white">
                 <div className="max-w-7xl mx-auto px-6">
                     <FadeIn direction="up" className="text-center mb-16">
-                        <span className="text-amber-700 font-serif italic text-xl md:text-2xl mb-2 block">Garanches</span>
-                        <h2 className="text-4xl md:text-5xl font-serif text-red-900 leading-tight mb-6">{SIGNATURE}</h2>
+                        <span className="text-red-900 uppercase tracking-[0.3em] text-xs font-bold mb-3 block">Garanches</span>
+                        <h2 className="text-3xl md:text-5xl font-serif text-red-900 leading-tight mb-6">{SIGNATURE}</h2>
                         <div className="w-24 h-1 bg-wine-900 mx-auto opacity-20"></div>
                     </FadeIn>
 
@@ -199,14 +199,14 @@ export default function HomePageClient({ products, content }: { products: any[],
                                         className="object-cover brightness-[.6] group-hover:brightness-75 group-hover:scale-105 transition-all duration-700"
                                     />
                                     <div className="absolute inset-0 flex flex-col justify-end p-8 text-white">
-                                        <h3 className="text-4xl font-serif mb-3">{page.label}</h3>
-                                        <span className="text-xs uppercase tracking-widest font-bold text-amber-400">{page.cta} →</span>
+                                        <h3 className="text-3xl md:text-4xl font-serif mb-3">{page.label}</h3>
+                                        <span className="text-xs uppercase tracking-widest font-bold text-white">{page.cta} →</span>
                                     </div>
                                 </Link>
                                 <div className="bg-stone-50 border border-t-0 border-stone-200 rounded-b-lg p-6 space-y-5 flex-grow">
                                     {entrees.map((entree) => (
                                         <Link key={entree.label} href={entree.href} className="group block">
-                                            <span className="block text-xl font-serif text-wine-900 group-hover:text-amber-700 transition-colors">{entree.label}</span>
+                                            <span className="block text-xl font-serif text-wine-900 group-hover:text-red-900 transition-colors">{entree.label}</span>
                                             <span className="block text-xs text-gray-500 tracking-wide mt-1">{entree.motsCles}</span>
                                         </Link>
                                     ))}
@@ -221,8 +221,8 @@ export default function HomePageClient({ products, content }: { products: any[],
                 <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 md:gap-20 items-center">
                     <FadeIn direction="right">
                         <div>
-                            <span className="text-amber-700 font-serif italic text-xl md:text-2xl mb-2 block">Le Lieu</span>
-                            <h2 className="text-4xl md:text-5xl font-serif text-red-900 mb-6 md:mb-8 leading-tight">Une histoire <br />qui continue.</h2>
+                            <span className="text-red-900 uppercase tracking-[0.3em] text-xs font-bold mb-3 block">Le Lieu</span>
+                            <h2 className="text-3xl md:text-5xl font-serif text-red-900 mb-6 md:mb-8 leading-tight">Une histoire <br />qui continue.</h2>
                             <div className="text-gray-600 leading-loose text-base md:text-lg font-light mb-8 space-y-4">
                                 {content?.philosophy?.content ? (
                                     <p>{content.philosophy.content}</p>
@@ -237,8 +237,8 @@ export default function HomePageClient({ products, content }: { products: any[],
                                     </>
                                 )}
                             </div>
-                            <Link href="/le-lieu/histoire" className="group inline-flex items-center text-red-900 uppercase text-xs font-bold tracking-widest hover:text-amber-600 transition-colors">
-                                <span className="border-b border-red-900 pb-1 group-hover:border-amber-600">Lire l'histoire</span>
+                            <Link href="/le-lieu/histoire" className="group inline-flex items-center text-red-900 uppercase text-xs font-bold tracking-widest hover:text-red-700 transition-colors">
+                                <span className="border-b border-red-900 pb-1 group-hover:border-red-700">Lire l'histoire</span>
                                 <svg className="w-4 h-4 ml-2 transform group-hover:translate-x-2 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                                 </svg>
@@ -262,7 +262,7 @@ export default function HomePageClient({ products, content }: { products: any[],
             <section className="py-20 md:py-32 bg-stone-100">
                 <div className="max-w-7xl mx-auto px-6">
                     <FadeIn direction="up" className="text-center mb-16">
-                        <span className="text-amber-700 font-serif italic text-xl mb-2 block">Les Vins</span>
+                        <span className="text-red-900 uppercase tracking-[0.3em] text-xs font-bold mb-3 block">Les Vins</span>
                         <h2 className="text-3xl md:text-4xl font-serif text-wine-900 mb-6">Des vins qui viennent d'un lieu.</h2>
                         <div className="w-24 h-1 bg-wine-900 mx-auto opacity-20"></div>
                     </FadeIn>
@@ -296,7 +296,7 @@ export default function HomePageClient({ products, content }: { products: any[],
                 <div className="max-w-7xl mx-auto px-6">
                     <div className="text-center mb-12 md:mb-20">
                         <FadeIn direction="down">
-                            <span className="text-amber-700 font-serif italic text-xl md:text-2xl mb-2 block">Les cuvées</span>
+                            <span className="text-red-900 uppercase tracking-[0.3em] text-xs font-bold mb-3 block">Les cuvées</span>
                             <h2 className="text-4xl md:text-5xl font-serif text-gray-900 mb-6">Nos vins</h2>
                             <p className="max-w-2xl mx-auto text-gray-500 font-light leading-relaxed mb-8">
                                 Des vins précis, vivants, en petites quantités. Ils partent directement de notre cave à Odenas, partout en France.
@@ -322,7 +322,7 @@ export default function HomePageClient({ products, content }: { products: any[],
                                         />
                                         {/* Badge Best Seller artificiel pour l'exemple (optionnel) */}
                                         {index === 1 && (
-                                            <div className="absolute top-4 right-4 bg-amber-500 text-white text-[10px] font-bold px-3 py-1 uppercase tracking-widest">
+                                            <div className="absolute top-4 right-4 bg-red-900 text-white text-[10px] font-bold px-3 py-1 uppercase tracking-widest">
                                                 Cœur de Gamme
                                             </div>
                                         )}
@@ -335,7 +335,7 @@ export default function HomePageClient({ products, content }: { products: any[],
                                         <p className="text-xs text-gray-500 uppercase tracking-widest font-bold mb-2">
                                             {wine.subtitle || "Vin du Domaine"}
                                         </p>
-                                        <p className="text-xl font-bold text-amber-700 mb-4">
+                                        <p className="text-xl font-bold text-red-900 mb-4">
                                             {(wine.price / 100).toFixed(2).replace('.', ',')} €
                                         </p>
                                     </div>
