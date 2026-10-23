@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Cormorant Garamond a de petites lettres et Montserrat de grandes :
+/* Cormorant Garamond a de petites lettres et Jost de grandes :
    on aligne leur hauteur (x-height) pour que les tailles restent équilibrées. */
 html {
   font-size-adjust: 0.46;
@@ -17,6 +17,13 @@ h3 {
   text-transform: uppercase;
   font-style: normal;
   letter-spacing: 0.04em;
+  /* Cormorant en 400 est trop fin en majuscules sur téléphone. */
+  font-weight: 600;
+}
+
+/* Libellés en Cormorant majuscules (entrées de menu, cartes) : même graisse que les titres. */
+.font-serif.uppercase {
+  font-weight: 600;
 }
 
 /* Intertitres des textes longs (pages légales) : écriture normale. */

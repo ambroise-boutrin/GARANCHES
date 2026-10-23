@@ -34,9 +34,9 @@ const config = {
                 xl: '0 12px 32px -14px rgb(0 0 0 / 0.22)',
                 '2xl': '0 16px 40px -16px rgb(0 0 0 / 0.28)',
             },
-            // Montserrat en 700 écrase le Cormorant : le « gras » du site est un semi-gras.
+            // Le sans-serif en 700 écrase le Cormorant : le « gras » du site est un semi-gras.
             fontWeight: {
-                // Montserrat en 300 devient trop fin et peu lisible sur écran Windows.
+                // Jost en 300 devient trop fin et peu lisible sur écran Windows.
                 light: '400',
                 bold: '600',
             },
