@@ -3,9 +3,10 @@
 import Link from "next/link";
 import { useEffect, useRef } from "react";
 import { PORTES } from "@/data/architecture";
+import { marquerNavigationDouce } from "@/lib/navigationDouce";
 
 // Barre des pages d'une même porte, sous la photo d'ouverture.
-// Un clic garde la barre en haut de l'écran au lieu de remonter à la photo (voir SmoothScroll).
+// Un clic change de page sans animation ni retour en haut : on reste au même endroit (voir SmoothScroll).
 export const SOUS_NAV_ID = "sous-nav";
 
 export default function SousNav({ path }: { path: string }) {
@@ -31,7 +32,7 @@ export default function SousNav({ path }: { path: string }) {
                             <Link
                                 href={item.href}
                                 scroll={false}
-                                onClick={() => sessionStorage.setItem("garder-sous-nav", "1")}
+                                onClick={marquerNavigationDouce}
                                 aria-current={active ? "page" : undefined}
                                 className={`block py-5 text-xs uppercase tracking-widest font-medium border-b-2 transition-colors ${active ? "border-wine-900 text-wine-900" : "border-transparent text-gray-500 hover:text-wine-900"}`}
                             >
