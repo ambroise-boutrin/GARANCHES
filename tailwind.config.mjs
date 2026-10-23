@@ -34,11 +34,19 @@ const config = {
                 xl: '0 12px 32px -14px rgb(0 0 0 / 0.22)',
                 '2xl': '0 16px 40px -16px rgb(0 0 0 / 0.28)',
             },
-            // Montserrat en 700 écrase le Cormorant : le « gras » du site est un semi-gras.
+            // Le sans-serif en 700 écrase le Cormorant : le « gras » du site est un semi-gras.
             fontWeight: {
-                // Montserrat en 300 devient trop fin et peu lisible sur écran Windows.
+                // Jost en 300 devient trop fin et peu lisible sur écran Windows.
                 light: '400',
                 bold: '600',
+            },
+            // Les grandes tailles de Tailwind ont un interligne de 1 : les titres sur plusieurs
+            // lignes (majuscules en Cormorant) se touchaient sur ordinateur.
+            fontSize: {
+                '4xl': ['2.25rem', { lineHeight: '1.2' }],
+                '5xl': ['3rem', { lineHeight: '1.15' }],
+                '6xl': ['3.75rem', { lineHeight: '1.12' }],
+                '7xl': ['4.5rem', { lineHeight: '1.1' }],
             },
             fontFamily: {
                 serif: ['var(--font-serif)', 'serif'],

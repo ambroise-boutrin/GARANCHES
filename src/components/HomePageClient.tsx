@@ -206,7 +206,7 @@ export default function HomePageClient({ products, content }: { products: any[],
                                 <div className="bg-stone-50 border border-t-0 border-stone-200 rounded-b-lg p-6 space-y-5 flex-grow">
                                     {entrees.map((entree) => (
                                         <Link key={entree.label} href={entree.href} className="group block">
-                                            <span className="block text-xl font-serif uppercase tracking-[0.04em] text-wine-900 group-hover:text-red-900 transition-colors">{entree.label}</span>
+                                            <span className="block text-xl font-serif text-wine-900 group-hover:text-red-900 transition-colors">{entree.label}</span>
                                             <span className="block text-xs text-gray-500 tracking-wide mt-1">{entree.motsCles}</span>
                                         </Link>
                                     ))}
@@ -223,7 +223,7 @@ export default function HomePageClient({ products, content }: { products: any[],
                         <div>
                             <span className="text-red-900 uppercase tracking-[0.3em] text-xs font-bold mb-3 block">Le Lieu</span>
                             <h2 className="text-3xl md:text-5xl font-serif text-red-900 mb-6 md:mb-8 leading-tight">Une histoire <br />qui continue.</h2>
-                            <div className="text-gray-600 leading-loose text-base md:text-lg font-light mb-8 space-y-4">
+                            <div className="text-gray-600 leading-relaxed text-base md:text-lg font-light mb-8 space-y-4">
                                 {content?.philosophy?.content ? (
                                     <p>{content.philosophy.content}</p>
                                 ) : (

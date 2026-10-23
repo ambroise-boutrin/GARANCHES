@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Cormorant Garamond a de petites lettres et Montserrat de grandes :
+/* Cormorant Garamond a de petites lettres et Jost de grandes :
    on aligne leur hauteur (x-height) pour que les tailles restent équilibrées. */
 html {
   font-size-adjust: 0.46;
@@ -10,13 +10,25 @@ html {
   overflow-x: clip;
 }
 
-/* Titres : toujours en majuscules, jamais en italique (demande d'Ambroise). */
+/* Titres jamais en italique ; Cormorant en 400 est trop fin sur téléphone. */
 h1,
 h2,
 h3 {
-  text-transform: uppercase;
   font-style: normal;
+  font-weight: 600;
+}
+
+/* Majuscules pour les grands titres seulement (demande d'Ambroise) : les titres de cartes
+   (h3 : cépages, vins, pages) et les noms de vins restent en écriture normale. */
+h1,
+h2 {
+  text-transform: uppercase;
   letter-spacing: 0.04em;
+}
+
+/* Libellés en Cormorant majuscules (entrées de menu, cartes) : même graisse que les titres. */
+.font-serif.uppercase {
+  font-weight: 600;
 }
 
 /* Intertitres des textes longs (pages légales) : écriture normale. */

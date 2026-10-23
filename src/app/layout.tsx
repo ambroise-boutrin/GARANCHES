@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Cormorant_Garamond, Montserrat } from "next/font/google";
+import { Cormorant_Garamond, Jost } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -18,7 +18,7 @@ const cormorant = Cormorant_Garamond({
   display: 'swap',
 });
 
-const montserrat = Montserrat({
+const jost = Jost({
   subsets: ["latin"],
   variable: "--font-sans",
   display: 'swap',
@@ -157,7 +157,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr" suppressHydrationWarning className={`${cormorant.variable} ${montserrat.variable}`}>
+    <html lang="fr" suppressHydrationWarning className={`${cormorant.variable} ${jost.variable}`}>
       <head>
         {/* Masque la vérification d'âge avant l'affichage si elle a déjà été validée,
             sans lire les cookies côté serveur (les pages restent en cache et s'ouvrent instantanément). */}
