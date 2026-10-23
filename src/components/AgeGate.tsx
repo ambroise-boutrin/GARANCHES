@@ -115,7 +115,7 @@ export default function AgeGate() {
                 placeholder={placeholder}
                 aria-label={label}
                 aria-invalid={erreur !== ""}
-                className="w-full bg-transparent border-b border-stone-600 focus:border-amber-500 outline-none text-center text-white text-2xl font-serif tracking-[0.15em] py-2 placeholder:text-stone-600 transition-colors"
+                className="w-full bg-transparent border-b border-stone-600 focus:border-white outline-none text-center text-white text-2xl font-serif tracking-[0.15em] py-2 placeholder:text-stone-600 transition-colors"
             />
             <span className="text-[10px] uppercase tracking-[0.2em] text-stone-500">{label}</span>
         </label>
@@ -146,7 +146,7 @@ export default function AgeGate() {
                             transition={{ delay: 0.3, duration: 0.8 }}
                         >
                             <div id="age-gate-title" className="text-3xl font-serif text-white mb-2">Bienvenue au Domaine</div>
-                            <div className="w-16 h-px bg-amber-500 mx-auto mb-6"></div>
+                            <div className="w-16 h-px bg-white/60 mx-auto mb-6"></div>
 
                             {mineur ? (
                                 <div role="alert">
@@ -175,7 +175,7 @@ export default function AgeGate() {
                                         </div>
                                     </fieldset>
 
-                                    <p className="min-h-[1.5rem] text-amber-500 text-sm mb-4" role="alert">{erreur}</p>
+                                    <p className="min-h-[1.5rem] text-white text-sm mb-4" role="alert">{erreur}</p>
 
                                     <button
                                         type="submit"
