@@ -32,7 +32,7 @@ function BlocSection({ bloc, override, index }: { bloc: Bloc; override?: BlocOve
         <div>
             {title && <h2 className="text-4xl md:text-5xl font-serif text-red-900 mb-6 md:mb-8 leading-tight">{title}</h2>}
             {body ? (
-                <RichText text={body} className="text-gray-600 leading-loose text-base md:text-lg font-light" />
+                <RichText text={body} className="text-gray-600 leading-relaxed md:leading-loose text-base md:text-lg font-light" />
             ) : (
                 <p className="text-gray-400 italic font-light">Texte à venir.</p>
             )}
@@ -81,7 +81,7 @@ function BlocSection({ bloc, override, index }: { bloc: Bloc; override?: BlocOve
                                     fill
                                     sizes="(max-width: 768px) 100vw, 50vw"
                                     quality={80}
-                                    className="object-contain p-5 md:p-8"
+                                    className="object-contain mix-blend-multiply p-5 md:p-8"
                                 />
                             </div>
                         ) : (
