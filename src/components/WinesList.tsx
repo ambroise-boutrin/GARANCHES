@@ -34,8 +34,8 @@ export default function WinesList({ wines }: { wines: any[] }) {
 
                                 <div className="w-full md:w-2/3 text-center md:text-left">
                                     <div className="flex flex-col md:flex-row justify-between items-center mb-2">
-                                        <h2 className="text-3xl font-serif text-wine-900"><Link href={cuveeHref(wine)} className="hover:text-amber-700 transition-colors">{wine.name}</Link></h2>
-                                        <span className="text-xl font-bold text-gold-500 mt-2 md:mt-0 whitespace-nowrap">
+                                        <h2 className="text-3xl font-serif text-wine-900"><Link href={cuveeHref(wine)} className="hover:text-red-900 transition-colors">{wine.name}</Link></h2>
+                                        <span className="text-xl font-bold text-red-900 mt-2 md:mt-0 whitespace-nowrap">
                                             {(wine.price / 100).toFixed(2).replace('.', ',')} €
                                         </span>
                                     </div>
@@ -49,7 +49,7 @@ export default function WinesList({ wines }: { wines: any[] }) {
                                         {wine.description}
                                     </p>
 
-                                    <Link href={cuveeHref(wine)} className="inline-block mb-6 text-xs uppercase tracking-widest font-bold text-red-900 hover:text-amber-600 transition-colors">
+                                    <Link href={cuveeHref(wine)} className="inline-block mb-6 text-xs uppercase tracking-widest font-bold text-red-900 hover:text-red-700 transition-colors">
                                         Découvrir la cuvée →
                                     </Link>
 
@@ -99,7 +99,7 @@ export default function WinesList({ wines }: { wines: any[] }) {
                     <p className="font-light opacity-80 mb-8 max-w-xl mx-auto">
                         N'hésitez pas à nous contacter pour connaître les tarifs d'expédition ou pour passer commande directement.
                     </p>
-                    <Link href="/contact" className="border-b border-gold-500 text-gold-500 pb-1 hover:text-white hover:border-white transition-colors uppercase text-xs tracking-widest font-bold">
+                    <Link href="/contact" className="border-b border-white text-white pb-1 hover:text-white hover:border-white transition-colors uppercase text-xs tracking-widest font-bold">
                         Contactez-nous
                     </Link>
                 </div>

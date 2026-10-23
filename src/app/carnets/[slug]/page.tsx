@@ -48,7 +48,7 @@ export default async function CarnetPage({ params }: Props) {
     return (
         <main className="min-h-screen bg-paper pt-32">
             <article className="max-w-3xl mx-auto px-6">
-                <Link href="/carnets" className="text-amber-700 font-serif italic text-xl hover:text-wine-900 transition-colors">
+                <Link href="/carnets" className="text-red-900 uppercase tracking-[0.3em] text-xs font-bold hover:text-wine-900 transition-colors">
                     Les Carnets de Garanches
                 </Link>
                 <p className="text-xs uppercase tracking-widest text-gray-500 font-bold mt-8 mb-3">
