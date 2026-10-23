@@ -10,15 +10,20 @@ html {
   overflow-x: clip;
 }
 
-/* Titres : toujours en majuscules, jamais en italique (demande d'Ambroise). */
+/* Titres jamais en italique ; Cormorant en 400 est trop fin sur téléphone. */
 h1,
 h2,
 h3 {
-  text-transform: uppercase;
   font-style: normal;
-  letter-spacing: 0.04em;
-  /* Cormorant en 400 est trop fin en majuscules sur téléphone. */
   font-weight: 600;
+}
+
+/* Majuscules pour les grands titres seulement (demande d'Ambroise) : les titres de cartes
+   (h3 : cépages, vins, pages) et les noms de vins restent en écriture normale. */
+h1,
+h2 {
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
 /* Libellés en Cormorant majuscules (entrées de menu, cartes) : même graisse que les titres. */

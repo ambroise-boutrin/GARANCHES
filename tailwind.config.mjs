@@ -40,6 +40,14 @@ const config = {
                 light: '400',
                 bold: '600',
             },
+            // Les grandes tailles de Tailwind ont un interligne de 1 : les titres sur plusieurs
+            // lignes (majuscules en Cormorant) se touchaient sur ordinateur.
+            fontSize: {
+                '4xl': ['2.25rem', { lineHeight: '1.2' }],
+                '5xl': ['3rem', { lineHeight: '1.15' }],
+                '6xl': ['3.75rem', { lineHeight: '1.12' }],
+                '7xl': ['4.5rem', { lineHeight: '1.1' }],
+            },
             fontFamily: {
                 serif: ['var(--font-serif)', 'serif'],
                 sans: ['var(--font-sans)', 'sans-serif'],
