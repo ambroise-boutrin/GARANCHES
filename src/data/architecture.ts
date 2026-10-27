@@ -334,7 +334,7 @@ Puis goûtons quelques cuvées au cœur de leur histoire.
                 // Informations pratiques reprises de l'ancienne page « Visite ».
                 body: `Le domaine est ouvert du lundi au samedi, de 9h à 18h. Il est fermé le dimanche et les jours fériés.
 
-Nous recevons avec plaisir les visiteurs individuels comme les groupes. Pour vous garantir le meilleur accueil, **une réservation est conseillée**, par téléphone au 04 74 03 44 80 ou avec le bouton ci-dessous.
+Nous recevons avec plaisir les visiteurs individuels comme les groupes. Pour vous garantir le meilleur accueil, **une réservation est conseillée**, par téléphone (Romain au 07 82 24 94 36, Aurélie au 06 58 83 46 80) ou avec le bouton ci-dessous.
 
 345 chemin de Garanches, 69460 Odenas.`,
                 pratique: [

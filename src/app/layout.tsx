@@ -86,7 +86,7 @@ const jsonLd = {
   "name": "Domaine de Garanches",
   "image": "https://domainedegaranches.com/images/34_slide001.jpg",
   "url": "https://domainedegaranches.com",
-  "telephone": "+33474034480",
+  "telephone": "+33782249436",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "345 chemin de Garanches",
