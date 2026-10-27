@@ -16,7 +16,8 @@ export default function Footer() {
                     <p className="font-light text-sm leading-loose text-gray-300 mb-6">
                         345 chemin de Garanches<br />
                         69460 Odenas — France<br />
-                        +33 4 74 03 44 80
+                        <a href="tel:+33782249436" className="inline-block py-1 hover:text-white">Romain : 07 82 24 94 36</a><br />
+                        <a href="tel:+33658834680" className="inline-block py-1 hover:text-white">Aurélie : 06 58 83 46 80</a>
                     </p>
 
 
