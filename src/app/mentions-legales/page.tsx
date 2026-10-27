@@ -24,7 +24,7 @@ export default function MentionsLegales() {
                     <strong>SIRET :</strong> [Numéro SIRET]<br />
                     <strong>RCS :</strong> Villefranche-Tarare [Numéro RCS]<br />
                     <strong>TVA Intracommunautaire :</strong> [Numéro TVA]<br />
-                    <strong>Directeur de la publication :</strong> Romain Martinache & Aurélie Crozet
+                    <strong>Directeur de la publication :</strong> Ambroise Boutrin
                 </p>
 
                 <h3>Hébergement</h3>
