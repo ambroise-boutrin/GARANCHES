@@ -16,7 +16,7 @@ export default function MentionsLegales() {
                 <p>
                     <strong>Domaine de Garanches</strong><br />
                     145 Rue des Garanches, 69460 Odenas<br />
-                    Téléphone : +33 4 74 03 44 80<br />
+                    Téléphone : +33 7 82 24 94 36 (Romain) · +33 6 58 83 46 80 (Aurélie)<br />
                     Email : contact@domainedegaranches.com<br />
                     <br />
                     <strong>Forme juridique :</strong> Exploitation Agricole à Responsabilité Limitée (EARL)<br />

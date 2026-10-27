@@ -289,7 +289,9 @@ export default function Navbar() {
                                         <p className="text-center text-xs text-white/50 leading-relaxed">
                                             345 chemin de Garanches, 69460 Odenas
                                             <br />
-                                            <a href="tel:+33474034480" className="inline-block py-2 text-white/70">04 74 03 44 80</a>
+                                            <a href="tel:+33782249436" className="inline-block py-2 text-white/70">Romain : 07 82 24 94 36</a>
+                                            <br />
+                                            <a href="tel:+33658834680" className="inline-block py-2 text-white/70">Aurélie : 06 58 83 46 80</a>
                                         </p>
                                     </div>
                                 </motion.div>
