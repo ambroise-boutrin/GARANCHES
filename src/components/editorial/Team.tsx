@@ -5,11 +5,11 @@ import FadeIn from "@/components/FadeIn";
 const TEAM = [
     { name: "Michel Stagnara", image: "/images/1_image.jpg" },
     { name: "Isabelle Stagnara", image: "/images/22_image.jpg" },
-    { name: "Ambroise Stagnara", image: "/images/26_image.jpg" },
-    { name: "Aurélie Crozet", image: "/images/3_image.jpg" },
-    { name: "Laeticia Stagnara", image: "/images/4_image.jpg" },
-    { name: "Tancrède Stagnara", image: "/images/15_image.jpg" },
     { name: "Romain Martinache", image: "/images/18_image.jpg" },
+    { name: "Aurélie Crozet", image: "/images/3_image.jpg" },
+    { name: "Laetitia Stagnara", image: "/images/4_image.jpg" },
+    { name: "Tancrède Stagnara", image: "/images/15_image.jpg" },
+    { name: "Ambroise Stagnara", image: "/images/26_image.jpg" },
 ];
 
 export default function Team() {

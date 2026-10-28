@@ -93,6 +93,8 @@ export default function ContactContent({ sujet, vin }: { sujet?: string; vin?: s
                                     <p className="text-gray-900 hover:text-wine-700 transition-colors font-bold text-lg">
                                         <a href="tel:+33782249436" className="block">Romain : 07 82 24 94 36</a>
                                         <a href="tel:+33658834680" className="block">Aurélie : 06 58 83 46 80</a>
+                                        <a href="tel:+33661735667" className="block">Isabelle : 06 61 73 56 67</a>
+                                        <a href="tel:+33609419702" className="block">Michel : 06 09 41 97 02</a>
                                     </p>
                                 </div>
                             </div>
