@@ -292,6 +292,10 @@ export default function Navbar() {
                                             <a href="tel:+33782249436" className="inline-block py-2 text-white/70">Romain : 07 82 24 94 36</a>
                                             <br />
                                             <a href="tel:+33658834680" className="inline-block py-2 text-white/70">Aurélie : 06 58 83 46 80</a>
+                                            <br />
+                                            <a href="tel:+33661735667" className="inline-block py-2 text-white/70">Isabelle : 06 61 73 56 67</a>
+                                            <br />
+                                            <a href="tel:+33609419702" className="inline-block py-2 text-white/70">Michel : 06 09 41 97 02</a>
                                         </p>
                                     </div>
                                 </motion.div>
