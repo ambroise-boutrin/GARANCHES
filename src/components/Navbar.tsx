@@ -186,7 +186,7 @@ export default function Navbar() {
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.25 }}
-                        className="fixed inset-0 bg-stone-900 z-[100] flex flex-col pt-24 overflow-hidden"
+                        className="fixed top-0 inset-x-0 h-[100dvh] bg-stone-900 z-[100] flex flex-col pt-24 overflow-hidden"
                     >
                         {/* Deux écrans : la liste des portes, puis les pages de la porte choisie. */}
                         <AnimatePresence mode="wait" initial={false}>
@@ -197,7 +197,7 @@ export default function Navbar() {
                                     animate={{ x: 0, opacity: 1 }}
                                     exit={{ x: 40, opacity: 0 }}
                                     transition={{ duration: 0.2 }}
-                                    className="flex-1 overflow-y-auto px-6 pb-10"
+                                    className="flex-1 overflow-y-auto px-6 pb-[calc(env(safe-area-inset-bottom)+6rem)]"
                                 >
                                     <button
                                         type="button"
@@ -212,7 +212,7 @@ export default function Navbar() {
                                         onClick={() => setIsOpen(false)}
                                         className="block mt-2 mb-6"
                                     >
-                                        <span className="block font-serif text-4xl text-white uppercase tracking-[0.04em]">{openPorteLink.name}</span>
+                                        <span className="block font-serif text-3xl text-white uppercase tracking-[0.04em]">{openPorteLink.name}</span>
                                         <span className="mt-2 inline-flex items-center gap-2 text-xs uppercase tracking-widest text-white">
                                             Voir la page
                                             <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
@@ -227,7 +227,7 @@ export default function Navbar() {
                                                     className="flex items-center justify-between gap-4 py-4"
                                                 >
                                                     <span>
-                                                        <span className={`block font-serif text-2xl uppercase tracking-[0.04em] ${pathname === child.href ? "text-white underline underline-offset-8 decoration-1" : "text-white/80"}`}>{child.label}</span>
+                                                        <span className={`block font-serif text-xl uppercase tracking-[0.04em] ${pathname === child.href ? "text-white underline underline-offset-8 decoration-1" : "text-white/80"}`}>{child.label}</span>
                                                         {child.motsCles && <span className="block mt-1 text-xs text-white/50">{child.motsCles}</span>}
                                                     </span>
                                                     <svg className="w-4 h-4 shrink-0 text-white/40" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
@@ -243,14 +243,14 @@ export default function Navbar() {
                                     animate={{ x: 0, opacity: 1 }}
                                     exit={{ x: -40, opacity: 0 }}
                                     transition={{ duration: 0.2 }}
-                                    className="flex-1 flex flex-col overflow-y-auto px-6 pb-10"
+                                    className="flex-1 flex flex-col overflow-y-auto px-6 pb-[calc(env(safe-area-inset-bottom)+6rem)]"
                                 >
                                     <ul className="border-t border-white/10">
                                         {navLinks.map((link) => {
                                             const actif = isActive(link.href);
                                             const contenu = (
                                                 <>
-                                                    <span className={`font-serif text-3xl uppercase tracking-[0.04em] ${actif ? "text-white underline underline-offset-8 decoration-1" : "text-white"}`}>{link.name}</span>
+                                                    <span className={`font-serif text-2xl uppercase tracking-[0.04em] ${actif ? "text-white underline underline-offset-8 decoration-1" : "text-white"}`}>{link.name}</span>
                                                     <svg className="w-5 h-5 shrink-0 text-white/40" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
                                                 </>
                                             );
@@ -261,7 +261,7 @@ export default function Navbar() {
                                                             type="button"
                                                             onClick={() => setOpenPorte(link.href)}
                                                             aria-label={`Afficher les pages de ${link.name}`}
-                                                            className="w-full flex items-center justify-between gap-4 py-5 text-left"
+                                                            className="w-full flex items-center justify-between gap-4 py-4 text-left"
                                                         >
                                                             {contenu}
                                                         </button>
@@ -269,7 +269,7 @@ export default function Navbar() {
                                                         <Link
                                                             href={link.href}
                                                             onClick={() => setIsOpen(false)}
-                                                            className="flex items-center justify-between gap-4 py-5"
+                                                            className="flex items-center justify-between gap-4 py-4"
                                                         >
                                                             {contenu}
                                                         </Link>
@@ -286,17 +286,16 @@ export default function Navbar() {
                                         >
                                             Commander
                                         </Link>
-                                        <p className="text-center text-xs text-white/50 leading-relaxed">
-                                            345 chemin de Garanches, 69460 Odenas
-                                            <br />
-                                            <a href="tel:+33782249436" className="inline-block py-2 text-white/70">Romain : 07 82 24 94 36</a>
-                                            <br />
-                                            <a href="tel:+33658834680" className="inline-block py-2 text-white/70">Aurélie : 06 58 83 46 80</a>
-                                            <br />
-                                            <a href="tel:+33661735667" className="inline-block py-2 text-white/70">Isabelle : 06 61 73 56 67</a>
-                                            <br />
-                                            <a href="tel:+33609419702" className="inline-block py-2 text-white/70">Michel : 06 09 41 97 02</a>
-                                        </p>
+                                        <div className="text-center text-xs text-white/50 leading-relaxed">
+                                            <p>345 chemin de Garanches, 69460 Odenas</p>
+                                            {/* Deux colonnes pour que le bas du menu reste visible au-dessus de la barre de Safari. */}
+                                            <div className="mt-2 grid grid-cols-2 gap-x-3 text-white/70">
+                                                <a href="tel:+33782249436" className="py-2">Romain<br />07 82 24 94 36</a>
+                                                <a href="tel:+33658834680" className="py-2">Aurélie<br />06 58 83 46 80</a>
+                                                <a href="tel:+33661735667" className="py-2">Isabelle<br />06 61 73 56 67</a>
+                                                <a href="tel:+33609419702" className="py-2">Michel<br />06 09 41 97 02</a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </motion.div>
                             )}
