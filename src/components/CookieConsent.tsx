@@ -23,8 +23,7 @@ export default function CookieConsent() {
     useEffect(() => {
         const savedConsent = localStorage.getItem("cookie-consent-settings");
         if (!savedConsent) {
-            const timer = setTimeout(() => setIsVisible(true), 1500); // Delay for smoother UX
-            return () => clearTimeout(timer);
+            setIsVisible(true);
         } else {
             setConsent(JSON.parse(savedConsent));
         }
@@ -67,47 +66,32 @@ export default function CookieConsent() {
             <AnimatePresence>
                 {isVisible && !showSettings && (
                     <motion.div
-                        initial={{ y: 100, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        exit={{ y: 100, opacity: 0 }}
-                        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                        className="fixed bottom-0 left-0 right-0 z-[150] p-4 md:p-6"
+                        className="fixed bottom-0 left-0 right-0 z-[150] bg-white border-t border-stone-300 pb-[env(safe-area-inset-bottom)]"
                     >
-                        <div className="max-w-6xl mx-auto bg-white/90 backdrop-blur-md border border-stone-200 shadow-[0_8px_30px_rgb(0,0,0,0.12)] rounded-xl p-6 md:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-                            <div className="flex-1 space-y-2">
-                                <div className="flex items-center gap-3 mb-2">
-                                    <CookieIcon className="w-6 h-6 text-wine-900" />
-                                    <h3 className="normal-case tracking-normal text-lg font-serif font-semibold text-stone-900">
-                                        Gestion des cookies
-                                    </h3>
-                                </div>
-                                <p className="text-sm text-stone-600 leading-relaxed max-w-2xl">
-                                    Nous utilisons des cookies essentiels pour le bon fonctionnement du site (vérification d'âge).
-                                    D'autres cookies peuvent être utilisés pour améliorer votre expérience.
-                                    <Link href="/mentions-legales" className="ml-1 text-wine-900 underline underline-offset-2 hover:text-wine-700 font-medium">
-                                        En savoir plus
-                                    </Link>.
-                                </p>
-                            </div>
-
-                            <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto shrink-0">
-                                <button
-                                    onClick={() => setShowSettings(true)}
-                                    className="px-5 py-2.5 text-sm font-medium text-stone-600 bg-stone-100 hover:bg-stone-200 rounded-lg transition-colors border border-transparent"
-                                >
+                        {/* Bandeau simple et compact : il ne cache pas la page sur téléphone. */}
+                        <div className="max-w-6xl mx-auto px-4 py-4 md:px-6 md:py-5 flex flex-col md:flex-row md:items-center gap-3 md:gap-8">
+                            <p className="flex-1 text-[13px] md:text-sm text-stone-700 leading-snug">
+                                Ce site utilise des cookies, essentiellement pour la vérification d’âge.{" "}
+                                <Link href="/mentions-legales" className="text-wine-900 underline underline-offset-2">
+                                    En savoir plus
+                                </Link>
+                                {" · "}
+                                <button onClick={() => setShowSettings(true)} className="text-wine-900 underline underline-offset-2">
                                     Personnaliser
                                 </button>
+                            </p>
+                            <div className="grid grid-cols-2 gap-2 md:flex md:gap-3 shrink-0">
                                 <button
                                     onClick={handleDeclineAll}
-                                    className="px-5 py-2.5 text-sm font-medium text-stone-800 bg-transparent border border-stone-300 hover:bg-stone-50 rounded-lg transition-colors"
+                                    className="px-4 py-2.5 text-sm text-stone-800 border border-stone-400 hover:bg-stone-50 transition-colors"
                                 >
-                                    Continuer sans accepter
+                                    Refuser
                                 </button>
                                 <button
                                     onClick={handleAcceptAll}
-                                    className="px-6 py-2.5 text-sm font-bold text-white bg-wine-900 hover:bg-wine-800 rounded-lg shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5"
+                                    className="px-4 py-2.5 text-sm font-medium text-white bg-wine-900 hover:bg-wine-800 transition-colors"
                                 >
-                                    Tout accepter
+                                    Accepter
                                 </button>
                             </div>
                         </div>
@@ -120,17 +104,11 @@ export default function CookieConsent() {
                 {showSettings && (
                     <div className="fixed inset-0 z-[200] flex items-center justify-center p-4">
                         <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
                             onClick={() => setShowSettings(false)}
                             className="absolute inset-0 bg-black/60 backdrop-blur-sm"
                         />
                         <motion.div
-                            initial={{ scale: 0.95, opacity: 0, y: 20 }}
-                            animate={{ scale: 1, opacity: 1, y: 0 }}
-                            exit={{ scale: 0.95, opacity: 0, y: 20 }}
-                            className="relative w-full max-w-2xl bg-white rounded-2xl shadow-2xl flex flex-col max-h-[85vh] overflow-hidden"
+                            className="relative w-full max-w-2xl bg-white flex flex-col max-h-[85vh] overflow-hidden"
                         >
 
                             <div className="p-6 border-b border-stone-100 bg-stone-50/80 flex justify-between items-center sticky top-0 z-10 backdrop-blur-sm">
@@ -150,7 +128,7 @@ export default function CookieConsent() {
                             <div className="p-6 overflow-y-auto space-y-6 custom-scrollbar">
 
 
-                                <div className="flex items-start justify-between gap-4 p-4 rounded-xl bg-stone-50 border border-stone-100">
+                                <div className="flex items-start justify-between gap-4 p-4 bg-stone-50 border border-stone-100">
                                     <div className="space-y-1">
                                         <div className="flex items-center gap-2">
                                             <span className="font-semibold text-stone-900">Nécessaires</span>
@@ -164,7 +142,7 @@ export default function CookieConsent() {
                                 </div>
 
 
-                                <div className="flex items-start justify-between gap-4 p-4 rounded-xl border border-stone-100 hover:border-stone-200 transition-colors">
+                                <div className="flex items-start justify-between gap-4 p-4 border border-stone-100 hover:border-stone-200 transition-colors">
                                     <div className="space-y-1">
                                         <span className="font-semibold text-stone-900 block">Analytiques</span>
                                         <p className="text-sm text-stone-500">
@@ -178,7 +156,7 @@ export default function CookieConsent() {
                                 </div>
 
 
-                                <div className="flex items-start justify-between gap-4 p-4 rounded-xl border border-stone-100 hover:border-stone-200 transition-colors">
+                                <div className="flex items-start justify-between gap-4 p-4 border border-stone-100 hover:border-stone-200 transition-colors">
                                     <div className="space-y-1">
                                         <span className="font-semibold text-stone-900 block">Marketing</span>
                                         <p className="text-sm text-stone-500">
@@ -197,13 +175,13 @@ export default function CookieConsent() {
                             <div className="p-6 border-t border-stone-100 bg-stone-50/80 flex justify-end gap-3 sticky bottom-0 z-10 backdrop-blur-sm">
                                 <button
                                     onClick={handleDeclineAll}
-                                    className="px-5 py-2.5 text-sm font-medium text-stone-600 hover:text-stone-900 hover:bg-stone-200/50 rounded-lg transition-colors"
+                                    className="px-5 py-2.5 text-sm font-medium text-stone-600 hover:text-stone-900 hover:bg-stone-200/50 transition-colors"
                                 >
                                     Tout refuser
                                 </button>
                                 <button
                                     onClick={handleSavePreferences}
-                                    className="px-6 py-2.5 text-sm font-bold text-white bg-stone-900 hover:bg-stone-800 rounded-lg shadow-sm transition-colors"
+                                    className="px-6 py-2.5 text-sm font-bold text-white bg-stone-900 hover:bg-stone-800 transition-colors"
                                 >
                                     Sauvegarder
                                 </button>
@@ -216,11 +194,9 @@ export default function CookieConsent() {
 
             {!isVisible && !showSettings && (
                 <motion.button
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
                     whileHover={{ scale: 1.1 }}
                     onClick={() => setShowSettings(true)}
-                    className="hidden md:block fixed bottom-4 left-4 z-[140] p-3 bg-white/80 backdrop-blur shadow-lg border border-stone-100 rounded-full text-stone-400 hover:text-wine-900 transition-colors group"
+                    className="hidden md:block fixed bottom-4 left-4 z-[140] p-3 bg-white/80 backdrop-blur border border-stone-100 rounded-full text-stone-400 hover:text-wine-900 transition-colors group"
                     title="Gérer les cookies"
                 >
                     <CookieIcon className="w-5 h-5" />

@@ -47,7 +47,7 @@ export default function FAQ() {
                         {faqs.map((faq, index) => (
                             <div
                                 key={index}
-                                className="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden"
+                                className="bg-white border border-gray-100 overflow-hidden"
                             >
                                 <button
                                     onClick={() => toggleAccordion(index)}
@@ -66,10 +66,6 @@ export default function FAQ() {
                                 <AnimatePresence>
                                     {openIndex === index && (
                                         <motion.div
-                                            initial={{ height: 0, opacity: 0 }}
-                                            animate={{ height: "auto", opacity: 1 }}
-                                            exit={{ height: 0, opacity: 0 }}
-                                            transition={{ duration: 0.3, ease: "easeInOut" }}
                                         >
                                             <div className="px-6 pb-6 text-gray-600 leading-relaxed font-light border-t border-gray-50 pt-4">
                                                 {faq.answer}

@@ -16,9 +16,9 @@ export default function WinesList({ wines }: { wines: any[] }) {
 
                     {wines.map((wine: any, index: number) => (
                         <FadeIn key={wine.id} delay={index * 0.1}>
-                            <div className="group flex flex-col md:flex-row gap-4 md:gap-8 items-center bg-white p-4 md:p-10 shadow-sm hover:shadow-md transition-shadow border border-gray-100 rounded-lg">
+                            <div className="group flex flex-col md:flex-row gap-4 md:gap-8 items-center bg-white p-4 md:p-10 border border-gray-100">
 
-                                <div className="w-full md:w-1/3 h-44 md:h-80 relative flex-shrink-0 bg-gray-50 rounded-lg overflow-hidden">
+                                <div className="w-full md:w-1/3 h-44 md:h-80 relative flex-shrink-0 bg-gray-50 overflow-hidden">
                                     <div className="absolute inset-0 flex items-center justify-center p-4">
                                         <Image
                                             src={wine.image || "/images/36_brouilly-h.jpg"}
@@ -27,7 +27,7 @@ export default function WinesList({ wines }: { wines: any[] }) {
                                             sizes="(max-width: 768px) 100vw, 33vw"
                                             loading="lazy"
                                             quality={80}
-                                            className="object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-500 p-2 md:p-4"
+                                            className="object-contain mix-blend-multiply transition-transform duration-500 p-2 md:p-4"
                                         />
                                     </div>
                                 </div>
