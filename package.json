@@ -13,7 +13,6 @@
     "@sanity/vision": "^3.0.0",
     "critters": "^0.0.23",
     "framer-motion": "^11.0.0",
-    "lenis": "^1.1.13",
     "next": "14.2.16",
     "next-sanity": "^9.0.0",
     "picocolors": "^1.1.1",

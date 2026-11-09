@@ -7,7 +7,7 @@ import FAQ from "@/components/FAQ";
 import OpeningStatus from "@/components/OpeningStatus";
 
 const InteractiveMap = dynamic(() => import("@/components/InteractiveMap"), {
-    loading: () => <div className="w-full h-[500px] bg-stone-100 rounded-lg animate-pulse" />,
+    loading: () => <div className="w-full h-[500px] bg-stone-100 animate-pulse" />,
     ssr: false
 });
 
@@ -60,7 +60,7 @@ export default function ContactContent({ sujet, vin }: { sujet?: string; vin?: s
 
             <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-start">
                 <FadeIn direction="right" delay={0.2}>
-                    <div className="bg-white p-10 border border-gray-100 shadow-lg rounded-lg relative overflow-hidden group">
+                    <div className="bg-white p-10 border border-gray-100 relative overflow-hidden group">
                         <h2 className="text-3xl font-serif text-wine-900 mb-10 relative z-10">Nos Coordonnées</h2>
 
                         <div className="space-y-10 relative z-10">
@@ -114,11 +114,11 @@ export default function ContactContent({ sujet, vin }: { sujet?: string; vin?: s
                                 </div>
                             </div>
 
-                            <div className="mt-8 h-48 w-full relative overflow-hidden rounded-lg shadow-md group-hover:shadow-lg transition-all">
+                            <div className="mt-8 h-48 w-full relative overflow-hidden group-hover:shadow-lg transition-all">
                                 <img
                                     src="/images/34_slide001.jpg"
                                     alt="Cave voûtée avec fûts de chêne au Domaine de Garanches"
-                                    className="w-full h-full object-cover opacity-90 hover:scale-105 transition-transform duration-1000"
+                                    className="w-full h-full object-cover opacity-90 transition-transform duration-1000"
                                 />
                             </div>
                         </div>
@@ -126,25 +126,25 @@ export default function ContactContent({ sujet, vin }: { sujet?: string; vin?: s
                 </FadeIn>
 
                 <FadeIn direction="left" delay={0.4}>
-                    <div id="formulaire" className="scroll-mt-28 bg-gradient-to-br from-wine-50 to-white p-10 rounded-lg shadow-lg border border-white">
+                    <div id="formulaire" className="scroll-mt-28 bg-stone-50 p-6 md:p-10 border border-stone-200">
                         <h2 className="text-3xl font-serif text-wine-900 mb-8">{isBooking ? "Réserver" : vinDemande ? "Demander des bouteilles" : "Envoyez-nous un message"}</h2>
 
                         <form className="space-y-6" onSubmit={handleSubmit}>
                             <div className="grid md:grid-cols-2 gap-6">
                                 <div>
                                     <label className="block text-xs uppercase tracking-widest text-gray-500 mb-2 font-bold ml-2">Nom</label>
-                                    <input type="text" name="nom" required className="w-full bg-white border border-gray-100 p-4 rounded-md focus:outline-none focus:ring-2 focus:ring-wine-100 focus:border-wine-300 transition-all shadow-sm" placeholder="Votre nom" />
+                                    <input type="text" name="nom" required className="w-full bg-white border border-gray-100 p-4 rounded-md focus:outline-none focus:ring-2 focus:ring-wine-100 focus:border-wine-300 transition-all" placeholder="Votre nom" />
                                 </div>
                                 <div>
                                     <label className="block text-xs uppercase tracking-widest text-gray-500 mb-2 font-bold ml-2">Email</label>
-                                    <input type="email" name="email" className="w-full bg-white border border-gray-100 p-4 rounded-md focus:outline-none focus:ring-2 focus:ring-wine-100 focus:border-wine-300 transition-all shadow-sm" placeholder="votre@email.com" />
+                                    <input type="email" name="email" className="w-full bg-white border border-gray-100 p-4 rounded-md focus:outline-none focus:ring-2 focus:ring-wine-100 focus:border-wine-300 transition-all" placeholder="votre@email.com" />
                                 </div>
                             </div>
 
                             <div>
                                 <label className="block text-xs uppercase tracking-widest text-gray-500 mb-2 font-bold ml-2">Sujet</label>
                                 <div className="relative">
-                                    <select value={subject} onChange={(e) => setSubject(e.target.value)} className="w-full bg-white border border-gray-100 p-4 rounded-md focus:outline-none focus:ring-2 focus:ring-wine-100 focus:border-wine-300 transition-all shadow-sm text-gray-700 appearance-none cursor-pointer">
+                                    <select value={subject} onChange={(e) => setSubject(e.target.value)} className="w-full bg-white border border-gray-100 p-4 rounded-md focus:outline-none focus:ring-2 focus:ring-wine-100 focus:border-wine-300 transition-all text-gray-700 appearance-none cursor-pointer">
                                         {SUJETS.map((s) => (
                                             <option key={s}>{s}</option>
                                         ))}
@@ -161,22 +161,22 @@ export default function ContactContent({ sujet, vin }: { sujet?: string; vin?: s
                                 <div className="grid md:grid-cols-3 gap-6">
                                     <div>
                                         <label className="block text-xs uppercase tracking-widest text-gray-500 mb-2 font-bold ml-2">Date souhaitée</label>
-                                        <input type="date" name="date" className="w-full bg-white border border-gray-100 p-4 rounded-md focus:outline-none focus:ring-2 focus:ring-wine-100 focus:border-wine-300 transition-all shadow-sm" />
+                                        <input type="date" name="date" className="w-full bg-white border border-gray-100 p-4 rounded-md focus:outline-none focus:ring-2 focus:ring-wine-100 focus:border-wine-300 transition-all" />
                                     </div>
                                     <div>
                                         <label className="block text-xs uppercase tracking-widest text-gray-500 mb-2 font-bold ml-2">Personnes</label>
-                                        <input type="number" name="personnes" min={1} max={30} className="w-full bg-white border border-gray-100 p-4 rounded-md focus:outline-none focus:ring-2 focus:ring-wine-100 focus:border-wine-300 transition-all shadow-sm" />
+                                        <input type="number" name="personnes" min={1} max={30} className="w-full bg-white border border-gray-100 p-4 rounded-md focus:outline-none focus:ring-2 focus:ring-wine-100 focus:border-wine-300 transition-all" />
                                     </div>
                                     <div>
                                         <label className="block text-xs uppercase tracking-widest text-gray-500 mb-2 font-bold ml-2">Téléphone</label>
-                                        <input type="tel" name="telephone" className="w-full bg-white border border-gray-100 p-4 rounded-md focus:outline-none focus:ring-2 focus:ring-wine-100 focus:border-wine-300 transition-all shadow-sm" />
+                                        <input type="tel" name="telephone" className="w-full bg-white border border-gray-100 p-4 rounded-md focus:outline-none focus:ring-2 focus:ring-wine-100 focus:border-wine-300 transition-all" />
                                     </div>
                                 </div>
                             )}
 
                             <div>
                                 <label className="block text-xs uppercase tracking-widest text-gray-500 mb-2 font-bold ml-2">Message</label>
-                                <textarea name="message" rows={vinDemande ? 8 : 5} defaultValue={messageInitial} className="w-full bg-white border border-gray-100 p-4 rounded-md focus:outline-none focus:ring-2 focus:ring-wine-100 focus:border-wine-300 transition-all shadow-sm resize-none" placeholder="Comment pouvons-nous vous aider ?"></textarea>
+                                <textarea name="message" rows={vinDemande ? 8 : 5} defaultValue={messageInitial} className="w-full bg-white border border-gray-100 p-4 rounded-md focus:outline-none focus:ring-2 focus:ring-wine-100 focus:border-wine-300 transition-all resize-none" placeholder="Comment pouvons-nous vous aider ?"></textarea>
                             </div>
 
                             <button type="submit" className="w-full bg-wine-900 text-white py-4 uppercase tracking-widest text-xs font-bold hover:bg-amber-600 transition-colors">

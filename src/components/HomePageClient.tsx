@@ -1,9 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
 import FadeIn from "@/components/FadeIn";
 import ParallaxImage from "@/components/ParallaxImage";
 import RequestBottlesButton from "@/components/RequestBottlesButton";
@@ -12,84 +10,10 @@ import { cuveeHref } from "@/lib/wineSlug";
 import { cadrage } from "@/data/cadrages";
 
 export default function HomePageClient({ products, content }: { products: any[], content?: any }) {
-    const [isLoading, setIsLoading] = useState(true);
-    const [mounted, setMounted] = useState(false);
     const heroVideo = content?.hero?.videoUrl || HERO_VIDEO;
-
-    useEffect(() => {
-        setMounted(true);
-        document.body.classList.add("overflow-hidden");
-
-        const isPWA = window.matchMedia('(display-mode: standalone)').matches;
-
-        const startAnimation = () => {
-            setIsLoading(false);
-            document.body.classList.remove("overflow-hidden");
-            sessionStorage.setItem("intro-played", "true");
-            window.dispatchEvent(new Event("intro-complete"));
-        };
-
-        const hasPlayedIntro = sessionStorage.getItem("intro-played");
-
-        if (hasPlayedIntro || isPWA) {
-            setIsLoading(false);
-            document.body.classList.remove("overflow-hidden");
-            return;
-        }
-
-        const hasConfirmed = localStorage.getItem("age-confirmed");
-
-        if (hasConfirmed) {
-            startAnimation();
-        } else {
-            const handleAgeConfirmed = () => {
-                startAnimation();
-            };
-
-            window.addEventListener("age-gate-confirmed", handleAgeConfirmed);
-
-            const safetyTimeout = setTimeout(() => {
-                setIsLoading(false);
-                document.body.classList.remove("overflow-hidden");
-            }, 5000);
-
-            return () => {
-                window.removeEventListener("age-gate-confirmed", handleAgeConfirmed);
-                clearTimeout(safetyTimeout);
-            };
-        }
-    }, []);
-
-    const titleVariants = {
-        loading: {
-            scale: 1.1,
-            y: 0,
-            opacity: 1
-        },
-        loaded: {
-            scale: 1,
-            y: 0,
-            opacity: 1
-        }
-    };
 
     return (
         <main className="min-h-screen text-gray-800 font-sans selection:bg-red-900 selection:text-white">
-
-            <AnimatePresence>
-                {isLoading && (
-                    <motion.div
-                        key="white-bg"
-                        initial={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 1.5, ease: "easeInOut" }}
-                        className="fixed inset-0 z-[110] bg-[#FAFAFA]"
-                    />
-                )}
-            </AnimatePresence>
-
-            {/* BANDEAU LIVRAISON */}
-
 
             <section className="relative h-screen flex flex-col justify-center items-center overflow-hidden">
                 <div className="absolute inset-0 z-0">
@@ -123,38 +47,18 @@ export default function HomePageClient({ products, content }: { products: any[],
                 </div>
 
                 <div className="relative text-center px-4 max-w-7xl mx-auto flex flex-col items-center pt-24 md:pt-20">
-                    {mounted && (
-                        <motion.h1
-                            initial="loading"
-                            animate={isLoading ? "loading" : "loaded"}
-                            variants={titleVariants}
-                            transition={{
-                                duration: 1.5,
-                                ease: [0.22, 1, 0.36, 1]
-                            }}
-                            className={`font-serif text-4xl sm:text-5xl md:text-7xl lg:text-8xl leading-tight text-center relative transition-colors duration-1000 ${isLoading ? "z-[120] text-red-900" : "z-[70] text-white"}`}
-                        >
-                            Domaine de <br />
-                            <span>Garanches</span>
-                        </motion.h1>
-                    )}
+                    <h1 className="font-serif text-4xl sm:text-5xl md:text-7xl lg:text-8xl leading-tight text-center text-white">
+                        Domaine de <br />
+                        <span>Garanches</span>
+                    </h1>
 
-                    <motion.div
-                        animate={{ opacity: isLoading ? 0 : 1 }}
-                        transition={{ duration: 1, delay: 1.6 }}
-                        className="mb-8 mt-4"
-                    >
+                    <div className="mb-8 mt-4">
                         <span className="uppercase tracking-[0.3em] text-[10px] md:text-sm text-white font-bold block">
                             Odenas — Mont Brouilly
                         </span>
-                    </motion.div>
+                    </div>
 
-                    <motion.div
-                        animate={{ opacity: isLoading ? 0 : 1 }}
-                        transition={{ duration: 1, delay: 1.9 }}
-                        className="mt-4 flex flex-col items-center"
-                    >
-                        <div className="w-16 h-0.5 md:w-24 md:h-1 bg-white mb-6"></div>
+                    <div className="mt-4 flex flex-col items-center">
 
                         <p className="text-sm md:text-lg font-light max-w-xl mb-6 text-gray-100 leading-relaxed px-2 text-white">
                             {content?.hero?.content || "À Odenas, au pied du Mont Brouilly, Garanches est un lieu façonné par le temps, le granit et les générations qui l'ont fait vivre."}
@@ -163,18 +67,18 @@ export default function HomePageClient({ products, content }: { products: any[],
                         <div className="flex flex-col sm:flex-row gap-4 md:gap-8 justify-center items-center w-full">
                             <Link
                                 href="/les-vins/cuvees"
-                                className="w-[260px] px-8 py-3 bg-red-900/90 hover:bg-red-800 text-white uppercase tracking-widest text-xs font-bold transition-all border border-red-900 duration-300 text-center shadow-lg"
+                                className="w-[260px] px-8 py-3 bg-red-900/90 hover:bg-red-800 text-white uppercase tracking-widest text-xs font-bold transition-all border border-red-900 duration-300 text-center"
                             >
                                 Découvrir les vins
                             </Link>
                             <Link
                                 href="/rencontrons-garanches"
-                                className="w-[260px] px-8 py-3 bg-transparent hover:bg-white/10 text-white uppercase tracking-widest text-xs font-bold transition-all border border-white duration-300 text-center backdrop-blur-sm"
+                                className="w-[260px] px-8 py-3 bg-transparent hover:bg-white/10 text-white uppercase tracking-widest text-xs font-bold transition-all border border-white duration-300 text-center"
                             >
                                 Rencontrons-nous
                             </Link>
                         </div>
-                    </motion.div>
+                    </div>
                 </div>
             </section>
 
@@ -183,27 +87,26 @@ export default function HomePageClient({ products, content }: { products: any[],
                     <FadeIn direction="up" className="text-center mb-16">
                         <span className="text-red-900 uppercase tracking-[0.3em] text-xs font-bold mb-3 block">Garanches</span>
                         <h2 className="text-3xl md:text-5xl font-serif text-red-900 leading-tight mb-6">{SIGNATURE}</h2>
-                        <div className="w-24 h-1 bg-wine-900 mx-auto opacity-20"></div>
                     </FadeIn>
 
                     <div className="grid md:grid-cols-3 gap-8">
                         {HOME_PORTES.map(({ path, image, page, entrees }, index) => (
                             <FadeIn key={path} delay={0.1 + index * 0.15} className="flex flex-col">
-                                <Link href={`/${path}`} className="group relative block h-[380px] rounded-t-lg overflow-hidden">
+                                <Link href={`/${path}`} className="group relative block h-[380px] overflow-hidden">
                                     <Image
                                         src={image}
                                         alt=""
                                         fill
                                         sizes="(max-width: 768px) 100vw, 33vw"
                                         style={{ objectPosition: cadrage(image) }}
-                                        className="object-cover brightness-[.6] group-hover:brightness-75 group-hover:scale-105 transition-all duration-700"
+                                        className="object-cover brightness-[.6] group-hover:brightness-75 transition-all duration-700"
                                     />
                                     <div className="absolute inset-0 flex flex-col justify-end p-8 text-white">
                                         <h3 className="text-3xl md:text-4xl font-serif mb-3">{page.label}</h3>
                                         <span className="text-xs uppercase tracking-widest font-bold text-white">{page.cta} →</span>
                                     </div>
                                 </Link>
-                                <div className="bg-stone-50 border border-t-0 border-stone-200 rounded-b-lg p-6 space-y-5 flex-grow">
+                                <div className="bg-stone-50 border border-t-0 border-stone-200 p-6 space-y-5 flex-grow">
                                     {entrees.map((entree) => (
                                         <Link key={entree.label} href={entree.href} className="group block">
                                             <span className="block text-xl font-serif text-wine-900 group-hover:text-red-900 transition-colors">{entree.label}</span>
@@ -239,7 +142,7 @@ export default function HomePageClient({ products, content }: { products: any[],
                             </div>
                             <Link href="/le-lieu/histoire" className="group inline-flex items-center text-red-900 uppercase text-xs font-bold tracking-widest hover:text-red-700 transition-colors">
                                 <span className="border-b border-red-900 pb-1 group-hover:border-red-700">Lire l'histoire</span>
-                                <svg className="w-4 h-4 ml-2 transform group-hover:translate-x-2 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <svg className="w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                                 </svg>
                             </Link>
@@ -251,7 +154,7 @@ export default function HomePageClient({ products, content }: { products: any[],
                             <ParallaxImage
                                 src="/images/23_slide002.jpg"
                                 alt="Grappe de raisin Gamay du Beaujolais sur cep de vigne"
-                                className="h-full w-full rounded-lg shadow-xl"
+                                className="h-full w-full"
                                 sizes="(max-width: 768px) 100vw, 50vw"
                             />
                         </div>
@@ -264,25 +167,24 @@ export default function HomePageClient({ products, content }: { products: any[],
                     <FadeIn direction="up" className="text-center mb-16">
                         <span className="text-red-900 uppercase tracking-[0.3em] text-xs font-bold mb-3 block">Les Vins</span>
                         <h2 className="text-3xl md:text-4xl font-serif text-wine-900 mb-6">Des vins qui viennent d'un lieu.</h2>
-                        <div className="w-24 h-1 bg-wine-900 mx-auto opacity-20"></div>
                     </FadeIn>
 
                     <div className="grid md:grid-cols-3 gap-12">
-                        <FadeIn delay={0.1} className="bg-white p-8 rounded-lg shadow-sm border border-stone-200">
+                        <FadeIn delay={0.1} className="bg-white p-8 border border-stone-200">
                             <h3 className="text-2xl font-serif text-wine-900 mb-4">Le Gamay</h3>
                             <p className="text-gray-600 font-light leading-relaxed text-sm">
                                 Le cépage du Beaujolais. Sur notre granit du Mont Brouilly, il donne des Brouilly de fruits rouges et noirs, droits et minéraux.
                             </p>
                         </FadeIn>
 
-                        <FadeIn delay={0.2} className="bg-white p-8 rounded-lg shadow-sm border border-stone-200">
+                        <FadeIn delay={0.2} className="bg-white p-8 border border-stone-200">
                             <h3 className="text-2xl font-serif text-wine-900 mb-4">Le Chardonnay</h3>
                             <p className="text-gray-600 font-light leading-relaxed text-sm">
                                 Sur quelques parcelles argilo-calcaires choisies, il donne un Bourgogne blanc floral, aux notes d'agrumes et de fleurs blanches.
                             </p>
                         </FadeIn>
 
-                        <FadeIn delay={0.3} className="bg-white p-8 rounded-lg shadow-sm border border-stone-200">
+                        <FadeIn delay={0.3} className="bg-white p-8 border border-stone-200">
                             <h3 className="text-2xl font-serif text-wine-900 mb-4">Notre façon de faire</h3>
                             <p className="text-gray-600 font-light leading-relaxed text-sm">
                                 Vignerons indépendants, certifiés HVE. Rangs enherbés, sols travaillés, vendanges à la main : nous suivons la vigne au fil des saisons.
@@ -309,7 +211,7 @@ export default function HomePageClient({ products, content }: { products: any[],
                         {products.slice(0, 3).map((wine, index) => (
                             <FadeIn key={wine.id} delay={0.1 + index * 0.2} className="group flex flex-col h-full">
                                 <Link href={cuveeHref(wine)} className="flex-grow">
-                                    <div className="relative h-[220px] sm:h-[320px] md:h-[500px] overflow-hidden mb-6 bg-gray-50 flex items-center justify-center p-4 md:p-8 border border-transparent hover:border-gray-100 transition-colors rounded-sm">
+                                    <div className="relative h-[220px] sm:h-[320px] md:h-[500px] overflow-hidden mb-6 bg-gray-50 flex items-center justify-center p-4 md:p-8 border border-transparent hover:border-gray-100 transition-colors">
                                         <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors z-10 duration-500"></div>
                                         <Image
                                             src={wine.image || "/images/36_brouilly-h.jpg"}
@@ -318,14 +220,8 @@ export default function HomePageClient({ products, content }: { products: any[],
                                             sizes="(max-width: 768px) 100vw, 33vw"
                                             loading="lazy"
                                             quality={75}
-                                            className="object-contain transition-transform duration-700 group-hover:scale-110 p-4"
+                                            className="object-contain p-4"
                                         />
-                                        {/* Badge Best Seller artificiel pour l'exemple (optionnel) */}
-                                        {index === 1 && (
-                                            <div className="absolute top-4 right-4 bg-red-900 text-white text-[10px] font-bold px-3 py-1 uppercase tracking-widest">
-                                                Cœur de Gamme
-                                            </div>
-                                        )}
                                     </div>
                                     <div className="text-center px-4">
                                         <h3 className="text-2xl md:text-3xl font-serif text-gray-900 group-hover:text-red-900 transition-colors">
