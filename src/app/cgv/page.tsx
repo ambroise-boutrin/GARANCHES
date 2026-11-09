@@ -53,7 +53,7 @@ export default function CGVPage() {
                     Les retours sont à effectuer dans leur état d'origine et complets (bouteilles non ouvertes). Les frais de retour sont à votre charge.
                 </p>
 
-                <div className="bg-stone-50 p-6 rounded-lg border border-stone-200 my-6 not-prose">
+                <div className="bg-stone-50 p-6 border border-stone-200 my-6 not-prose">
                     <h4 className="font-bold text-wine-900 mb-4">Modèle de formulaire de rétractation :</h4>
                     <p className="text-sm italic mb-4">(Veuillez compléter et renvoyer le présent formulaire uniquement si vous souhaitez vous rétracter du contrat)</p>
                     <p className="text-sm">

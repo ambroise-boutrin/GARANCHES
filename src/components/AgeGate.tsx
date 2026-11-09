@@ -125,9 +125,6 @@ export default function AgeGate() {
         <AnimatePresence>
             {isVisible && !PAGES_LIBRES.includes(pathname) && (
                 <motion.div
-                    initial={{ opacity: 1 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0, transition: { duration: 0.8 } }}
 
                     data-age-gate
                     className="fixed inset-0 z-[2000] flex items-center justify-center bg-[#1c1917] px-6 overflow-y-auto"
@@ -141,9 +138,6 @@ export default function AgeGate() {
                         </div>
 
                         <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.3, duration: 0.8 }}
                         >
                             <div id="age-gate-title" className="text-3xl font-serif text-white mb-2 uppercase tracking-[0.04em]">Bienvenue au Domaine</div>
                             <div className="w-16 h-px bg-white/60 mx-auto mb-6"></div>

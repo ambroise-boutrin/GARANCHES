@@ -13,13 +13,12 @@ export default function PageCards({ paths, title }: { paths: string[]; title?: s
                 <FadeIn className="text-center mb-12">
                     <span className="text-red-900 uppercase tracking-[0.3em] text-xs font-bold mb-3 block">Garanches</span>
                     <h2 className="text-3xl md:text-4xl font-serif text-wine-900 mb-6">{title}</h2>
-                    <div className="w-24 h-1 bg-wine-900 mx-auto opacity-20"></div>
                 </FadeIn>
             )}
             <div className={`grid gap-8 ${cards.length >= 3 ? "md:grid-cols-3" : "md:grid-cols-2"}`}>
                 {cards.map((c, i) => (
                     <FadeIn key={c.path} delay={(i % 3) * 0.1}>
-                        <Link href={`/${c.path}`} className="group block h-full bg-white border border-stone-200 rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
+                        <Link href={`/${c.path}`} className="group block h-full bg-white border border-stone-200 overflow-hidden">
                             <div className="relative h-56 overflow-hidden bg-stone-100">
                                 <Image
                                     src={c.image}
@@ -27,7 +26,7 @@ export default function PageCards({ paths, title }: { paths: string[]; title?: s
                                     fill
                                     sizes="(max-width: 768px) 100vw, 33vw"
                                     style={{ objectPosition: cadrage(c.image) }}
-                                    className="object-cover group-hover:scale-105 transition-transform duration-700"
+                                    className="object-cover"
                                 />
                             </div>
                             <div className="p-6">

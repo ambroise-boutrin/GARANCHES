@@ -54,26 +54,8 @@ html {
   background-color: #1c1917;
 }
 
-body {
-  user-select: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-}
-
 body.overflow-hidden {
   overflow: hidden;
-}
-
-@media (min-width: 768px) {
-  body {
-    cursor: none;
-  }
-
-  a,
-  button {
-    cursor: none;
-  }
 }
 
 img {
