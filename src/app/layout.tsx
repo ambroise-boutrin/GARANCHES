@@ -3,7 +3,6 @@ import { Cormorant_Garamond, Jost } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import CustomCursor from "@/components/CustomCursor";
 import AgeGate from "@/components/AgeGate";
 import SmoothScroll from "@/components/SmoothScroll";
 import ScrollToTop from "@/components/ScrollToTop";
@@ -178,7 +177,6 @@ export default async function RootLayout({
 
 
         <Providers>
-          <CustomCursor />
           <AgeGate />
 
           <CookieConsent />

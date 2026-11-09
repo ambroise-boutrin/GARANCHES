@@ -28,7 +28,6 @@ export function PageHero({ image, label, parent }: { image: string; label: strin
                     <span className="uppercase tracking-[0.3em] text-[10px] md:text-sm text-white font-bold">Domaine de Garanches</span>
                 )}
                 <h1 className="font-serif text-4xl sm:text-5xl md:text-7xl leading-tight text-white mt-4 mb-8">{label}</h1>
-                <div className="w-16 h-0.5 md:w-24 md:h-1 bg-white"></div>
             </FadeIn>
         </section>
     );
@@ -61,7 +60,7 @@ function BlocSection({ bloc, override, index }: { bloc: Bloc; override?: BlocOve
             {pratique && (
                 <dl className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-10 text-left">
                     {pratique.map((item) => (
-                        <div key={item.label} className="bg-white border border-stone-200 rounded-lg p-4 shadow-sm">
+                        <div key={item.label} className="bg-white border border-stone-200 p-4">
                             <dt className="text-red-900 uppercase tracking-widest text-[10px] font-bold mb-1">{item.label}</dt>
                             <dd className="text-gray-700 text-sm">{item.value}</dd>
                         </div>
@@ -71,14 +70,14 @@ function BlocSection({ bloc, override, index }: { bloc: Bloc; override?: BlocOve
             {action && (bloc.booking ? (
                 <Link
                     href={action.href}
-                    className="inline-block mt-10 px-10 py-3 bg-red-900/90 hover:bg-red-800 text-white uppercase tracking-widest text-xs font-bold transition-all border border-red-900 duration-300 shadow-lg"
+                    className="inline-block mt-10 px-10 py-3 bg-red-900/90 hover:bg-red-800 text-white uppercase tracking-widest text-xs font-bold transition-all border border-red-900 duration-300"
                 >
                     {action.label}
                 </Link>
             ) : (
                 <Link href={action.href} className="group inline-flex items-center mt-10 text-red-900 uppercase text-xs font-bold tracking-widest hover:text-red-700 transition-colors">
                     <span className="border-b border-red-900 pb-1 group-hover:border-red-700">{action.label}</span>
-                    <svg className="w-4 h-4 ml-2 transform group-hover:translate-x-2 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg className="w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
                 </Link>
@@ -113,7 +112,7 @@ function BlocSection({ bloc, override, index }: { bloc: Bloc; override?: BlocOve
                                     src={image}
                                     alt={bloc.alt || ""}
                                     position={cadrage(image)}
-                                    className="h-full w-full rounded-lg shadow-xl"
+                                    className="h-full w-full"
                                     sizes="(max-width: 768px) 100vw, 50vw"
                                 />
                             </div>

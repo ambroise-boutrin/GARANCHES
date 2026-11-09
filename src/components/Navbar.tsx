@@ -4,7 +4,6 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
 import { PORTES, GENERIC_PATHS, type Porte } from "@/data/architecture";
 
 export default function Navbar() {
@@ -14,11 +13,6 @@ export default function Navbar() {
     const isHome = pathname === "/";
     // Menu déroulant refermé après un clic, jusqu'à ce que la souris quitte l'onglet.
     const [menuFerme, setMenuFerme] = useState<string | null>(null);
-
-    // Visibilité de la navbar :
-    // - Sur Home : Cachée par défaut, s'affiche quand l'intro est finie
-    // - Ailleurs : Toujours visible
-    const [isVisible, setIsVisible] = useState(pathname !== "/");
 
     // Logique de couleur :
     // - Home : Blanc au début (sur fond sombre) -> Blanc au scroll (sur fond sombre)
@@ -35,23 +29,6 @@ export default function Navbar() {
             document.body.classList.remove("overflow-hidden");
         }
     }, [isOpen]);
-
-    useEffect(() => {
-        if (isHome) {
-            // Vérifier si l'intro a déjà été jouée
-            const hasPlayed = sessionStorage.getItem("intro-played");
-            if (hasPlayed) {
-                setIsVisible(true);
-            } else {
-                // Sinon on attend l'événement de fin d'intro venant de page.tsx
-                const handleIntroComplete = () => setIsVisible(true);
-                window.addEventListener("intro-complete", handleIntroComplete);
-                return () => window.removeEventListener("intro-complete", handleIntroComplete);
-            }
-        } else {
-            setIsVisible(true);
-        }
-    }, [isHome]);
 
     // Détecter le scroll pour changer le fond de la navbar
     useEffect(() => {
@@ -83,26 +60,26 @@ export default function Navbar() {
 
     return (
         <nav
-            className={`fixed w-full z-[100] transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4 pointer-events-none"} ${scrolled ? "bg-stone-900/95 backdrop-blur-md py-3 shadow-lg" : "bg-gradient-to-b from-black/50 to-transparent py-6"} ${isOpen ? "!h-screen !bg-stone-900" : ""
+            className={`fixed w-full z-[100] transition-colors duration-200 ${scrolled ? "bg-stone-900 py-3" : "bg-gradient-to-b from-black/50 to-transparent py-6"} ${isOpen ? "!h-screen !bg-stone-900" : ""
                 }`}
         >
             <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
 
 
                 <Link href="/" className="relative z-[101] flex items-center gap-3 group">
-                    <div className={`relative transition-all duration-500 ${scrolled ? "w-10 h-10" : "w-12 h-12"}`}>
+                    <div className={`relative ${scrolled ? "w-10 h-10" : "w-12 h-12"}`}>
                         <Image
                             src="/images/17_logo.png"
                             alt="Logo Domaine de Garanches"
                             fill
                             // Si useDarkText est vrai, on inverse les couleurs (White -> Black) pour qu'il soit visible sur fond blanc
-                            className={`object-contain transition-all duration-300 ${useDarkText ? "invert" : ""}`}
+                            className={`object-contain ${useDarkText ? "invert" : ""}`}
                             sizes="48px"
                             priority
                             unoptimized
                         />
                     </div>
-                    <span className={`font-serif tracking-widest uppercase font-bold transition-all duration-300 ${scrolled ? "text-sm" : "text-base"} ${useDarkText ? "text-stone-900" : "text-white"}`}>
+                    <span className={`font-serif tracking-widest uppercase font-bold ${scrolled ? "text-sm" : "text-base"} ${useDarkText ? "text-stone-900" : "text-white"}`}>
                         Garanches
                     </span>
                 </Link>
@@ -179,24 +156,14 @@ export default function Navbar() {
             </div>
 
 
-            <AnimatePresence>
-                {isOpen && (
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.25 }}
+            {isOpen && (
+                    <div
                         className="fixed top-0 inset-x-0 h-[100dvh] bg-stone-900 z-[100] flex flex-col pt-24 overflow-hidden"
                     >
                         {/* Deux écrans : la liste des portes, puis les pages de la porte choisie. */}
-                        <AnimatePresence mode="wait" initial={false}>
                             {openPorteLink ? (
-                                <motion.div
+                                <div
                                     key={openPorteLink.href}
-                                    initial={{ x: 40, opacity: 0 }}
-                                    animate={{ x: 0, opacity: 1 }}
-                                    exit={{ x: 40, opacity: 0 }}
-                                    transition={{ duration: 0.2 }}
                                     className="flex-1 overflow-y-auto px-6 pb-[calc(env(safe-area-inset-bottom)+6rem)]"
                                 >
                                     <button
@@ -235,14 +202,10 @@ export default function Navbar() {
                                             </li>
                                         ))}
                                     </ul>
-                                </motion.div>
+                                </div>
                             ) : (
-                                <motion.div
+                                <div
                                     key="portes"
-                                    initial={{ x: -40, opacity: 0 }}
-                                    animate={{ x: 0, opacity: 1 }}
-                                    exit={{ x: -40, opacity: 0 }}
-                                    transition={{ duration: 0.2 }}
                                     className="flex-1 flex flex-col overflow-y-auto px-6 pb-[calc(env(safe-area-inset-bottom)+6rem)]"
                                 >
                                     <ul className="border-t border-white/10">
@@ -297,12 +260,10 @@ export default function Navbar() {
                                             </div>
                                         </div>
                                     </div>
-                                </motion.div>
+                                </div>
                             )}
-                        </AnimatePresence>
-                    </motion.div>
+                    </div>
                 )}
-            </AnimatePresence>
         </nav >
     );
 }

@@ -54,13 +54,13 @@ export default async function CarnetsPage({ searchParams }: { searchParams: { th
                         {visible.map((c: any, i: number) => (
                             <FadeIn key={c.slug} delay={(i % 3) * 0.1}>
                                 <Link href={`/carnets/${c.slug}`} className="group block">
-                                    <div className="relative h-64 rounded-lg overflow-hidden bg-stone-100 mb-5">
+                                    <div className="relative h-64 overflow-hidden bg-stone-100 mb-5">
                                         <Image
                                             src={c.image?.asset ? urlFor(c.image).width(900).url() : CARNETS_CARD.image}
                                             alt=""
                                             fill
                                             sizes="(max-width: 768px) 100vw, 33vw"
-                                            className="object-cover group-hover:scale-105 transition-transform duration-700"
+                                            className="object-cover"
                                         />
                                     </div>
                                     <p className="text-xs uppercase tracking-widest text-red-900 font-bold mb-2">

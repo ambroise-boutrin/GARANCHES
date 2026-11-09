@@ -106,7 +106,7 @@ export default async function CuveePage({ params }: Props) {
             <section className="py-20 md:py-28 bg-stone-50">
                 <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 md:gap-20 items-center">
                     <FadeIn direction="right">
-                        <div className="relative h-[420px] bg-white rounded-lg shadow-xl">
+                        <div className="relative h-[420px] bg-white">
                             <Image
                                 src={wine.image || "/images/36_brouilly-h.jpg"}
                                 alt={`${wine.name} - Domaine de Garanches`}
@@ -127,7 +127,7 @@ export default async function CuveePage({ params }: Props) {
                                 { label: "À table", value: wine.tags?.join(" • ") },
                                 { label: "Mentions", value: wine.allergens },
                             ].filter((d) => d.value).map((d) => (
-                                <div key={d.label} className="bg-white border border-stone-200 rounded-lg p-4 shadow-sm">
+                                <div key={d.label} className="bg-white border border-stone-200 p-4">
                                     <dt className="text-red-900 uppercase tracking-widest text-[10px] font-bold mb-1">{d.label}</dt>
                                     <dd className="text-gray-700 text-sm">{d.value}</dd>
                                 </div>
@@ -151,7 +151,7 @@ export default async function CuveePage({ params }: Props) {
                         <div className="grid grid-cols-2 gap-4 sm:flex sm:flex-wrap sm:justify-center sm:gap-6">
                             {autres.map((w: any) => (
                                 <Link key={w.id} href={cuveeHref(w)} className="group sm:w-44 text-center">
-                                    <div className="relative h-28 sm:h-40 bg-white rounded-lg shadow-sm mb-3">
+                                    <div className="relative h-28 sm:h-40 bg-white mb-3">
                                         <Image src={w.image || "/images/36_brouilly-h.jpg"} alt="" fill sizes="176px" className="object-contain p-3" />
                                     </div>
                                     <span className="font-serif text-base sm:text-lg text-wine-900 group-hover:text-red-900 transition-colors">{w.name}</span>

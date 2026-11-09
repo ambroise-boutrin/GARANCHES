@@ -33,7 +33,7 @@ const components: PortableTextComponents = {
                         width={1400}
                         height={900}
                         sizes="(max-width: 768px) 100vw, 720px"
-                        className="w-full h-auto rounded-lg"
+                        className="w-full h-auto"
                     />
                     {value.legende && <figcaption className="text-sm text-gray-500 italic mt-2 text-center">{value.legende}</figcaption>}
                 </figure>
@@ -56,7 +56,7 @@ export default async function CarnetPage({ params }: Props) {
                 </p>
                 <h1 className="text-4xl md:text-5xl font-serif text-wine-900 mb-10 leading-tight">{carnet.titre}</h1>
                 {carnet.image?.asset && (
-                    <div className="relative h-[420px] rounded-lg overflow-hidden mb-12">
+                    <div className="relative h-[420px] overflow-hidden mb-12">
                         <Image src={urlFor(carnet.image).width(1600).url()} alt="" fill priority sizes="(max-width: 768px) 100vw, 768px" className="object-cover" />
                     </div>
                 )}
