@@ -37,7 +37,7 @@ async function Cuvees() {
                 name: wine.name,
                 url: `${SITE}${cuveeHref(wine)}`,
                 description: wine.description,
-                image: wine.image?.startsWith("http") ? wine.image : `${SITE}${wine.image || "/images/36_brouilly-h.jpg"}`,
+                image: wine.image?.startsWith("http") ? wine.image : `${SITE}${wine.image || "/images/bouteilles/brouilly.jpg"}`,
                 brand: { "@type": "Brand", name: "Domaine de Garanches" },
                 offers: {
                     "@type": "Offer",

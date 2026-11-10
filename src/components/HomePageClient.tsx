@@ -211,16 +211,16 @@ export default function HomePageClient({ products, content }: { products: any[],
                         {products.slice(0, 3).map((wine, index) => (
                             <FadeIn key={wine.id} delay={0.1 + index * 0.2} className="group flex flex-col h-full">
                                 <Link href={cuveeHref(wine)} className="flex-grow">
-                                    <div className="relative h-[220px] sm:h-[320px] md:h-[500px] overflow-hidden mb-6 bg-gray-50 flex items-center justify-center p-4 md:p-8 border border-transparent hover:border-gray-100 transition-colors">
+                                    <div className="relative h-[320px] sm:h-[380px] md:h-[500px] overflow-hidden mb-6 bg-gray-50 flex items-center justify-center p-4 md:p-8 border border-transparent hover:border-gray-100 transition-colors">
                                         <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors z-10 duration-500"></div>
                                         <Image
-                                            src={wine.image || "/images/36_brouilly-h.jpg"}
+                                            src={wine.image || "/images/bouteilles/brouilly.jpg"}
                                             alt={`${wine.name} - Domaine de Garanches`}
                                             fill
                                             sizes="(max-width: 768px) 100vw, 33vw"
                                             loading="lazy"
                                             quality={75}
-                                            className="object-contain p-4"
+                                            className="object-contain mix-blend-multiply p-4"
                                         />
                                     </div>
                                     <div className="text-center px-4">
