@@ -11,7 +11,6 @@ export default function PageCards({ paths, title }: { paths: string[]; title?: s
         <section className="max-w-7xl mx-auto px-6 py-20 md:py-28">
             {title && (
                 <FadeIn className="text-center mb-12">
-                    <span className="text-red-900 uppercase tracking-[0.3em] text-xs font-bold mb-3 block">Garanches</span>
                     <h2 className="text-3xl md:text-4xl font-serif text-wine-900 mb-6">{title}</h2>
                 </FadeIn>
             )}

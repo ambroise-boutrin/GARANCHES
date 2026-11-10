@@ -52,7 +52,7 @@ const OpeningStatus = ({ compact = false, className = "" }: { compact?: boolean;
             <span className="relative flex h-2.5 w-2.5">
                 <span className={`relative inline-flex rounded-full h-2.5 w-2.5 ${status.isOpen ? "bg-green-500" : "bg-red-500"}`}></span>
             </span>
-            <span className={`text-[10px] md:text-xs uppercase tracking-widest font-bold whitespace-nowrap ${status.isOpen ? "text-green-700" : "text-red-700"}`}>
+            <span className={`text-sm font-bold whitespace-nowrap ${status.isOpen ? "text-green-700" : "text-red-700"}`}>
                 {status.text}
             </span>
         </div>
