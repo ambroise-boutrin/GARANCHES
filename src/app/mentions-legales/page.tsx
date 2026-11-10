@@ -14,16 +14,16 @@ export default function MentionsLegales() {
 
                 <h3>Éditeur du site</h3>
                 <p>
-                    <strong>Domaine de Garanches</strong><br />
+                    <strong>GFA Domaine de Garanches</strong><br />
                     345 chemin de Garanches, 69460 Odenas<br />
                     Téléphone : +33 7 82 24 94 36 (Romain) · +33 6 58 83 46 80 (Aurélie) · +33 6 61 73 56 67 (Isabelle) · +33 6 09 41 97 02 (Michel)<br />
                     Email : contact@domainedegaranches.com<br />
                     <br />
-                    <strong>Forme juridique :</strong> Groupement Foncier Agricole (GFA)<br />
-                    <strong>Capital social :</strong> [Montant du capital] €<br />
+                    <strong>Forme juridique :</strong> Groupement Foncier Agricole (GFA), société civile<br />
+                    <strong>Capital social :</strong> 335 237 €<br />
                     <strong>SIRET :</strong> [Numéro SIRET]<br />
-                    <strong>RCS :</strong> Villefranche-Tarare [Numéro RCS]<br />
-                    <strong>TVA Intracommunautaire :</strong> [Numéro TVA]<br />
+                    <strong>RCS :</strong> Villefranche-Tarare 400 409 173<br />
+                    <strong>TVA Intracommunautaire :</strong> FR95 400 409 173<br />
                     <strong>Directeur de la publication :</strong> Ambroise Boutrin
                 </p>
 
