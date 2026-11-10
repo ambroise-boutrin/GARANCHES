@@ -429,7 +429,7 @@ Nous choisissons ensemble ce qui donnera à ce moment sa couleur.
         image: "/images/garanches/maison-parc-pierre.jpg",
         cta: "Découvrir les événements",
         blocs: [
-            { id: "introduction", title: "Événements", image: "/images/smugmug/table-bouteilles.jpg", paysage: true, alt: "Les vins de Garanches sur une table de fête" },
+            { id: "introduction", title: "Événements", image: "/images/smugmug/table-bouteilles.jpg", paysage: true, alt: "Un Beaujolais-Villages blanc et un Brouilly du domaine de Garanches sur la table" },
             {
                 id: "comment-ca-se-passe",
                 title: "Comment ça se passe ?",
