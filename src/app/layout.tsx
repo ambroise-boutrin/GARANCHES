@@ -56,10 +56,10 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/images/34_slide001.jpg",
+        url: "/images/smugmug/partage-domaine.jpg",
         width: 1200,
         height: 630,
-        alt: "Vignes du Domaine de Garanches au Mont Brouilly",
+        alt: "Le domaine de Garanches au milieu des vignes, vu du ciel",
       },
     ],
   },
@@ -82,7 +82,7 @@ const jsonLd = {
   "@type": "Winery",
   "inLanguage": "fr-FR",
   "name": "Domaine de Garanches",
-  "image": "https://domainedegaranches.com/images/34_slide001.jpg",
+  "image": "https://domainedegaranches.com/images/smugmug/partage-domaine.jpg",
   "url": "https://domainedegaranches.com",
   "telephone": "+33782249436",
   "address": {
