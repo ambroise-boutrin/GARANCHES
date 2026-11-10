@@ -8,6 +8,7 @@ import RequestBottlesButton from "@/components/RequestBottlesButton";
 import { HOME_PORTES, SIGNATURE, HERO_VIDEO } from "@/data/architecture";
 import { cuveeHref } from "@/lib/wineSlug";
 import { cadrage } from "@/data/cadrages";
+import { prixAffiche } from "@/lib/prix";
 
 export default function HomePageClient({ products, content }: { products: any[], content?: any }) {
     const heroVideo = content?.hero?.videoUrl || HERO_VIDEO;
@@ -229,7 +230,7 @@ export default function HomePageClient({ products, content }: { products: any[],
                                             {wine.subtitle || "Vin du Domaine"}
                                         </p>
                                         <p className="text-xl font-bold text-red-900 mb-4">
-                                            {(wine.price / 100).toFixed(2).replace('.', ',')} €
+                                            {prixAffiche(wine)}
                                         </p>
                                     </div>
                                 </Link>

@@ -12,6 +12,8 @@ export default function Footer() {
 
 
                 <div>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src="/images/logo-maison.png" alt="" width={539} height={284} className="w-28 h-auto mx-auto mb-4" />
                     <div className="font-serif text-2xl text-white mb-6 uppercase tracking-[0.04em]">Domaine de Garanches</div>
                     <p className="text-sm leading-loose text-gray-300 mb-6">
                         345 chemin de Garanches<br />

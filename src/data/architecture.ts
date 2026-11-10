@@ -218,10 +218,25 @@ Des vins qui racontent Garanches, chacun à leur manière.`,
     {
         path: "les-vins/cuvees",
         label: "Les cuvées",
-        description: "Les cuvées du domaine de Garanches : Brouilly, Bourgogne blanc, rosé et méthode traditionnelle.",
+        description: "Les cuvées du domaine de Garanches : Brouilly, Beaujolais-Villages blanc et Bourgogne blanc.",
         image: "/images/garanches/raisins-vendange.jpg",
         cta: "Voir les cuvées",
-        blocs: [{ id: "introduction", title: "Les cuvées" }],
+        blocs: [
+            {
+                id: "introduction",
+                title: "Les cuvées",
+                body: `Trois vins, chacun avec son millésime : un Brouilly rouge, un Beaujolais-Villages blanc et un Bourgogne blanc.`,
+                image: "/images/smugmug/gamme-trois-vins.jpg", document: true,
+                alt: "Les trois vins du domaine de Garanches : Beaujolais-Villages blanc, Brouilly et Bourgogne blanc",
+            },
+            {
+                id: "etiquette",
+                title: "La maison sur l'étiquette",
+                body: `La maison dessinée sur chaque étiquette est celle du domaine, à Odenas.`,
+                image: "/images/smugmug/etiquette-maison.jpg", document: true,
+                alt: "Le dessin de la maison de Garanches sur l'étiquette du Brouilly",
+            },
+        ],
         children: ["les-vins/a-table", "acheter"],
     },
     {

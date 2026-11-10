@@ -126,7 +126,7 @@ const jsonLd = {
         "name": "Quels types de vins produisez-vous ?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Nous produisons principalement des crus du Beaujolais (Brouilly) ainsi que du Bourgogne Blanc (Chardonnay) et du vin pétillant méthode traditionnelle."
+          "text": "Nous produisons trois vins : un Brouilly (rouge, Gamay), un Beaujolais-Villages blanc et un Bourgogne blanc (Chardonnay)."
         }
       },
       {

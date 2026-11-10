@@ -133,8 +133,8 @@ export default function AgeGate() {
                     aria-labelledby="age-gate-title"
                 >
                     <div className="text-center w-full max-w-sm relative z-10 py-10">
-                        <div className="mb-6 sm:mb-8 relative h-20 w-20 sm:h-24 sm:w-24 mx-auto">
-                            <Image src="/images/17_logo.png" alt="Logo" fill className="object-contain opacity-80" priority />
+                        <div className="mb-6 sm:mb-8 relative h-16 w-[122px] sm:h-20 sm:w-[152px] mx-auto">
+                            <Image src="/images/logo-maison.png" alt="Logo" fill className="object-contain opacity-80" priority />
                         </div>
 
                         <motion.div
