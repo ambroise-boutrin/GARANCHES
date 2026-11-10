@@ -117,7 +117,7 @@ export default function AgeGate() {
                 aria-invalid={erreur !== ""}
                 className="w-full bg-transparent border-b border-stone-600 focus:border-white outline-none text-center text-white text-2xl font-serif tracking-[0.15em] py-2 placeholder:text-stone-600 transition-colors"
             />
-            <span className="text-[10px] uppercase tracking-[0.2em] text-stone-400">{label}</span>
+            <span className="text-sm text-stone-400">{label}</span>
         </label>
     );
 
