@@ -63,7 +63,7 @@ export default async function CarnetsPage({ searchParams }: { searchParams: { th
                                             className="object-cover"
                                         />
                                     </div>
-                                    <p className="text-xs uppercase tracking-widest text-red-900 font-bold mb-2">
+                                    <p className="text-sm text-red-900 font-bold mb-2">
                                         {[themeLabel(c.theme), formatDate(c.date)].filter(Boolean).join(" · ")}
                                     </p>
                                     <h3 className="text-2xl font-serif text-wine-900 mb-3 group-hover:text-red-900 transition-colors">{c.titre}</h3>
