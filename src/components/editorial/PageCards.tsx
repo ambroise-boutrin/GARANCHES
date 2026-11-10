@@ -31,9 +31,9 @@ export default function PageCards({ paths, title }: { paths: string[]; title?: s
                             </div>
                             <div className="p-6">
                                 <h3 className="text-2xl font-serif text-wine-900 mb-2">{c.label}</h3>
-                                <p className="text-sm text-gray-600 font-light leading-relaxed mb-4">{c.description}</p>
-                                <span className="text-xs uppercase tracking-widest font-bold text-red-900 group-hover:text-red-700 transition-colors">
-                                    {c.cta} →
+                                <p className="text-sm text-gray-800 leading-relaxed mb-4">{c.description}</p>
+                                <span className="text-base text-red-900 underline underline-offset-4 decoration-1 group-hover:text-red-700 transition-colors">
+                                    {c.cta}
                                 </span>
                             </div>
                         </Link>

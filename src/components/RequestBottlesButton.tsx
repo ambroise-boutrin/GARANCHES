@@ -11,7 +11,7 @@ export default function RequestBottlesButton({ wine }: { wine: { name: string } 
     return (
         <Link
             href={requestBottlesHref(wine.name)}
-            className="inline-flex items-center justify-center w-full md:w-auto mt-6 px-8 py-3 text-xs uppercase tracking-widest font-bold border border-wine-900 bg-wine-900 text-white hover:bg-white hover:text-wine-900 transition-colors duration-300"
+            className="inline-flex items-center justify-center w-full md:w-auto mt-6 px-8 py-3 text-base font-medium border border-wine-900 bg-wine-900 text-white hover:bg-white hover:text-wine-900 transition-colors duration-300"
         >
             Demander des bouteilles
         </Link>

@@ -51,9 +51,9 @@ function Section({ title, text, background }: { title: string; text?: string; ba
             <FadeIn className="max-w-3xl mx-auto px-6 text-center">
                 <h2 className="text-3xl md:text-4xl font-serif text-red-900 mb-6">{title}</h2>
                 {text ? (
-                    <RichText text={text} className="text-gray-600 leading-relaxed text-base md:text-lg font-light" />
+                    <RichText text={text} className="text-gray-800 leading-relaxed text-base md:text-lg" />
                 ) : (
-                    <p className="text-gray-400 italic font-light">Texte à venir.</p>
+                    <p className="text-gray-600">Texte à venir.</p>
                 )}
             </FadeIn>
         </section>
@@ -118,7 +118,7 @@ export default async function CuveePage({ params }: Props) {
                     </FadeIn>
                     <FadeIn direction="left" delay={0.2}>
                         {wine.description && (
-                            <p className="text-gray-600 leading-relaxed text-base md:text-lg font-light mb-8">{wine.description}</p>
+                            <p className="text-gray-800 leading-relaxed text-base md:text-lg mb-8">{wine.description}</p>
                         )}
                         <dl className="grid grid-cols-2 gap-4 mb-8">
                             {[
