@@ -53,9 +53,9 @@ function BlocSection({ bloc, override, index }: { bloc: Bloc; override?: BlocOve
         <div>
             {title && <h2 className="text-3xl md:text-5xl font-serif text-red-900 mb-6 md:mb-8 leading-tight">{title}</h2>}
             {body ? (
-                <RichText text={body} className="text-gray-600 leading-relaxed text-base md:text-lg font-light" />
+                <RichText text={body} className="text-gray-800 leading-relaxed text-base md:text-lg" />
             ) : (
-                <p className="text-gray-400 italic font-light">Texte à venir.</p>
+                <p className="text-gray-600">Texte à venir.</p>
             )}
             {pratique && (
                 <dl className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-10 text-left">
@@ -70,16 +70,13 @@ function BlocSection({ bloc, override, index }: { bloc: Bloc; override?: BlocOve
             {action && (bloc.booking ? (
                 <Link
                     href={action.href}
-                    className="inline-block mt-10 px-10 py-3 bg-red-900/90 hover:bg-red-800 text-white uppercase tracking-widest text-xs font-bold transition-all border border-red-900 duration-300"
+                    className="inline-block mt-10 px-10 py-3 bg-red-900/90 hover:bg-red-800 text-white text-base font-medium transition-colors border border-red-900 duration-300"
                 >
                     {action.label}
                 </Link>
             ) : (
-                <Link href={action.href} className="group inline-flex items-center mt-10 text-red-900 uppercase text-xs font-bold tracking-widest hover:text-red-700 transition-colors">
+                <Link href={action.href} className="group inline-flex items-center mt-10 text-red-900 text-base hover:text-red-700 transition-colors">
                     <span className="border-b border-red-900 pb-1 group-hover:border-red-700">{action.label}</span>
-                    <svg className="w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
                 </Link>
             ))}
         </div>
