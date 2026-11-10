@@ -35,7 +35,7 @@ const components: PortableTextComponents = {
                         sizes="(max-width: 768px) 100vw, 720px"
                         className="w-full h-auto"
                     />
-                    {value.legende && <figcaption className="text-sm text-gray-500 italic mt-2 text-center">{value.legende}</figcaption>}
+                    {value.legende && <figcaption className="text-sm text-gray-700 mt-2 text-center">{value.legende}</figcaption>}
                 </figure>
             ) : null,
     },
@@ -48,10 +48,10 @@ export default async function CarnetPage({ params }: Props) {
     return (
         <main className="min-h-screen bg-paper pt-32">
             <article className="max-w-3xl mx-auto px-6">
-                <Link href="/carnets" className="text-red-900 uppercase tracking-[0.3em] text-xs font-bold hover:text-wine-900 transition-colors">
+                <Link href="/carnets" className="text-red-900 text-base underline underline-offset-4 decoration-1 hover:text-wine-900 transition-colors">
                     Les Carnets de Garanches
                 </Link>
-                <p className="text-xs uppercase tracking-widest text-gray-500 font-bold mt-8 mb-3">
+                <p className="text-xs uppercase tracking-widest text-gray-700 font-bold mt-8 mb-3">
                     {[themeLabel(carnet.theme), formatDate(carnet.date)].filter(Boolean).join(" · ")}
                 </p>
                 <h1 className="text-4xl md:text-5xl font-serif text-wine-900 mb-10 leading-tight">{carnet.titre}</h1>
@@ -60,7 +60,7 @@ export default async function CarnetPage({ params }: Props) {
                         <Image src={urlFor(carnet.image).width(1600).url()} alt="" fill priority sizes="(max-width: 768px) 100vw, 768px" className="object-cover" />
                     </div>
                 )}
-                <div className="text-gray-700 font-light leading-relaxed text-lg space-y-5">
+                <div className="text-gray-700 leading-relaxed text-lg space-y-5">
                     {carnet.contenu && <PortableText value={carnet.contenu} components={components} />}
                 </div>
             </article>

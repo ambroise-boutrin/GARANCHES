@@ -44,30 +44,30 @@ export default function WinesList({ wines }: { wines: any[] }) {
                                         {wine.subtitle || "Domaine de Garanches"}
                                     </p>
 
-                                    <p className="text-gray-600 font-light text-sm leading-relaxed mb-6 line-clamp-3">
+                                    <p className="text-gray-800 text-sm leading-relaxed mb-6 line-clamp-3">
                                         {/* Description non traduite car dynamique */}
                                         {wine.description}
                                     </p>
 
-                                    <Link href={cuveeHref(wine)} className="inline-block mb-6 text-xs uppercase tracking-widest font-bold text-red-900 hover:text-red-700 transition-colors">
-                                        Découvrir la cuvée →
+                                    <Link href={cuveeHref(wine)} className="inline-block mb-6 text-base underline underline-offset-4 decoration-1 text-red-900 hover:text-red-700 transition-colors">
+                                        Découvrir la cuvée
                                     </Link>
 
-                                    <div className="flex flex-wrap justify-center md:justify-start items-center gap-x-4 gap-y-2 text-xs text-gray-500 mb-6 font-light">
+                                    <div className="flex flex-wrap justify-center md:justify-start items-center gap-x-4 gap-y-2 text-xs text-gray-700 mb-6">
                                         {wine.volume && <span>{wine.volume}</span>}
                                         {wine.alcohol && <span className="border-l border-gray-300 pl-4">{wine.alcohol}</span>}
                                         {wine.price && wine.volume && (
-                                            <span className="border-l border-gray-300 pl-4 text-gray-400 italic">
+                                            <span className="border-l border-gray-300 pl-4 text-gray-600">
                                                 Soit {((wine.price / 100) / (parseFloat(wine.volume) === 1.5 ? 1.5 : 0.75)).toFixed(2).replace('.', ',')} €/L
                                             </span>
                                         )}
                                         {wine.allergens && (
-                                            <span className="border-l border-gray-300 pl-4 text-[10px] uppercase tracking-wider text-gray-400">
+                                            <span className="border-l border-gray-300 pl-4 text-[10px] uppercase tracking-wider text-gray-600">
                                                 {wine.allergens}
                                             </span>
                                         )}
                                         <span className="border-l border-gray-300 pl-3" title="Déconseillé aux femmes enceintes">
-                                            <svg viewBox="0 0 64 64" className="w-5 h-5 opacity-60 fill-current text-gray-400">
+                                            <svg viewBox="0 0 64 64" className="w-5 h-5 opacity-60 fill-current text-gray-600">
                                                 <circle cx="32" cy="32" r="30" fill="none" stroke="currentColor" strokeWidth="3" />
                                                 <line x1="12" y1="52" x2="52" y2="12" stroke="currentColor" strokeWidth="3" />
                                                 <path d="M32 10a10 10 0 0 1 10 10c0 5-4 15-10 15s-10-10-10-15a10 10 0 0 1 10-10z" fill="currentColor" />
@@ -96,10 +96,10 @@ export default function WinesList({ wines }: { wines: any[] }) {
             <FadeIn direction="up">
                 <div className="mt-32 py-16 bg-wine-900 text-white text-center px-4">
                     <h3 className="text-3xl font-serif mb-4">Une question sur un millésime ?</h3>
-                    <p className="font-light opacity-80 mb-8 max-w-xl mx-auto">
+                    <p className="opacity-80 mb-8 max-w-xl mx-auto">
                         N'hésitez pas à nous contacter pour connaître les tarifs d'expédition ou pour passer commande directement.
                     </p>
-                    <Link href="/contact" className="border-b border-white text-white pb-1 hover:text-white hover:border-white transition-colors uppercase text-xs tracking-widest font-bold">
+                    <Link href="/contact" className="border-b border-white text-white pb-1 hover:text-white hover:border-white transition-colors text-base">
                         Contactez-nous
                     </Link>
                 </div>

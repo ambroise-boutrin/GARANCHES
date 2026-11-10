@@ -53,7 +53,7 @@ export default function ContactContent({ sujet, vin }: { sujet?: string; vin?: s
             <FadeIn direction="down" className="text-center px-6 mb-16">
                 <span className="text-red-900 uppercase tracking-[0.3em] text-xs font-bold mb-3 block">Une question ?</span>
                 <h1 className="text-4xl md:text-5xl font-serif text-wine-900 mb-6 font-medium">Contact</h1>
-                <p className="max-w-xl mx-auto text-gray-600 font-light text-lg">
+                <p className="max-w-xl mx-auto text-gray-800 text-lg">
                     Venir, écrire, appeler, réserver : nous sommes à votre écoute.
                 </p>
             </FadeIn>
@@ -109,7 +109,7 @@ export default function ContactContent({ sujet, vin }: { sujet?: string; vin?: s
                                     <span className="text-red-900 uppercase tracking-widest text-xs font-bold block mb-1">Horaires d'Ouverture</span>
                                     <p className="text-gray-700 leading-relaxed">
                                         Lundi au Samedi : 09h00 - 18h00<br />
-                                        <span className="text-sm text-gray-500 italic">Fermé le Dimanche et jours fériés</span>
+                                        <span className="text-sm text-gray-700">Fermé le Dimanche et jours fériés</span>
                                     </p>
                                 </div>
                             </div>
@@ -132,17 +132,17 @@ export default function ContactContent({ sujet, vin }: { sujet?: string; vin?: s
                         <form className="space-y-6" onSubmit={handleSubmit}>
                             <div className="grid md:grid-cols-2 gap-6">
                                 <div>
-                                    <label className="block text-xs uppercase tracking-widest text-gray-500 mb-2 font-bold ml-2">Nom</label>
+                                    <label className="block text-xs uppercase tracking-widest text-gray-700 mb-2 font-bold ml-2">Nom</label>
                                     <input type="text" name="nom" required className="w-full bg-white border border-gray-100 p-4 rounded-md focus:outline-none focus:ring-2 focus:ring-wine-100 focus:border-wine-300 transition-all" placeholder="Votre nom" />
                                 </div>
                                 <div>
-                                    <label className="block text-xs uppercase tracking-widest text-gray-500 mb-2 font-bold ml-2">Email</label>
+                                    <label className="block text-xs uppercase tracking-widest text-gray-700 mb-2 font-bold ml-2">Email</label>
                                     <input type="email" name="email" className="w-full bg-white border border-gray-100 p-4 rounded-md focus:outline-none focus:ring-2 focus:ring-wine-100 focus:border-wine-300 transition-all" placeholder="votre@email.com" />
                                 </div>
                             </div>
 
                             <div>
-                                <label className="block text-xs uppercase tracking-widest text-gray-500 mb-2 font-bold ml-2">Sujet</label>
+                                <label className="block text-xs uppercase tracking-widest text-gray-700 mb-2 font-bold ml-2">Sujet</label>
                                 <div className="relative">
                                     <select value={subject} onChange={(e) => setSubject(e.target.value)} className="w-full bg-white border border-gray-100 p-4 rounded-md focus:outline-none focus:ring-2 focus:ring-wine-100 focus:border-wine-300 transition-all text-gray-700 appearance-none cursor-pointer">
                                         {SUJETS.map((s) => (
@@ -150,7 +150,7 @@ export default function ContactContent({ sujet, vin }: { sujet?: string; vin?: s
                                         ))}
                                     </select>
                                     <div className="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none">
-                                        <svg className="h-4 w-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <svg className="h-4 w-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
                                         </svg>
                                     </div>
@@ -160,30 +160,30 @@ export default function ContactContent({ sujet, vin }: { sujet?: string; vin?: s
                             {isBooking && (
                                 <div className="grid md:grid-cols-3 gap-6">
                                     <div>
-                                        <label className="block text-xs uppercase tracking-widest text-gray-500 mb-2 font-bold ml-2">Date souhaitée</label>
+                                        <label className="block text-xs uppercase tracking-widest text-gray-700 mb-2 font-bold ml-2">Date souhaitée</label>
                                         <input type="date" name="date" className="w-full bg-white border border-gray-100 p-4 rounded-md focus:outline-none focus:ring-2 focus:ring-wine-100 focus:border-wine-300 transition-all" />
                                     </div>
                                     <div>
-                                        <label className="block text-xs uppercase tracking-widest text-gray-500 mb-2 font-bold ml-2">Personnes</label>
+                                        <label className="block text-xs uppercase tracking-widest text-gray-700 mb-2 font-bold ml-2">Personnes</label>
                                         <input type="number" name="personnes" min={1} max={30} className="w-full bg-white border border-gray-100 p-4 rounded-md focus:outline-none focus:ring-2 focus:ring-wine-100 focus:border-wine-300 transition-all" />
                                     </div>
                                     <div>
-                                        <label className="block text-xs uppercase tracking-widest text-gray-500 mb-2 font-bold ml-2">Téléphone</label>
+                                        <label className="block text-xs uppercase tracking-widest text-gray-700 mb-2 font-bold ml-2">Téléphone</label>
                                         <input type="tel" name="telephone" className="w-full bg-white border border-gray-100 p-4 rounded-md focus:outline-none focus:ring-2 focus:ring-wine-100 focus:border-wine-300 transition-all" />
                                     </div>
                                 </div>
                             )}
 
                             <div>
-                                <label className="block text-xs uppercase tracking-widest text-gray-500 mb-2 font-bold ml-2">Message</label>
+                                <label className="block text-xs uppercase tracking-widest text-gray-700 mb-2 font-bold ml-2">Message</label>
                                 <textarea name="message" rows={vinDemande ? 8 : 5} defaultValue={messageInitial} className="w-full bg-white border border-gray-100 p-4 rounded-md focus:outline-none focus:ring-2 focus:ring-wine-100 focus:border-wine-300 transition-all resize-none" placeholder="Comment pouvons-nous vous aider ?"></textarea>
                             </div>
 
-                            <button type="submit" className="w-full bg-wine-900 text-white py-4 uppercase tracking-widest text-xs font-bold hover:bg-amber-600 transition-colors">
+                            <button type="submit" className="w-full bg-wine-900 text-white py-4 text-base font-medium hover:bg-wine-800 transition-colors">
                                 {isBooking ? "Envoyer ma demande" : "Envoyer le message"}
                             </button>
 
-                            <p className="text-xs text-gray-400 text-center mt-4 italic">
+                            <p className="text-xs text-gray-600 text-center mt-4">
                                 Votre messagerie s'ouvre avec le message prêt à envoyer à {EMAIL}.
                             </p>
                         </form>
@@ -194,7 +194,7 @@ export default function ContactContent({ sujet, vin }: { sujet?: string; vin?: s
             <section className="max-w-6xl mx-auto px-6 mt-24 grid md:grid-cols-2 gap-12 items-center">
                 <FadeIn direction="right">
                     <h2 className="text-3xl md:text-4xl font-serif text-wine-900 mb-6">Venir à Garanches</h2>
-                    <p className="text-gray-700 font-light leading-relaxed text-lg mb-6">
+                    <p className="text-gray-700 leading-relaxed text-lg mb-6">
                         345 chemin de Garanches, 69460 Odenas, au pied du Mont Brouilly.
                     </p>
                     <OpeningStatus />
