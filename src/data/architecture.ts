@@ -457,7 +457,7 @@ Nous choisissons ensemble ce qui donnera à ce moment sa couleur.
                 id: "commander",
                 title: "Commander",
                 body: `Nos vins sont expédiés directement depuis notre cave à Odenas, partout en France.`,
-                image: "/images/36_brouilly-h.jpg", paysage: true, document: true,
+                image: "/images/bouteilles/brouilly.jpg", document: true,
                 alt: "Une bouteille de Brouilly du domaine de Garanches",
                 cta: { label: "Commander", href: "/les-vins/cuvees" },
             },
