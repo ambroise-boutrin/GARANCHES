@@ -51,7 +51,7 @@ export default async function CarnetPage({ params }: Props) {
                 <Link href="/carnets" className="text-red-900 text-base underline underline-offset-4 decoration-1 hover:text-wine-900 transition-colors">
                     Les Carnets de Garanches
                 </Link>
-                <p className="text-xs uppercase tracking-widest text-gray-700 font-bold mt-8 mb-3">
+                <p className="text-sm text-gray-700 font-bold mt-8 mb-3">
                     {[themeLabel(carnet.theme), formatDate(carnet.date)].filter(Boolean).join(" · ")}
                 </p>
                 <h1 className="text-4xl md:text-5xl font-serif text-wine-900 mb-10 leading-tight">{carnet.titre}</h1>

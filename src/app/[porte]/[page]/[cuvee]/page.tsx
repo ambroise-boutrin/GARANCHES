@@ -97,11 +97,11 @@ export default async function CuveePage({ params }: Props) {
                     <Image src="/images/23_slide002.jpg" alt="" fill sizes="100vw" priority quality={75} className="object-cover brightness-[.6]" />
                 </div>
                 <FadeIn direction="down" className="relative text-center px-4 pt-20 flex flex-col items-center">
-                    <Link href="/les-vins/cuvees" className="uppercase tracking-[0.3em] text-[10px] md:text-sm text-white font-bold hover:text-white transition-colors">
+                    <Link href="/les-vins/cuvees" className="text-sm md:text-base text-white underline underline-offset-4 decoration-1">
                         Les cuvées
                     </Link>
                     <h1 className="normal-case tracking-normal font-serif text-4xl sm:text-5xl md:text-7xl leading-tight text-white mt-4 mb-4">{wine.name}</h1>
-                    {wine.subtitle && <p className="text-white/80 uppercase tracking-widest text-xs mb-6">{wine.subtitle}</p>}
+                    {wine.subtitle && <p className="text-white/80 text-sm mb-6">{wine.subtitle}</p>}
                     <div className="w-16 h-0.5 md:w-24 md:h-1 bg-white"></div>
                 </FadeIn>
             </section>
@@ -132,7 +132,7 @@ export default async function CuveePage({ params }: Props) {
                                 { label: "Mentions", value: wine.allergens },
                             ].filter((d) => d.value).map((d) => (
                                 <div key={d.label} className="bg-white border border-stone-200 p-4">
-                                    <dt className="text-red-900 uppercase tracking-widest text-[10px] font-bold mb-1">{d.label}</dt>
+                                    <dt className="text-red-900 text-sm font-bold mb-1">{d.label}</dt>
                                     <dd className="text-gray-700 text-sm">{d.value}</dd>
                                 </div>
                             ))}

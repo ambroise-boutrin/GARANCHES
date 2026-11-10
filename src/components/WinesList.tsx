@@ -41,7 +41,7 @@ export default function WinesList({ wines }: { wines: any[] }) {
                                         </span>
                                     </div>
 
-                                    <p className="text-wine-700 text-sm uppercase tracking-widest font-bold mb-4">
+                                    <p className="text-wine-700 text-sm font-bold mb-4">
                                         {wine.subtitle || "Domaine de Garanches"}{wine.millesime && ` — ${wine.millesime}`}
                                     </p>
 
@@ -63,7 +63,7 @@ export default function WinesList({ wines }: { wines: any[] }) {
                                             </span>
                                         )}
                                         {wine.allergens && (
-                                            <span className="border-l border-gray-300 pl-4 text-[10px] uppercase tracking-wider text-gray-600">
+                                            <span className="border-l border-gray-300 pl-4 text-sm text-gray-600">
                                                 {wine.allergens}
                                             </span>
                                         )}

@@ -132,7 +132,7 @@ export default function CookieConsent() {
                                     <div className="space-y-1">
                                         <div className="flex items-center gap-2">
                                             <span className="font-semibold text-stone-900">Nécessaires</span>
-                                            <span className="text-[10px] font-bold uppercase tracking-wider text-wine-900 bg-wine-50 px-2 py-0.5 rounded-full border border-wine-100">Toujours actif</span>
+                                            <span className="text-[10px] font-bold text-wine-900 bg-wine-50 px-2 py-0.5 rounded-full border border-wine-100">Toujours actif</span>
                                         </div>
                                         <p className="text-sm text-stone-700">
                                             Indispensables au bon fonctionnement du site (vérification d'âge, sécurité).

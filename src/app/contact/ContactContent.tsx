@@ -51,7 +51,6 @@ export default function ContactContent({ sujet, vin }: { sujet?: string; vin?: s
     return (
         <main className="min-h-screen bg-paper pt-32 pb-20">
             <FadeIn direction="down" className="text-center px-6 mb-16">
-                <span className="text-red-900 uppercase tracking-[0.3em] text-xs font-bold mb-3 block">Une question ?</span>
                 <h1 className="text-4xl md:text-5xl font-serif text-wine-900 mb-6 font-medium">Contact</h1>
                 <p className="max-w-xl mx-auto text-gray-800 text-lg">
                     Venir, écrire, appeler, réserver : nous sommes à votre écoute.
@@ -72,7 +71,7 @@ export default function ContactContent({ sujet, vin }: { sujet?: string; vin?: s
                                     </svg>
                                 </div>
                                 <div>
-                                    <span className="text-red-900 uppercase tracking-widest text-xs font-bold block mb-1">Adresse</span>
+                                    <span className="text-red-900 text-sm font-bold block mb-1">Adresse</span>
                                     <p className="text-gray-700 leading-relaxed font-medium">
                                         Domaine de Garanches<br />
                                         345 chemin de Garanches<br />
@@ -89,7 +88,7 @@ export default function ContactContent({ sujet, vin }: { sujet?: string; vin?: s
                                     </svg>
                                 </div>
                                 <div>
-                                    <span className="text-red-900 uppercase tracking-widest text-xs font-bold block mb-1">Téléphone</span>
+                                    <span className="text-red-900 text-sm font-bold block mb-1">Téléphone</span>
                                     <p className="text-gray-900 hover:text-wine-700 transition-colors font-bold text-lg">
                                         <a href="tel:+33782249436" className="block">Romain : 07 82 24 94 36</a>
                                         <a href="tel:+33658834680" className="block">Aurélie : 06 58 83 46 80</a>
@@ -106,7 +105,7 @@ export default function ContactContent({ sujet, vin }: { sujet?: string; vin?: s
                                     </svg>
                                 </div>
                                 <div>
-                                    <span className="text-red-900 uppercase tracking-widest text-xs font-bold block mb-1">Horaires d'Ouverture</span>
+                                    <span className="text-red-900 text-sm font-bold block mb-1">Horaires d'ouverture</span>
                                     <p className="text-gray-700 leading-relaxed">
                                         Lundi au Samedi : 09h00 - 18h00<br />
                                         <span className="text-sm text-gray-700">Fermé le Dimanche et jours fériés</span>
@@ -132,17 +131,17 @@ export default function ContactContent({ sujet, vin }: { sujet?: string; vin?: s
                         <form className="space-y-6" onSubmit={handleSubmit}>
                             <div className="grid md:grid-cols-2 gap-6">
                                 <div>
-                                    <label className="block text-xs uppercase tracking-widest text-gray-700 mb-2 font-bold ml-2">Nom</label>
+                                    <label className="block text-sm text-gray-700 mb-2 font-bold ml-2">Nom</label>
                                     <input type="text" name="nom" required className="w-full bg-white border border-gray-100 p-4 rounded-md focus:outline-none focus:ring-2 focus:ring-wine-100 focus:border-wine-300 transition-all" placeholder="Votre nom" />
                                 </div>
                                 <div>
-                                    <label className="block text-xs uppercase tracking-widest text-gray-700 mb-2 font-bold ml-2">Email</label>
+                                    <label className="block text-sm text-gray-700 mb-2 font-bold ml-2">Email</label>
                                     <input type="email" name="email" className="w-full bg-white border border-gray-100 p-4 rounded-md focus:outline-none focus:ring-2 focus:ring-wine-100 focus:border-wine-300 transition-all" placeholder="votre@email.com" />
                                 </div>
                             </div>
 
                             <div>
-                                <label className="block text-xs uppercase tracking-widest text-gray-700 mb-2 font-bold ml-2">Sujet</label>
+                                <label className="block text-sm text-gray-700 mb-2 font-bold ml-2">Sujet</label>
                                 <div className="relative">
                                     <select value={subject} onChange={(e) => setSubject(e.target.value)} className="w-full bg-white border border-gray-100 p-4 rounded-md focus:outline-none focus:ring-2 focus:ring-wine-100 focus:border-wine-300 transition-all text-gray-700 appearance-none cursor-pointer">
                                         {SUJETS.map((s) => (
@@ -160,22 +159,22 @@ export default function ContactContent({ sujet, vin }: { sujet?: string; vin?: s
                             {isBooking && (
                                 <div className="grid md:grid-cols-3 gap-6">
                                     <div>
-                                        <label className="block text-xs uppercase tracking-widest text-gray-700 mb-2 font-bold ml-2">Date souhaitée</label>
+                                        <label className="block text-sm text-gray-700 mb-2 font-bold ml-2">Date souhaitée</label>
                                         <input type="date" name="date" className="w-full bg-white border border-gray-100 p-4 rounded-md focus:outline-none focus:ring-2 focus:ring-wine-100 focus:border-wine-300 transition-all" />
                                     </div>
                                     <div>
-                                        <label className="block text-xs uppercase tracking-widest text-gray-700 mb-2 font-bold ml-2">Personnes</label>
+                                        <label className="block text-sm text-gray-700 mb-2 font-bold ml-2">Personnes</label>
                                         <input type="number" name="personnes" min={1} max={30} className="w-full bg-white border border-gray-100 p-4 rounded-md focus:outline-none focus:ring-2 focus:ring-wine-100 focus:border-wine-300 transition-all" />
                                     </div>
                                     <div>
-                                        <label className="block text-xs uppercase tracking-widest text-gray-700 mb-2 font-bold ml-2">Téléphone</label>
+                                        <label className="block text-sm text-gray-700 mb-2 font-bold ml-2">Téléphone</label>
                                         <input type="tel" name="telephone" className="w-full bg-white border border-gray-100 p-4 rounded-md focus:outline-none focus:ring-2 focus:ring-wine-100 focus:border-wine-300 transition-all" />
                                     </div>
                                 </div>
                             )}
 
                             <div>
-                                <label className="block text-xs uppercase tracking-widest text-gray-700 mb-2 font-bold ml-2">Message</label>
+                                <label className="block text-sm text-gray-700 mb-2 font-bold ml-2">Message</label>
                                 <textarea name="message" rows={vinDemande ? 8 : 5} defaultValue={messageInitial} className="w-full bg-white border border-gray-100 p-4 rounded-md focus:outline-none focus:ring-2 focus:ring-wine-100 focus:border-wine-300 transition-all resize-none" placeholder="Comment pouvons-nous vous aider ?"></textarea>
                             </div>
 
