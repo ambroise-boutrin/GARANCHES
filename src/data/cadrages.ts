@@ -10,14 +10,16 @@ const CADRAGES: Record<string, string> = {
     [`${G}maison-granit.jpg`]: "50% 40%",
     [`${G}terrasse-domaine.jpg`]: "40% 20%",
     [`${G}terrasse-vignes.jpg`]: "45% 20%",
-    [`${G}vue-mont-brouilly.jpg`]: "50% 15%",
-    [`${G}domaine-vignes.jpg`]: "40% 30%",
     [`${G}michel-stagnara.jpg`]: "68% 15%",
     [`${G}michel-portrait.jpg`]: "50% 30%",
     [`${G}ambroise-verre.jpg`]: "50% 30%",
     [`${G}isabelle-terrasse.jpg`]: "45% 20%",
+    [`${G}maison-facade.jpg`]: "50% 40%",
+    [`${G}maison-parc-pierre.jpg`]: "58% 40%",
+    [`${G}grappe-vigne.jpg`]: "55% 45%",
+    [`${G}vignes-cadole.jpg`]: "25% 60%",
+    [`${G}registre-cave.jpg`]: "50% 50%",
     "/images/3_image.jpg": "50% 25%",
-    "/images/10_slide003.jpg": "40% 50%",
 };
 
 export function cadrage(src?: string): string | undefined {
