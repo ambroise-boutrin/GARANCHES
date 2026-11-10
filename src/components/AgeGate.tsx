@@ -117,7 +117,7 @@ export default function AgeGate() {
                 aria-invalid={erreur !== ""}
                 className="w-full bg-transparent border-b border-stone-600 focus:border-white outline-none text-center text-white text-2xl font-serif tracking-[0.15em] py-2 placeholder:text-stone-600 transition-colors"
             />
-            <span className="text-[10px] uppercase tracking-[0.2em] text-stone-500">{label}</span>
+            <span className="text-sm text-stone-400">{label}</span>
         </label>
     );
 
@@ -149,7 +149,7 @@ export default function AgeGate() {
                                     </p>
                                     <a
                                         href="https://www.google.com"
-                                        className="text-stone-400 text-xs uppercase tracking-widest hover:text-white transition-colors"
+                                        className="text-stone-400 text-sm underline underline-offset-4 hover:text-white transition-colors"
                                     >
                                         Quitter le site
                                     </a>
@@ -173,12 +173,12 @@ export default function AgeGate() {
 
                                     <button
                                         type="submit"
-                                        className="pointer-events-auto cursor-pointer w-full py-4 bg-white text-stone-900 uppercase tracking-[0.2em] text-xs font-bold hover:bg-amber-500 transition-colors duration-300 relative z-50"
+                                        className="pointer-events-auto cursor-pointer w-full py-4 bg-white text-stone-900 text-base font-medium hover:bg-stone-200 transition-colors duration-300 relative z-50"
                                     >
                                         Entrer
                                     </button>
 
-                                    <p className="mt-6 text-[11px] leading-relaxed text-stone-500">
+                                    <p className="mt-6 text-[11px] leading-relaxed text-stone-400">
                                         Votre date de naissance n'est pas conservée. Seule votre tranche d'âge est comptée, de façon anonyme, pour mieux connaître nos visiteurs.{" "}
                                         <Link href="/politique-confidentialite#tranches-age" className="underline underline-offset-2 hover:text-stone-300">
                                             En savoir plus
@@ -187,7 +187,7 @@ export default function AgeGate() {
 
                                     <a
                                         href="https://www.google.com"
-                                        className="inline-block pointer-events-auto cursor-pointer text-stone-500 text-xs uppercase tracking-widest hover:text-white transition-colors mt-6 relative z-50"
+                                        className="inline-block pointer-events-auto cursor-pointer text-stone-400 text-sm underline underline-offset-4 hover:text-white transition-colors mt-6 relative z-50"
                                     >
                                         Quitter le site
                                     </a>

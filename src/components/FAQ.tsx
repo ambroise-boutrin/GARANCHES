@@ -39,7 +39,6 @@ export default function FAQ() {
             <div className="max-w-4xl mx-auto px-6">
                 <FadeIn direction="up">
                     <div className="text-center mb-12">
-                        <span className="text-red-900 uppercase tracking-[0.3em] text-xs font-bold mb-3 block">Questions Fréquentes</span>
                         <h2 className="text-4xl font-serif text-wine-900">Tout savoir sur le Domaine</h2>
                     </div>
 
@@ -67,7 +66,7 @@ export default function FAQ() {
                                     {openIndex === index && (
                                         <motion.div
                                         >
-                                            <div className="px-6 pb-6 text-gray-600 leading-relaxed font-light border-t border-gray-50 pt-4">
+                                            <div className="px-6 pb-6 text-gray-800 leading-relaxed border-t border-gray-50 pt-4">
                                                 {faq.answer}
                                             </div>
                                         </motion.div>

@@ -5,7 +5,6 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AgeGate from "@/components/AgeGate";
 import SmoothScroll from "@/components/SmoothScroll";
-import ScrollToTop from "@/components/ScrollToTop";
 import Script from "next/script";
 import { Providers } from "./providers";
 import CookieConsent from "@/components/CookieConsent";
@@ -184,7 +183,6 @@ export default async function RootLayout({
           <Navbar />
           {children}
           <Footer />
-          <ScrollToTop />
         </Providers>
 
 

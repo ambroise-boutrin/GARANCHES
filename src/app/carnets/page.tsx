@@ -29,7 +29,7 @@ export default async function CarnetsPage({ searchParams }: { searchParams: { th
 
             <FadeIn direction="down" className="text-center px-6 pt-16 md:pt-24 mb-16">
                 <h2 className="text-2xl md:text-3xl font-serif text-wine-900 mb-6">{CARNETS_INTRO.title}</h2>
-                <RichText text={CARNETS_INTRO.body} className="max-w-2xl mx-auto text-gray-700 font-light leading-relaxed text-lg" />
+                <RichText text={CARNETS_INTRO.body} className="max-w-2xl mx-auto text-gray-700 leading-relaxed text-lg" />
             </FadeIn>
 
             <nav aria-label="Thèmes" className="flex flex-wrap justify-center gap-3 px-6 mb-16">
@@ -37,8 +37,8 @@ export default async function CarnetsPage({ searchParams }: { searchParams: { th
                     <Link
                         key={t.value}
                         href={t.value ? `/carnets?theme=${t.value}` : "/carnets"}
-                        className={`px-4 py-2 text-xs uppercase tracking-widest border transition-colors ${
-                            (theme || "") === t.value ? "bg-wine-900 text-white border-wine-900" : "border-stone-300 text-gray-600 hover:border-wine-900"
+                        className={`px-4 py-2 text-sm border transition-colors ${
+                            (theme || "") === t.value ? "bg-wine-900 text-white border-wine-900" : "border-stone-300 text-gray-800 hover:border-wine-900"
                         }`}
                     >
                         {t.title}
@@ -48,7 +48,7 @@ export default async function CarnetsPage({ searchParams }: { searchParams: { th
 
             <div className="max-w-7xl mx-auto px-6">
                 {visible.length === 0 ? (
-                    <p className="text-center text-gray-400 italic font-light">Les premiers carnets arrivent bientôt.</p>
+                    <p className="text-center text-gray-600">Les premiers carnets arrivent bientôt.</p>
                 ) : (
                     <div className="grid md:grid-cols-3 gap-10">
                         {visible.map((c: any, i: number) => (
@@ -63,11 +63,11 @@ export default async function CarnetsPage({ searchParams }: { searchParams: { th
                                             className="object-cover"
                                         />
                                     </div>
-                                    <p className="text-xs uppercase tracking-widest text-red-900 font-bold mb-2">
+                                    <p className="text-sm text-red-900 font-bold mb-2">
                                         {[themeLabel(c.theme), formatDate(c.date)].filter(Boolean).join(" · ")}
                                     </p>
                                     <h3 className="text-2xl font-serif text-wine-900 mb-3 group-hover:text-red-900 transition-colors">{c.titre}</h3>
-                                    {c.extrait && <p className="text-sm text-gray-600 font-light leading-relaxed">{c.extrait}</p>}
+                                    {c.extrait && <p className="text-sm text-gray-800 leading-relaxed">{c.extrait}</p>}
                                 </Link>
                             </FadeIn>
                         ))}
