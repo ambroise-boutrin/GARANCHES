@@ -12,7 +12,7 @@ export default function CGVPage() {
             <div className="max-w-3xl mx-auto px-6 prose prose-stone">
                 <h1 className="text-3xl font-serif text-wine-900 mb-8 border-b-2 border-wine-100 pb-4">Conditions Générales de Vente</h1>
 
-                <p className="text-sm font-light italic mb-8">Dernière mise à jour : Février 2026</p>
+                <p className="text-sm mb-8">Dernière mise à jour : Février 2026</p>
 
                 <h3>1. Objet</h3>
                 <p>
@@ -55,7 +55,7 @@ export default function CGVPage() {
 
                 <div className="bg-stone-50 p-6 border border-stone-200 my-6 not-prose">
                     <h4 className="font-bold text-wine-900 mb-4">Modèle de formulaire de rétractation :</h4>
-                    <p className="text-sm italic mb-4">(Veuillez compléter et renvoyer le présent formulaire uniquement si vous souhaitez vous rétracter du contrat)</p>
+                    <p className="text-sm mb-4">(Veuillez compléter et renvoyer le présent formulaire uniquement si vous souhaitez vous rétracter du contrat)</p>
                     <p className="text-sm">
                         À l'attention du <strong>Domaine de Garanches</strong>,<br />
                         345 chemin de Garanches, 69460 Odenas<br />

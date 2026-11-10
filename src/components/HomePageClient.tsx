@@ -60,20 +60,20 @@ export default function HomePageClient({ products, content }: { products: any[],
 
                     <div className="mt-4 flex flex-col items-center">
 
-                        <p className="text-sm md:text-lg font-light max-w-xl mb-6 text-gray-100 leading-relaxed px-2 text-white">
+                        <p className="text-sm md:text-lg max-w-xl mb-6 text-gray-100 leading-relaxed px-2 text-white">
                             {content?.hero?.content || "À Odenas, au pied du Mont Brouilly, Garanches est un lieu façonné par le temps, le granit et les générations qui l'ont fait vivre."}
                         </p>
 
                         <div className="flex flex-col sm:flex-row gap-4 md:gap-8 justify-center items-center w-full">
                             <Link
                                 href="/les-vins/cuvees"
-                                className="w-[260px] px-8 py-3 bg-red-900/90 hover:bg-red-800 text-white uppercase tracking-widest text-xs font-bold transition-all border border-red-900 duration-300 text-center"
+                                className="w-[260px] px-8 py-3 bg-red-900/90 hover:bg-red-800 text-white text-base font-medium transition-colors border border-red-900 duration-300 text-center"
                             >
                                 Découvrir les vins
                             </Link>
                             <Link
                                 href="/rencontrons-garanches"
-                                className="w-[260px] px-8 py-3 bg-transparent hover:bg-white/10 text-white uppercase tracking-widest text-xs font-bold transition-all border border-white duration-300 text-center"
+                                className="w-[260px] px-8 py-3 bg-transparent hover:bg-white/10 text-white text-base font-medium transition-colors border border-white duration-300 text-center"
                             >
                                 Rencontrons-nous
                             </Link>
@@ -103,14 +103,14 @@ export default function HomePageClient({ products, content }: { products: any[],
                                     />
                                     <div className="absolute inset-0 flex flex-col justify-end p-8 text-white">
                                         <h3 className="text-3xl md:text-4xl font-serif mb-3">{page.label}</h3>
-                                        <span className="text-xs uppercase tracking-widest font-bold text-white">{page.cta} →</span>
+                                        <span className="text-base text-white underline underline-offset-4 decoration-1">{page.cta}</span>
                                     </div>
                                 </Link>
                                 <div className="bg-stone-50 border border-t-0 border-stone-200 p-6 space-y-5 flex-grow">
                                     {entrees.map((entree) => (
                                         <Link key={entree.label} href={entree.href} className="group block">
                                             <span className="block text-xl font-serif text-wine-900 group-hover:text-red-900 transition-colors">{entree.label}</span>
-                                            <span className="block text-xs text-gray-500 tracking-wide mt-1">{entree.motsCles}</span>
+                                            <span className="block text-xs text-gray-700 tracking-wide mt-1">{entree.motsCles}</span>
                                         </Link>
                                     ))}
                                 </div>
@@ -126,7 +126,7 @@ export default function HomePageClient({ products, content }: { products: any[],
                         <div>
                             <span className="text-red-900 uppercase tracking-[0.3em] text-xs font-bold mb-3 block">Le Lieu</span>
                             <h2 className="text-3xl md:text-5xl font-serif text-red-900 mb-6 md:mb-8 leading-tight">Une histoire <br />qui continue.</h2>
-                            <div className="text-gray-600 leading-relaxed text-base md:text-lg font-light mb-8 space-y-4">
+                            <div className="text-gray-800 leading-relaxed text-base md:text-lg mb-8 space-y-4">
                                 {content?.philosophy?.content ? (
                                     <p>{content.philosophy.content}</p>
                                 ) : (
@@ -140,11 +140,8 @@ export default function HomePageClient({ products, content }: { products: any[],
                                     </>
                                 )}
                             </div>
-                            <Link href="/le-lieu/histoire" className="group inline-flex items-center text-red-900 uppercase text-xs font-bold tracking-widest hover:text-red-700 transition-colors">
+                            <Link href="/le-lieu/histoire" className="group inline-flex items-center text-red-900 text-base hover:text-red-700 transition-colors">
                                 <span className="border-b border-red-900 pb-1 group-hover:border-red-700">Lire l'histoire</span>
-                                <svg className="w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                                </svg>
                             </Link>
                         </div>
                     </FadeIn>
@@ -172,21 +169,21 @@ export default function HomePageClient({ products, content }: { products: any[],
                     <div className="grid md:grid-cols-3 gap-12">
                         <FadeIn delay={0.1} className="bg-white p-8 border border-stone-200">
                             <h3 className="text-2xl font-serif text-wine-900 mb-4">Le Gamay</h3>
-                            <p className="text-gray-600 font-light leading-relaxed text-sm">
+                            <p className="text-gray-800 leading-relaxed text-sm">
                                 Le cépage du Beaujolais. Sur notre granit du Mont Brouilly, il donne des Brouilly de fruits rouges et noirs, droits et minéraux.
                             </p>
                         </FadeIn>
 
                         <FadeIn delay={0.2} className="bg-white p-8 border border-stone-200">
                             <h3 className="text-2xl font-serif text-wine-900 mb-4">Le Chardonnay</h3>
-                            <p className="text-gray-600 font-light leading-relaxed text-sm">
+                            <p className="text-gray-800 leading-relaxed text-sm">
                                 Sur quelques parcelles argilo-calcaires choisies, il donne un Bourgogne blanc floral, aux notes d'agrumes et de fleurs blanches.
                             </p>
                         </FadeIn>
 
                         <FadeIn delay={0.3} className="bg-white p-8 border border-stone-200">
                             <h3 className="text-2xl font-serif text-wine-900 mb-4">Notre façon de faire</h3>
-                            <p className="text-gray-600 font-light leading-relaxed text-sm">
+                            <p className="text-gray-800 leading-relaxed text-sm">
                                 Vignerons indépendants, certifiés HVE. Rangs enherbés, sols travaillés, vendanges à la main : nous suivons la vigne au fil des saisons.
                             </p>
                         </FadeIn>
@@ -200,7 +197,7 @@ export default function HomePageClient({ products, content }: { products: any[],
                         <FadeIn direction="down">
                             <span className="text-red-900 uppercase tracking-[0.3em] text-xs font-bold mb-3 block">Les cuvées</span>
                             <h2 className="text-4xl md:text-5xl font-serif text-gray-900 mb-6">Nos vins</h2>
-                            <p className="max-w-2xl mx-auto text-gray-500 font-light leading-relaxed mb-8">
+                            <p className="max-w-2xl mx-auto text-gray-700 leading-relaxed mb-8">
                                 Des vins précis, vivants, en petites quantités. Ils partent directement de notre cave à Odenas, partout en France.
                             </p>
                         </FadeIn>
@@ -228,7 +225,7 @@ export default function HomePageClient({ products, content }: { products: any[],
                                             {wine.name}
                                         </h3>
                                         <div className="h-[1px] w-10 bg-gray-300 mx-auto my-4 group-hover:bg-red-900 transition-colors"></div>
-                                        <p className="text-xs text-gray-500 uppercase tracking-widest font-bold mb-2">
+                                        <p className="text-xs text-gray-700 uppercase tracking-widest font-bold mb-2">
                                             {wine.subtitle || "Vin du Domaine"}
                                         </p>
                                         <p className="text-xl font-bold text-red-900 mb-4">
@@ -248,7 +245,7 @@ export default function HomePageClient({ products, content }: { products: any[],
                     <div className="mt-16 md:mt-20 text-center">
                         <Link
                             href="/les-vins/cuvees"
-                            className="inline-block px-8 py-3 md:px-12 md:py-4 border border-gray-900 text-gray-900 uppercase tracking-widest text-xs font-bold hover:bg-gray-900 hover:text-white transition-all duration-300"
+                            className="inline-block px-8 py-3 md:px-12 md:py-4 border border-gray-900 text-gray-900 text-base font-medium hover:bg-gray-900 hover:text-white transition-all duration-300"
                         >
                             Voir toutes les cuvées
                         </Link>
