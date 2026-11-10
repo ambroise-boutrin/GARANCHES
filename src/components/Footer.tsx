@@ -13,7 +13,7 @@ export default function Footer() {
 
                 <div>
                     <div className="font-serif text-2xl text-white mb-6 uppercase tracking-[0.04em]">Domaine de Garanches</div>
-                    <p className="font-light text-sm leading-loose text-gray-300 mb-6">
+                    <p className="text-sm leading-loose text-gray-300 mb-6">
                         345 chemin de Garanches<br />
                         69460 Odenas — France<br />
                         <a href="tel:+33782249436" className="inline-block py-1 hover:text-white">Romain : 07 82 24 94 36</a><br />
@@ -43,7 +43,7 @@ export default function Footer() {
                 </div>
             </div>
 
-            <div className="mt-16 pt-8 border-t border-white/10 text-center text-xs text-gray-500 font-light">
+            <div className="mt-16 pt-8 border-t border-white/10 text-center text-xs text-gray-400">
                 <p>&copy; {currentYear} Domaine de Garanches. L'abus d'alcool est dangereux pour la santé, à consommer avec modération.</p>
             </div>
         </footer>
