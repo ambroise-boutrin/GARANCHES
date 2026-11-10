@@ -21,7 +21,7 @@ export default function MentionsLegales() {
                     <br />
                     <strong>Forme juridique :</strong> Groupement Foncier Agricole (GFA), société civile<br />
                     <strong>Capital social :</strong> 335 237 €<br />
-                    <strong>SIRET :</strong> [Numéro SIRET]<br />
+                    <strong>SIRET :</strong> 400 409 173 00012<br />
                     <strong>RCS :</strong> Villefranche-Tarare 400 409 173<br />
                     <strong>TVA Intracommunautaire :</strong> FR95 400 409 173<br />
                     <strong>Directeur de la publication :</strong> Ambroise Boutrin
