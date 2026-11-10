@@ -19,7 +19,7 @@ export default function MentionsLegales() {
                     Téléphone : +33 7 82 24 94 36 (Romain) · +33 6 58 83 46 80 (Aurélie) · +33 6 61 73 56 67 (Isabelle) · +33 6 09 41 97 02 (Michel)<br />
                     Email : contact@domainedegaranches.com<br />
                     <br />
-                    <strong>Forme juridique :</strong> Exploitation Agricole à Responsabilité Limitée (EARL)<br />
+                    <strong>Forme juridique :</strong> Groupement Foncier Agricole (GFA)<br />
                     <strong>Capital social :</strong> [Montant du capital] €<br />
                     <strong>SIRET :</strong> [Numéro SIRET]<br />
                     <strong>RCS :</strong> Villefranche-Tarare [Numéro RCS]<br />
