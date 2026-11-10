@@ -114,11 +114,11 @@ export default function CookieConsent() {
                             <div className="p-6 border-b border-stone-100 bg-stone-50/80 flex justify-between items-center sticky top-0 z-10 backdrop-blur-sm">
                                 <div>
                                     <h3 className="normal-case tracking-normal text-xl font-serif font-bold text-stone-900">Préférences des cookies</h3>
-                                    <p className="text-sm text-stone-500 mt-1">Gérez vos choix de consentement.</p>
+                                    <p className="text-sm text-stone-700 mt-1">Gérez vos choix de consentement.</p>
                                 </div>
                                 <button
                                     onClick={() => setShowSettings(false)}
-                                    className="p-2 text-stone-400 hover:text-stone-600 hover:bg-stone-100 rounded-full transition-colors"
+                                    className="p-2 text-stone-600 hover:text-stone-800 hover:bg-stone-100 rounded-full transition-colors"
                                 >
                                     <CloseIcon className="w-5 h-5" />
                                 </button>
@@ -132,9 +132,9 @@ export default function CookieConsent() {
                                     <div className="space-y-1">
                                         <div className="flex items-center gap-2">
                                             <span className="font-semibold text-stone-900">Nécessaires</span>
-                                            <span className="text-[10px] font-bold uppercase tracking-wider text-wine-900 bg-wine-50 px-2 py-0.5 rounded-full border border-wine-100">Toujours actif</span>
+                                            <span className="text-[10px] font-bold text-wine-900 bg-wine-50 px-2 py-0.5 rounded-full border border-wine-100">Toujours actif</span>
                                         </div>
-                                        <p className="text-sm text-stone-500">
+                                        <p className="text-sm text-stone-700">
                                             Indispensables au bon fonctionnement du site (vérification d'âge, sécurité).
                                         </p>
                                     </div>
@@ -145,8 +145,8 @@ export default function CookieConsent() {
                                 <div className="flex items-start justify-between gap-4 p-4 border border-stone-100 hover:border-stone-200 transition-colors">
                                     <div className="space-y-1">
                                         <span className="font-semibold text-stone-900 block">Analytiques</span>
-                                        <p className="text-sm text-stone-500">
-                                            Nous permettent de mesurer l'audience (Google Analytics, etc.). <span className="italic text-xs text-stone-400">Non utilisé actuellement.</span>
+                                        <p className="text-sm text-stone-700">
+                                            Nous permettent de mesurer l'audience (Google Analytics, etc.). <span className="text-xs text-stone-600">Non utilisé actuellement.</span>
                                         </p>
                                     </div>
                                     <Switch
@@ -159,8 +159,8 @@ export default function CookieConsent() {
                                 <div className="flex items-start justify-between gap-4 p-4 border border-stone-100 hover:border-stone-200 transition-colors">
                                     <div className="space-y-1">
                                         <span className="font-semibold text-stone-900 block">Marketing</span>
-                                        <p className="text-sm text-stone-500">
-                                            Publicités ciblées. <span className="italic text-xs text-stone-400">Non utilisé actuellement.</span>
+                                        <p className="text-sm text-stone-700">
+                                            Publicités ciblées. <span className="text-xs text-stone-600">Non utilisé actuellement.</span>
                                         </p>
                                     </div>
                                     <Switch
@@ -175,7 +175,7 @@ export default function CookieConsent() {
                             <div className="p-6 border-t border-stone-100 bg-stone-50/80 flex justify-end gap-3 sticky bottom-0 z-10 backdrop-blur-sm">
                                 <button
                                     onClick={handleDeclineAll}
-                                    className="px-5 py-2.5 text-sm font-medium text-stone-600 hover:text-stone-900 hover:bg-stone-200/50 transition-colors"
+                                    className="px-5 py-2.5 text-sm font-medium text-stone-800 hover:text-stone-900 hover:bg-stone-200/50 transition-colors"
                                 >
                                     Tout refuser
                                 </button>
@@ -196,7 +196,7 @@ export default function CookieConsent() {
                 <motion.button
                     whileHover={{ scale: 1.1 }}
                     onClick={() => setShowSettings(true)}
-                    className="hidden md:block fixed bottom-4 left-4 z-[140] p-3 bg-white/80 backdrop-blur border border-stone-100 rounded-full text-stone-400 hover:text-wine-900 transition-colors group"
+                    className="hidden md:block fixed bottom-4 left-4 z-[140] p-3 bg-white/80 backdrop-blur border border-stone-100 rounded-full text-stone-600 hover:text-wine-900 transition-colors group"
                     title="Gérer les cookies"
                 >
                     <CookieIcon className="w-5 h-5" />
