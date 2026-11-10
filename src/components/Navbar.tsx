@@ -67,14 +67,14 @@ export default function Navbar() {
 
 
                 <Link href="/" className="relative z-[101] flex items-center gap-3 group">
-                    <div className={`relative ${scrolled ? "w-10 h-10" : "w-12 h-12"}`}>
+                    <div className={`relative ${scrolled ? "w-[68px] h-9" : "w-[84px] h-11"}`}>
                         <Image
-                            src="/images/17_logo.png"
+                            src="/images/logo-maison.png"
                             alt="Logo Domaine de Garanches"
                             fill
                             // Si useDarkText est vrai, on inverse les couleurs (White -> Black) pour qu'il soit visible sur fond blanc
                             className={`object-contain ${useDarkText ? "invert" : ""}`}
-                            sizes="48px"
+                            sizes="84px"
                             priority
                             unoptimized
                         />

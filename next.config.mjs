@@ -9,6 +9,8 @@ const nextConfig = {
             { source: '/visite', destination: '/rencontrons-garanches/deguster-au-domaine', permanent: true },
             // Pas de boutique en ligne pour l'instant : l'ancien panier renvoie vers les cuvées.
             { source: '/panier', destination: '/les-vins/cuvees', permanent: false },
+            // Vins arrêtés : leurs anciennes fiches renvoient vers les cuvées.
+            { source: '/les-vins/cuvees/:id(rose|petillant|cote-de-brouilly)', destination: '/les-vins/cuvees', permanent: true },
         ];
     },
     images: {
