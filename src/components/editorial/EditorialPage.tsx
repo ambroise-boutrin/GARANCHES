@@ -20,12 +20,10 @@ export function PageHero({ image, label, parent }: { image: string; label: strin
                 <Image src={image} alt="" fill sizes="100vw" priority quality={85} style={{ objectPosition: cadrage(image) }} className="object-cover brightness-[.6]" />
             </div>
             <FadeIn direction="down" className="relative text-center px-4 pt-20 flex flex-col items-center">
-                {parent ? (
-                    <Link href={`/${parent.path}`} className="uppercase tracking-[0.3em] text-[10px] md:text-sm text-white font-bold hover:text-white transition-colors">
+                {parent && (
+                    <Link href={`/${parent.path}`} className="text-sm md:text-base text-white underline underline-offset-4 decoration-1">
                         {parent.label}
                     </Link>
-                ) : (
-                    <span className="uppercase tracking-[0.3em] text-[10px] md:text-sm text-white font-bold">Domaine de Garanches</span>
                 )}
                 <h1 className="font-serif text-4xl sm:text-5xl md:text-7xl leading-tight text-white mt-4 mb-8">{label}</h1>
             </FadeIn>
@@ -61,7 +59,7 @@ function BlocSection({ bloc, override, index }: { bloc: Bloc; override?: BlocOve
                 <dl className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-10 text-left">
                     {pratique.map((item) => (
                         <div key={item.label} className="bg-white border border-stone-200 p-4">
-                            <dt className="text-red-900 uppercase tracking-widest text-[10px] font-bold mb-1">{item.label}</dt>
+                            <dt className="text-red-900 text-sm font-bold mb-1">{item.label}</dt>
                             <dd className="text-gray-700 text-sm">{item.value}</dd>
                         </div>
                     ))}

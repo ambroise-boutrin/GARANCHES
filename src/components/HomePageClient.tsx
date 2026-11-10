@@ -54,7 +54,7 @@ export default function HomePageClient({ products, content }: { products: any[],
                     </h1>
 
                     <div className="mb-8 mt-4">
-                        <span className="uppercase tracking-[0.3em] text-[10px] md:text-sm text-white font-bold block">
+                        <span className="text-sm md:text-base text-white block">
                             Odenas — Mont Brouilly
                         </span>
                     </div>
@@ -86,7 +86,6 @@ export default function HomePageClient({ products, content }: { products: any[],
             <section id="portes" className="scroll-mt-20 py-20 md:py-32 bg-white">
                 <div className="max-w-7xl mx-auto px-6">
                     <FadeIn direction="up" className="text-center mb-16">
-                        <span className="text-red-900 uppercase tracking-[0.3em] text-xs font-bold mb-3 block">Garanches</span>
                         <h2 className="text-3xl md:text-5xl font-serif text-red-900 leading-tight mb-6">{SIGNATURE}</h2>
                     </FadeIn>
 
@@ -125,7 +124,6 @@ export default function HomePageClient({ products, content }: { products: any[],
                 <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 md:gap-20 items-center">
                     <FadeIn direction="right">
                         <div>
-                            <span className="text-red-900 uppercase tracking-[0.3em] text-xs font-bold mb-3 block">Le Lieu</span>
                             <h2 className="text-3xl md:text-5xl font-serif text-red-900 mb-6 md:mb-8 leading-tight">Une histoire <br />qui continue.</h2>
                             <div className="text-gray-800 leading-relaxed text-base md:text-lg mb-8 space-y-4">
                                 {content?.philosophy?.content ? (
@@ -163,7 +161,6 @@ export default function HomePageClient({ products, content }: { products: any[],
             <section className="py-20 md:py-32 bg-stone-100">
                 <div className="max-w-7xl mx-auto px-6">
                     <FadeIn direction="up" className="text-center mb-16">
-                        <span className="text-red-900 uppercase tracking-[0.3em] text-xs font-bold mb-3 block">Les Vins</span>
                         <h2 className="text-3xl md:text-4xl font-serif text-wine-900 mb-6">Des vins qui viennent d'un lieu.</h2>
                     </FadeIn>
 
@@ -196,7 +193,6 @@ export default function HomePageClient({ products, content }: { products: any[],
                 <div className="max-w-7xl mx-auto px-6">
                     <div className="text-center mb-12 md:mb-20">
                         <FadeIn direction="down">
-                            <span className="text-red-900 uppercase tracking-[0.3em] text-xs font-bold mb-3 block">Les cuvées</span>
                             <h2 className="text-4xl md:text-5xl font-serif text-gray-900 mb-6">Nos vins</h2>
                             <p className="max-w-2xl mx-auto text-gray-700 leading-relaxed mb-8">
                                 Des vins précis, vivants, en petites quantités. Ils partent directement de notre cave à Odenas, partout en France.
@@ -226,7 +222,7 @@ export default function HomePageClient({ products, content }: { products: any[],
                                             {wine.name}
                                         </h3>
                                         <div className="h-[1px] w-10 bg-gray-300 mx-auto my-4 group-hover:bg-red-900 transition-colors"></div>
-                                        <p className="text-xs text-gray-700 uppercase tracking-widest font-bold mb-2">
+                                        <p className="text-sm text-gray-700 font-bold mb-2">
                                             {wine.subtitle || "Vin du Domaine"}
                                         </p>
                                         <p className="text-xl font-bold text-red-900 mb-4">
