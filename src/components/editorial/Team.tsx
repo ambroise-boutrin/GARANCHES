@@ -1,12 +1,13 @@
 import Image from "next/image";
 import FadeIn from "@/components/FadeIn";
+import { cadrage } from "@/data/cadrages";
 
 // Repris de l'ancienne page « Notre histoire ».
 const TEAM = [
     { name: "Michel Stagnara", image: "/images/1_image.jpg" },
     { name: "Isabelle Stagnara", image: "/images/22_image.jpg" },
-    { name: "Romain Martinache", image: "/images/18_image.jpg" },
-    { name: "Aurélie Crozet", image: "/images/3_image.jpg" },
+    { name: "Romain Martinache", image: "/images/smugmug/romain-martinache.jpg" },
+    { name: "Aurélie Crozet", image: "/images/smugmug/aurelie-crozet.jpg" },
     { name: "Laetitia Stagnara", image: "/images/4_image.jpg" },
     { name: "Tancrède Stagnara", image: "/images/15_image.jpg" },
     { name: "Ambroise Stagnara", image: "/images/26_image.jpg" },
@@ -24,6 +25,7 @@ export default function Team() {
                                 alt={person.name}
                                 fill
                                 sizes="(max-width: 768px) 50vw, 33vw"
+                                style={{ objectPosition: cadrage(person.image) }}
                                 className="object-cover"
                             />
                         </div>

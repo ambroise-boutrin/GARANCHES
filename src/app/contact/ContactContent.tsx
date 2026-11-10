@@ -116,8 +116,8 @@ export default function ContactContent({ sujet, vin }: { sujet?: string; vin?: s
 
                             <div className="mt-8 h-48 w-full relative overflow-hidden group-hover:shadow-lg transition-all">
                                 <img
-                                    src="/images/34_slide001.jpg"
-                                    alt="Cave voûtée avec fûts de chêne au Domaine de Garanches"
+                                    src="/images/smugmug/domaine-drone-maison.jpg"
+                                    alt="Le domaine de Garanches au milieu de ses vignes, à Odenas"
                                     className="w-full h-full object-cover opacity-90 transition-transform duration-1000"
                                 />
                             </div>
