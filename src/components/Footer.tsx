@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { PORTES } from '@/data/architecture';
+import Telephones from "@/components/Telephones";
 
 export default function Footer() {
     const currentYear = new Date().getFullYear();
@@ -15,14 +16,11 @@ export default function Footer() {
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src="/images/logo-maison.png" alt="" width={539} height={284} className="w-28 h-auto mx-auto mb-4" />
                     <div className="font-serif text-2xl text-white mb-6 uppercase tracking-[0.04em]">Domaine de Garanches</div>
-                    <p className="text-sm leading-loose text-gray-300 mb-6">
+                    <p className="text-sm leading-loose text-gray-300 mb-2">
                         345 chemin de Garanches<br />
-                        69460 Odenas — France<br />
-                        <a href="tel:+33782249436" className="inline-block py-1 hover:text-white">Romain : 07 82 24 94 36</a><br />
-                        <a href="tel:+33658834680" className="inline-block py-1 hover:text-white">Aurélie : 06 58 83 46 80</a><br />
-                        <a href="tel:+33661735667" className="inline-block py-1 hover:text-white">Isabelle : 06 61 73 56 67</a><br />
-                        <a href="tel:+33609419702" className="inline-block py-1 hover:text-white">Michel : 06 09 41 97 02</a>
+                        69460 Odenas — France
                     </p>
+                    <Telephones className="w-fit mx-auto mb-6 text-sm leading-loose text-gray-300 text-left" lien="hover:text-white" />
 
 
                 </div>
