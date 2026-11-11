@@ -6,8 +6,6 @@ import { PORTES } from '@/data/architecture';
 const CONTACTS = [
     { name: 'Romain', number: '07 82 24 94 36', tel: '+33782249436' },
     { name: 'Aurélie', number: '06 58 83 46 80', tel: '+33658834680' },
-    { name: 'Isabelle', number: '06 61 73 56 67', tel: '+33661735667' },
-    { name: 'Michel', number: '06 09 41 97 02', tel: '+33609419702' },
 ];
 
 export default function Footer() {
