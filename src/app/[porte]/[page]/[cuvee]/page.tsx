@@ -174,9 +174,11 @@ export default async function CuveePage({ params }: Props) {
                                 </div>
                             ))}
                         </dl>
-                        <p className="text-2xl font-bold text-red-900 mb-6">
-                            {prixAffiche(wine)}
-                        </p>
+                        {prixAffiche(wine) && (
+                            <p className="text-2xl font-bold text-red-900 mb-6">
+                                {prixAffiche(wine)}
+                            </p>
+                        )}
                         <RequestBottlesButton wine={wine} />
                     </FadeIn>
                 </div>

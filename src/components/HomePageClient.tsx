@@ -226,9 +226,11 @@ export default function HomePageClient({ products, content }: { products: any[],
                                         <p className="text-sm text-gray-700 font-bold mb-2">
                                             {wine.subtitle || "Vin du Domaine"}
                                         </p>
-                                        <p className="text-xl font-bold text-red-900 mb-4">
-                                            {prixAffiche(wine)}
-                                        </p>
+                                        {prixAffiche(wine) && (
+                                            <p className="text-xl font-bold text-red-900 mb-4">
+                                                {prixAffiche(wine)}
+                                            </p>
+                                        )}
                                     </div>
                                 </Link>
 
