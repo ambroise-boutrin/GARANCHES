@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Jost } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import PrechargePhotos from "@/components/PrechargePhotos";
 import Footer from "@/components/Footer";
 import AgeGate from "@/components/AgeGate";
 import SmoothScroll from "@/components/SmoothScroll";
@@ -160,6 +161,7 @@ export default async function RootLayout({
           <CookieConsent />
           <SmoothScroll />
           <Navbar />
+          <PrechargePhotos />
           {children}
           <Footer />
         </Providers>

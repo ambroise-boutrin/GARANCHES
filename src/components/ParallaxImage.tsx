@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Image from "next/image";
+import { flou } from "@/data/flous";
 
 interface Props {
     src: string;
@@ -53,7 +54,8 @@ export default function ParallaxImage({ src, alt, className = "", sizes = "100vw
             fill
             sizes={sizes}
             loading="lazy"
-            quality={85}
+            quality={75}
+            {...flou(src)}
             style={{ objectPosition: position }}
             className="object-cover"
         />

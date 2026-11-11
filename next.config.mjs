@@ -35,7 +35,11 @@ const nextConfig = {
         ];
     },
     images: {
-        formats: ['image/avif', 'image/webp'],
+        // WebP seulement : l'AVIF met plusieurs secondes à se fabriquer à la première visite et n'est pas plus léger ici.
+        formats: ['image/webp'],
+        // Les photos restent 7 jours dans le téléphone : revenir sur une page ne les recharge pas.
+        // (Pour changer une photo, lui donner un nouveau nom de fichier.)
+        minimumCacheTTL: 604800,
         remotePatterns: [
             {
                 protocol: 'https',
