@@ -10,6 +10,7 @@ import { PAGES, type Bloc, type Page } from "@/data/architecture";
 import type { BlocOverride } from "@/sanity/lib/queries";
 import { urlFor } from "@/sanity/lib/image";
 import { cadrage } from "@/data/cadrages";
+import { altPhoto } from "@/data/alts";
 import { typo } from "@/lib/typo";
 
 // Photo d'ouverture des pages, partagée avec les Carnets.
@@ -17,7 +18,7 @@ export function PageHero({ image, label, parent }: { image: string; label: strin
     return (
         <section className="relative h-[70vh] min-h-[480px] bg-stone-900 flex flex-col justify-center items-center overflow-hidden">
             <div className="absolute inset-0 z-0">
-                <Image src={image} alt="" fill sizes="100vw" priority quality={85} style={{ objectPosition: cadrage(image) }} className="object-cover brightness-[.6]" />
+                <Image src={image} alt={altPhoto(image, `${label}, domaine de Garanches à Odenas`)} fill sizes="100vw" priority quality={85} style={{ objectPosition: cadrage(image) }} className="object-cover brightness-[.6]" />
             </div>
             <FadeIn direction="down" className="relative text-center px-4 pt-20 flex flex-col items-center">
                 {parent && (

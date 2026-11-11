@@ -8,6 +8,7 @@ import SmoothScroll from "@/components/SmoothScroll";
 import Script from "next/script";
 import { Providers } from "./providers";
 import CookieConsent from "@/components/CookieConsent";
+import { SITE_URL, SITE_NAME, WINERY_ID, absolu, partage } from "@/lib/site";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -28,41 +29,29 @@ export const viewport: Viewport = {
 };
 
 // --- CONFIGURATION SEO ---
+// L'adresse du site vient de src/lib/site.ts (domaine de production Vercel).
 export const metadata: Metadata = {
-  metadataBase: new URL('https://domainedegaranches.com'),
-  alternates: {
-    canonical: '/',
-  },
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "Domaine de Garanches | Vins de Brouilly & Bourgogne Blanc - Odenas",
+    default: "Domaine de Garanches | Vins de Brouilly et Bourgogne blanc à Odenas",
     template: "%s | Domaine de Garanches"
   },
-  description: "Domaine viticole à Odenas, au pied du Mont Brouilly : vins de Brouilly et Bourgogne blanc, dégustation au domaine, visite des vignes et vente en ligne.",
-  keywords: ["Brouilly", "Bourgogne Blanc", "Odenas", "Domaine de Garanches", "Romain Martinache", "Aurélie Crozet", "Gamay", "Chardonnay", "Vente vin Beaujolais", "Dégustation Odenas"],
-  authors: [{ name: "Domaine de Garanches" }],
-  creator: "Domaine de Garanches",
-  publisher: "Domaine de Garanches",
+  description: "Domaine viticole familial à Odenas, au pied du Mont Brouilly : Brouilly, Beaujolais-Villages blanc et Bourgogne blanc. Dégustation et visite des vignes au domaine.",
+  applicationName: SITE_NAME,
+  authors: [{ name: SITE_NAME }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
-  openGraph: {
-    title: "Domaine de Garanches - Vins du Beaujolais",
-    description: "Une histoire de famille depuis 1788. Commandez nos vins en ligne ou venez nous rendre visite au pied du Mont Brouilly.",
-    url: "https://domainedegaranches.com",
-    siteName: "Domaine de Garanches",
-    locale: "fr_FR",
-    type: "website",
-    images: [
-      {
-        url: "/images/smugmug/partage-domaine.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Le domaine de Garanches au milieu des vignes, vu du ciel",
-      },
-    ],
-  },
+  ...partage({
+    chemin: "/",
+    titre: "Domaine de Garanches, vins du Beaujolais à Odenas",
+    description: "Une histoire de famille depuis 1788 au pied du Mont Brouilly. Découvrez nos vins et venez nous rendre visite au domaine.",
+    alt: "Le domaine de Garanches au milieu des vignes, vu du ciel",
+  }),
   robots: {
     index: true,
     follow: true,
@@ -74,79 +63,70 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+  // Code de validation Google Search Console (balise HTML), à renseigner dans Vercel si besoin.
+  ...(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION && {
+    verification: { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION },
+  }),
 };
 
 // --- DONNÉES STRUCTURÉES (JSON-LD) ---
+// Le domaine (lieu, adresse, horaires) et le site lui-même, présents sur toutes les pages.
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "Winery",
-  "inLanguage": "fr-FR",
-  "name": "Domaine de Garanches",
-  "image": "https://domainedegaranches.com/images/smugmug/partage-domaine.jpg",
-  "url": "https://domainedegaranches.com",
-  "telephone": "+33782249436",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "345 chemin de Garanches",
-    "addressLocality": "Odenas",
-    "postalCode": "69460",
-    "addressCountry": "FR"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 46.082958,
-    "longitude": 4.661828
-  },
-  "priceRange": "$$",
-  "openingHoursSpecification": [
+  "@graph": [
     {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-      "opens": "09:00",
-      "closes": "18:00"
-    }
+      "@type": "Winery",
+      "@id": WINERY_ID,
+      "name": SITE_NAME,
+      "legalName": "GFA Domaine de Garanches",
+      "description": "Domaine viticole familial à Odenas, au pied du Mont Brouilly, dans le Beaujolais : Brouilly, Beaujolais-Villages blanc et Bourgogne blanc.",
+      "url": SITE_URL,
+      "logo": absolu("/images/logo-maison.png"),
+      "image": [
+        absolu("/images/smugmug/partage-domaine.jpg"),
+        absolu("/images/garanches/maison-domaine.jpg"),
+        absolu("/images/smugmug/cave-foudres.jpg"),
+      ],
+      "telephone": "+33782249436",
+      "email": "contact@domainedegaranches.com",
+      "vatID": "FR95400409173",
+      "foundingDate": "1788",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "345 chemin de Garanches",
+        "addressLocality": "Odenas",
+        "postalCode": "69460",
+        "addressRegion": "Auvergne-Rhône-Alpes",
+        "addressCountry": "FR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 46.082958,
+        "longitude": 4.661828
+      },
+      "hasMap": "https://www.google.com/maps/search/?api=1&query=Domaine+de+Garanches+345+chemin+de+Garanches+69460+Odenas",
+      "areaServed": "FR",
+      "priceRange": "€€",
+      "currenciesAccepted": "EUR",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+          "opens": "09:00",
+          "closes": "18:00"
+        }
+      ],
+      "knowsAbout": ["Brouilly", "Beaujolais-Villages blanc", "Bourgogne blanc", "Gamay", "Chardonnay", "Mont Brouilly", "Beaujolais"],
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${SITE_URL}/#site`,
+      "url": SITE_URL,
+      "name": SITE_NAME,
+      "inLanguage": "fr-FR",
+      "publisher": { "@id": WINERY_ID },
+    },
   ],
-  "sameAs": [
-    "https://www.facebook.com/domainedegaranches",
-    "https://www.instagram.com/domainedegaranches"
-  ],
-  "mainEntity": {
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Où se situe le Domaine de Garanches ?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Le Domaine de Garanches est situé au 345 chemin de Garanches à Odenas (69460), au pied du Mont Brouilly dans le Beaujolais."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Quels types de vins produisez-vous ?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Nous produisons trois vins : un Brouilly (rouge, Gamay), un Beaujolais-Villages blanc et un Bourgogne blanc (Chardonnay)."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Proposez-vous des visites et dégustations ?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Oui, nous accueillons les visiteurs pour des dégustations et des visites du domaine. Nous vous recommandons de nous contacter à l'avance pour une meilleure expérience."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Comment commander vos vins ?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Vous pouvez commander nos vins directement sur notre boutique en ligne avec paiement sécurisé. Nous expédions dans toute la France."
-        }
-      }
-    ]
-  }
 };
 
 export default async function RootLayout({
@@ -166,8 +146,7 @@ export default async function RootLayout({
         />
       </head>
       <body className="bg-white text-stone-900 antialiased overflow-x-hidden selection:bg-wine-900 selection:text-white">
-        <Script
-          id="json-ld"
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />

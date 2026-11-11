@@ -31,8 +31,8 @@ export const SEO: Record<string, { title: string; description: string }> = {
         description: "Vignerons indépendants certifiés HVE : rangs enherbés, sols travaillés, vendanges à la main, assemblages et élevage au domaine de Garanches.",
     },
     "les-vins/cuvees": {
-        title: "Acheter nos vins : Brouilly, Bourgogne blanc",
-        description: "Achetez en ligne les cuvées du domaine de Garanches : Brouilly, Beaujolais-Villages blanc, Bourgogne blanc. Expédition depuis Odenas partout en France.",
+        title: "Nos cuvées : Brouilly, Bourgogne blanc",
+        description: "Les cuvées du domaine de Garanches : Brouilly, Beaujolais-Villages blanc et Bourgogne blanc. Commande auprès du domaine, expédition partout en France.",
     },
     "les-vins/terroirs": {
         title: "Terroirs granitiques du Mont Brouilly",
@@ -67,7 +67,7 @@ export const SEO: Record<string, { title: string; description: string }> = {
         description: "Repas et rencontres au domaine de Garanches à Odenas, au fil de l'année, autour de nos vins du Mont Brouilly.",
     },
     "acheter": {
-        title: "Acheter nos vins en ligne",
-        description: "Commandez les vins du domaine de Garanches en ligne, expédiés depuis notre cave à Odenas partout en France, ou trouvez-les chez nos cavistes.",
+        title: "Commander nos vins de Brouilly",
+        description: "Commandez les vins du domaine de Garanches par le formulaire ou par téléphone : expédition depuis notre cave à Odenas partout en France, ou retrait au domaine.",
     },
 };

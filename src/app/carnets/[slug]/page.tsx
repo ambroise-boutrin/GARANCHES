@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { PortableText, type PortableTextComponents } from "next-sanity";
 import { getCarnet } from "@/sanity/lib/queries";
 import { urlFor } from "@/sanity/lib/image";
+import { SITE_NAME, WINERY_ID, absolu, filAriane, partage } from "@/lib/site";
 import { formatDate, themeLabel } from "@/lib/carnets";
 import PageCards from "@/components/editorial/PageCards";
 
@@ -19,6 +20,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         title: carnet.titre,
         description: carnet.extrait,
         alternates: { canonical: `/carnets/${params.slug}` },
+        ...partage({
+            chemin: `/carnets/${params.slug}`,
+            titre: `${carnet.titre} | ${SITE_NAME}`,
+            description: carnet.extrait,
+            image: carnet.image?.asset ? urlFor(carnet.image).width(1200).height(630).url() : undefined,
+            type: "article",
+        }),
     };
 }
 
@@ -47,6 +55,30 @@ export default async function CarnetPage({ params }: Props) {
 
     return (
         <main className="min-h-screen bg-paper pt-32">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify([
+                        {
+                            "@context": "https://schema.org",
+                            "@type": "BlogPosting",
+                            headline: carnet.titre,
+                            description: carnet.extrait,
+                            inLanguage: "fr-FR",
+                            url: absolu(`/carnets/${params.slug}`),
+                            mainEntityOfPage: absolu(`/carnets/${params.slug}`),
+                            ...(carnet.date && { datePublished: carnet.date }),
+                            ...(carnet.image?.asset && { image: urlFor(carnet.image).width(1200).url() }),
+                            author: { "@id": WINERY_ID },
+                            publisher: { "@id": WINERY_ID },
+                        },
+                        filAriane([
+                            { nom: "Les Carnets de Garanches", chemin: "/carnets" },
+                            { nom: carnet.titre, chemin: `/carnets/${params.slug}` },
+                        ]),
+                    ]),
+                }}
+            />
             <article className="max-w-3xl mx-auto px-6">
                 <Link href="/carnets" className="text-red-900 text-base underline underline-offset-4 decoration-1 hover:text-wine-900 transition-colors">
                     Les Carnets de Garanches
@@ -57,7 +89,7 @@ export default async function CarnetPage({ params }: Props) {
                 <h1 className="text-4xl md:text-5xl font-serif text-wine-900 mb-10 leading-tight">{carnet.titre}</h1>
                 {carnet.image?.asset && (
                     <div className="relative h-[420px] overflow-hidden mb-12">
-                        <Image src={urlFor(carnet.image).width(1600).url()} alt="" fill priority sizes="(max-width: 768px) 100vw, 768px" className="object-cover" />
+                        <Image src={urlFor(carnet.image).width(1600).url()} alt={carnet.image?.legende || carnet.titre} fill priority sizes="(max-width: 768px) 100vw, 768px" className="object-cover" />
                     </div>
                 )}
                 <div className="text-gray-700 leading-relaxed text-lg space-y-5">

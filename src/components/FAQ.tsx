@@ -1,31 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import FadeIn from "@/components/FadeIn";
+import { FAQS } from "@/data/faq";
 
-const faqs = [
-    {
-        question: "Où se situe le Domaine de Garanches ?",
-        answer: "Le Domaine de Garanches est situé au 345 chemin de Garanches à Odenas (69460), au pied du Mont Brouilly, en plein cœur du Beaujolais."
-    },
-    {
-        question: "Quels types de vins produisez-vous ?",
-        answer: "Nous produisons trois vins : un Brouilly (rouge, Gamay), un Beaujolais-Villages blanc et un Bourgogne blanc (Chardonnay)."
-    },
-    {
-        question: "Proposez-vous des visites et dégustations ?",
-        answer: "Oui, nous accueillons les visiteurs pour des dégustations et des visites du domaine sur rendez-vous, du lundi au samedi. N'hésitez pas à nous contacter avant votre venue."
-    },
-    {
-        question: "Puis-je commander vos vins en ligne ?",
-        answer: "Tout à fait. Notre boutique en ligne vous permet de commander nos cuvées avec paiement sécurisé. Nous assurons l'expédition dans toute la France dans des emballages protégés."
-    },
-    {
-        question: "Acceptez-vous les groupes ?",
-        answer: "Oui, nous pouvons accueillir des groupes pour des dégustations commentées. Merci de nous contacter via le formulaire pour organiser votre venue."
-    }
-];
+const faqs = FAQS;
 
 export default function FAQ() {
     const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -50,6 +29,7 @@ export default function FAQ() {
                             >
                                 <button
                                     onClick={() => toggleAccordion(index)}
+                                    aria-expanded={openIndex === index}
                                     className="w-full flex items-center justify-between p-6 text-left focus:outline-none hover:bg-gray-50 transition-colors"
                                 >
                                     <span className={`font-serif text-xl ${openIndex === index ? "text-wine-900" : "text-gray-800"}`}>
@@ -62,16 +42,12 @@ export default function FAQ() {
                                     </span>
                                 </button>
 
-                                <AnimatePresence>
-                                    {openIndex === index && (
-                                        <motion.div
-                                        >
-                                            <div className="px-6 pb-6 text-gray-800 leading-relaxed border-t border-gray-50 pt-4">
-                                                {faq.answer}
-                                            </div>
-                                        </motion.div>
-                                    )}
-                                </AnimatePresence>
+                                {/* Réponse toujours présente dans la page (lue par Google), affichée au clic. */}
+                                <div hidden={openIndex !== index}>
+                                    <div className="px-6 pb-6 text-gray-800 leading-relaxed border-t border-gray-50 pt-4">
+                                        {faq.answer}
+                                    </div>
+                                </div>
                             </div>
                         ))}
                     </div>

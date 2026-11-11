@@ -6,7 +6,8 @@ import HomePageClient from "@/components/HomePageClient";
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  description: "Domaine de Garanches, à Odenas au pied du Mont Brouilly : vins de Brouilly et Bourgogne blanc, dégustation au domaine, visite des vignes et vente en ligne.",
+  description: "Domaine viticole familial à Odenas, au pied du Mont Brouilly : Brouilly, Beaujolais-Villages blanc et Bourgogne blanc. Dégustation et visite des vignes au domaine.",
+  alternates: { canonical: "/" },
 };
 
 export default async function Home() {

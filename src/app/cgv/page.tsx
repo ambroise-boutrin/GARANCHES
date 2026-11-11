@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
+import { partage } from "@/lib/site";
 
 export const metadata: Metadata = {
     title: "Conditions Générales de Vente",
     description: "Consultez les conditions générales de vente du Domaine de Garanches. Commandes, tarifs, livraison et politique de retour.",
     alternates: { canonical: "/cgv" },
+    ...partage({ chemin: "/cgv", titre: "Conditions générales de vente | Domaine de Garanches" }),
 };
 
 export default function CGVPage() {
