@@ -199,7 +199,7 @@ Des vins qui racontent Garanches, chacun à leur manière.`,
         image: "/images/garanches/grappe-vigne.jpg",
         cta: "Découvrir notre façon de faire",
         blocs: [
-            { id: "introduction", title: "Notre façon de faire", image: "/images/garanches/vignes-lumiere.jpg", paysage: true, alt: "Les vignes de Garanches dans la lumière du soir" },
+            { id: "introduction", title: "Notre façon de faire", image: "/images/smugmug/vignes-geste.jpg", paysage: true, alt: "Aurélie Crozet montre un cep dans les vignes de Garanches" },
             {
                 id: "terre-vignes-saisons",
                 title: "Terre, vignes et saisons",
@@ -218,10 +218,25 @@ Des vins qui racontent Garanches, chacun à leur manière.`,
     {
         path: "les-vins/cuvees",
         label: "Les cuvées",
-        description: "Les cuvées du domaine de Garanches : Brouilly, Bourgogne blanc, rosé et méthode traditionnelle.",
+        description: "Les cuvées du domaine de Garanches : Brouilly, Beaujolais-Villages blanc et Bourgogne blanc.",
         image: "/images/garanches/raisins-vendange.jpg",
         cta: "Voir les cuvées",
-        blocs: [{ id: "introduction", title: "Les cuvées" }],
+        blocs: [
+            {
+                id: "introduction",
+                title: "Les cuvées",
+                body: `Trois vins, chacun avec son millésime : un Brouilly rouge, un Beaujolais-Villages blanc et un Bourgogne blanc.`,
+                image: "/images/smugmug/gamme-trois-vins.jpg", document: true,
+                alt: "Les trois vins du domaine de Garanches : Beaujolais-Villages blanc, Brouilly et Bourgogne blanc",
+            },
+            {
+                id: "etiquette",
+                title: "La maison sur l'étiquette",
+                body: `La maison dessinée sur chaque étiquette est celle du domaine, à Odenas.`,
+                image: "/images/smugmug/etiquette-maison.jpg", document: true,
+                alt: "Le dessin de la maison de Garanches sur l'étiquette du Brouilly",
+            },
+        ],
         children: ["les-vins/a-table", "acheter"],
     },
     {
@@ -237,7 +252,7 @@ Des vins qui racontent Garanches, chacun à leur manière.`,
         path: "les-vins/a-table",
         label: "À table",
         description: "Plats, accords et moments de dégustation avec les vins de Garanches.",
-        image: "/images/garanches/domaine-colline.jpg",
+        image: "/images/smugmug/table-fromages.jpg",
         cta: "À table",
         blocs: [{ id: "introduction", title: "À table" }],
         children: ["les-vins/cuvees", "rencontrons-garanches/les-rencontres"],
@@ -277,7 +292,7 @@ Parce qu'ici, les vins se découvrent aussi avec le lieu et avec ceux qui le fon
         path: "rencontrons-garanches/les-rencontres",
         label: "Les tables d'hôtes",
         description: "Table d'hôtes, vins, repas et conversations au domaine de Garanches.",
-        image: "/images/garanches/domaine-soir.jpg",
+        image: "/images/smugmug/table-hotes.jpg",
         cta: "Découvrir les Rencontres",
         blocs: [
             {
@@ -308,7 +323,7 @@ Partageons nos impressions, nos questions, nos découvertes, et laissons la conv
         path: "rencontrons-garanches/deguster-au-domaine",
         label: "Déguster au domaine",
         description: "Visite de la cave et dégustation au domaine de Garanches, à Odenas.",
-        image: "/images/garanches/cuvage.jpg",
+        image: "/images/smugmug/cave-foudres.jpg",
         cta: "Déguster au domaine",
         blocs: [
             {
@@ -325,8 +340,8 @@ Découvrons les vinifications, les élevages et les choix qui façonnent nos cuv
 Puis goûtons quelques cuvées au cœur de leur histoire.
 
 **Du chai au verre, partageons le chemin du vin.**`,
-                image: "/images/5_image.jpg", paysage: true,
-                alt: "Les cuves du chai de Garanches",
+                image: "/images/smugmug/chai-pressoir.jpg", paysage: true,
+                alt: "Le pressoir du chai de Garanches",
             },
             {
                 id: "comment-ca-se-passe",
@@ -334,7 +349,11 @@ Puis goûtons quelques cuvées au cœur de leur histoire.
                 // Informations pratiques reprises de l'ancienne page « Visite ».
                 body: `Le domaine est ouvert du lundi au samedi, de 9h à 18h. Il est fermé le dimanche et les jours fériés.
 
-Nous recevons avec plaisir les visiteurs individuels comme les groupes. Pour vous garantir le meilleur accueil, **une réservation est conseillée**, par téléphone (Romain au 07 82 24 94 36, Aurélie au 06 58 83 46 80, Isabelle au 06 61 73 56 67, Michel au 06 09 41 97 02) ou avec le bouton ci-dessous.
+Nous recevons avec plaisir les visiteurs individuels comme les groupes. Pour vous garantir le meilleur accueil, **une réservation est conseillée**, par téléphone ou avec le bouton ci-dessous :
+Romain : 07 82 24 94 36
+Aurélie : 06 58 83 46 80
+Isabelle : 06 61 73 56 67
+Michel : 06 09 41 97 02
 
 345 chemin de Garanches, 69460 Odenas.`,
                 pratique: [
@@ -384,7 +403,7 @@ Puis quatre vins à goûter, pour retrouver dans le verre ce que nous venons de 
         path: "rencontrons-garanches/experiences-privees",
         label: "Expériences privées",
         description: "Famille, amis, associations, équipes : des moments privés à Garanches, jusqu'à une vingtaine de personnes.",
-        image: "/images/garanches/domaine-ciel.jpg",
+        image: "/images/smugmug/salle-reception.jpg",
         cta: "Imaginer une expérience",
         blocs: [
             {
@@ -397,8 +416,8 @@ Une réunion d'association, un rendez-vous d'équipe, une rencontre entre amis�
 Autour d'une table, dans les vignes ou au cœur du domaine, nous imaginons ensemble un moment simple, convivial et vivant.
 
 **Un lieu pour se retrouver, échanger et prendre le temps.**`,
-                image: "/images/garanches/domaine-bois.jpg", paysage: true,
-                alt: "Le domaine de Garanches au cœur des vignes",
+                image: "/images/smugmug/cour-visite.jpg", paysage: true,
+                alt: "Un groupe accueilli dans la cour du domaine de Garanches",
             },
             {
                 id: "comment-ca-se-passe",
@@ -429,7 +448,7 @@ Nous choisissons ensemble ce qui donnera à ce moment sa couleur.
         image: "/images/garanches/maison-parc-pierre.jpg",
         cta: "Découvrir les événements",
         blocs: [
-            { id: "introduction", title: "Événements", image: "/images/garanches/vignes-or.jpg", paysage: true, alt: "Les vignes de Garanches dans la lumière dorée du soir" },
+            { id: "introduction", title: "Événements", image: "/images/smugmug/table-bouteilles.jpg", paysage: true, alt: "Un Beaujolais-Villages blanc et un Brouilly du domaine de Garanches sur la table" },
             {
                 id: "comment-ca-se-passe",
                 title: "Comment ça se passe ?",
@@ -483,7 +502,7 @@ export const CARNETS_CARD = {
     path: "carnets",
     label: "Les Carnets de Garanches",
     description: "Des histoires de vignes, de vins, de rencontres et de ceux qui font vivre Garanches.",
-    image: "/images/garanches/vignes-brume.jpg",
+    image: "/images/smugmug/portail-garanches.jpg",
     cta: "Voir les Carnets",
 };
 

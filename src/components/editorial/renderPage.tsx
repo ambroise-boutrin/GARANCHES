@@ -39,13 +39,15 @@ async function Cuvees() {
                 description: wine.description,
                 image: wine.image?.startsWith("http") ? wine.image : `${SITE}${wine.image || "/images/bouteilles/brouilly.jpg"}`,
                 brand: { "@type": "Brand", name: "Domaine de Garanches" },
-                offers: {
-                    "@type": "Offer",
-                    priceCurrency: "EUR",
-                    price: (wine.price / 100).toFixed(2),
-                    availability: "https://schema.org/InStock",
-                    url: `${SITE}${cuveeHref(wine)}`,
-                },
+                ...(typeof wine.price === "number" && {
+                    offers: {
+                        "@type": "Offer",
+                        priceCurrency: "EUR",
+                        price: (wine.price / 100).toFixed(2),
+                        availability: "https://schema.org/InStock",
+                        url: `${SITE}${cuveeHref(wine)}`,
+                    },
+                }),
             },
         })),
     };

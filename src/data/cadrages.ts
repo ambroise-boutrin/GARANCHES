@@ -1,6 +1,7 @@
 // Point de la photo à garder visible quand le cadre la recadre (visages, sujet).
 // Valeur CSS object-position : horizontal puis vertical, en pourcentage.
 const G = "/images/garanches/";
+const S = "/images/smugmug/";
 
 const CADRAGES: Record<string, string> = {
     [`${G}accueil-cave.jpg`]: "30% 20%",
@@ -20,6 +21,16 @@ const CADRAGES: Record<string, string> = {
     [`${G}vignes-cadole.jpg`]: "25% 60%",
     [`${G}registre-cave.jpg`]: "50% 50%",
     "/images/3_image.jpg": "50% 25%",
+    [`${S}cave-foudres.jpg`]: "55% 50%",
+    [`${S}chai-pressoir.jpg`]: "40% 40%",
+    [`${S}cour-visite.jpg`]: "50% 65%",
+    [`${S}salle-reception.jpg`]: "55% 45%",
+    [`${S}table-hotes.jpg`]: "50% 70%",
+    [`${S}table-fromages.jpg`]: "50% 45%",
+    [`${S}table-bouteilles.jpg`]: "50% 75%",
+    [`${S}vignes-geste.jpg`]: "40% 45%",
+    [`${S}aurelie-crozet.jpg`]: "50% 20%",
+    [`${S}romain-martinache.jpg`]: "45% 15%",
 };
 
 export function cadrage(src?: string): string | undefined {
