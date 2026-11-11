@@ -105,6 +105,7 @@ function BlocSection({ bloc, override, index }: { bloc: Bloc; override?: BlocOve
                             <div className={`w-full relative ${bloc.paysage ? "aspect-[4/3] md:aspect-auto md:h-[420px]" : "aspect-[4/5] md:aspect-auto md:h-[560px]"}`}>
                                 <ParallaxImage
                                     src={image}
+                                    parallaxe
                                     alt={bloc.alt || ""}
                                     position={cadrage(image)}
                                     className="h-full w-full"
