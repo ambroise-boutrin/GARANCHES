@@ -60,7 +60,7 @@ Et aujourd'hui, par celles et ceux qui viennent la découvrir, goûter ses vins 
         path: "le-lieu/le-domaine",
         label: "Le domaine",
         description: "Odenas, le Mont Brouilly, le granit et les vignes de Garanches.",
-        image: "/images/garanches/vue-mont-brouilly.jpg",
+        image: "/images/garanches/mont-brouilly-vignes.jpg",
         cta: "Découvrir le domaine",
         blocs: [
             {
@@ -77,8 +77,8 @@ Et aujourd'hui, par celles et ceux qui viennent la découvrir, goûter ses vins 
 Chaque parcelle, chaque âge de vigne, chaque exposition apporte sa propre lecture du lieu.
 
 Nous les regardons vivre au fil des saisons, avec ce qu'elles portent du passé et ce qu'elles promettent pour demain.`,
-                image: "/images/garanches/domaine-vignes.jpg", paysage: true,
-                alt: "Les vignes de Garanches au pied du Mont Brouilly, vues du ciel",
+                image: "/images/garanches/vignes-cabane.jpg",
+                alt: "Les vignes de Garanches en automne, une cabane de vigne au milieu des rangs",
                 cta: { label: "Découvrir les vignes", href: "/rencontrons-garanches/decouvrir-les-vignes" },
             },
         ],
@@ -88,7 +88,7 @@ Nous les regardons vivre au fil des saisons, avec ce qu'elles portent du passé 
         path: "le-lieu/histoire",
         label: "L'histoire",
         description: "Histoire du domaine de Garanches, personnages clés et archives.",
-        image: "/images/10_slide003.jpg",
+        image: "/images/garanches/maison-facade.jpg",
         cta: "Entrer dans l'histoire",
         blocs: [
             {
@@ -125,7 +125,7 @@ Parce qu'un lieu se comprend aussi à travers celles et ceux qui l'ont façonné
         path: "le-lieu/traces",
         label: "Traces",
         description: "Plants anciens, documents, photographies et archives de Garanches.",
-        image: "/images/garanches/diplome-honneur.jpg",
+        image: "/images/garanches/registre-cave.jpg",
         cta: "Voir les traces",
         blocs: [
             {
@@ -179,8 +179,8 @@ Parfois plusieurs.
 Nous assemblons, élevons et faisons évoluer nos vins avec une même exigence : trouver l'expression juste de chaque cuvée.
 Des vins précis, vivants, en petites quantités.
 Des vins qui racontent Garanches, chacun à leur manière.`,
-                image: "/images/garanches/lieu-vignes.jpg", paysage: true,
-                alt: "Les vignes de Garanches et le Mont Brouilly, vus du ciel",
+                image: "/images/garanches/raisins-main.jpg",
+                alt: "Une poignée de raisins tout juste cueillis dans les vignes de Garanches",
             },
         ],
         children: [
@@ -196,21 +196,21 @@ Des vins qui racontent Garanches, chacun à leur manière.`,
         path: "les-vins/notre-facon-de-faire",
         label: "Notre façon de faire",
         description: "Terre, vignes, saisons, millésimes, élevage et assemblages à Garanches.",
-        image: "/images/garanches/vignes-soir.jpg",
+        image: "/images/garanches/grappe-vigne.jpg",
         cta: "Découvrir notre façon de faire",
         blocs: [
             { id: "introduction", title: "Notre façon de faire", image: "/images/garanches/vignes-lumiere.jpg", paysage: true, alt: "Les vignes de Garanches dans la lumière du soir" },
             {
                 id: "terre-vignes-saisons",
                 title: "Terre, vignes et saisons",
-                image: "/images/garanches/vignes-mont.jpg", paysage: true,
-                alt: "Les vignes de Garanches au pied du Mont Brouilly",
+                image: "/images/garanches/vignes-parc.jpg", paysage: true,
+                alt: "Les vignes de Garanches en automne, devant les grands arbres du parc",
             },
             {
                 id: "millesime-et-temps",
                 title: "Millésime et temps",
-                image: "/images/garanches/vignes-saisons.jpg", paysage: true,
-                alt: "Les vignes de Garanches à l'approche de l'automne",
+                image: "/images/garanches/cep-automne.jpg",
+                alt: "Un cep de vigne aux feuilles rouges, à l'automne",
             },
         ],
         children: ["les-vins/cuvees", "les-vins/terroirs"],
@@ -219,7 +219,7 @@ Des vins qui racontent Garanches, chacun à leur manière.`,
         path: "les-vins/cuvees",
         label: "Les cuvées",
         description: "Les cuvées du domaine de Garanches : Brouilly, Bourgogne blanc, rosé et méthode traditionnelle.",
-        image: "/images/garanches/vignes-contre-jour.jpg",
+        image: "/images/garanches/raisins-vendange.jpg",
         cta: "Voir les cuvées",
         blocs: [{ id: "introduction", title: "Les cuvées" }],
         children: ["les-vins/a-table", "acheter"],
@@ -228,9 +228,9 @@ Des vins qui racontent Garanches, chacun à leur manière.`,
         path: "les-vins/terroirs",
         label: "Les terroirs",
         description: "Parcelles, sols et granit : les terroirs de Garanches.",
-        image: "/images/garanches/parcelles.jpg",
+        image: "/images/garanches/mont-brouilly-coteaux.jpg",
         cta: "Découvrir les terroirs",
-        blocs: [{ id: "introduction", title: "Les terroirs", image: "/images/garanches/parcelles-automne.jpg", paysage: true, alt: "Les parcelles de Garanches vues du ciel" }],
+        blocs: [{ id: "introduction", title: "Les terroirs", image: "/images/garanches/parcelles-ciel.jpg", alt: "Les parcelles de vigne autour de Garanches, vues du ciel" }],
         children: ["le-lieu/le-domaine", "rencontrons-garanches/decouvrir-les-vignes"],
     },
     {
@@ -308,7 +308,7 @@ Partageons nos impressions, nos questions, nos découvertes, et laissons la conv
         path: "rencontrons-garanches/deguster-au-domaine",
         label: "Déguster au domaine",
         description: "Visite de la cave et dégustation au domaine de Garanches, à Odenas.",
-        image: "/images/34_slide001.jpg",
+        image: "/images/garanches/cuvage.jpg",
         cta: "Déguster au domaine",
         blocs: [
             {
@@ -352,7 +352,7 @@ Nous recevons avec plaisir les visiteurs individuels comme les groupes. Pour vou
         path: "rencontrons-garanches/decouvrir-les-vignes",
         label: "Découvrir les vignes",
         description: "Une promenade dans les parcelles de Garanches, puis quatre vins à goûter.",
-        image: "/images/garanches/chemins-vignes.jpg",
+        image: "/images/garanches/vignes-cadole.jpg",
         cta: "Découvrir les vignes",
         blocs: [
             {
@@ -363,8 +363,8 @@ Nous recevons avec plaisir les visiteurs individuels comme les groupes. Pour vou
 Puis quatre vins à goûter, pour retrouver dans le verre ce que nous venons de découvrir dans les vignes.
 
 **Du sol au verre, entrez dans l'univers de Garanches.**`,
-                image: "/images/garanches/vignes-plaine.jpg", paysage: true,
-                alt: "Les parcelles de Garanches, entre vignes et chemins",
+                image: "/images/garanches/rangs-vigne.jpg",
+                alt: "Les rangs de vigne de Garanches, bordés d'un chemin d'herbe",
             },
             {
                 id: "comment-ca-se-passe",
@@ -426,7 +426,7 @@ Nous choisissons ensemble ce qui donnera à ce moment sa couleur.
         path: "rencontrons-garanches/evenements",
         label: "Événements",
         description: "Repas et rencontres au domaine de Garanches, au fil de l'année.",
-        image: "/images/garanches/maison-parc.jpg",
+        image: "/images/garanches/maison-parc-pierre.jpg",
         cta: "Découvrir les événements",
         blocs: [
             { id: "introduction", title: "Événements", image: "/images/garanches/vignes-or.jpg", paysage: true, alt: "Les vignes de Garanches dans la lumière dorée du soir" },
@@ -450,7 +450,7 @@ Nous choisissons ensemble ce qui donnera à ce moment sa couleur.
         path: "acheter",
         label: "Acheter / Trouver Garanches",
         description: "Commander les vins de Garanches en ligne ou les trouver chez les cavistes et restaurants.",
-        image: "/images/garanches/vignes-automne.jpg",
+        image: "/images/garanches/feuilles-automne.jpg",
         cta: "Trouver Garanches",
         blocs: [
             {
