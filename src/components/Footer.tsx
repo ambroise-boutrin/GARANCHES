@@ -3,11 +3,6 @@
 import Link from 'next/link';
 import { PORTES } from '@/data/architecture';
 
-const CONTACTS = [
-    { name: 'Romain', number: '07 82 24 94 36', tel: '+33782249436' },
-    { name: 'Aurélie', number: '06 58 83 46 80', tel: '+33658834680' },
-];
-
 export default function Footer() {
     const currentYear = new Date().getFullYear();
 
@@ -20,14 +15,9 @@ export default function Footer() {
                         345 chemin de Garanches<br />
                         69460 Odenas, France
                     </address>
-                    <ul className="mt-6 inline-grid grid-cols-[auto_auto] gap-x-5 gap-y-1 md:gap-y-2 text-sm text-gray-300 text-left">
-                        {CONTACTS.map((c) => (
-                            <li key={c.tel} className="contents">
-                                <span className="py-1 md:py-0">{c.name}</span>
-                                <a href={`tel:${c.tel}`} className="py-1 md:py-0 tabular-nums hover:text-white">{c.number}</a>
-                            </li>
-                        ))}
-                    </ul>
+                    <div className="mt-6 text-sm">
+                        <Link href="/contact" className="text-white underline underline-offset-4 decoration-white/40 hover:decoration-white">Nous contacter</Link>
+                    </div>
                 </div>
 
                 <div className="flex flex-col items-center md:items-start gap-1 md:gap-4 text-sm uppercase tracking-widest font-semibold text-gray-300">
