@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { flou } from "@/data/flous";
 import Link from "next/link";
 import FadeIn from "@/components/FadeIn";
 import ParallaxImage from "@/components/ParallaxImage";
@@ -26,6 +27,7 @@ export default function HomePageClient({ products, content }: { products: any[],
                         className="object-cover brightness-75"
                         priority
                         quality={75}
+                        {...flou("/images/garanches/video-accueil.jpg")}
                         fetchPriority="high"
                     />
                     {heroVideo && (

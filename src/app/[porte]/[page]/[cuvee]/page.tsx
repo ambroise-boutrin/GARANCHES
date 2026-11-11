@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { flou } from "@/data/flous";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import FadeIn from "@/components/FadeIn";
@@ -131,7 +132,7 @@ export default async function CuveePage({ params }: Props) {
             />
             <section className="relative h-[60vh] min-h-[420px] flex flex-col justify-center items-center overflow-hidden">
                 <div className="absolute inset-0 z-0">
-                    <Image src="/images/23_slide002.jpg" alt="Vendanges à la main dans les vignes du Beaujolais" fill sizes="100vw" priority quality={75} className="object-cover brightness-[.6]" />
+                    <Image src="/images/23_slide002.jpg" alt="Vendanges à la main dans les vignes du Beaujolais" fill sizes="100vw" priority quality={75} {...flou("/images/23_slide002.jpg")} className="object-cover brightness-[.6]" />
                 </div>
                 <FadeIn direction="down" className="relative text-center px-4 pt-20 flex flex-col items-center">
                     <Link href="/les-vins/cuvees" className="text-sm md:text-base text-white underline underline-offset-4 decoration-1">
