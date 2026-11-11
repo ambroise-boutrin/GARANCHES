@@ -9,11 +9,13 @@ import { CARNETS_CARD, CARNETS_INTRO, CARNET_THEMES, PAGES } from "@/data/archit
 import { formatDate, themeLabel } from "@/lib/carnets";
 import { getCarnets } from "@/sanity/lib/queries";
 import { urlFor } from "@/sanity/lib/image";
+import { partage } from "@/lib/site";
 
 export const metadata: Metadata = {
     title: CARNETS_CARD.label,
     description: CARNETS_CARD.description,
     alternates: { canonical: "/carnets" },
+    ...partage({ chemin: "/carnets", titre: `${CARNETS_CARD.label} | Domaine de Garanches`, description: CARNETS_CARD.description, image: CARNETS_CARD.image, alt: "Le portail du domaine, marqué Garanches" }),
 };
 
 export default async function CarnetsPage({ searchParams }: { searchParams: { theme?: string } }) {
@@ -57,7 +59,7 @@ export default async function CarnetsPage({ searchParams }: { searchParams: { th
                                     <div className="relative h-64 overflow-hidden bg-stone-100 mb-5">
                                         <Image
                                             src={c.image?.asset ? urlFor(c.image).width(900).url() : CARNETS_CARD.image}
-                                            alt=""
+                                            alt={c.titre || ""}
                                             fill
                                             sizes="(max-width: 768px) 100vw, 33vw"
                                             className="object-cover"

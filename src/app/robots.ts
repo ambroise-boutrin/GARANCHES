@@ -1,12 +1,13 @@
 import { MetadataRoute } from "next";
+import { SITE_URL } from "@/lib/site";
 
 export default function robots(): MetadataRoute.Robots {
     return {
         rules: {
             userAgent: "*",
             allow: "/",
-            disallow: ["/api/", "/admin/"], // Protège les dossiers techniques
+            disallow: ["/api/", "/admin/", "/studio"], // Dossiers techniques et outil d'édition des textes
         },
-        sitemap: "https://domainedegaranches.com/sitemap.xml",
+        sitemap: `${SITE_URL}/sitemap.xml`,
     };
 }

@@ -9,6 +9,7 @@ import PageCards from "@/components/editorial/PageCards";
 import { getWine } from "@/lib/wines";
 import { cuveeHref } from "@/lib/wineSlug";
 import { prixAffiche } from "@/lib/prix";
+import { SITE_NAME, WINERY_ID, absolu, filAriane, partage } from "@/lib/site";
 
 export const revalidate = 60;
 
@@ -23,16 +24,39 @@ async function load({ porte, page, cuvee }: Props["params"]) {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const wine = (await load(params))?.wine;
     if (!wine) return {};
-    const title = wine.subtitle ? `${wine.name} – ${wine.subtitle}` : wine.name;
+    const title = titreGoogle(wine);
+    const description = resume(`${nomComplet(wine)} du domaine de Garanches, à Odenas au pied du Mont Brouilly. ${wine.description || ""}`);
     return {
         title,
-        description: resume(`${wine.name} du domaine de Garanches, à Odenas au pied du Mont Brouilly. ${wine.description || ""}`),
+        description,
         alternates: { canonical: cuveeHref(wine) },
-        openGraph: { title: `${wine.name} | Domaine de Garanches`, images: [image(wine)], url: cuveeHref(wine) },
+        ...partage({
+            chemin: cuveeHref(wine),
+            titre: `${nomComplet(wine)} | ${SITE_NAME}`,
+            description,
+            image: image(wine),
+            alt: `Bouteille de ${nomComplet(wine)}, domaine de Garanches`,
+        }),
     };
 }
 
-const SITE = "https://domainedegaranches.com";
+// « Brouilly 2023 » : nom suivi du millésime quand il est connu.
+function nomComplet(wine: any): string {
+    return wine.millesime ? `${wine.name} ${wine.millesime}` : wine.name;
+}
+
+// Titre pour Google : le nom, puis seulement les mots du sous-titre qui n'y sont pas déjà
+// (« Beaujolais-Villages blanc 2025 » plutôt que « … – Beaujolais-Villages — Blanc »).
+function titreGoogle(wine: any): string {
+    const nom = nomComplet(wine);
+    const reste = String(wine.subtitle || "")
+        .split(/\s+[—–-]\s+/)
+        .map((s: string) => s.trim())
+        .filter((s: string) => s && !nom.toLowerCase().includes(s.toLowerCase()));
+    if (!reste.length) return nom;
+    const suite = reste.map((s: string, i: number) => (i === 0 ? s : s.charAt(0).toLowerCase() + s.slice(1))).join(" ");
+    return `${nom} – ${suite}`;
+}
 
 // Description pour Google : coupée proprement vers 155 caractères.
 function resume(texte: string) {
@@ -42,8 +66,7 @@ function resume(texte: string) {
 }
 
 function image(wine: any): string {
-    const src = wine.image || "/images/bouteilles/brouilly.jpg";
-    return src.startsWith("http") ? src : `${SITE}${src}`;
+    return absolu(wine.image || "/images/bouteilles/brouilly.jpg");
 }
 
 function Section({ title, text, background }: { title: string; text?: string; background: string }) {
@@ -75,26 +98,40 @@ export default async function CuveePage({ params }: Props) {
                     __html: JSON.stringify({
                         "@context": "https://schema.org",
                         "@type": "Product",
-                        name: wine.name,
+                        name: nomComplet(wine),
                         description: wine.description,
                         image: image(wine),
-                        url: `${SITE}${cuveeHref(wine)}`,
-                        brand: { "@type": "Brand", name: "Domaine de Garanches" },
+                        url: absolu(cuveeHref(wine)),
+                        brand: { "@type": "Brand", name: SITE_NAME },
+                        manufacturer: { "@id": WINERY_ID },
+                        category: "Vin",
+                        countryOfOrigin: "FR",
                         ...(typeof wine.price === "number" && {
                             offers: {
                                 "@type": "Offer",
                                 priceCurrency: "EUR",
                                 price: (wine.price / 100).toFixed(2),
                                 availability: "https://schema.org/InStock",
-                                url: `${SITE}${cuveeHref(wine)}`,
+                                url: absolu(cuveeHref(wine)),
+                                seller: { "@id": WINERY_ID },
                             },
                         }),
                     }),
                 }}
             />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify(filAriane([
+                        { nom: "Les Vins", chemin: "/les-vins" },
+                        { nom: "Les cuvées", chemin: "/les-vins/cuvees" },
+                        { nom: nomComplet(wine), chemin: cuveeHref(wine) },
+                    ])),
+                }}
+            />
             <section className="relative h-[60vh] min-h-[420px] flex flex-col justify-center items-center overflow-hidden">
                 <div className="absolute inset-0 z-0">
-                    <Image src="/images/23_slide002.jpg" alt="" fill sizes="100vw" priority quality={75} className="object-cover brightness-[.6]" />
+                    <Image src="/images/23_slide002.jpg" alt="Vendanges à la main dans les vignes du Beaujolais" fill sizes="100vw" priority quality={75} className="object-cover brightness-[.6]" />
                 </div>
                 <FadeIn direction="down" className="relative text-center px-4 pt-20 flex flex-col items-center">
                     <Link href="/les-vins/cuvees" className="text-sm md:text-base text-white underline underline-offset-4 decoration-1">
@@ -156,7 +193,7 @@ export default async function CuveePage({ params }: Props) {
                             {autres.map((w: any) => (
                                 <Link key={w.id} href={cuveeHref(w)} className="group sm:w-44 text-center">
                                     <div className="relative h-44 sm:h-48 bg-white mb-3">
-                                        <Image src={w.image || "/images/bouteilles/brouilly.jpg"} alt="" fill sizes="176px" className="object-contain p-3" />
+                                        <Image src={w.image || "/images/bouteilles/brouilly.jpg"} alt={`Bouteille de ${nomComplet(w)}`} fill sizes="176px" className="object-contain p-3" />
                                     </div>
                                     <span className="font-serif text-base sm:text-lg text-wine-900 group-hover:text-red-900 transition-colors">{w.name}</span>
                                 </Link>

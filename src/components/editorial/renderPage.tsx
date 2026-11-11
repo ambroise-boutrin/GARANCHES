@@ -8,8 +8,8 @@ import { SEO } from "@/data/seo";
 import { cuveeHref } from "@/lib/wineSlug";
 import { getBlocs } from "@/sanity/lib/queries";
 import { getWines } from "@/lib/wines";
-
-const SITE = "https://domainedegaranches.com";
+import { SITE_NAME, WINERY_ID, absolu, filAriane, partage } from "@/lib/site";
+import { altPhoto } from "@/data/alts";
 
 export function pageMetadata(path: string): Metadata {
     const page = PAGES[path];
@@ -19,7 +19,13 @@ export function pageMetadata(path: string): Metadata {
         title: seo.title,
         description: seo.description,
         alternates: { canonical: `/${path}` },
-        openGraph: { title: `${page.label} | Domaine de Garanches`, description: seo.description, images: [page.image], url: `/${path}` },
+        ...partage({
+            chemin: `/${path}`,
+            titre: `${page.label} | ${SITE_NAME}`,
+            description: seo.description,
+            image: page.image,
+            alt: altPhoto(page.image, page.label),
+        }),
     };
 }
 
@@ -34,18 +40,21 @@ async function Cuvees() {
             position: index + 1,
             item: {
                 "@type": "Product",
-                name: wine.name,
-                url: `${SITE}${cuveeHref(wine)}`,
+                name: wine.millesime ? `${wine.name} ${wine.millesime}` : wine.name,
+                url: absolu(cuveeHref(wine)),
                 description: wine.description,
-                image: wine.image?.startsWith("http") ? wine.image : `${SITE}${wine.image || "/images/bouteilles/brouilly.jpg"}`,
-                brand: { "@type": "Brand", name: "Domaine de Garanches" },
+                image: absolu(wine.image || "/images/bouteilles/brouilly.jpg"),
+                brand: { "@type": "Brand", name: SITE_NAME },
+                manufacturer: { "@id": WINERY_ID },
+                category: "Vin",
                 ...(typeof wine.price === "number" && {
                     offers: {
                         "@type": "Offer",
                         priceCurrency: "EUR",
                         price: (wine.price / 100).toFixed(2),
                         availability: "https://schema.org/InStock",
-                        url: `${SITE}${cuveeHref(wine)}`,
+                        url: absolu(cuveeHref(wine)),
+                        seller: { "@id": WINERY_ID },
                     },
                 }),
             },
@@ -72,9 +81,16 @@ export async function renderPage(path: string) {
 
     const overrides = await getBlocs();
     const Extra = EXTRAS[path];
+    // Fil d'Ariane pour Google : Accueil › Le Lieu › L'histoire.
+    const parent = path.includes("/") ? PAGES[path.split("/")[0]] : undefined;
+    const ariane = filAriane([
+        ...(parent ? [{ nom: parent.label, chemin: `/${parent.path}` }] : []),
+        { nom: page.label, chemin: `/${path}` },
+    ]);
 
     return (
         <EditorialPage page={page} overrides={overrides}>
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ariane) }} />
             {Extra && <Extra />}
         </EditorialPage>
     );
