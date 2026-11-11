@@ -2,31 +2,27 @@
 
 import Link from 'next/link';
 import { PORTES } from '@/data/architecture';
-import Telephones from "@/components/Telephones";
 
 export default function Footer() {
     const currentYear = new Date().getFullYear();
 
     return (
         <footer className="bg-wine-900 text-white/80 py-16 px-6 border-t border-white/10">
-            <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-12 text-center">
-
-
+            <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-12 text-center md:text-left">
                 <div>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src="/images/logo-maison.png" alt="" width={539} height={284} className="w-28 h-auto mx-auto mb-4" />
+                    <img src="/images/logo-maison.png" alt="" width={539} height={284} className="w-28 h-auto mx-auto md:mx-0 mb-4" />
                     <div className="font-serif text-2xl text-white mb-6 uppercase tracking-[0.04em]">Domaine de Garanches</div>
-                    <p className="text-sm leading-loose text-gray-300 mb-2">
+                    <address className="not-italic text-sm leading-relaxed text-gray-300">
                         345 chemin de Garanches<br />
-                        69460 Odenas — France
-                    </p>
-                    <Telephones className="w-fit mx-auto mb-6 text-sm leading-loose text-gray-300 text-left" lien="hover:text-white" />
-
-
+                        69460 Odenas, France
+                    </address>
+                    <div className="mt-6 text-sm">
+                        <Link href="/contact" className="text-white underline underline-offset-4 decoration-white/40 hover:decoration-white">Nous contacter</Link>
+                    </div>
                 </div>
 
-
-                <div className="flex flex-col items-center gap-1 md:gap-4 text-sm uppercase tracking-widest font-semibold text-gray-300">
+                <div className="flex flex-col items-center md:items-start gap-1 md:gap-4 text-sm uppercase tracking-widest font-semibold text-gray-300">
                     {PORTES.map((porte) => (
                         <Link key={porte.path} href={porte.path} className="py-2 md:py-0 hover:text-white transition-colors">{porte.label}</Link>
                     ))}
@@ -34,8 +30,7 @@ export default function Footer() {
                     <Link href="/acheter" className="py-2 md:py-0 hover:text-white transition-colors">Acheter / Trouver Garanches</Link>
                 </div>
 
-
-                <div className="flex flex-col items-center gap-1 md:gap-4 text-sm uppercase tracking-widest font-semibold text-gray-300">
+                <div className="flex flex-col items-center md:items-start gap-1 md:gap-4 text-sm uppercase tracking-widest font-semibold text-gray-300">
                     <Link href="/contact" className="py-2 md:py-0 hover:text-white transition-colors">Contact</Link>
                     <Link href="/mentions-legales" className="py-2 md:py-0 hover:text-white transition-colors">Mentions légales</Link>
                     <Link href="/politique-confidentialite" className="py-2 md:py-0 hover:text-white transition-colors">Confidentialité</Link>
