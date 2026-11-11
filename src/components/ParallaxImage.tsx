@@ -19,7 +19,6 @@ export default function ParallaxImage({ src, alt, className = "", sizes = "100vw
 
     useEffect(() => {
         if (!parallaxe) return;
-        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
         const el = cadre.current;
         const img = calque.current;
         if (!el || !img) return;
@@ -31,8 +30,8 @@ export default function ParallaxImage({ src, alt, className = "", sizes = "100vw
             const vh = window.innerHeight;
             // 0 quand le haut du cadre entre en bas de l'écran, 1 quand son bas sort en haut.
             const p = Math.min(1, Math.max(0, (vh - r.top) / (vh + r.height)));
-            // Le calque dépasse de 10 % en haut et en bas : il glisse de ±10 % de la hauteur du cadre.
-            img.style.transform = `translate3d(0, ${((2 * p - 1) * 0.1 * r.height).toFixed(1)}px, 0)`;
+            // Le calque dépasse de 12 % en haut et en bas : il glisse de ±12 % de la hauteur du cadre (comme avant).
+            img.style.transform = `translate3d(0, ${((2 * p - 1) * 0.12 * r.height).toFixed(1)}px, 0)`;
         };
         const demander = () => {
             if (!raf) raf = requestAnimationFrame(maj);
@@ -63,7 +62,7 @@ export default function ParallaxImage({ src, alt, className = "", sizes = "100vw
     return (
         <div ref={cadre} className={`relative overflow-hidden ${className}`}>
             {parallaxe ? (
-                <div ref={calque} className="absolute inset-x-0 top-[-10%] h-[120%] will-change-transform">
+                <div ref={calque} className="absolute inset-x-0 top-[-12%] h-[124%] will-change-transform">
                     {image}
                 </div>
             ) : (
