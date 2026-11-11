@@ -11,6 +11,12 @@ const versDomaine = SITE_HOST === 'garanches.vercel.app' ? [] : [
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     reactStrictMode: true,
+    // Photos et vidéos gardées 7 jours par le navigateur (sur Vercel, les photos optimisées reprennent cet en-tête).
+    async headers() {
+        return [
+            { source: '/images/:path*', headers: [{ key: 'Cache-Control', value: 'public, max-age=604800, stale-while-revalidate=86400' }] },
+        ];
+    },
     // Anciennes adresses, redirigées vers la nouvelle arborescence pour garder le référencement.
     async redirects() {
         return [
