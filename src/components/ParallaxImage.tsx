@@ -9,7 +9,7 @@ interface Props {
     className?: string;
     sizes?: string;
     position?: string;
-    // Effet de parallaxe au défilement : réservé à la photo de « Une histoire qui continue » sur l'accueil.
+    // Effet de parallaxe au défilement : photos placées à côté d'un texte (accueil et blocs des pages).
     parallaxe?: boolean;
 }
 
