@@ -15,9 +15,16 @@ const nextConfig = {
     async redirects() {
         return [
             ...versDomaine,
-            // Ancien site (Jimdo) : le blog et la boutique mènent aux pages qui les remplacent.
+            // Ancien site (Jimdo, relevé le 11/11/2026) : chaque ancienne adresse mène à la page qui la remplace,
+            // pour que Google transfère le référencement acquis.
             { source: '/blog/:path*', destination: '/carnets', permanent: true },
+            { source: '/:annee(\\d{4})/:path*', destination: '/carnets', permanent: true },
+            { source: '/about/:path*', destination: '/mentions-legales', permanent: true },
+            { source: '/boutique/:path*', destination: '/acheter', permanent: true },
+            { source: '/j/privacy', destination: '/politique-confidentialite', permanent: true },
+            { source: '/j/:page(shop/terms|legal-guarantee|withdrawal)', destination: '/cgv', permanent: true },
             { source: '/j/shop/:path*', destination: '/les-vins/cuvees', permanent: true },
+            { source: '/:page(sitemap|login)', destination: '/', permanent: true },
             { source: '/nos-vins', destination: '/les-vins/cuvees', permanent: true },
             { source: '/notre-histoire', destination: '/le-lieu/histoire', permanent: true },
             { source: '/visite', destination: '/rencontrons-garanches/deguster-au-domaine', permanent: true },
