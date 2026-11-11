@@ -36,9 +36,11 @@ export default function WinesList({ wines }: { wines: any[] }) {
                                 <div className="w-full md:w-2/3 text-center md:text-left">
                                     <div className="flex flex-col md:flex-row justify-between items-center mb-2">
                                         <h2 className="normal-case tracking-normal text-3xl font-serif text-wine-900"><Link href={cuveeHref(wine)} className="hover:text-red-900 transition-colors">{nomMillesime(wine)}</Link></h2>
-                                        <span className="text-xl font-bold text-red-900 mt-2 md:mt-0 whitespace-nowrap">
-                                            {prixAffiche(wine)}
-                                        </span>
+                                        {prixAffiche(wine) && (
+                                            <span className="text-xl font-bold text-red-900 mt-2 md:mt-0 whitespace-nowrap">
+                                                {prixAffiche(wine)}
+                                            </span>
+                                        )}
                                     </div>
 
                                     <p className="text-wine-700 text-sm font-bold mb-4">

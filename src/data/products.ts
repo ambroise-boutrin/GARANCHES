@@ -1,5 +1,5 @@
 // Les trois vins du domaine. Le millésime suit l'étiquette en vente : à mettre à jour à chaque nouveau millésime.
-// price en centimes ; null = prix sur demande.
+// price en centimes ; null = aucun prix affiché.
 export const PRODUCTS: {
     id: string; name: string; subtitle: string; millesime?: string; price: number | null; description: string;
     image: string; tags: string[]; alcohol: string; volume: string; allergens: string;
