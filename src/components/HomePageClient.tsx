@@ -149,6 +149,7 @@ export default function HomePageClient({ products, content }: { products: any[],
                         <div className="h-[500px] w-full relative">
                             <ParallaxImage
                                 src="/images/23_slide002.jpg"
+                                parallaxe
                                 alt="Grappe de raisin Gamay du Beaujolais sur cep de vigne"
                                 className="h-full w-full"
                                 sizes="(max-width: 768px) 100vw, 50vw"
