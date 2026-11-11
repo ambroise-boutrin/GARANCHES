@@ -10,6 +10,8 @@ export default function Footer() {
         <footer className="bg-wine-900 text-white/80 py-16 px-6 border-t border-white/10">
             <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-12 text-center md:text-left">
                 <div>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src="/images/logo-maison.png" alt="" width={539} height={284} className="w-28 h-auto mx-auto md:mx-0 mb-4" />
                     <div className="font-serif text-2xl text-white mb-6 uppercase tracking-[0.04em]">Domaine de Garanches</div>
                     <address className="not-italic text-sm leading-relaxed text-gray-300">
                         345 chemin de Garanches<br />

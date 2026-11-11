@@ -5,6 +5,7 @@ import dynamic from "next/dynamic";
 import FadeIn from "@/components/FadeIn";
 import FAQ from "@/components/FAQ";
 import OpeningStatus from "@/components/OpeningStatus";
+import Telephones from "@/components/Telephones";
 
 const InteractiveMap = dynamic(() => import("@/components/InteractiveMap"), {
     loading: () => <div className="w-full h-[500px] bg-stone-100 animate-pulse" />,
@@ -89,12 +90,7 @@ export default function ContactContent({ sujet, vin }: { sujet?: string; vin?: s
                                 </div>
                                 <div>
                                     <span className="text-red-900 text-sm font-bold block mb-1">Téléphone</span>
-                                    <p className="text-gray-900 hover:text-wine-700 transition-colors font-bold text-lg">
-                                        <a href="tel:+33782249436" className="block">Romain : 07 82 24 94 36</a>
-                                        <a href="tel:+33658834680" className="block">Aurélie : 06 58 83 46 80</a>
-                                        <a href="tel:+33661735667" className="block">Isabelle : 06 61 73 56 67</a>
-                                        <a href="tel:+33609419702" className="block">Michel : 06 09 41 97 02</a>
-                                    </p>
+                                    <Telephones className="w-fit text-gray-800 leading-relaxed" lien="font-medium text-gray-900 hover:text-wine-700 transition-colors" />
                                 </div>
                             </div>
 
@@ -115,8 +111,8 @@ export default function ContactContent({ sujet, vin }: { sujet?: string; vin?: s
 
                             <div className="mt-8 h-48 w-full relative overflow-hidden group-hover:shadow-lg transition-all">
                                 <img
-                                    src="/images/34_slide001.jpg"
-                                    alt="Cave voûtée avec fûts de chêne au Domaine de Garanches"
+                                    src="/images/smugmug/domaine-drone-maison.jpg"
+                                    alt="Le domaine de Garanches au milieu de ses vignes, à Odenas"
                                     className="w-full h-full object-cover opacity-90 transition-transform duration-1000"
                                 />
                             </div>

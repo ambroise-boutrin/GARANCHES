@@ -24,7 +24,7 @@ export const SEO: Record<string, { title: string; description: string }> = {
     },
     "les-vins": {
         title: "Vins de Brouilly et Bourgogne blanc",
-        description: "Les vins du domaine de Garanches à Odenas : Brouilly, Côte de Brouilly, Bourgogne blanc. Des vins précis, vivants, en petites quantités.",
+        description: "Les vins du domaine de Garanches à Odenas : Brouilly, Beaujolais-Villages blanc, Bourgogne blanc. Des vins précis, vivants, en petites quantités.",
     },
     "les-vins/notre-facon-de-faire": {
         title: "Viticulture HVE et vinification",
@@ -32,7 +32,7 @@ export const SEO: Record<string, { title: string; description: string }> = {
     },
     "les-vins/cuvees": {
         title: "Acheter nos vins : Brouilly, Bourgogne blanc",
-        description: "Achetez en ligne les cuvées du domaine de Garanches : Brouilly, Côte de Brouilly, Bourgogne blanc, rosé. Expédition depuis Odenas partout en France.",
+        description: "Achetez en ligne les cuvées du domaine de Garanches : Brouilly, Beaujolais-Villages blanc, Bourgogne blanc. Expédition depuis Odenas partout en France.",
     },
     "les-vins/terroirs": {
         title: "Terroirs granitiques du Mont Brouilly",

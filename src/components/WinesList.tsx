@@ -5,6 +5,7 @@ import Link from "next/link";
 import RequestBottlesButton from "@/components/RequestBottlesButton";
 import FadeIn from "@/components/FadeIn";
 import { cuveeHref } from "@/lib/wineSlug";
+import { prixAffiche } from "@/lib/prix";
 
 export default function WinesList({ wines }: { wines: any[] }) {
 
@@ -36,12 +37,12 @@ export default function WinesList({ wines }: { wines: any[] }) {
                                     <div className="flex flex-col md:flex-row justify-between items-center mb-2">
                                         <h2 className="text-3xl font-serif text-wine-900"><Link href={cuveeHref(wine)} className="hover:text-red-900 transition-colors">{wine.name}</Link></h2>
                                         <span className="text-xl font-bold text-red-900 mt-2 md:mt-0 whitespace-nowrap">
-                                            {(wine.price / 100).toFixed(2).replace('.', ',')} €
+                                            {prixAffiche(wine)}
                                         </span>
                                     </div>
 
                                     <p className="text-wine-700 text-sm font-bold mb-4">
-                                        {wine.subtitle || "Domaine de Garanches"}
+                                        {wine.subtitle || "Domaine de Garanches"}{wine.millesime && ` — ${wine.millesime}`}
                                     </p>
 
                                     <p className="text-gray-800 text-sm leading-relaxed mb-6 line-clamp-3">
@@ -56,7 +57,7 @@ export default function WinesList({ wines }: { wines: any[] }) {
                                     <div className="flex flex-wrap justify-center md:justify-start items-center gap-x-4 gap-y-2 text-xs text-gray-700 mb-6">
                                         {wine.volume && <span>{wine.volume}</span>}
                                         {wine.alcohol && <span className="border-l border-gray-300 pl-4">{wine.alcohol}</span>}
-                                        {wine.price && wine.volume && (
+                                        {typeof wine.price === "number" && wine.volume && (
                                             <span className="border-l border-gray-300 pl-4 text-gray-600">
                                                 Soit {((wine.price / 100) / (parseFloat(wine.volume) === 1.5 ? 1.5 : 0.75)).toFixed(2).replace('.', ',')} €/L
                                             </span>

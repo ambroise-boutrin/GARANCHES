@@ -8,6 +8,7 @@ import RichText from "@/components/editorial/RichText";
 import PageCards from "@/components/editorial/PageCards";
 import { getWine } from "@/lib/wines";
 import { cuveeHref } from "@/lib/wineSlug";
+import { prixAffiche } from "@/lib/prix";
 
 export const revalidate = 60;
 
@@ -79,13 +80,15 @@ export default async function CuveePage({ params }: Props) {
                         image: image(wine),
                         url: `${SITE}${cuveeHref(wine)}`,
                         brand: { "@type": "Brand", name: "Domaine de Garanches" },
-                        offers: {
-                            "@type": "Offer",
-                            priceCurrency: "EUR",
-                            price: (wine.price / 100).toFixed(2),
-                            availability: "https://schema.org/InStock",
-                            url: `${SITE}${cuveeHref(wine)}`,
-                        },
+                        ...(typeof wine.price === "number" && {
+                            offers: {
+                                "@type": "Offer",
+                                priceCurrency: "EUR",
+                                price: (wine.price / 100).toFixed(2),
+                                availability: "https://schema.org/InStock",
+                                url: `${SITE}${cuveeHref(wine)}`,
+                            },
+                        }),
                     }),
                 }}
             />
@@ -122,6 +125,7 @@ export default async function CuveePage({ params }: Props) {
                         )}
                         <dl className="grid grid-cols-2 gap-4 mb-8">
                             {[
+                                { label: "Millésime", value: wine.millesime },
                                 { label: "Volume", value: wine.volume },
                                 { label: "Alcool", value: wine.alcohol },
                                 { label: "À table", value: wine.tags?.join(" • ") },
@@ -134,7 +138,7 @@ export default async function CuveePage({ params }: Props) {
                             ))}
                         </dl>
                         <p className="text-2xl font-bold text-red-900 mb-6">
-                            {(wine.price / 100).toFixed(2).replace(".", ",")} €
+                            {prixAffiche(wine)}
                         </p>
                         <RequestBottlesButton wine={wine} />
                     </FadeIn>
