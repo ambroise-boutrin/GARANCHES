@@ -567,6 +567,15 @@ export const BLOC_KEYS = PAGE_LIST.flatMap((p) =>
     p.blocs.map((b) => ({ title: `${p.label} › ${b.title || b.id}`, value: `${p.path}#${b.id}` }))
 );
 
+// Tous les blocs avec leur page et leur contenu prévu dans le code (import dans le studio, mode visuel).
+export const BLOCS_DU_SITE = PAGE_LIST.flatMap((p) => p.blocs.map((b) => ({ page: p, bloc: b, cle: `${p.path}#${b.id}` })));
+
+// Pages dont on peut changer la photo du haut dans le studio (« Photos du haut des pages »).
+export const BANDEAU_PAGES = [
+    ...PAGE_LIST.map((p) => ({ title: p.path.includes("/") ? `${PAGES[p.path.split("/")[0]]?.label} › ${p.label}` : p.label, value: p.path, image: p.image })),
+    { title: `Le Lieu › ${CARNETS_CARD.label}`, value: "carnets", image: CARNETS_CARD.image },
+];
+
 // Pages dont le chemin est servi par la route générique /[porte]/[page].
 export const GENERIC_PATHS = PAGE_LIST.map((p) => p.path);
 

@@ -113,7 +113,7 @@ export default async function CuveePage({ params }: Props) {
                                 "@type": "Offer",
                                 priceCurrency: "EUR",
                                 price: (wine.price / 100).toFixed(2),
-                                availability: "https://schema.org/InStock",
+                                availability: wine.enVente === false ? "https://schema.org/OutOfStock" : "https://schema.org/InStock",
                                 url: absolu(cuveeHref(wine)),
                                 seller: { "@id": WINERY_ID },
                             },
@@ -148,7 +148,7 @@ export default async function CuveePage({ params }: Props) {
             <section className="py-20 md:py-28 bg-stone-50">
                 <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 md:gap-20 items-center">
                     <FadeIn direction="right">
-                        <div className="relative h-[420px] bg-white">
+                        <div className="relative h-[420px] bg-white" data-sanity={wine.cliquerImage}>
                             <Image
                                 src={wine.image || "/images/bouteilles/brouilly.jpg"}
                                 alt={`${wine.name} - Domaine de Garanches`}

@@ -7,7 +7,7 @@ import WinesList from "@/components/WinesList";
 import { PAGES } from "@/data/architecture";
 import { SEO } from "@/data/seo";
 import { cuveeHref } from "@/lib/wineSlug";
-import { getBlocs } from "@/sanity/lib/queries";
+import { getBandeaux, getBlocs } from "@/sanity/lib/queries";
 import { getWines } from "@/lib/wines";
 import { SITE_NAME, WINERY_ID, absolu, filAriane, partage } from "@/lib/site";
 import { altPhoto } from "@/data/alts";
@@ -53,7 +53,7 @@ async function Cuvees() {
                         "@type": "Offer",
                         priceCurrency: "EUR",
                         price: (wine.price / 100).toFixed(2),
-                        availability: "https://schema.org/InStock",
+                        availability: wine.enVente === false ? "https://schema.org/OutOfStock" : "https://schema.org/InStock",
                         url: absolu(cuveeHref(wine)),
                         seller: { "@id": WINERY_ID },
                     },
@@ -80,7 +80,7 @@ export async function renderPage(path: string) {
     const page = PAGES[path];
     if (!page) notFound();
 
-    const overrides = await getBlocs();
+    const [overrides, bandeaux] = await Promise.all([getBlocs(), getBandeaux()]);
     const Extra = EXTRAS[path];
     // Fil d'Ariane pour Google : Accueil › Le Lieu › L'histoire.
     const parent = path.includes("/") ? PAGES[path.split("/")[0]] : undefined;
@@ -90,7 +90,7 @@ export async function renderPage(path: string) {
     ]);
 
     return (
-        <EditorialPage page={page} overrides={overrides}>
+        <EditorialPage page={page} overrides={overrides} bandeau={bandeaux[path]}>
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serialiserJsonLd(ariane) }} />
             {Extra && <Extra />}
         </EditorialPage>

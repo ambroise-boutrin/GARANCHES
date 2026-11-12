@@ -7,7 +7,11 @@ export function requestBottlesHref(wineName: string) {
     return `/contact?${params.toString()}#formulaire`;
 }
 
-export default function RequestBottlesButton({ wine }: { wine: { name: string } }) {
+// Vin décoché « En vente » dans le studio : mention « Épuisé » à la place du bouton.
+export default function RequestBottlesButton({ wine }: { wine: { name: string; enVente?: boolean } }) {
+    if (wine.enVente === false) {
+        return <p className="mt-6 text-base font-medium text-gray-700">Épuisé</p>;
+    }
     return (
         <Link
             href={requestBottlesHref(wine.name)}

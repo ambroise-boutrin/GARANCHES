@@ -5,6 +5,7 @@ import { flou } from "@/data/flous";
 import Link from "next/link";
 import FadeIn from "@/components/FadeIn";
 import ParallaxImage from "@/components/ParallaxImage";
+import RichText from "@/components/editorial/RichText";
 import RequestBottlesButton from "@/components/RequestBottlesButton";
 import { HOME_PORTES, SIGNATURE, HERO_VIDEO } from "@/data/architecture";
 import { cuveeHref } from "@/lib/wineSlug";
@@ -126,10 +127,10 @@ export default function HomePageClient({ products, content }: { products: any[],
                 <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 md:gap-20 items-center">
                     <FadeIn direction="right">
                         <div>
-                            <h2 className="text-3xl md:text-5xl font-serif text-red-900 mb-6 md:mb-8 leading-tight">Une histoire <br />qui continue.</h2>
+                            <h2 className="text-3xl md:text-5xl font-serif text-red-900 mb-6 md:mb-8 leading-tight">{content?.philosophy?.title || <>Une histoire <br />qui continue.</>}</h2>
                             <div className="text-gray-800 leading-relaxed text-base md:text-lg mb-8 space-y-4">
                                 {content?.philosophy?.content ? (
-                                    <p>{content.philosophy.content}</p>
+                                    <RichText text={content.philosophy.content} className="space-y-4" />
                                 ) : (
                                     <>
                                         <p>
@@ -208,7 +209,7 @@ export default function HomePageClient({ products, content }: { products: any[],
                         {products.slice(0, 3).map((wine, index) => (
                             <FadeIn key={wine.id} delay={0.1 + index * 0.2} className="group flex flex-col h-full">
                                 <Link href={cuveeHref(wine)} className="flex-grow">
-                                    <div className="relative h-[320px] sm:h-[380px] md:h-[500px] overflow-hidden mb-6 bg-gray-50 flex items-center justify-center p-4 md:p-8 border border-transparent hover:border-gray-100 transition-colors">
+                                    <div data-sanity={wine.cliquerImage} className="relative h-[320px] sm:h-[380px] md:h-[500px] overflow-hidden mb-6 bg-gray-50 flex items-center justify-center p-4 md:p-8 border border-transparent hover:border-gray-100 transition-colors">
                                         <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors z-10 duration-500"></div>
                                         <Image
                                             src={wine.image || "/images/bouteilles/brouilly.jpg"}

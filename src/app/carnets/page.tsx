@@ -7,7 +7,7 @@ import SousNav from "@/components/editorial/SousNav";
 import { PageHero } from "@/components/editorial/EditorialPage";
 import { CARNETS_CARD, CARNETS_INTRO, CARNET_THEMES, PAGES } from "@/data/architecture";
 import { formatDate, themeLabel } from "@/lib/carnets";
-import { getCarnets } from "@/sanity/lib/queries";
+import { getBandeaux, getCarnets } from "@/sanity/lib/queries";
 import { urlFor } from "@/sanity/lib/image";
 import { partage } from "@/lib/site";
 
@@ -19,14 +19,14 @@ export const metadata: Metadata = {
 };
 
 export default async function CarnetsPage({ searchParams }: { searchParams: { theme?: string } }) {
-    const carnets = await getCarnets();
+    const [carnets, bandeaux] = await Promise.all([getCarnets(), getBandeaux()]);
     const theme = searchParams.theme;
     const visible = theme ? carnets.filter((c: any) => c.theme === theme) : carnets;
 
     return (
         <main className="min-h-screen bg-paper pb-20">
             {/* Même ouverture et même barre que les autres pages du Lieu. */}
-            <PageHero image={CARNETS_CARD.image} label={CARNETS_CARD.label} parent={PAGES["le-lieu"]} />
+            <PageHero image={CARNETS_CARD.image} label={CARNETS_CARD.label} parent={PAGES["le-lieu"]} photo={bandeaux.carnets} />
             <SousNav path="le-lieu" current="/carnets" />
 
             <FadeIn direction="down" className="text-center px-6 pt-16 md:pt-24 mb-16">

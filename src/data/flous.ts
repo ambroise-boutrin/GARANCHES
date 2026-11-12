@@ -53,7 +53,8 @@ export const FLOUS: Record<string, string> = {
 };
 
 // Props à passer à <Image> : aperçu flou si la photo en a un, rien sinon.
-export function flou(src: string): { placeholder?: "blur"; blurDataURL?: string } {
-    const blurDataURL = FLOUS[src];
+// `secours` : aperçu flou fourni par Sanity pour une photo changée dans le studio.
+export function flou(src: string, secours?: string): { placeholder?: "blur"; blurDataURL?: string } {
+    const blurDataURL = FLOUS[src] || secours;
     return blurDataURL ? { placeholder: "blur", blurDataURL } : {};
 }
