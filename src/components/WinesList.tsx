@@ -6,8 +6,13 @@ import RequestBottlesButton from "@/components/RequestBottlesButton";
 import FadeIn from "@/components/FadeIn";
 import { cuveeHref } from "@/lib/wineSlug";
 import { prixAffiche } from "@/lib/prix";
+import { useTexte } from "@/components/Contenu";
 
 export default function WinesList({ wines }: { wines: any[] }) {
+    const decouvrir = useTexte("cuvees.decouvrir");
+    const questionTitre = useTexte("cuvees.question.titre");
+    const questionTexte = useTexte("cuvees.question.texte");
+    const questionLien = useTexte("cuvees.question.lien");
 
     return (
         <div className="pb-8">
@@ -51,7 +56,7 @@ export default function WinesList({ wines }: { wines: any[] }) {
                                     </p>
 
                                     <Link href={cuveeHref(wine)} className="inline-block mb-6 text-base underline underline-offset-4 decoration-1 text-red-900 hover:text-red-700 transition-colors">
-                                        Découvrir la cuvée
+                                        {decouvrir}
                                     </Link>
 
                                     <div className="flex flex-wrap justify-center md:justify-start items-center gap-x-4 gap-y-2 text-xs text-gray-700 mb-6">
@@ -96,12 +101,12 @@ export default function WinesList({ wines }: { wines: any[] }) {
 
             <FadeIn direction="up">
                 <div className="mt-32 py-16 bg-wine-900 text-white text-center px-4">
-                    <h3 className="text-3xl font-serif mb-4">Une question sur un millésime ?</h3>
+                    <h3 className="text-3xl font-serif mb-4">{questionTitre}</h3>
                     <p className="opacity-80 mb-8 max-w-xl mx-auto">
-                        N'hésitez pas à nous contacter pour connaître les tarifs d'expédition ou pour passer commande directement.
+                        {questionTexte}
                     </p>
                     <Link href="/contact" className="border-b border-white text-white pb-1 hover:text-white hover:border-white transition-colors text-base">
-                        Contactez-nous
+                        {questionLien}
                     </Link>
                 </div>
             </FadeIn>

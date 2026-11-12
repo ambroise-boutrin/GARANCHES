@@ -6,13 +6,13 @@ import FadeIn from "@/components/FadeIn";
 import FAQ from "@/components/FAQ";
 import OpeningStatus from "@/components/OpeningStatus";
 import Telephones from "@/components/Telephones";
+import { Lignes, usePhoto, useTexte } from "@/components/Contenu";
+import { stegaClean } from "next-sanity";
 
 const InteractiveMap = dynamic(() => import("@/components/InteractiveMap"), {
     loading: () => <div className="w-full h-[500px] bg-stone-100 animate-pulse" />,
     ssr: false
 });
-
-const EMAIL = "contact@domainedegaranches.com";
 
 const SUJETS = [
     "Les tables d'hôtes",
@@ -26,6 +26,19 @@ const SUJETS = [
 ];
 
 export default function ContactContent({ sujet, vin }: { sujet?: string; vin?: string }) {
+    const t = useTexte;
+    const EMAIL = stegaClean(t("contact.email")).trim();
+    const titre = t("contact.titre");
+    const intro = t("contact.intro");
+    const coordonnees = t("contact.coordonnees");
+    const adresse = t("contact.adresse");
+    const horaires = t("contact.horaires");
+    const fermeture = t("contact.fermeture");
+    const photo = usePhoto("contact.photo");
+    const formulaire = t("contact.formulaire");
+    const venirTitre = t("contact.venir.titre");
+    const venirTexte = t("contact.venir.texte");
+    const boutonVin = t("cuvees.bouton");
     const [subject, setSubject] = useState(sujet && SUJETS.includes(sujet) ? sujet : SUJETS[SUJETS.length - 1]);
 
     // Pas de serveur d'envoi : le message s'ouvre, pré-rempli, dans la messagerie du visiteur.
@@ -52,16 +65,16 @@ export default function ContactContent({ sujet, vin }: { sujet?: string; vin?: s
     return (
         <main className="min-h-screen bg-paper pt-32 pb-20">
             <FadeIn direction="down" className="text-center px-6 mb-16">
-                <h1 className="text-4xl md:text-5xl font-serif text-wine-900 mb-6 font-medium">Contact</h1>
+                <h1 className="text-4xl md:text-5xl font-serif text-wine-900 mb-6 font-medium">{titre}</h1>
                 <p className="max-w-xl mx-auto text-gray-800 text-lg">
-                    Venir, écrire, appeler, réserver : nous sommes à votre écoute.
+                    {intro}
                 </p>
             </FadeIn>
 
             <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-start">
                 <FadeIn direction="right" delay={0.2}>
                     <div className="bg-white p-10 border border-gray-100 relative overflow-hidden group">
-                        <h2 className="text-3xl font-serif text-wine-900 mb-10 relative z-10">Nos Coordonnées</h2>
+                        <h2 className="text-3xl font-serif text-wine-900 mb-10 relative z-10">{coordonnees}</h2>
 
                         <div className="space-y-10 relative z-10">
                             <div className="flex gap-4">
@@ -74,10 +87,7 @@ export default function ContactContent({ sujet, vin }: { sujet?: string; vin?: s
                                 <div>
                                     <span className="text-red-900 text-sm font-bold block mb-1">Adresse</span>
                                     <p className="text-gray-700 leading-relaxed font-medium">
-                                        Domaine de Garanches<br />
-                                        345 chemin de Garanches<br />
-                                        69460 Odenas<br />
-                                        France
+                                        <Lignes texte={adresse} />
                                     </p>
                                 </div>
                             </div>
@@ -103,15 +113,16 @@ export default function ContactContent({ sujet, vin }: { sujet?: string; vin?: s
                                 <div>
                                     <span className="text-red-900 text-sm font-bold block mb-1">Horaires d'ouverture</span>
                                     <p className="text-gray-700 leading-relaxed">
-                                        Lundi au Samedi : 09h00 - 18h00<br />
-                                        <span className="text-sm text-gray-700">Fermé le Dimanche et jours fériés</span>
+                                        <Lignes texte={horaires} /><br />
+                                        <span className="text-sm text-gray-700">{fermeture}</span>
                                     </p>
                                 </div>
                             </div>
 
-                            <div className="mt-8 h-48 w-full relative overflow-hidden group-hover:shadow-lg transition-all">
+                            <div className="mt-8 h-48 w-full relative overflow-hidden group-hover:shadow-lg transition-all" data-sanity={photo.cliquer}>
                                 <img
-                                    src="/images/smugmug/domaine-drone-maison.jpg"
+                                    src={photo.src}
+                                    style={{ objectPosition: photo.position }}
                                     alt="Le domaine de Garanches au milieu de ses vignes, à Odenas"
                                     className="w-full h-full object-cover opacity-90 transition-transform duration-1000"
                                 />
@@ -122,7 +133,7 @@ export default function ContactContent({ sujet, vin }: { sujet?: string; vin?: s
 
                 <FadeIn direction="left" delay={0.4}>
                     <div id="formulaire" className="scroll-mt-28 bg-stone-50 p-6 md:p-10 border border-stone-200">
-                        <h2 className="text-3xl font-serif text-wine-900 mb-8">{isBooking ? "Réserver" : vinDemande ? "Demander des bouteilles" : "Envoyez-nous un message"}</h2>
+                        <h2 className="text-3xl font-serif text-wine-900 mb-8">{isBooking ? "Réserver" : vinDemande ? boutonVin : formulaire}</h2>
 
                         <form className="space-y-6" onSubmit={handleSubmit}>
                             <div className="grid md:grid-cols-2 gap-6">
@@ -188,9 +199,9 @@ export default function ContactContent({ sujet, vin }: { sujet?: string; vin?: s
 
             <section className="max-w-6xl mx-auto px-6 mt-24 grid md:grid-cols-2 gap-12 items-center">
                 <FadeIn direction="right">
-                    <h2 className="text-3xl md:text-4xl font-serif text-wine-900 mb-6">Venir à Garanches</h2>
+                    <h2 className="text-3xl md:text-4xl font-serif text-wine-900 mb-6">{venirTitre}</h2>
                     <p className="text-gray-700 leading-relaxed text-lg mb-6">
-                        345 chemin de Garanches, 69460 Odenas, au pied du Mont Brouilly.
+                        {venirTexte}
                     </p>
                     <OpeningStatus />
                 </FadeIn>

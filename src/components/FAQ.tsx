@@ -2,11 +2,11 @@
 
 import { useState } from "react";
 import FadeIn from "@/components/FadeIn";
-import { FAQS } from "@/data/faq";
-
-const faqs = FAQS;
+import { useFaq, useTexte } from "@/components/Contenu";
 
 export default function FAQ() {
+    const faqs = useFaq();
+    const titre = useTexte("contact.faq.titre");
     const [openIndex, setOpenIndex] = useState<number | null>(null);
 
     const toggleAccordion = (index: number) => {
@@ -18,7 +18,7 @@ export default function FAQ() {
             <div className="max-w-4xl mx-auto px-6">
                 <FadeIn direction="up">
                     <div className="text-center mb-12">
-                        <h2 className="text-4xl font-serif text-wine-900">Tout savoir sur le Domaine</h2>
+                        <h2 className="text-4xl font-serif text-wine-900">{titre}</h2>
                     </div>
 
                     <div className="space-y-4">
@@ -45,7 +45,7 @@ export default function FAQ() {
                                 {/* Réponse toujours présente dans la page (lue par Google), affichée au clic. */}
                                 <div hidden={openIndex !== index}>
                                     <div className="px-6 pb-6 text-gray-800 leading-relaxed border-t border-gray-50 pt-4">
-                                        {faq.answer}
+                                        {faq.reponse}
                                     </div>
                                 </div>
                             </div>

@@ -576,6 +576,12 @@ export const BANDEAU_PAGES = [
     { title: `Le Lieu › ${CARNETS_CARD.label}`, value: "carnets", image: CARNETS_CARD.image },
 ];
 
+// Pages sans grande photo modifiable, mais dont on peut changer les textes pour Google.
+export const PAGES_GOOGLE_SEULEMENT = [
+    { title: "Accueil", value: "accueil" },
+    { title: "Contact", value: "contact" },
+];
+
 // Pages dont le chemin est servi par la route générique /[porte]/[page].
 export const GENERIC_PATHS = PAGE_LIST.map((p) => p.path);
 

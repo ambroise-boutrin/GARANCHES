@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useRef } from "react";
-import { PORTES } from "@/data/architecture";
+import { usePortes } from "@/components/Contenu";
 import { marquerNavigationDouce } from "@/lib/navigationDouce";
 
 // Barre des pages d'une même porte, sous la photo d'ouverture.
@@ -19,7 +19,7 @@ export default function SousNav({ path, current = `/${path}` }: { path: string; 
         if (ul && actif) ul.scrollLeft = actif.offsetLeft - (ul.clientWidth - actif.offsetWidth) / 2;
     }, [current]);
 
-    const porte = PORTES.find((p) => p.path === `/${path.split("/")[0]}`);
+    const porte = usePortes().find((p) => p.path === `/${path.split("/")[0]}`);
     if (!porte) return null;
 
     return (

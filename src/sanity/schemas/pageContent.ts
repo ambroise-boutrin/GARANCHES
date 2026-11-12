@@ -1,4 +1,4 @@
-// Textes de la page d'accueil (les autres pages passent par « Textes et photos des pages »).
+// Vidéo du haut de l'accueil (section « hero »). Les textes de l'accueil sont dans « Accueil, contact, pied de page… ».
 export const SECTIONS_ACCUEIL = [
     { title: 'Accueil › Haut de page (phrase et vidéo)', value: 'hero' },
     { title: 'Accueil › Une histoire qui continue', value: 'philosophy' },
@@ -6,7 +6,7 @@ export const SECTIONS_ACCUEIL = [
 
 export default {
     name: 'pageContent',
-    title: "Texte de l'accueil",
+    title: "Vidéo de l'accueil",
     type: 'document',
     fields: [
         {

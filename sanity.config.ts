@@ -5,9 +5,23 @@ import { DownloadIcon } from '@sanity/icons';
 import { schemaTypes } from './src/sanity/schemas';
 import { structure } from './src/sanity/structure';
 import ImportTool from './src/sanity/tools/ImportTool';
-import { BANDEAU_PAGES } from './src/data/architecture';
+import { BANDEAU_PAGES, PAGES_GOOGLE_SEULEMENT } from './src/data/architecture';
 
-const libelle = (path: string) => BANDEAU_PAGES.find((p) => p.value === path)?.title || path;
+const libelle = (path: string) => [...BANDEAU_PAGES, ...PAGES_GOOGLE_SEULEMENT].find((p) => p.value === path)?.title || path;
+const adresse = (page: string) => (page === 'accueil' ? '/' : `/${page}`);
+
+// Où apparaît chaque partie du site (zones de petits textes).
+const PAGES_DES_ZONES: Record<string, { title: string; href: string }[]> = {
+    accueil: [{ title: 'Accueil', href: '/' }],
+    cuvees: [{ title: 'Les cuvées', href: '/les-vins/cuvees' }, { title: 'Brouilly', href: '/les-vins/cuvees/brouilly' }],
+    contact: [{ title: 'Contact', href: '/contact' }],
+    'pied-de-page': [{ title: 'Accueil', href: '/' }],
+    carnets: [{ title: 'Les Carnets', href: '/carnets' }],
+    pages: [{ title: 'Le domaine', href: '/le-lieu/le-domaine' }],
+};
+
+// Types qu'on ne crée pas à la main : ils sont créés une fois par « Importer le site ».
+const CREES_PAR_IMPORT = ['statAge', 'bloc', 'bandeau', 'zone', 'equipe', 'telephones', 'faq', 'pageLegale'];
 
 export default defineConfig({
     name: 'default',
@@ -42,7 +56,27 @@ export default defineConfig({
                     }),
                     bandeau: defineLocations({
                         select: { page: 'page' },
-                        resolve: (doc) => (doc?.page ? { locations: [{ title: libelle(doc.page), href: `/${doc.page}` }] } : null),
+                        resolve: (doc) => (doc?.page ? { locations: [{ title: libelle(doc.page), href: adresse(doc.page) }] } : null),
+                    }),
+                    zone: defineLocations({
+                        select: { zone: 'zone' },
+                        resolve: (doc) => (doc?.zone ? { locations: PAGES_DES_ZONES[doc.zone] ?? [] } : null),
+                    }),
+                    equipe: defineLocations({
+                        select: {},
+                        resolve: () => ({ locations: [{ title: 'Ceux qui le font vivre', href: '/le-lieu/ceux-qui-le-font-vivre' }] }),
+                    }),
+                    telephones: defineLocations({
+                        select: {},
+                        resolve: () => ({ locations: [{ title: 'Contact', href: '/contact' }] }),
+                    }),
+                    faq: defineLocations({
+                        select: {},
+                        resolve: () => ({ locations: [{ title: 'Contact', href: '/contact' }] }),
+                    }),
+                    pageLegale: defineLocations({
+                        select: { page: 'page', titre: 'titre' },
+                        resolve: (doc) => (doc?.page ? { locations: [{ title: doc.titre || doc.page, href: `/${doc.page}` }] } : null),
                     }),
                     pageContent: defineLocations({
                         select: {},
@@ -65,12 +99,15 @@ export default defineConfig({
     tools: [{ name: 'importer', title: 'Importer le site', icon: DownloadIcon, component: ImportTool }],
     schema: {
         types: schemaTypes,
-        // Les emplacements de textes sont créés par l'import : pas de « nouveau » bloc ou bandeau en double.
-        templates: (modeles) => modeles.filter((m) => m.schemaType !== 'statAge'),
+        templates: (modeles) => modeles.filter((m) => !CREES_PAR_IMPORT.includes(m.schemaType)),
     },
     document: {
-        // Pas de duplication ni de suppression accidentelle des statistiques.
-        actions: (actions, { schemaType }) => (schemaType === 'statAge' ? [] : actions),
+        // Statistiques en lecture seule ; pas de suppression ni de copie des emplacements créés par l'import.
+        actions: (actions, { schemaType }) => {
+            if (schemaType === 'statAge') return [];
+            if (CREES_PAR_IMPORT.includes(schemaType)) return actions.filter((a) => !['delete', 'duplicate'].includes(a.action || ''));
+            return actions;
+        },
     },
 });
 

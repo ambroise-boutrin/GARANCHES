@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { partage } from "@/lib/site";
+import PageLegale from "@/components/PageLegale";
+import { getPageLegale } from "@/sanity/lib/contenu";
 
 export const metadata: Metadata = {
     title: "Politique de Confidentialité",
@@ -8,7 +10,12 @@ export const metadata: Metadata = {
     ...partage({ chemin: "/politique-confidentialite", titre: "Politique de confidentialité | Domaine de Garanches" }),
 };
 
-export default function PolitiqueConfidentialite() {
+export const revalidate = 60;
+
+export default async function PolitiqueConfidentialite() {
+    // Texte du studio s'il a été importé ou saisi, sinon celui-ci.
+    const doc = await getPageLegale("politique-confidentialite");
+    if (doc) return <PageLegale titre={doc.titre} contenu={doc.contenu} />;
     return (
         <main className="min-h-screen pt-32 pb-20 bg-white">
             <div className="max-w-3xl mx-auto px-6 prose prose-stone">

@@ -7,25 +7,33 @@ import WinesList from "@/components/WinesList";
 import { PAGES } from "@/data/architecture";
 import { SEO } from "@/data/seo";
 import { cuveeHref } from "@/lib/wineSlug";
-import { getBandeaux, getBlocs } from "@/sanity/lib/queries";
+import { getBlocs } from "@/sanity/lib/queries";
+import { getContenuSite } from "@/sanity/lib/contenu";
+import { stegaClean } from "next-sanity";
 import { getWines } from "@/lib/wines";
 import { SITE_NAME, WINERY_ID, absolu, filAriane, partage } from "@/lib/site";
 import { altPhoto } from "@/data/alts";
 
-export function pageMetadata(path: string): Metadata {
+// Titre et description pour Google : ceux saisis dans le studio (Pages › Google), sinon ceux de src/data/seo.ts.
+export async function pageMetadata(path: string): Promise<Metadata> {
     const page = PAGES[path];
     if (!page) return {};
-    const seo = SEO[path] ?? { title: page.label, description: page.description };
+    const infos = (await getContenuSite()).pages[path];
+    const label = stegaClean(infos?.titre) ?? page.label;
+    const seo = SEO[path] ?? { title: label, description: page.description };
+    const title = stegaClean(infos?.seoTitre) || seo.title;
+    const description = stegaClean(infos?.seoDescription) || seo.description;
+    const image = infos?.photo?.src ?? page.image;
     return {
-        title: seo.title,
-        description: seo.description,
+        title,
+        description,
         alternates: { canonical: `/${path}` },
         ...partage({
             chemin: `/${path}`,
-            titre: `${page.label} | ${SITE_NAME}`,
-            description: seo.description,
-            image: page.image,
-            alt: altPhoto(page.image, page.label),
+            titre: `${label} | ${SITE_NAME}`,
+            description,
+            image,
+            alt: altPhoto(page.image, label),
         }),
     };
 }
@@ -80,17 +88,17 @@ export async function renderPage(path: string) {
     const page = PAGES[path];
     if (!page) notFound();
 
-    const [overrides, bandeaux] = await Promise.all([getBlocs(), getBandeaux()]);
+    const [overrides, contenu] = await Promise.all([getBlocs(), getContenuSite()]);
     const Extra = EXTRAS[path];
     // Fil d'Ariane pour Google : Accueil › Le Lieu › L'histoire.
     const parent = path.includes("/") ? PAGES[path.split("/")[0]] : undefined;
     const ariane = filAriane([
-        ...(parent ? [{ nom: parent.label, chemin: `/${parent.path}` }] : []),
-        { nom: page.label, chemin: `/${path}` },
+        ...(parent ? [{ nom: stegaClean(contenu.pages[parent.path]?.titre) ?? parent.label, chemin: `/${parent.path}` }] : []),
+        { nom: stegaClean(contenu.pages[path]?.titre) ?? page.label, chemin: `/${path}` },
     ]);
 
     return (
-        <EditorialPage page={page} overrides={overrides} bandeau={bandeaux[path]}>
+        <EditorialPage page={page} overrides={overrides}>
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serialiserJsonLd(ariane) }} />
             {Extra && <Extra />}
         </EditorialPage>

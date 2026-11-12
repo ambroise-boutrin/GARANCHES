@@ -73,19 +73,6 @@ export async function getBlocs(): Promise<Record<string, BlocOverride>> {
     }
 }
 
-// Photos du haut des pages changées dans le studio, indexées par chemin de page.
-export type Bandeau = PhotoSanity & { cliquer?: string };
-
-export async function getBandeaux(): Promise<Record<string, Bandeau>> {
-    try {
-        const bandeaux = await sanityFetch<any[]>(`*[_type == "bandeau" && defined(page) && defined(image.asset)]{ page, "image": image${PHOTO} }`);
-        return Object.fromEntries(bandeaux.map((b) => [stegaClean(b.page), b.image]));
-    } catch (error) {
-        console.error('Sanity: bandeaux indisponibles', error);
-        return {};
-    }
-}
-
 const CARNET_FIELDS = `titre, "slug": slug.current, date, theme, image, extrait`;
 
 const nettoyerCarnet = (c: any) => c && { ...c, slug: stegaClean(c.slug), date: stegaClean(c.date), theme: stegaClean(c.theme) };

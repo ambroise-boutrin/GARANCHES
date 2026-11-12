@@ -3,9 +3,25 @@ import { cadrage } from "@/data/cadrages";
 import Link from "next/link";
 import FadeIn from "@/components/FadeIn";
 import { card } from "@/data/architecture";
+import { getContenuSite } from "@/sanity/lib/contenu";
+import { texteDe } from "@/lib/contenu";
 
-export default function PageCards({ paths, title }: { paths: string[]; title?: string }) {
-    const cards = paths.map(card);
+// Cartes vers d'autres pages : nom, texte, lien et photo modifiables dans le studio (Pages).
+export default async function PageCards({ paths, title: titre }: { paths: string[]; title?: string }) {
+    const contenu = await getContenuSite();
+    const title = titre ?? texteDe(contenu, "pages.poursuivre");
+    const cards = paths.map((path) => {
+        const c = card(path);
+        const infos = contenu.pages[path];
+        return {
+            ...c,
+            label: infos?.titre ?? c.label,
+            description: infos?.description ?? c.description,
+            cta: infos?.bouton ?? c.cta,
+            image: infos?.photo?.src ?? c.image,
+            position: infos?.photo ? infos.photo.position : cadrage(c.image),
+        };
+    });
 
     return (
         <section className="max-w-7xl mx-auto px-6 py-20 md:py-28">
@@ -24,7 +40,7 @@ export default function PageCards({ paths, title }: { paths: string[]; title?: s
                                     alt=""
                                     fill
                                     sizes="(max-width: 768px) 100vw, 33vw"
-                                    style={{ objectPosition: cadrage(c.image) }}
+                                    style={{ objectPosition: c.position }}
                                     className="object-cover"
                                 />
                             </div>

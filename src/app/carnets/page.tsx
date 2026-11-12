@@ -5,9 +5,11 @@ import FadeIn from "@/components/FadeIn";
 import RichText from "@/components/editorial/RichText";
 import SousNav from "@/components/editorial/SousNav";
 import { PageHero } from "@/components/editorial/EditorialPage";
-import { CARNETS_CARD, CARNETS_INTRO, CARNET_THEMES, PAGES } from "@/data/architecture";
+import { CARNETS_CARD, CARNET_THEMES, PAGES } from "@/data/architecture";
 import { formatDate, themeLabel } from "@/lib/carnets";
-import { getBandeaux, getCarnets } from "@/sanity/lib/queries";
+import { getCarnets } from "@/sanity/lib/queries";
+import { getContenuSite } from "@/sanity/lib/contenu";
+import { texteDe } from "@/lib/contenu";
 import { urlFor } from "@/sanity/lib/image";
 import { partage } from "@/lib/site";
 
@@ -19,19 +21,20 @@ export const metadata: Metadata = {
 };
 
 export default async function CarnetsPage({ searchParams }: { searchParams: { theme?: string } }) {
-    const [carnets, bandeaux] = await Promise.all([getCarnets(), getBandeaux()]);
+    const [carnets, contenu] = await Promise.all([getCarnets(), getContenuSite()]);
+    const infos = contenu.pages.carnets;
     const theme = searchParams.theme;
     const visible = theme ? carnets.filter((c: any) => c.theme === theme) : carnets;
 
     return (
         <main className="min-h-screen bg-paper pb-20">
             {/* Même ouverture et même barre que les autres pages du Lieu. */}
-            <PageHero image={CARNETS_CARD.image} label={CARNETS_CARD.label} parent={PAGES["le-lieu"]} photo={bandeaux.carnets} />
+            <PageHero image={CARNETS_CARD.image} label={infos?.titre ?? CARNETS_CARD.label} parent={{ path: "le-lieu", label: contenu.pages["le-lieu"]?.titre ?? PAGES["le-lieu"].label }} photo={infos?.photo} />
             <SousNav path="le-lieu" current="/carnets" />
 
             <FadeIn direction="down" className="text-center px-6 pt-16 md:pt-24 mb-16">
-                <h2 className="text-2xl md:text-3xl font-serif text-wine-900 mb-6">{CARNETS_INTRO.title}</h2>
-                <RichText text={CARNETS_INTRO.body} className="max-w-2xl mx-auto text-gray-700 leading-relaxed text-lg" />
+                <h2 className="text-2xl md:text-3xl font-serif text-wine-900 mb-6">{texteDe(contenu, "carnets.intro.titre")}</h2>
+                <RichText text={texteDe(contenu, "carnets.intro.texte")} className="max-w-2xl mx-auto text-gray-700 leading-relaxed text-lg" />
             </FadeIn>
 
             <nav aria-label="Thèmes" className="flex flex-wrap justify-center gap-3 px-6 mb-16">
