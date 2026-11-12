@@ -1,3 +1,4 @@
+import { serialiserJsonLd } from '@/lib/jsonLd';
 import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Jost } from "next/font/google";
 import "./globals.css";
@@ -149,7 +150,7 @@ export default async function RootLayout({
       <body className="bg-white text-stone-900 antialiased overflow-x-hidden selection:bg-wine-900 selection:text-white">
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: serialiserJsonLd(jsonLd) }}
         />
 
 

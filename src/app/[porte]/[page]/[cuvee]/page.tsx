@@ -1,3 +1,4 @@
+import { serialiserJsonLd } from '@/lib/jsonLd';
 import type { Metadata } from "next";
 import Image from "next/image";
 import { flou } from "@/data/flous";
@@ -96,7 +97,7 @@ export default async function CuveePage({ params }: Props) {
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{
-                    __html: JSON.stringify({
+                    __html: serialiserJsonLd({
                         "@context": "https://schema.org",
                         "@type": "Product",
                         name: nomComplet(wine),
@@ -123,7 +124,7 @@ export default async function CuveePage({ params }: Props) {
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{
-                    __html: JSON.stringify(filAriane([
+                    __html: serialiserJsonLd(filAriane([
                         { nom: "Les Vins", chemin: "/les-vins" },
                         { nom: "Les cuvées", chemin: "/les-vins/cuvees" },
                         { nom: nomComplet(wine), chemin: cuveeHref(wine) },

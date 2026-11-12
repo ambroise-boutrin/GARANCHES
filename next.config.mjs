@@ -11,9 +11,26 @@ const versDomaine = SITE_HOST === 'garanches.vercel.app' ? [] : [
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     reactStrictMode: true,
+    // Ne pas annoncer aux visiteurs (et aux robots malveillants) la technologie du site.
+    poweredByHeader: false,
     // Photos et vidéos gardées 7 jours par le navigateur (sur Vercel, les photos optimisées reprennent cet en-tête).
     async headers() {
         return [
+            // Protections de base envoyées avec chaque page :
+            // - le site ne peut être affiché dans un cadre que par lui-même (aperçu du studio Sanity), pas par un autre site ;
+            // - le navigateur ne devine pas le type des fichiers ;
+            // - les autres sites ne voient que l'adresse du domaine d'où vient le visiteur ;
+            // - caméra, micro et localisation désactivés (le site n'en a pas besoin).
+            {
+                source: '/:path*',
+                headers: [
+                    { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
+                    { key: 'Content-Security-Policy', value: "frame-ancestors 'self'" },
+                    { key: 'X-Content-Type-Options', value: 'nosniff' },
+                    { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+                    { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
+                ],
+            },
             { source: '/images/:path*', headers: [{ key: 'Cache-Control', value: 'public, max-age=604800, stale-while-revalidate=86400' }] },
         ];
     },

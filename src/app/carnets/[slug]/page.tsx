@@ -1,3 +1,4 @@
+import { serialiserJsonLd } from '@/lib/jsonLd';
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -58,7 +59,7 @@ export default async function CarnetPage({ params }: Props) {
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{
-                    __html: JSON.stringify([
+                    __html: serialiserJsonLd([
                         {
                             "@context": "https://schema.org",
                             "@type": "BlogPosting",

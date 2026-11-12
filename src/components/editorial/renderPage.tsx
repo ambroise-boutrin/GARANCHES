@@ -1,3 +1,4 @@
+import { serialiserJsonLd } from '@/lib/jsonLd';
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import EditorialPage from "./EditorialPage";
@@ -63,7 +64,7 @@ async function Cuvees() {
 
     return (
         <>
-            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serialiserJsonLd(jsonLd) }} />
             <WinesList wines={wines} />
         </>
     );
@@ -90,7 +91,7 @@ export async function renderPage(path: string) {
 
     return (
         <EditorialPage page={page} overrides={overrides}>
-            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ariane) }} />
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serialiserJsonLd(ariane) }} />
             {Extra && <Extra />}
         </EditorialPage>
     );
