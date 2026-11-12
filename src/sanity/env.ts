@@ -20,8 +20,8 @@ function assertValue<T>(v: T | undefined, errorMessage: string): T {
     return v
 }
 
-// Jeton « Viewer » (sanity.io/manage › API › Tokens), à mettre dans Vercel sous SANITY_API_READ_TOKEN.
-// Il sert seulement à l'aperçu des brouillons dans le mode visuel du studio.
-export const readToken = process.env.SANITY_API_READ_TOKEN || ''
+// Jeton qui sert seulement, côté serveur, à l'aperçu des brouillons dans le mode visuel du studio.
+// SANITY_API_READ_TOKEN (jeton « Viewer ») s'il existe, sinon le jeton déjà en place pour les statistiques d'âge.
+export const readToken = process.env.SANITY_API_READ_TOKEN || process.env.SANITY_API_WRITE_TOKEN || ''
 
 export const studioUrl = '/studio'
