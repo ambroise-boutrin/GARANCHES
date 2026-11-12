@@ -1,3 +1,4 @@
+import { serialiserJsonLd } from '@/lib/jsonLd';
 import type { Metadata } from "next";
 import ContactContent from "./ContactContent";
 import { FAQS } from "@/data/faq";
@@ -30,7 +31,7 @@ export default function ContactPage({ searchParams }: { searchParams: { sujet?: 
     ];
     return (
         <>
-            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serialiserJsonLd(jsonLd) }} />
             <ContactContent sujet={searchParams.sujet} vin={searchParams.vin} />
         </>
     );
