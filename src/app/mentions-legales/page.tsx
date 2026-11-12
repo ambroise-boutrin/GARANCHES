@@ -49,7 +49,7 @@ export default async function MentionsLegales() {
                     L'ensemble de ce site relève de la législation française et internationale sur le droit d'auteur et la propriété intellectuelle. Tous les droits de reproduction sont réservés.
                 </p>
                 <p>
-                    Photographies : Vianney Tisseau, sauf mention contraire.
+                    Photographies : Vianney Tisseau et Domaine de Garanches.
                 </p>
 
                 <h3>Données personnelles</h3>
