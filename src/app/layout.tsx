@@ -10,6 +10,10 @@ import SmoothScroll from "@/components/SmoothScroll";
 import Script from "next/script";
 import { Providers } from "./providers";
 import CookieConsent from "@/components/CookieConsent";
+import ApercuStudio from "@/components/ApercuStudio";
+import { ContenuProvider } from "@/components/Contenu";
+import { getContenuSite } from "@/sanity/lib/contenu";
+import { draftMode } from "next/headers";
 import { SITE_URL, SITE_NAME, WINERY_ID, absolu, partage } from "@/lib/site";
 
 const cormorant = Cormorant_Garamond({
@@ -136,6 +140,9 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const apercu = draftMode().isEnabled;
+  // Textes, photos, noms des pages et numéros modifiés dans le studio, partagés avec les menus et le pied de page.
+  const contenu = await getContenuSite();
   return (
     <html lang="fr" suppressHydrationWarning className={`${cormorant.variable} ${jost.variable}`}>
       <head>
@@ -156,16 +163,17 @@ export default async function RootLayout({
 
 
 
+        <ContenuProvider value={contenu}>
         <Providers>
-          <AgeGate />
-
-          <CookieConsent />
+          {/* Dans l'aperçu du studio, pas de vérification d'âge ni de bandeau cookies : la page s'affiche directement. */}
+          {apercu ? <ApercuStudio /> : <><AgeGate /><CookieConsent /></>}
           <SmoothScroll />
           <Navbar />
           <PrechargePhotos />
           {children}
           <Footer />
         </Providers>
+        </ContenuProvider>
 
 
         <Script

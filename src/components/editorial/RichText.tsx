@@ -1,10 +1,15 @@
 import { Fragment } from "react";
+import { stegaClean } from "@sanity/client/stega";
 import { typo } from "@/lib/typo";
 
 // Affiche un texte du document maître : une ligne vide sépare deux paragraphes,
 // un simple retour à la ligne est conservé, **texte** passe en gras.
 export default function RichText({ text, className = "" }: { text: string; className?: string }) {
-    const paragraphs = typo(text).trim().split(/\n\s*\n/);
+    // Dans le mode visuel du studio, le texte se termine par des marques invisibles qui le rendent cliquable :
+    // on les met de côté avant la mise en forme, puis on les remet après le dernier paragraphe.
+    const propre = stegaClean(text);
+    const marque = text.startsWith(propre) ? text.slice(propre.length) : "";
+    const paragraphs = typo(propre).trim().split(/\n\s*\n/);
 
     return (
         <div className={`space-y-5 ${className}`}>
@@ -22,6 +27,7 @@ export default function RichText({ text, className = "" }: { text: string; class
                             )}
                         </Fragment>
                     ))}
+                    {i === paragraphs.length - 1 && marque}
                 </p>
             ))}
         </div>

@@ -12,9 +12,11 @@ interface Props {
     position?: string;
     // Effet de parallaxe au défilement : photos placées à côté d'un texte (accueil et blocs des pages).
     parallaxe?: boolean;
+    // Aperçu flou d'une photo venue du studio Sanity.
+    blur?: string;
 }
 
-export default function ParallaxImage({ src, alt, className = "", sizes = "100vw", position, parallaxe = false }: Props) {
+export default function ParallaxImage({ src, alt, className = "", sizes = "100vw", position, parallaxe = false, blur }: Props) {
     const cadre = useRef<HTMLDivElement>(null);
     const calque = useRef<HTMLDivElement>(null);
 
@@ -55,7 +57,7 @@ export default function ParallaxImage({ src, alt, className = "", sizes = "100vw
             sizes={sizes}
             loading="lazy"
             quality={75}
-            {...flou(src)}
+            {...flou(src, blur)}
             style={{ objectPosition: position }}
             className="object-cover"
         />

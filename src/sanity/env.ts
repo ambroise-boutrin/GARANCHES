@@ -19,3 +19,9 @@ function assertValue<T>(v: T | undefined, errorMessage: string): T {
     }
     return v
 }
+
+// Jeton « Viewer » (sanity.io/manage › API › Tokens), à mettre dans Vercel sous SANITY_API_READ_TOKEN.
+// Il sert seulement à l'aperçu des brouillons dans le mode visuel du studio.
+export const readToken = process.env.SANITY_API_READ_TOKEN || ''
+
+export const studioUrl = '/studio'

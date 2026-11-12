@@ -12,6 +12,7 @@ export default {
             title: 'Emplacement',
             type: 'string',
             options: { list: BLOC_KEYS },
+            readOnly: ({ document }: any) => Boolean(document?.cle) && String(document?._id || '').includes('bloc-'),
             validation: (Rule: any) => Rule.required(),
         },
         {
@@ -28,7 +29,8 @@ export default {
         },
         {
             name: 'image',
-            title: 'Image',
+            title: 'Photo',
+            description: 'Placez le rond sur le sujet pour qu’il reste visible sur téléphone.',
             type: 'image',
             options: { hotspot: true },
         },

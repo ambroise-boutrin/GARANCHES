@@ -8,18 +8,22 @@ import PageCards from "./PageCards";
 import SousNav from "./SousNav";
 import { PAGES, type Bloc, type Page } from "@/data/architecture";
 import type { BlocOverride } from "@/sanity/lib/queries";
-import { urlFor } from "@/sanity/lib/image";
+import { getContenuSite, type PhotoPrete } from "@/sanity/lib/contenu";
+import { texteDe } from "@/lib/contenu";
+import { photoSanity } from "@/sanity/lib/photo";
 import { cadrage } from "@/data/cadrages";
 import { flou } from "@/data/flous";
 import { altPhoto } from "@/data/alts";
 import { typo } from "@/lib/typo";
 
 // Photo d'ouverture des pages, partagée avec les Carnets.
-export function PageHero({ image, label, parent }: { image: string; label: string; parent?: { path: string; label: string } }) {
+export function PageHero({ image: imageCode, label, parent, photo }: { image: string; label: string; parent?: { path: string; label: string }; photo?: PhotoPrete }) {
+    // Photo changée dans le studio (Pages › Photo du haut), sinon celle prévue dans le code.
+    const image = photo?.src ?? imageCode;
     return (
         <section className="relative h-[70vh] min-h-[480px] bg-stone-900 flex flex-col justify-center items-center overflow-hidden">
-            <div className="absolute inset-0 z-0">
-                <Image src={image} alt={altPhoto(image, `${label}, domaine de Garanches à Odenas`)} fill sizes="100vw" priority quality={75} {...flou(image)} style={{ objectPosition: cadrage(image) }} className="object-cover brightness-[.6]" />
+            <div className="absolute inset-0 z-0" data-sanity={photo?.cliquer}>
+                <Image src={image} alt={altPhoto(image, `${label}, domaine de Garanches à Odenas`)} fill sizes="100vw" priority quality={75} {...flou(image, photo?.blur)} style={{ objectPosition: photo ? photo.position : cadrage(image) }} className="object-cover brightness-[.6]" />
             </div>
             <FadeIn direction="down" className="relative text-center px-4 pt-20 flex flex-col items-center">
                 {parent && (
@@ -37,10 +41,12 @@ export function bookingHref(sujet: string) {
     return `/contact?sujet=${encodeURIComponent(sujet)}#formulaire`;
 }
 
-function BlocSection({ bloc, override, index }: { bloc: Bloc; override?: BlocOverride; index: number }) {
+function BlocSection({ bloc, override, index, texteAVenir }: { bloc: Bloc; override?: BlocOverride; index: number; texteAVenir: string }) {
     const title = typo(override?.titre || bloc.title || "");
     const body = override?.texte || bloc.body;
-    const image = override?.image?.asset ? urlFor(override.image).width(1400).url() : bloc.image;
+    const sanity = photoSanity(override?.image, 1800);
+    const image = sanity?.src ?? bloc.image;
+    const position = sanity ? sanity.position : cadrage(image);
     const action = bloc.booking
         ? { label: override?.bouton || bloc.booking.label, href: bookingHref(bloc.booking.sujet) }
         : bloc.cta && { label: override?.bouton || bloc.cta.label, href: bloc.cta.href };
@@ -55,7 +61,7 @@ function BlocSection({ bloc, override, index }: { bloc: Bloc; override?: BlocOve
             {body ? (
                 <RichText text={body} className="text-gray-800 leading-relaxed text-base md:text-lg" />
             ) : (
-                <p className="text-gray-600">Texte à venir.</p>
+                <p className="text-gray-600">{texteAVenir}</p>
             )}
             {pratique && (
                 <dl className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-10 text-left">
@@ -92,7 +98,7 @@ function BlocSection({ bloc, override, index }: { bloc: Bloc; override?: BlocOve
                     <FadeIn direction={imageFirst ? "right" : "left"} delay={0.2} className={imageFirst ? "md:order-1" : ""}>
                         {bloc.document ? (
                             // Archives et diplômes : montrés en entier, comme posés sur une table.
-                            <div className="relative w-full aspect-[4/3] bg-stone-200/60">
+                            <div className="relative w-full aspect-[4/3] bg-stone-200/60" data-sanity={override?.cliquerImage}>
                                 <Image
                                     src={image}
                                     alt={bloc.alt || ""}
@@ -104,12 +110,13 @@ function BlocSection({ bloc, override, index }: { bloc: Bloc; override?: BlocOve
                             </div>
                         ) : (
                             // Cadre au format de la photo, pour ne pas couper les visages sur téléphone.
-                            <div className={`w-full relative ${bloc.paysage ? "aspect-[4/3] md:aspect-auto md:h-[420px]" : "aspect-[4/5] md:aspect-auto md:h-[560px]"}`}>
+                            <div data-sanity={override?.cliquerImage} className={`w-full relative ${bloc.paysage ? "aspect-[4/3] md:aspect-auto md:h-[420px]" : "aspect-[4/5] md:aspect-auto md:h-[560px]"}`}>
                                 <ParallaxImage
                                     src={image}
                                     parallaxe
                                     alt={bloc.alt || ""}
-                                    position={cadrage(image)}
+                                    position={position}
+                                    blur={sanity?.blur}
                                     className="h-full w-full"
                                     sizes="(max-width: 768px) 100vw, 50vw"
                                 />
@@ -124,7 +131,7 @@ function BlocSection({ bloc, override, index }: { bloc: Bloc; override?: BlocOve
     );
 }
 
-export default function EditorialPage({
+export default async function EditorialPage({
     page,
     overrides,
     children,
@@ -133,23 +140,27 @@ export default function EditorialPage({
     overrides: Record<string, BlocOverride>;
     children?: ReactNode;
 }) {
-    const parent = page.path.includes("/") ? PAGES[page.path.split("/")[0]] : undefined;
+    const contenu = await getContenuSite();
+    const infos = contenu.pages[page.path];
+    const parentCode = page.path.includes("/") ? PAGES[page.path.split("/")[0]] : undefined;
+    const parent = parentCode && { path: parentCode.path, label: contenu.pages[parentCode.path]?.titre ?? parentCode.label };
+    const texteAVenir = texteDe(contenu, "pages.a-venir");
 
     return (
         <main className="min-h-screen text-gray-800 font-sans">
-            <PageHero image={page.image} label={page.label} parent={parent} />
+            <PageHero image={page.image} label={infos?.titre ?? page.label} parent={parent} photo={infos?.photo} />
 
             <SousNav path={page.path} />
 
             {page.blocs.map((bloc, i) => (
-                <BlocSection key={bloc.id} bloc={bloc} override={overrides[`${page.path}#${bloc.id}`]} index={i} />
+                <BlocSection key={bloc.id} bloc={bloc} override={overrides[`${page.path}#${bloc.id}`]} index={i} texteAVenir={texteAVenir} />
             ))}
 
             {children}
 
             {page.children && page.children.length > 0 && (
                 <div className="bg-stone-100">
-                    <PageCards paths={page.children} title={parent ? "Poursuivre" : "Découvrir"} />
+                    <PageCards paths={page.children} title={texteDe(contenu, parent ? "pages.poursuivre" : "pages.decouvrir")} />
                 </div>
             )}
         </main>

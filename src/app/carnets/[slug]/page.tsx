@@ -100,7 +100,7 @@ export default async function CarnetPage({ params }: Props) {
 
             {/* Un Carnet renvoie vers les autres univers. */}
             <div className="bg-stone-100 mt-20">
-                <PageCards paths={["le-lieu", "les-vins", "rencontrons-garanches"]} title="Poursuivre" />
+                <PageCards paths={["le-lieu", "les-vins", "rencontrons-garanches"]} />
             </div>
         </main>
     );

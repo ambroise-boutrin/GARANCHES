@@ -11,6 +11,8 @@ import PageCards from "@/components/editorial/PageCards";
 import { getWine } from "@/lib/wines";
 import { cuveeHref } from "@/lib/wineSlug";
 import { prixAffiche } from "@/lib/prix";
+import { getContenuSite } from "@/sanity/lib/contenu";
+import { photoDe, texteDe } from "@/lib/contenu";
 import { SITE_NAME, WINERY_ID, absolu, filAriane, partage } from "@/lib/site";
 
 export const revalidate = 60;
@@ -90,6 +92,9 @@ export default async function CuveePage({ params }: Props) {
     const data = await load(params);
     if (!data?.wine) notFound();
     const { wine, wines } = data;
+    const contenu = await getContenuSite();
+    const photoHaut = photoDe(contenu, "cuvees.fiche.photo");
+    const pageCuvees = contenu.pages["les-vins/cuvees"]?.titre ?? "Les cuvées";
     const autres = wines.filter((w: any) => w.id !== wine.id);
 
     return (
@@ -113,7 +118,7 @@ export default async function CuveePage({ params }: Props) {
                                 "@type": "Offer",
                                 priceCurrency: "EUR",
                                 price: (wine.price / 100).toFixed(2),
-                                availability: "https://schema.org/InStock",
+                                availability: wine.enVente === false ? "https://schema.org/OutOfStock" : "https://schema.org/InStock",
                                 url: absolu(cuveeHref(wine)),
                                 seller: { "@id": WINERY_ID },
                             },
@@ -132,12 +137,12 @@ export default async function CuveePage({ params }: Props) {
                 }}
             />
             <section className="relative h-[60vh] min-h-[420px] flex flex-col justify-center items-center overflow-hidden">
-                <div className="absolute inset-0 z-0">
-                    <Image src="/images/23_slide002.jpg" alt="Vendanges à la main dans les vignes du Beaujolais" fill sizes="100vw" priority quality={75} {...flou("/images/23_slide002.jpg")} className="object-cover brightness-[.6]" />
+                <div className="absolute inset-0 z-0" data-sanity={photoHaut.cliquer}>
+                    <Image src={photoHaut.src} alt="Vendanges à la main dans les vignes du Beaujolais" fill sizes="100vw" priority quality={75} {...flou(photoHaut.src, photoHaut.blur)} style={{ objectPosition: photoHaut.position }} className="object-cover brightness-[.6]" />
                 </div>
                 <FadeIn direction="down" className="relative text-center px-4 pt-20 flex flex-col items-center">
                     <Link href="/les-vins/cuvees" className="text-sm md:text-base text-white underline underline-offset-4 decoration-1">
-                        Les cuvées
+                        {pageCuvees}
                     </Link>
                     <h1 className="normal-case tracking-normal font-serif text-4xl sm:text-5xl md:text-7xl leading-tight text-white mt-4 mb-4">{wine.name}</h1>
                     {wine.subtitle && <p className="text-white/80 text-sm mb-6">{wine.subtitle}</p>}
@@ -148,7 +153,7 @@ export default async function CuveePage({ params }: Props) {
             <section className="py-20 md:py-28 bg-stone-50">
                 <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 md:gap-20 items-center">
                     <FadeIn direction="right">
-                        <div className="relative h-[420px] bg-white">
+                        <div className="relative h-[420px] bg-white" data-sanity={wine.cliquerImage}>
                             <Image
                                 src={wine.image || "/images/bouteilles/brouilly.jpg"}
                                 alt={`${wine.name} - Domaine de Garanches`}
@@ -184,13 +189,13 @@ export default async function CuveePage({ params }: Props) {
                 </div>
             </section>
 
-            <Section title="Parcelle et terroir" text={wine.parcelle} background="bg-white" />
-            <Section title="Assemblage et élevage" text={wine.vinification} background="bg-stone-50" />
+            <Section title={texteDe(contenu, "cuvees.fiche.parcelle")} text={wine.parcelle} background="bg-white" />
+            <Section title={texteDe(contenu, "cuvees.fiche.vinification")} text={wine.vinification} background="bg-stone-50" />
 
             {autres.length > 0 && (
                 <section className="py-20 bg-stone-100">
                     <div className="max-w-6xl mx-auto px-6">
-                        <h2 className="text-3xl font-serif text-wine-900 text-center mb-12">Les autres cuvées</h2>
+                        <h2 className="text-3xl font-serif text-wine-900 text-center mb-12">{texteDe(contenu, "cuvees.fiche.autres")}</h2>
                         <div className="grid grid-cols-2 gap-4 sm:flex sm:flex-wrap sm:justify-center sm:gap-6">
                             {autres.map((w: any) => (
                                 <Link key={w.id} href={cuveeHref(w)} className="group sm:w-44 text-center">
@@ -205,7 +210,7 @@ export default async function CuveePage({ params }: Props) {
                 </section>
             )}
 
-            <PageCards paths={["les-vins/a-table", "acheter"]} title="Poursuivre" />
+            <PageCards paths={["les-vins/a-table", "acheter"]} />
         </main>
     );
 }

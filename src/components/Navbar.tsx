@@ -4,7 +4,9 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
-import { PORTES, GENERIC_PATHS, type Porte } from "@/data/architecture";
+import { GENERIC_PATHS, type Porte } from "@/data/architecture";
+import { usePortes, useTelephones, useTexte } from "@/components/Contenu";
+import { telHref } from "@/data/contacts";
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
@@ -45,8 +47,12 @@ export default function Navbar() {
     }, [pathname]);
 
     // Les trois portes, puis Contact (les Carnets sont dans le sous-menu Le Lieu).
+    const portes = usePortes();
+    const commander = useTexte("menu.commander");
+    const adresse = useTexte("pied.adresse").replace(/\n/g, ", ").replace(/, France$/, "");
+    const telephones = useTelephones();
     const navLinks: { name: string; href: string; children: Porte["children"] }[] = [
-        ...PORTES.map((porte) => ({ name: porte.label, href: porte.path, children: porte.children })),
+        ...portes.map((porte) => ({ name: porte.label, href: porte.path, children: porte.children })),
         { name: "Contact", href: "/contact", children: [] },
     ];
     // Menu mobile : porte dont on affiche les pages (null = liste des portes).
@@ -132,7 +138,7 @@ export default function Navbar() {
                                 : "border-white text-white hover:bg-white hover:text-stone-900"
                                 } ${scrolled ? "bg-transparent border-white text-white hover:!bg-white hover:!text-stone-900 hover:!border-white" : ""}`}
                         >
-                            Commander
+                            {commander}
                         </Link>
                     </div>
                 </div>
@@ -247,16 +253,15 @@ export default function Navbar() {
                                             onClick={() => setIsOpen(false)}
                                             className="block w-full py-4 text-center bg-white text-stone-900 uppercase tracking-widest text-xs font-bold"
                                         >
-                                            Commander
+                                            {commander}
                                         </Link>
                                         <div className="text-center text-xs text-white/50 leading-relaxed">
-                                            <p>345 chemin de Garanches, 69460 Odenas</p>
+                                            <p>{adresse}</p>
                                             {/* Deux colonnes pour que le bas du menu reste visible au-dessus de la barre de Safari. */}
                                             <div className="mt-2 grid grid-cols-2 gap-x-3 text-white/70">
-                                                <a href="tel:+33782249436" className="py-2">Romain<br />07 82 24 94 36</a>
-                                                <a href="tel:+33658834680" className="py-2">Aurélie<br />06 58 83 46 80</a>
-                                                <a href="tel:+33661735667" className="py-2">Isabelle<br />06 61 73 56 67</a>
-                                                <a href="tel:+33609419702" className="py-2">Michel<br />06 09 41 97 02</a>
+                                                {telephones.map((t) => (
+                                                    <a key={t.nom + t.numero} href={telHref(t.numero)} className="py-2">{t.nom}<br />{t.numero}</a>
+                                                ))}
                                             </div>
                                         </div>
                                     </div>

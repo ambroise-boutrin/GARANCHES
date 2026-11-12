@@ -1,50 +1,61 @@
+// Vidéo du haut de l'accueil (section « hero »). Les textes de l'accueil sont dans « Accueil, contact, pied de page… ».
+export const SECTIONS_ACCUEIL = [
+    { title: 'Accueil › Haut de page (phrase et vidéo)', value: 'hero' },
+    { title: 'Accueil › Une histoire qui continue', value: 'philosophy' },
+];
+
 export default {
     name: 'pageContent',
-    title: 'Contenu de Page',
+    title: "Vidéo de l'accueil",
     type: 'document',
     fields: [
         {
             name: 'page',
             title: 'Page',
             type: 'string',
-            options: {
-                list: [
-                    { title: 'Accueil', value: 'home' },
-                    { title: 'Notre Histoire', value: 'history' },
-                    { title: 'Nos Vins', value: 'wines' },
-                    { title: 'Visite', value: 'visit' },
-                ],
-            },
-            validation: (Rule: any) => Rule.required(),
+            hidden: true,
+            initialValue: 'home',
         },
         {
             name: 'section',
-            title: 'Section',
+            title: 'Emplacement',
             type: 'string',
+            options: { list: SECTIONS_ACCUEIL },
             validation: (Rule: any) => Rule.required(),
         },
         {
             name: 'title',
             title: 'Titre',
             type: 'string',
+            hidden: ({ document }: any) => document?.section === 'hero',
         },
         {
             name: 'content',
-            title: 'Contenu',
+            title: 'Texte',
+            description: 'Une ligne vide sépare deux paragraphes.',
             type: 'text',
+            rows: 6,
         },
         {
             name: 'image',
             title: 'Image',
             type: 'image',
             options: { hotspot: true },
+            hidden: true,
         },
         {
             name: 'video',
             title: 'Vidéo',
+            description: 'Vidéo en fond du haut de la page. MP4 sans son, moins de 20 Mo.',
             type: 'file',
-            description: "Accueil, section « hero » : vidéo en fond du haut de la page. MP4 sans son, moins de 20 Mo.",
             options: { accept: 'video/mp4,video/webm' },
+            hidden: ({ document }: any) => document?.section !== 'hero',
         },
     ],
+    preview: {
+        select: { section: 'section', content: 'content' },
+        prepare({ section, content }: any) {
+            return { title: SECTIONS_ACCUEIL.find((s) => s.value === section)?.title || section, subtitle: content };
+        },
+    },
 };
