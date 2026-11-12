@@ -66,26 +66,26 @@ export default function Navbar() {
 
     return (
         <nav
-            className={`fixed w-full z-[100] transition-all duration-700 ${scrolled ? "bg-stone-900 py-3" : "bg-gradient-to-b from-black/50 to-transparent py-6"} ${isOpen ? "!h-screen !bg-stone-900" : ""
+            className={`fixed w-full z-[100] md:transition-all md:duration-700 ${scrolled ? "bg-stone-900 py-3" : "bg-gradient-to-b from-black/50 to-transparent py-6"} ${isOpen ? "!h-screen !bg-stone-900" : ""
                 }`}
         >
             <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
 
 
                 <Link href="/" className="relative z-[101] flex items-center gap-3 group">
-                    <div className={`relative transition-all duration-500 ${scrolled ? "w-[68px] h-9" : "w-[84px] h-11"}`}>
+                    <div className={`relative md:transition-all md:duration-500 ${scrolled ? "w-[68px] h-9" : "w-[84px] h-11"}`}>
                         <Image
                             src="/images/logo-maison.png"
                             alt="Logo Domaine de Garanches"
                             fill
                             // Si useDarkText est vrai, on inverse les couleurs (White -> Black) pour qu'il soit visible sur fond blanc
-                            className={`object-contain transition-all duration-300 ${useDarkText ? "invert" : ""}`}
+                            className={`object-contain md:transition-all md:duration-300 ${useDarkText ? "invert" : ""}`}
                             sizes="84px"
                             priority
                             unoptimized
                         />
                     </div>
-                    <span className={`font-serif tracking-widest uppercase font-bold transition-all duration-300 ${scrolled ? "text-sm" : "text-base"} ${useDarkText ? "text-stone-900" : "text-white"}`}>
+                    <span className={`font-serif tracking-widest uppercase font-bold md:transition-all md:duration-300 ${scrolled ? "text-sm" : "text-base"} ${useDarkText ? "text-stone-900" : "text-white"}`}>
                         Garanches
                     </span>
                 </Link>
