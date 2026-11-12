@@ -211,10 +211,10 @@ export default function HomePageClient({ products, content }: { products: any[],
                         </FadeIn>
                     </div>
 
-                    <div className="grid md:grid-cols-3 gap-8 md:gap-12">
-                        {/* DYNAMIC PRODUCTS */}
-                        {products.slice(0, 3).map((wine, index) => (
-                            <FadeIn key={wine.id} delay={0.1 + index * 0.2} className="group flex flex-col h-full">
+                    <div className="flex flex-wrap justify-center gap-8 md:gap-12">
+                        {/* Tous les vins du studio, trois par ligne sur ordinateur */}
+                        {products.map((wine, index) => (
+                            <FadeIn key={wine.id} delay={0.1 + index * 0.2} className="group flex flex-col w-full md:w-[calc((100%-6rem)/3)]">
                                 <Link href={cuveeHref(wine)} className="flex-grow">
                                     <div data-sanity={wine.cliquerImage} className="relative h-[320px] sm:h-[380px] md:h-[500px] overflow-hidden mb-6 bg-gray-50 flex items-center justify-center p-4 md:p-8 border border-transparent hover:border-gray-100 transition-colors">
                                         <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors z-10 duration-500"></div>
