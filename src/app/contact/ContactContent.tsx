@@ -2,6 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import dynamic from "next/dynamic";
+import Image from "next/image";
 import FadeIn from "@/components/FadeIn";
 import FAQ from "@/components/FAQ";
 import OpeningStatus from "@/components/OpeningStatus";
@@ -120,11 +121,13 @@ export default function ContactContent({ sujet, vin }: { sujet?: string; vin?: s
                             </div>
 
                             <div className="mt-8 h-48 w-full relative overflow-hidden group-hover:shadow-lg transition-all" data-sanity={photo.cliquer}>
-                                <img
+                                <Image
                                     src={photo.src}
+                                    fill
+                                    sizes="(min-width: 768px) 45vw, 100vw"
                                     style={{ objectPosition: photo.position }}
                                     alt="Le domaine de Garanches au milieu de ses vignes, à Odenas"
-                                    className="w-full h-full object-cover opacity-90 transition-transform duration-1000"
+                                    className="object-cover opacity-90"
                                 />
                             </div>
                         </div>
