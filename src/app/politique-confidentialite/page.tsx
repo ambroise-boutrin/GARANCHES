@@ -22,65 +22,73 @@ export default async function PolitiqueConfidentialite() {
                 <h1 className="text-3xl font-serif text-wine-900 mb-8 border-b-2 border-wine-100 pb-4">Politique de Confidentialité</h1>
 
                 <p className="text-sm text-stone-700 mb-8">
-                    Dernière mise à jour : {new Date().toLocaleDateString('fr-FR', { year: 'numeric', month: 'long' })}
+                    Dernière mise à jour : novembre 2026
                 </p>
 
                 <p>
-                    Le Domaine de Garanches attache une grande importance à la protection de votre vie privée. Cette politique de confidentialité explique quelles données nous collectons, comment nous les utilisons et quels sont vos droits.
+                    Cette politique explique quelles données personnelles nous recevons par ce site, pourquoi, combien de temps nous les gardons et quels sont vos droits.
+                    Ce site ne contient ni publicité ni cookie de suivi, et vous n'avez pas besoin de créer de compte.
                 </p>
 
                 <h2 className="text-xl font-serif text-wine-800 mt-8 mb-4">1. Responsable du traitement</h2>
                 <p>
-                    Les données personnelles collectées sur ce site sont traitées par :<br />
-                    <strong>Domaine de Garanches</strong><br />
+                    <strong>GFA Domaine de Garanches</strong><br />
                     345 chemin de Garanches, 69460 Odenas<br />
-                    Email : contact@domainedegaranches.com
+                    SIREN 400 409 173<br />
+                    Email : contact@domainedegaranches.com
                 </p>
 
-                <h2 className="text-xl font-serif text-wine-800 mt-8 mb-4">2. Données collectées</h2>
-                <p>Nous pouvons collecter les données suivantes :</p>
+                <h2 className="text-xl font-serif text-wine-800 mt-8 mb-4">2. Données que nous recevons</h2>
                 <ul className="list-disc pl-5 space-y-2">
-                    <li><strong>Données de commande :</strong> Nom, prénom, adresse de livraison et de facturation, email, numéro de téléphone. Ces données sont nécessaires à l'exécution du contrat de vente.</li>
-                    <li><strong>Données de contact :</strong> Informations transmises via notre formulaire de contact ou par email.</li>
-                    <li><strong>Données de navigation (Cookies) :</strong> Voir notre gestionnaire de cookies pour plus de détails.</li>
-                    <li id="tranches-age" className="scroll-mt-28"><strong>Vérification de l'âge :</strong> à l'entrée du site, nous vous demandons votre date de naissance pour vérifier que vous êtes majeur. Cette date est utilisée uniquement dans votre navigateur et n'est ni transmise ni conservée. Seule votre tranche d'âge (18-24, 25-34, 35-44, 45-54, 55-64, 65 ans et plus) est ajoutée à un compteur mensuel anonyme, sans adresse IP ni identifiant, pour nous aider à mieux connaître nos visiteurs. Aucune donnée ne permet de vous identifier.</li>
+                    <li><strong>Vos messages :</strong> le formulaire de contact ouvre votre propre messagerie. Nous recevons donc l'email que vous nous envoyez, avec votre nom, votre adresse email et, si vous les indiquez, votre téléphone et votre message. Rien n'est enregistré par le site lui-même.</li>
+                    <li><strong>Vos commandes et réservations :</strong> si vous nous commandez des bouteilles ou réservez une visite, nous gardons les informations utiles (nom, coordonnées, adresse de livraison, détail de la commande).</li>
+                    <li id="tranches-age" className="scroll-mt-28"><strong>Vérification de l'âge :</strong> à l'entrée du site, nous vous demandons votre date de naissance pour vérifier que vous êtes majeur. Cette date est utilisée uniquement dans votre navigateur et n'est ni transmise ni conservée. Seule votre tranche d'âge (18-24, 25-34, 35-44, 45-54, 55-64, 65 ans et plus) est ajoutée à un compteur mensuel anonyme, sans adresse IP ni identifiant. Aucune donnée ne permet de vous identifier.</li>
+                    <li><strong>Mesure d'audience :</strong> nous utilisons Plausible Analytics, un outil européen sans cookie qui compte les pages vues de façon anonyme, sans suivre les visiteurs d'un site à l'autre.</li>
+                    <li><strong>Mémoire de votre navigateur :</strong> le site garde dans votre navigateur le fait que vous avez confirmé votre âge et vos choix sur les cookies, pour ne pas vous les redemander. Ces informations restent sur votre appareil.</li>
+                    <li><strong>Carte Google Maps :</strong> sur la page Contact, la carte ne se charge que si vous cliquez sur « Afficher la carte ». Google reçoit alors votre adresse IP et peut déposer ses propres cookies, selon sa politique de confidentialité.</li>
                 </ul>
 
-                <h2 className="text-xl font-serif text-wine-800 mt-8 mb-4">3. Finalités du traitement</h2>
-                <p>Vos données sont collectées pour :</p>
+                <h2 className="text-xl font-serif text-wine-800 mt-8 mb-4">3. Pourquoi et sur quelle base</h2>
                 <ul className="list-disc pl-5 space-y-2">
-                    <li>Gérer et expédier vos commandes de vin.</li>
-                    <li>Répondre à vos demandes d'information ou de visite.</li>
-                    <li>Respecter nos obligations légales (comptabilité, vérification de l'âge légal).</li>
-                    <li>Améliorer notre site et nos services.</li>
-                    <li>Établir des statistiques anonymes sur l'âge de nos visiteurs, pour adapter notre communication.</li>
+                    <li>Répondre à vos messages et demandes de visite : notre intérêt légitime à vous répondre, ou les mesures préalables à un contrat que vous demandez.</li>
+                    <li>Préparer, livrer et facturer vos commandes : l'exécution du contrat de vente, et nos obligations comptables.</li>
+                    <li>Vérifier que les visiteurs sont majeurs : notre obligation légale de ne pas vendre d'alcool aux mineurs.</li>
+                    <li>Statistiques anonymes (âge, audience) : notre intérêt légitime à améliorer le site. Ces données ne vous identifient pas.</li>
+                    <li>Carte Google Maps : votre consentement, donné en cliquant pour l'afficher.</li>
                 </ul>
 
-                <h2 className="text-xl font-serif text-wine-800 mt-8 mb-4">4. Destinataires des données</h2>
+                <h2 className="text-xl font-serif text-wine-800 mt-8 mb-4">4. Qui y a accès</h2>
                 <p>
-                    Vos données sont destinées au personnel du Domaine de Garanches. Elles peuvent être transmises à nos sous-traitants pour l'exécution des services (ex: transporteurs pour la livraison, prestataire de paiement sécurisé).
-                    Nous ne vendons jamais vos données à des tiers.
+                    Seules les personnes du domaine qui traitent votre demande. Nous faisons aussi appel à des prestataires techniques, qui n'utilisent pas vos données pour leur propre compte :
                 </p>
-
-                <h2 className="text-xl font-serif text-wine-800 mt-8 mb-4">5. Conservation des données</h2>
                 <ul className="list-disc pl-5 space-y-2">
-                    <li><strong>Commandes :</strong> Conservées pendant 10 ans (obligation légale comptable).</li>
-                    <li><strong>Demandes de contact :</strong> Conservées pendant 3 ans maximum après le dernier contact.</li>
-                    <li><strong>Cookies :</strong> Conservés 13 mois maximum.</li>
+                    <li>Vercel Inc. (États-Unis), hébergeur du site. Le transfert vers les États-Unis est encadré par le Data Privacy Framework et les clauses contractuelles types de la Commission européenne.</li>
+                    <li>Sanity (Norvège), qui stocke les textes et photos du site ainsi que le compteur anonyme des tranches d'âge.</li>
+                    <li>Plausible Analytics (Union européenne), pour la mesure d'audience anonyme.</li>
+                    <li>Notre fournisseur de messagerie, qui reçoit vos emails, et le transporteur qui livre votre commande.</li>
+                </ul>
+                <p>Nous ne vendons ni ne louons jamais vos données.</p>
+
+                <h2 className="text-xl font-serif text-wine-800 mt-8 mb-4">5. Combien de temps</h2>
+                <ul className="list-disc pl-5 space-y-2">
+                    <li><strong>Messages et demandes :</strong> 3 ans au plus après notre dernier échange.</li>
+                    <li><strong>Commandes et factures :</strong> 10 ans (obligation comptable).</li>
+                    <li><strong>Mémoire de votre navigateur :</strong> jusqu'à ce que vous l'effaciez, et au plus 13 mois pour vos choix sur les cookies.</li>
                 </ul>
 
-                <h2 className="text-xl font-serif text-wine-800 mt-8 mb-4">6. Vos droits (RGPD)</h2>
+                <h2 className="text-xl font-serif text-wine-800 mt-8 mb-4">6. Vos droits</h2>
                 <p>
-                    Conformément au Règlement Général sur la Protection des Données (RGPD), vous disposez d'un droit d'accès, de rectification, d'effacement, de limitation et de portabilité de vos données.
+                    Vous pouvez demander à accéder à vos données, à les corriger, à les effacer, à en limiter l'usage, à les récupérer, ou vous opposer à leur utilisation.
+                    Vous pouvez aussi nous indiquer ce que nous devons faire de vos données après votre décès.
                 </p>
                 <p>
-                    Pour exercer ces droits, contactez-nous par email à <strong>contact@domainedegaranches.com</strong> ou par courrier postal.
-                    Vous avez également le droit d'introduire une réclamation auprès de la CNIL (www.cnil.fr).
+                    Écrivez-nous à <strong>contact@domainedegaranches.com</strong> ou au 345 chemin de Garanches, 69460 Odenas. Nous répondons sous un mois.
+                    Si vous estimez que vos droits ne sont pas respectés, vous pouvez saisir la CNIL (www.cnil.fr).
                 </p>
 
                 <h2 className="text-xl font-serif text-wine-800 mt-8 mb-4">7. Sécurité</h2>
                 <p>
-                    Nous mettons en œuvre des mesures techniques et organisationnelles appropriées pour protéger vos données contre l'accès non autorisé, la perte ou l'altération (protocole HTTPS, paiement sécurisé).
+                    Le site est servi uniquement en HTTPS, et l'accès à l'outil de gestion du site est réservé aux personnes du domaine.
                 </p>
             </div>
         </main>

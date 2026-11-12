@@ -21,18 +21,19 @@ export default async function CGVPage() {
             <div className="max-w-3xl mx-auto px-6 prose prose-stone">
                 <h1 className="text-3xl font-serif text-wine-900 mb-8 border-b-2 border-wine-100 pb-4">Conditions Générales de Vente</h1>
 
-                <p className="text-sm mb-8">Dernière mise à jour : Février 2026</p>
+                <p className="text-sm mb-8">Dernière mise à jour : novembre 2026</p>
 
                 <h3>1. Objet</h3>
                 <p>
-                    Les présentes Conditions Générales de Vente (CGV) régissent les ventes de vins et produits associés effectuées par le Domaine de Garanches,
-                    situé à Odenas (69460), auprès de ses clients particuliers et professionnels.
+                    Les présentes Conditions Générales de Vente (CGV) régissent les ventes de vins et produits associés effectuées par le GFA Domaine de Garanches
+                    (SIREN 400 409 173, R.C.S. Villefranche-Tarare), 345 chemin de Garanches, 69460 Odenas, contact@domainedegaranches.com,
+                    auprès de ses clients particuliers et professionnels. Le site ne permet pas de payer en ligne : les commandes se passent par email, par téléphone ou au domaine.
                 </p>
 
                 <h3>2. Vente d'alcool aux mineurs</h3>
                 <p>
                     Conformément à l'article L. 3342-1 du Code de la Santé Publique, la vente d'alcool à des mineurs de moins de 18 ans est interdite.
-                    En passant commande sur notre site ou en nous contactant, vous certifiez avoir 18 ans révolus.
+                    En passant commande, vous certifiez avoir 18 ans révolus.
                 </p>
 
                 <h3>3. Tarifs</h3>
@@ -49,7 +50,7 @@ export default async function CGVPage() {
 
                 <h3>5. Livraison</h3>
                 <p>
-                    Les produits sont livrés à l'adresse de livraison indiquée au cours du processus de commande.
+                    Les produits sont livrés à l'adresse de livraison indiquée lors de la commande.
                     Les délais de livraison sont donnés à titre indicatif. En cas de retard d'expédition, un mail vous sera adressé pour vous informer d'une éventuelle conséquence sur la date de livraison.
                 </p>
                 <p>
@@ -79,21 +80,22 @@ export default async function CGVPage() {
                     </p>
                 </div>
 
-                <h3>7. Médiation de la consommation (Litiges)</h3>
+                <h3>7. Garanties légales</h3>
+                <p>
+                    Nos vins bénéficient de la garantie légale de conformité (articles L.217-3 et suivants du Code de la consommation) et de la garantie des vices cachés
+                    (articles 1641 et suivants du Code civil). En cas de défaut, contactez-nous à contact@domainedegaranches.com : nous remplaçons ou remboursons le produit concerné.
+                </p>
+
+                <h3>8. Médiation de la consommation (Litiges)</h3>
                 <p>
                     Conformément aux articles L.616-1 et R.616-1 du code de la consommation, nous proposons un dispositif de médiation de la consommation.
                     En cas de litige non résolu par une réclamation préalable auprès de notre service client, vous pouvez contacter le médiateur de la consommation compétent.
                     <br /><br />
                     <strong>Médiateur de la consommation :</strong><br />
-                    [Nom et coordonnées du médiateur à renseigner]<br />
-                    [Site web du médiateur]
-                </p>
-                <p>
-                    À défaut, vous pouvez utiliser la plateforme européenne de règlement en ligne des litiges (RLL) disponible à l'adresse suivante :
-                    <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener noreferrer" className="text-wine-800 underline">https://ec.europa.eu/consumers/odr</a>.
+                    Coordonnées communiquées prochainement.
                 </p>
 
-                <h3>8. Loi applicable</h3>
+                <h3>9. Loi applicable</h3>
                 <p>
                     Les présentes conditions de vente à distance sont soumises à la loi française.
                 </p>
