@@ -4,6 +4,7 @@ import { cliquable, sanityFetch } from './fetch';
 // Photo Sanity : la référence, le point d'intérêt choisi dans le studio et un aperçu flou.
 const PHOTO = `{ ..., "lqip": asset->metadata.lqip }`;
 
+// Vin épuisé automatiquement quand le stock saisi tombe à 0.
 // Prix saisi en euros dans le studio, gardé en centimes dans le site (comme la liste statique et le futur paiement).
 export async function getWines() {
     const wines = await sanityFetch<any[]>(`*[_type == "wine" && afficher != false] | order(coalesce(ordre, 100) asc, name asc) {
@@ -14,7 +15,6 @@ export async function getWines() {
     millesime,
     subtitle,
     "price": select(defined(prix) => round(prix * 100), defined(price) => price, null),
-    // Épuisé automatiquement quand le stock saisi tombe à 0.
     "enVente": enVente != false && (!defined(stock) || stock > 0),
     stock,
     description,
