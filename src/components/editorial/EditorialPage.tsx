@@ -113,7 +113,7 @@ function BlocSection({ bloc, override, index, texteAVenir }: { bloc: Bloc; overr
                             <div data-sanity={override?.cliquerImage} className={`w-full relative ${bloc.paysage ? "aspect-[4/3] md:aspect-auto md:h-[420px]" : "aspect-[4/5] md:aspect-auto md:h-[560px]"}`}>
                                 <ParallaxImage
                                     src={image}
-                                    parallaxe
+                                    parallaxe={!bloc.personne}
                                     alt={bloc.alt || ""}
                                     position={position}
                                     blur={sanity?.blur}

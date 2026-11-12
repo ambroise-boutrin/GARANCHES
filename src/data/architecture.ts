@@ -13,6 +13,8 @@ export type Bloc = {
     document?: boolean;
     /** Photo en largeur : cadre moins haut, surtout sur téléphone. */
     paysage?: boolean;
+    /** Photo de personnes : pas d'effet de défilement, pour ne pas couper la personne. */
+    personne?: boolean;
     cta?: { label: string; href: string };
     // Sujet pré-rempli dans le formulaire de contact pour le bouton « Réserver ».
     booking?: { label: string; sujet: string };
@@ -199,7 +201,7 @@ Des vins qui racontent Garanches, chacun à leur manière.`,
         image: "/images/garanches/grappe-vigne.jpg",
         cta: "Découvrir notre façon de faire",
         blocs: [
-            { id: "introduction", title: "Notre façon de faire", image: "/images/smugmug/vignes-geste.jpg", paysage: true, alt: "Aurélie Crozet montre un cep dans les vignes de Garanches" },
+            { id: "introduction", title: "Notre façon de faire", image: "/images/smugmug/vignes-geste.jpg", paysage: true, personne: true, alt: "Aurélie Crozet montre un cep dans les vignes de Garanches" },
             {
                 id: "terre-vignes-saisons",
                 title: "Terre, vignes et saisons",
@@ -276,7 +278,7 @@ Une dégustation.
 Une conversation.
 Que l'on connaisse déjà le vin ou que l'on ait simplement envie de découvrir, nous aimons ouvrir Garanches et prendre le temps de vous accueillir.
 Parce qu'ici, les vins se découvrent aussi avec le lieu et avec ceux qui le font vivre.`,
-                image: "/images/garanches/isabelle-terrasse.jpg",
+                image: "/images/garanches/isabelle-terrasse.jpg", personne: true,
                 alt: "Isabelle Stagnara sur la terrasse de Garanches",
             },
         ],
@@ -416,7 +418,7 @@ Une réunion d'association, un rendez-vous d'équipe, une rencontre entre amis�
 Autour d'une table, dans les vignes ou au cœur du domaine, nous imaginons ensemble un moment simple, convivial et vivant.
 
 **Un lieu pour se retrouver, échanger et prendre le temps.**`,
-                image: "/images/smugmug/cour-visite.jpg", paysage: true,
+                image: "/images/smugmug/cour-visite.jpg", paysage: true, personne: true,
                 alt: "Un groupe accueilli dans la cour du domaine de Garanches",
             },
             {
