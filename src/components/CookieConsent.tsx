@@ -71,8 +71,8 @@ export default function CookieConsent() {
                         {/* Bandeau simple et compact : il ne cache pas la page sur téléphone. */}
                         <div className="max-w-6xl mx-auto px-4 py-4 md:px-6 md:py-5 flex flex-col md:flex-row md:items-center gap-3 md:gap-8">
                             <p className="flex-1 text-[13px] md:text-sm text-stone-700 leading-snug">
-                                Ce site utilise des cookies, essentiellement pour la vérification d’âge.{" "}
-                                <Link href="/mentions-legales" className="text-wine-900 underline underline-offset-2">
+                                Ce site n’utilise ni publicité ni cookie de suivi : il retient seulement la vérification de votre âge et vos choix.{" "}
+                                <Link href="/politique-confidentialite" className="text-wine-900 underline underline-offset-2">
                                     En savoir plus
                                 </Link>
                                 {" · "}

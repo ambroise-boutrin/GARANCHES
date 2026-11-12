@@ -40,12 +40,26 @@ export default async function MentionsLegales() {
                 <h3>Hébergement</h3>
                 <p>
                     Ce site est hébergé par Vercel Inc.<br />
-                    440 N Barranca Ave #4133, Covina, CA 91723, USA.
+                    440 N Barranca Ave #4133, Covina, CA 91723, USA.<br />
+                    Site : vercel.com · Contact : vercel.com/help
                 </p>
 
                 <h3>Propriété intellectuelle</h3>
                 <p>
                     L'ensemble de ce site relève de la législation française et internationale sur le droit d'auteur et la propriété intellectuelle. Tous les droits de reproduction sont réservés.
+                </p>
+                <p>
+                    Photographies : Vianney Tisseau, sauf mention contraire.
+                </p>
+
+                <h3>Données personnelles</h3>
+                <p>
+                    Pour savoir quelles données nous recevons et comment exercer vos droits, consultez notre <a href="/politique-confidentialite">politique de confidentialité</a>.
+                </p>
+
+                <h3>Alcool</h3>
+                <p>
+                    La vente d'alcool aux mineurs est interdite. L'abus d'alcool est dangereux pour la santé, à consommer avec modération.
                 </p>
             </div>
         </main>
