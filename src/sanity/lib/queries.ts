@@ -14,7 +14,8 @@ export async function getWines() {
     millesime,
     subtitle,
     "price": select(defined(prix) => round(prix * 100), defined(price) => price, null),
-    "enVente": enVente != false,
+    // Épuisé automatiquement quand le stock saisi tombe à 0.
+    "enVente": enVente != false && (!defined(stock) || stock > 0),
     stock,
     description,
     "image": image.asset->url,

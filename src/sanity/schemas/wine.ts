@@ -86,7 +86,7 @@ export default {
         {
             name: 'stock',
             title: 'Bouteilles en stock',
-            description: "Pour vous seulement, n'apparaît pas sur le site. Servira à la future boutique.",
+            description: "N'apparaît pas sur le site. À 0, le vin passe tout seul en « Épuisé ». Laissez vide pour ne pas suivre le stock. Avec la future boutique, chaque commande payée le baissera automatiquement.",
             type: 'number',
             group: 'vente',
             validation: (Rule: any) => Rule.min(0).integer(),
