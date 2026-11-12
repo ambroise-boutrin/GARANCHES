@@ -38,6 +38,16 @@ const nextConfig = {
             { source: '/panier', destination: '/les-vins/cuvees', permanent: false },
             // Vins arrêtés : leurs anciennes fiches renvoient vers les cuvées.
             { source: '/les-vins/cuvees/:id(rose|petillant|cote-de-brouilly)', destination: '/les-vins/cuvees', permanent: true },
+            // Adresses courtes : /deguster-au-domaine, /brouilly… mènent à la bonne page au lieu d'une erreur.
+            { source: '/:page(le-domaine|histoire|traces|ceux-qui-le-font-vivre)', destination: '/le-lieu/:page', permanent: true },
+            { source: '/:page(notre-facon-de-faire|cuvees|terroirs|a-table)', destination: '/les-vins/:page', permanent: true },
+            { source: '/:page(les-rencontres|deguster-au-domaine|decouvrir-les-vignes|experiences-privees|evenements)', destination: '/rencontrons-garanches/:page', permanent: true },
+            { source: '/:vin(brouilly|beaujolais-villages-blanc|bourgogne-blanc)', destination: '/les-vins/cuvees/:vin', permanent: true },
+            { source: '/:page(domaine|lieu)', destination: '/le-lieu', permanent: true },
+            { source: '/:page(vins|nos-cuvees)', destination: '/les-vins/cuvees', permanent: true },
+            { source: '/:page(degustation|deguster|visites|rencontres)', destination: '/rencontrons-garanches', permanent: true },
+            { source: '/:page(boutique|commander|shop)', destination: '/acheter', permanent: false },
+            { source: '/:page(rose|petillant|cote-de-brouilly)', destination: '/les-vins/cuvees', permanent: true },
         ];
     },
     images: {

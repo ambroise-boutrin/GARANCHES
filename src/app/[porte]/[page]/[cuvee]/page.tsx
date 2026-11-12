@@ -8,7 +8,7 @@ import RequestBottlesButton from "@/components/RequestBottlesButton";
 import RichText from "@/components/editorial/RichText";
 import PageCards from "@/components/editorial/PageCards";
 import { getWine } from "@/lib/wines";
-import { cuveeHref } from "@/lib/wineSlug";
+import { cuveeHref, nomMillesime } from "@/lib/wineSlug";
 import { prixAffiche } from "@/lib/prix";
 import { SITE_NAME, WINERY_ID, absolu, filAriane, partage } from "@/lib/site";
 
@@ -138,7 +138,7 @@ export default async function CuveePage({ params }: Props) {
                     <Link href="/les-vins/cuvees" className="text-sm md:text-base text-white underline underline-offset-4 decoration-1">
                         Les cuvées
                     </Link>
-                    <h1 className="normal-case tracking-normal font-serif text-4xl sm:text-5xl md:text-7xl leading-tight text-white mt-4 mb-4">{wine.name}</h1>
+                    <h1 className="normal-case tracking-normal font-serif text-4xl sm:text-5xl md:text-7xl leading-tight text-white mt-4 mb-4">{nomMillesime(wine)}</h1>
                     {wine.subtitle && <p className="text-white/80 text-sm mb-6">{wine.subtitle}</p>}
                     <div className="w-16 h-0.5 md:w-24 md:h-1 bg-white"></div>
                 </FadeIn>
@@ -175,9 +175,11 @@ export default async function CuveePage({ params }: Props) {
                                 </div>
                             ))}
                         </dl>
-                        <p className="text-2xl font-bold text-red-900 mb-6">
-                            {prixAffiche(wine)}
-                        </p>
+                        {prixAffiche(wine) && (
+                            <p className="text-2xl font-bold text-red-900 mb-6">
+                                {prixAffiche(wine)}
+                            </p>
+                        )}
                         <RequestBottlesButton wine={wine} />
                     </FadeIn>
                 </div>
@@ -196,7 +198,7 @@ export default async function CuveePage({ params }: Props) {
                                     <div className="relative h-44 sm:h-48 bg-white mb-3">
                                         <Image src={w.image || "/images/bouteilles/brouilly.jpg"} alt={`Bouteille de ${nomComplet(w)}`} fill sizes="176px" className="object-contain p-3" />
                                     </div>
-                                    <span className="font-serif text-base sm:text-lg text-wine-900 group-hover:text-red-900 transition-colors">{w.name}</span>
+                                    <span className="font-serif text-base sm:text-lg text-wine-900 group-hover:text-red-900 transition-colors">{nomMillesime(w)}</span>
                                 </Link>
                             ))}
                         </div>
