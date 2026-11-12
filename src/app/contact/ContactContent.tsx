@@ -7,7 +7,7 @@ import FAQ from "@/components/FAQ";
 import OpeningStatus from "@/components/OpeningStatus";
 import Telephones from "@/components/Telephones";
 import { Lignes, usePhoto, useTexte } from "@/components/Contenu";
-import { stegaClean } from "next-sanity";
+import { stegaClean } from "@sanity/client/stega";
 
 const InteractiveMap = dynamic(() => import("@/components/InteractiveMap"), {
     loading: () => <div className="w-full h-[500px] bg-stone-100 animate-pulse" />,

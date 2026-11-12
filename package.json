@@ -9,6 +9,9 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@portabletext/block-tools": "1.1.38",
+    "@portabletext/react": "3.2.4",
+    "@sanity/client": "7.14.1",
     "@sanity/image-url": "^1.0.2",
     "@sanity/vision": "^3.0.0",
     "critters": "^0.0.23",

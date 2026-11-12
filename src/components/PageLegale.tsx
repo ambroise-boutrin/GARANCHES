@@ -1,4 +1,4 @@
-import { PortableText, type PortableTextComponents } from "next-sanity";
+import { PortableText, type PortableTextComponents } from "@portabletext/react";
 
 // Mentions légales, CGV, confidentialité saisies dans le studio (Pages légales).
 const composants: PortableTextComponents = {

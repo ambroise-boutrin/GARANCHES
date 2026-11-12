@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import { stegaClean } from "next-sanity";
+import { stegaClean } from "@sanity/client/stega";
 import { typo } from "@/lib/typo";
 
 // Affiche un texte du document maître : une ligne vide sépare deux paragraphes,
