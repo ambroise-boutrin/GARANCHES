@@ -160,7 +160,6 @@ export default async function CuveePage({ params }: Props) {
                                 { label: "Volume", value: wine.volume },
                                 { label: "Alcool", value: wine.alcohol },
                                 { label: "À table", value: wine.tags?.join(" • ") },
-                                { label: "Mentions", value: wine.allergens },
                             ].filter((d) => d.value).map((d) => (
                                 <div key={d.label} className="bg-white border border-stone-200 p-4">
                                     <dt className="text-red-900 text-sm font-bold mb-1">{d.label}</dt>
