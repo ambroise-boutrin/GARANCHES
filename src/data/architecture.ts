@@ -15,6 +15,12 @@ export type Bloc = {
     paysage?: boolean;
     /** Photo de personnes : pas d'effet de défilement, pour ne pas couper la personne. */
     personne?: boolean;
+    /** Titre qui est un nom de personne : écrit en casse normale, pas en majuscules. */
+    nom?: boolean;
+    /** Document en hauteur (page d'archive) : cadre vertical pour qu'il reste lisible. */
+    portrait?: boolean;
+    /** Document que l'on peut ouvrir en grand pour le lire. */
+    agrandir?: boolean;
     cta?: { label: string; href: string };
     // Sujet pré-rempli dans le formulaire de contact pour le bouton « Réserver ».
     booking?: { label: string; sujet: string };
@@ -119,6 +125,46 @@ Nous avons choisi de raconter leurs histoires simplement, à partir des traces q
 Parce qu'un lieu se comprend aussi à travers celles et ceux qui l'ont façonné.`,
                 image: "/images/garanches/diplome-encadre.jpg", document: true,
                 alt: "Diplôme d'honneur encadré, archives de Garanches",
+            },
+            {
+                id: "jean-buy",
+                title: "Jean Buy", nom: true,
+                body: `**Aux origines de Garanches**
+
+Premier de la lignée familiale à s'installer à Garanches, Jean Buy prend part à la vie politique du Beaujolais à la veille de la Révolution française, dans un territoire de polyculture où la vigne côtoie les autres activités agricoles.
+
+Engagé dans la collecte des doléances de 1789, au-delà de la seule paroisse d'Odenas, il devient le premier maire de la commune en 1790.
+
+Son parcours s'inscrit dans une époque de profondes transformations politiques, économiques et agricoles, qui façonneront progressivement le Beaujolais viticole que nous connaissons aujourd'hui.`,
+            },
+            {
+                id: "emmanuel-bender",
+                title: "Emmanuel Bender (1840–1900)", nom: true,
+                body: `**L'apôtre de la reconstitution**
+
+Juge de paix à Lyon et président de la Société régionale de viticulture de Lyon, Emmanuel Bender a consacré sa vie à la vigne, au moment où le phylloxéra la détruisait.
+
+Avec son ami Victor Pulliat, il fut l'un des premiers à reconstituer le vignoble du Beaujolais et du Mâconnais. Voyages, conférences, expériences : il emmenait de véritables caravanes de vignerons dans le Midi, déjà reconstitué, pour qu'ils voient de leurs yeux que la vigne pouvait renaître.
+
+Il publia avec Pulliat de nombreuses brochures sur la vigne et présida le Congrès viticole de Lyon en 1894.
+
+À sa mort, en 1900, Victor Vermorel lui rend hommage : « les vignerons beaujolais, dont il fut le guide éclairé, autorisé, qui venaient à son vignoble d'Odenas pour y voir appliquer les bonnes méthodes, y recueillir des renseignements précieux, lui devront une éternelle reconnaissance. »`,
+                image: "/images/garanches/emmanuel-bender-hommage-vermorel.jpg",
+                alt: "Hommage de Victor Vermorel à Emmanuel Bender (1840-1900), avec son portrait",
+                document: true,
+                portrait: true,
+                agrandir: true,
+            },
+            {
+                id: "emile-bender",
+                title: "Émile Bender (1871–1953)", nom: true,
+                body: `**Aux fondements des appellations d'origine**
+
+Député puis sénateur du Rhône, Émile Bender fut l'un des artisans de la construction de la législation viticole française.
+
+Aux côtés d'autres parlementaires, notamment Joseph Capus, il contribua à faire évoluer la notion d'appellation d'origine, en associant le nom d'un vin à son territoire, à ses cépages et aux usages de production.
+
+Son travail législatif, notamment à travers la loi Capus-Bender du 22 juillet 1927, participa à poser les fondements du futur système des appellations d'origine contrôlées.`,
             },
         ],
         children: ["le-lieu/traces", "le-lieu/ceux-qui-le-font-vivre"],

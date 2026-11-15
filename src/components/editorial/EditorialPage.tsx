@@ -57,7 +57,7 @@ function BlocSection({ bloc, override, index, texteAVenir }: { bloc: Bloc; overr
 
     const text = (
         <div>
-            {title && <h2 className="text-3xl md:text-5xl font-serif text-red-900 mb-6 md:mb-8 leading-tight">{title}</h2>}
+            {title && <h2 className={`text-3xl md:text-5xl font-serif text-red-900 mb-6 md:mb-8 leading-tight ${bloc.nom ? "normal-case tracking-normal" : ""}`}>{title}</h2>}
             {body ? (
                 <RichText text={body} className="text-gray-800 leading-relaxed text-base md:text-lg" />
             ) : (
@@ -98,15 +98,25 @@ function BlocSection({ bloc, override, index, texteAVenir }: { bloc: Bloc; overr
                     <FadeIn direction={imageFirst ? "right" : "left"} delay={0.2} className={imageFirst ? "md:order-1" : ""}>
                         {bloc.document ? (
                             // Archives et diplômes : montrés en entier, comme posés sur une table.
-                            <div className="relative w-full aspect-[4/3] bg-stone-200/60" data-sanity={override?.cliquerImage}>
-                                <Image
-                                    src={image}
-                                    alt={bloc.alt || ""}
-                                    fill
-                                    sizes="(max-width: 768px) 100vw, 50vw"
-                                    quality={75}
-                                    className="object-contain mix-blend-multiply p-5 md:p-8"
-                                />
+                            <div data-sanity={override?.cliquerImage}>
+                                <div className={`relative w-full bg-stone-200/60 ${bloc.portrait ? "aspect-[3/4] md:aspect-auto md:h-[760px]" : "aspect-[4/3]"}`}>
+                                    <Image
+                                        src={image}
+                                        alt={bloc.alt || ""}
+                                        fill
+                                        sizes="(max-width: 768px) 100vw, 50vw"
+                                        quality={75}
+                                        className={`object-contain mix-blend-multiply ${bloc.portrait ? "p-3 md:p-6" : "p-5 md:p-8"}`}
+                                    />
+                                    {bloc.agrandir && (
+                                        <a href={image} target="_blank" rel="noopener" className="absolute inset-0" aria-label={`Voir en grand : ${bloc.alt || "document"}`} />
+                                    )}
+                                </div>
+                                {bloc.agrandir && (
+                                    <a href={image} target="_blank" rel="noopener" className="inline-block mt-4 text-red-900 text-base border-b border-red-900 pb-1 hover:text-red-700 hover:border-red-700">
+                                        Lire le document en grand
+                                    </a>
+                                )}
                             </div>
                         ) : (
                             // Cadre au format de la photo, pour ne pas couper les visages sur téléphone.
