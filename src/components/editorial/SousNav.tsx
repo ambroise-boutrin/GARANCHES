@@ -6,6 +6,7 @@ import { usePortes } from "@/components/Contenu";
 import { marquerNavigationDouce } from "@/lib/navigationDouce";
 
 // Barre des pages d'une même porte, sous la photo d'ouverture.
+// Sur téléphone, elle reste accrochée sous le menu quand on descend (demande d'Ambroise).
 // Un clic change de page sans animation ni retour en haut : on reste au même endroit (voir SmoothScroll).
 export const SOUS_NAV_ID = "sous-nav";
 
@@ -23,7 +24,7 @@ export default function SousNav({ path, current = `/${path}` }: { path: string; 
     if (!porte) return null;
 
     return (
-        <nav id={SOUS_NAV_ID} aria-label={porte.label} className="relative bg-paper border-b border-stone-200">
+        <nav id={SOUS_NAV_ID} aria-label={porte.label} className="sticky top-16 z-[90] lg:relative lg:top-auto lg:z-auto bg-paper border-b border-stone-200">
             <ul ref={liste} className="max-w-7xl mx-auto px-6 flex gap-8 overflow-x-auto whitespace-nowrap [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
                 {[{ label: porte.label, href: porte.path }, ...porte.children].map((item) => {
                     const active = item.href === current;

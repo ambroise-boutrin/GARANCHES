@@ -3,6 +3,7 @@
 import { useState } from "react";
 import FadeIn from "@/components/FadeIn";
 import { useFaq, useTexte } from "@/components/Contenu";
+import { AvecTelephones } from "@/lib/contenu";
 
 export default function FAQ() {
     const faqs = useFaq();
@@ -45,7 +46,7 @@ export default function FAQ() {
                                 {/* Réponse toujours présente dans la page (lue par Google), affichée au clic. */}
                                 <div hidden={openIndex !== index}>
                                     <div className="px-6 pb-6 text-gray-800 leading-relaxed border-t border-gray-50 pt-4">
-                                        {faq.reponse}
+                                        <AvecTelephones texte={faq.reponse} />
                                     </div>
                                 </div>
                             </div>

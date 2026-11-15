@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import { stegaClean } from "@sanity/client/stega";
 import { typo } from "@/lib/typo";
+import { AvecTelephones } from "@/lib/contenu";
 
 // Affiche un texte du document maître : une ligne vide sépare deux paragraphes,
 // un simple retour à la ligne est conservé, **texte** passe en gras.
@@ -20,9 +21,9 @@ export default function RichText({ text, className = "" }: { text: string; class
                             {j > 0 && <br />}
                             {line.split(/(\*\*[^*]+\*\*)/g).map((part, k) =>
                                 part.startsWith("**") && part.endsWith("**") ? (
-                                    <strong key={k} className="font-medium text-wine-900">{part.slice(2, -2)}</strong>
+                                    <strong key={k} className="font-medium text-wine-900"><AvecTelephones texte={part.slice(2, -2)} /></strong>
                                 ) : (
-                                    <Fragment key={k}>{part}</Fragment>
+                                    <AvecTelephones key={k} texte={part} />
                                 )
                             )}
                         </Fragment>

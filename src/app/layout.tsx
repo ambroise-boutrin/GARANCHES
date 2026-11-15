@@ -153,7 +153,7 @@ export default async function RootLayout({
           }}
         />
       </head>
-      <body className="bg-white text-stone-900 antialiased overflow-x-hidden selection:bg-wine-900 selection:text-white">
+      <body className="bg-white text-stone-900 antialiased overflow-x-clip selection:bg-wine-900 selection:text-white">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: serialiserJsonLd(jsonLd) }}

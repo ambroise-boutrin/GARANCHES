@@ -80,6 +80,8 @@ Ici, le granit se décline du bleu au rose, et les générations de vignes se c�
     "contact.fermeture": { zone: "contact", libelle: "Jours de fermeture", defaut: "Fermé le Dimanche et jours fériés" },
     "contact.photo": { zone: "contact", libelle: "Photo sous les coordonnées", defaut: "/images/smugmug/domaine-drone-maison.jpg", photo: true },
     "contact.formulaire": { zone: "contact", libelle: "Formulaire : titre", defaut: "Envoyez-nous un message" },
+    "contact.delai": { zone: "contact", libelle: "Formulaire : délai de réponse annoncé", defaut: "Nous vous répondons sous 24 heures. Pour une réponse immédiate, appelez-nous." },
+    "contact.aller-formulaire": { zone: "contact", libelle: "Lien sous le titre vers le formulaire", defaut: "Écrire un message" },
     "contact.venir.titre": { zone: "contact", libelle: "Venir à Garanches : titre", defaut: "Venir à Garanches" },
     "contact.venir.texte": { zone: "contact", libelle: "Venir à Garanches : texte", defaut: "345 chemin de Garanches, 69460 Odenas, au pied du Mont Brouilly." },
     "contact.faq.titre": { zone: "contact", libelle: "Questions fréquentes : titre", defaut: "Tout savoir sur le Domaine" },

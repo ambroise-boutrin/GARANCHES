@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 import FadeIn from "@/components/FadeIn";
 import ParallaxImage from "@/components/ParallaxImage";
 import RichText from "./RichText";
+import Agrandir from "./Agrandir";
 import PageCards from "./PageCards";
 import SousNav from "./SousNav";
 import { PAGES, type Bloc, type Page } from "@/data/architecture";
@@ -89,7 +90,7 @@ function BlocSection({ bloc, override, index, texteAVenir }: { bloc: Bloc; overr
     );
 
     return (
-        <section id={bloc.id} className={`scroll-mt-24 py-20 md:py-32 overflow-hidden ${background}`}>
+        <section id={bloc.id} className={`scroll-mt-36 lg:scroll-mt-24 py-20 md:py-32 overflow-hidden ${background}`}>
             {image ? (
                 <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 md:gap-20 items-center">
                     <FadeIn direction={imageFirst ? "left" : "right"} className={imageFirst ? "md:order-2" : ""}>
@@ -109,7 +110,7 @@ function BlocSection({ bloc, override, index, texteAVenir }: { bloc: Bloc; overr
                                         className={`object-contain mix-blend-multiply ${bloc.portrait ? "p-3 md:p-6" : "p-5 md:p-8"}`}
                                     />
                                     {bloc.agrandir && (
-                                        <a href={image} target="_blank" rel="noopener" className="absolute inset-0 cursor-zoom-in" aria-label={`Voir en grand : ${bloc.alt || "document"}`} />
+                                        <Agrandir src={image} alt={bloc.alt || ""} />
                                     )}
                                 </div>
                             </div>

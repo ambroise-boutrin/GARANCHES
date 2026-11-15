@@ -4,6 +4,7 @@ import Image from "next/image";
 import { flou } from "@/data/flous";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { stegaClean } from "@sanity/client/stega";
 import FadeIn from "@/components/FadeIn";
 import RequestBottlesButton from "@/components/RequestBottlesButton";
 import RichText from "@/components/editorial/RichText";
@@ -85,6 +86,9 @@ function Section({ title, text, background }: { title: string; text?: string; ba
     );
 }
 
+const CEPAGES = ["gamay", "chardonnay", "pinot noir", "aligoté"];
+const estCepage = (tag: string) => CEPAGES.includes(stegaClean(tag).trim().toLowerCase());
+
 export default async function CuveePage({ params }: Props) {
     const data = await load(params);
     if (!data?.wine) notFound();
@@ -159,7 +163,9 @@ export default async function CuveePage({ params }: Props) {
                                 { label: "Millésime", value: wine.millesime },
                                 { label: "Volume", value: wine.volume },
                                 { label: "Alcool", value: wine.alcohol },
-                                { label: "À table", value: wine.tags?.join(" • ") },
+                                // Le cépage a sa propre case, la ligne « À table » ne garde que les plats.
+                                { label: "Cépage", value: wine.tags?.filter(estCepage).join(", ") },
+                                { label: "À table", value: wine.tags?.filter((t: string) => !estCepage(t)).join(" • ") },
                             ].filter((d) => d.value).map((d) => (
                                 <div key={d.label} className="bg-white border border-stone-200 p-4">
                                     <dt className="text-red-900 text-sm font-bold mb-1">{d.label}</dt>

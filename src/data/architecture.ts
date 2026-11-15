@@ -512,24 +512,35 @@ Nous choisissons ensemble ce qui donnera à ce moment sa couleur.
     {
         path: "acheter",
         label: "Acheter / Trouver Garanches",
-        description: "Commander les vins de Garanches en ligne ou les trouver chez les cavistes et restaurants.",
+        description: "Commander les vins de Garanches au domaine ou les trouver chez les cavistes et restaurants.",
         image: "/images/garanches/feuilles-automne.jpg",
         cta: "Trouver Garanches",
         blocs: [
             {
                 id: "commander",
                 title: "Commander",
-                body: `Nos vins sont expédiés directement depuis notre cave à Odenas, partout en France.`,
+                // Mode d'emploi en trois étapes : pas de paiement en ligne, la commande passe par le formulaire ou le téléphone.
+                body: `**1. Choisissez vos vins** parmi nos cuvées.
+
+**2. Envoyez-nous votre commande** avec le bouton ci-dessous, ou appelez-nous. Nous vous répondons sous 24 heures.
+Romain : 07 82 24 94 36
+Aurélie : 06 58 83 46 80
+Isabelle : 06 61 73 56 67
+Michel : 06 09 41 97 02
+
+**3. Retrait ou livraison** : nous vous confirmons la commande, puis nous l'expédions depuis notre cave à Odenas, partout en France, ou nous la préparons pour un retrait au domaine.
+
+Il n'y a pas de paiement en ligne. Pour une grande quantité, demandez-nous un tarif.`,
                 image: "/images/bouteilles/brouilly.jpg", document: true,
                 alt: "Une bouteille de Brouilly du domaine de Garanches",
-                cta: { label: "Commander", href: "/les-vins/cuvees" },
+                booking: { label: "Passer commande", sujet: "Commande & Expédition" },
             },
             { id: "restaurants-cavistes", title: "Restaurants et cavistes" },
             {
                 id: "professionnels",
                 title: "Professionnels",
                 body: `Restaurateurs, cavistes, entreprises : écrivez-nous pour recevoir nos tarifs et organiser une dégustation.`,
-                cta: { label: "Nous contacter", href: "/contact?sujet=Partenariat%20Professionnel" },
+                booking: { label: "Nous contacter", sujet: "Partenariat Professionnel" },
             },
         ],
         children: ["rencontrons-garanches/deguster-au-domaine"],

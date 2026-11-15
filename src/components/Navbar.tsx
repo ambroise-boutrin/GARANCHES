@@ -152,11 +152,15 @@ export default function Navbar() {
                         onClick={() => setIsOpen(!isOpen)}
                         aria-label={isOpen ? "Fermer le menu" : "Ouvrir le menu"}
                         aria-expanded={isOpen}
-                        className="relative w-10 h-10 flex flex-col justify-center items-end gap-1.5 group"
+                        className={`relative h-10 flex items-center gap-3 group ${useDarkText && !isOpen ? "text-stone-900" : "text-white"}`}
                     >
+                        {/* Le mot à côté de l'icône, pour qu'on sache que c'est le menu. */}
+                        <span className="text-xs uppercase tracking-widest font-bold">{isOpen ? "Fermer" : "Menu"}</span>
+                        <span className="w-6 h-10 flex flex-col justify-center items-end gap-1.5">
                         <span className={`h-0.5 rounded-full transition-all duration-300 ${useDarkText && !isOpen ? "bg-stone-900" : "bg-white"} ${isOpen ? "w-6 rotate-45 translate-y-2 bg-white" : "w-6"}`} />
                         <span className={`h-0.5 rounded-full transition-all duration-300 ${useDarkText && !isOpen ? "bg-stone-900" : "bg-white"} ${isOpen ? "opacity-0" : "w-4 group-hover:w-6"}`} />
                         <span className={`h-0.5 rounded-full transition-all duration-300 ${useDarkText && !isOpen ? "bg-stone-900" : "bg-white"} ${isOpen ? "w-6 -rotate-45 -translate-y-2 bg-white" : "w-6"}`} />
+                        </span>
                     </button>
                 </div>
             </div>
@@ -255,12 +259,12 @@ export default function Navbar() {
                                         >
                                             {commander}
                                         </Link>
-                                        <div className="text-center text-xs text-white/50 leading-relaxed">
+                                        <div className="text-center text-sm text-white/80 leading-relaxed">
                                             <p>{adresse}</p>
                                             {/* Deux colonnes pour que le bas du menu reste visible au-dessus de la barre de Safari. */}
-                                            <div className="mt-2 grid grid-cols-2 gap-x-3 text-white/70">
+                                            <div className="mt-2 grid grid-cols-2 gap-x-3 text-white">
                                                 {telephones.map((t) => (
-                                                    <a key={t.nom + t.numero} href={telHref(t.numero)} className="py-2">{t.nom}<br />{t.numero}</a>
+                                                    <a key={t.nom + t.numero} href={telHref(t.numero)} className="py-2">{t.nom}<br /><span className="whitespace-nowrap underline underline-offset-4 decoration-1">{t.numero}</span></a>
                                                 ))}
                                             </div>
                                         </div>

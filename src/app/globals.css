@@ -117,3 +117,16 @@ select {
     scroll-behavior: auto !important;
   }
 }
+
+/* Grande police réglée sur le téléphone : un long titre passe à la ligne au lieu de déborder. */
+h1,
+h2 {
+  overflow-wrap: break-word;
+}
+
+/* Champs du formulaire (date, nombre) toujours clairs, même si le téléphone est en mode sombre. */
+input,
+select,
+textarea {
+  color-scheme: light;
+}

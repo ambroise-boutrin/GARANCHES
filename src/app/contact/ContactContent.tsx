@@ -40,6 +40,8 @@ export default function ContactContent({ sujet, vin }: { sujet?: string; vin?: s
     const venirTitre = t("contact.venir.titre");
     const venirTexte = t("contact.venir.texte");
     const boutonVin = t("cuvees.bouton");
+    const delai = t("contact.delai");
+    const allerFormulaire = t("contact.aller-formulaire");
     const [subject, setSubject] = useState(sujet && SUJETS.includes(sujet) ? sujet : SUJETS[SUJETS.length - 1]);
 
     // Pas de serveur d'envoi : le message s'ouvre, pré-rempli, dans la messagerie du visiteur.
@@ -61,7 +63,9 @@ export default function ContactContent({ sujet, vin }: { sujet?: string; vin?: s
     const vinDemande = vin?.slice(0, 80);
     const messageInitial = vinDemande
         ? `Bonjour,\n\nJe souhaiterais prendre des bouteilles de ${vinDemande}.\nNombre de bouteilles : \nRetrait au domaine ou livraison (adresse) : \n\nMerci !`
-        : undefined;
+        : sujet === "Commande & Expédition"
+            ? `Bonjour,\n\nJe souhaiterais commander :\n- vin et nombre de bouteilles : \n- \nRetrait au domaine ou livraison (adresse) : \n\nMerci !`
+            : undefined;
 
     return (
         <main className="min-h-screen bg-paper pt-32 pb-20">
@@ -70,11 +74,12 @@ export default function ContactContent({ sujet, vin }: { sujet?: string; vin?: s
                 <p className="max-w-xl mx-auto text-gray-800 text-lg">
                     {intro}
                 </p>
+                <a href="#formulaire" className="inline-block mt-6 text-base text-red-900 underline underline-offset-4 decoration-1">{allerFormulaire}</a>
             </FadeIn>
 
             <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-start">
-                <FadeIn direction="right" delay={0.2}>
-                    <div className="bg-white p-10 border border-gray-100 relative overflow-hidden group">
+                <FadeIn direction="right" delay={0.2} className="min-w-0">
+                    <div className="bg-white p-6 md:p-10 border border-gray-100 relative overflow-hidden group">
                         <h2 className="text-3xl font-serif text-wine-900 mb-10 relative z-10">{coordonnees}</h2>
 
                         <div className="space-y-10 relative z-10">
@@ -134,11 +139,11 @@ export default function ContactContent({ sujet, vin }: { sujet?: string; vin?: s
                     </div>
                 </FadeIn>
 
-                <FadeIn direction="left" delay={0.4}>
+                <FadeIn direction="left" delay={0.4} className="min-w-0">
                     <div id="formulaire" className="scroll-mt-28 bg-stone-50 p-6 md:p-10 border border-stone-200">
                         <h2 className="text-3xl font-serif text-wine-900 mb-8">{isBooking ? "Réserver" : vinDemande ? boutonVin : formulaire}</h2>
 
-                        <form className="space-y-6" onSubmit={handleSubmit}>
+                        <form key={`${sujet}-${vin}`} className="space-y-6" onSubmit={handleSubmit}>
                             <div className="grid md:grid-cols-2 gap-6">
                                 <div>
                                     <label className="block text-sm text-gray-700 mb-2 font-bold ml-2">Nom</label>
@@ -192,8 +197,8 @@ export default function ContactContent({ sujet, vin }: { sujet?: string; vin?: s
                                 {isBooking ? "Envoyer ma demande" : "Envoyer le message"}
                             </button>
 
-                            <p className="text-xs text-gray-600 text-center mt-4">
-                                Votre messagerie s'ouvre avec le message prêt à envoyer à {EMAIL}.
+                            <p className="text-sm text-gray-700 text-center mt-4">
+                                Votre messagerie s'ouvre avec le message prêt à envoyer à <span className="break-all">{EMAIL}</span>. {delai}
                             </p>
                         </form>
                     </div>

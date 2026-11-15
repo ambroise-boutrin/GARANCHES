@@ -6,4 +6,4 @@ export const TELEPHONES = [
     { nom: "Michel", numero: "06 09 41 97 02" },
 ];
 
-export const telHref = (numero: string) => `tel:+33${numero.replace(/\s/g, "").slice(1)}`;
+export const telHref = (numero: string) => `tel:+33${numero.replace(/\D/g, "").slice(1)}`;

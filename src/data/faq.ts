@@ -6,11 +6,11 @@ export const FAQS = [
     },
     {
         question: "Quels types de vins produisez-vous ?",
-        answer: "Nous produisons trois vins : un Brouilly (rouge, Gamay), un Beaujolais-Villages blanc et un Bourgogne blanc (Chardonnay)."
+        answer: "Nous produisons trois vins, en plusieurs millésimes : un Brouilly (rouge, Gamay), un Beaujolais-Villages blanc et un Bourgogne blanc (Chardonnay)."
     },
     {
         question: "Proposez-vous des visites et dégustations ?",
-        answer: "Oui, nous accueillons les visiteurs pour des dégustations et des visites du domaine sur rendez-vous, du lundi au samedi. N'hésitez pas à nous contacter avant votre venue."
+        answer: "Oui, nous accueillons les visiteurs pour des dégustations et des visites du domaine, du lundi au samedi de 9h à 18h. Une réservation est conseillée : appelez-nous ou écrivez-nous avant votre venue."
     },
     {
         question: "Puis-je commander vos vins en ligne ?",
