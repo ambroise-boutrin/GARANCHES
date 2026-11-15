@@ -3,57 +3,56 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { flou } from "@/data/flous";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import { stegaClean } from "@sanity/client/stega";
 import FadeIn from "@/components/FadeIn";
 import RequestBottlesButton from "@/components/RequestBottlesButton";
 import RichText from "@/components/editorial/RichText";
 import PageCards from "@/components/editorial/PageCards";
-import { getWine } from "@/lib/wines";
-import { cuveeHref, nomMillesime } from "@/lib/wineSlug";
+import { getGamme, type Gamme } from "@/lib/wines";
+import { nomMillesime } from "@/lib/wineSlug";
 import { getContenuSite } from "@/sanity/lib/contenu";
 import { photoDe, texteDe } from "@/lib/contenu";
 import { SITE_NAME, WINERY_ID, absolu, filAriane, partage } from "@/lib/site";
 
 export const revalidate = 60;
 
-// Une page par cuvée, sous Les Vins › Les cuvées.
+// Une page par vin, sous Les Vins › Les cuvées : une bouteille, puis chaque millésime décliné.
 type Props = { params: { porte: string; page: string; cuvee: string } };
 
 async function load({ porte, page, cuvee }: Props["params"]) {
     if (porte !== "les-vins" || page !== "cuvees") return null;
-    return getWine(cuvee);
+    return getGamme(cuvee);
 }
 
+const gammeHref = (g: Gamme) => `/les-vins/cuvees/${g.slug}`;
+const annees = (g: Gamme) => g.millesimes.map((w) => w.millesime).filter(Boolean).join(", ");
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-    const wine = (await load(params))?.wine;
-    if (!wine) return {};
-    const title = titreGoogle(wine);
-    const description = resume(`${nomComplet(wine)} du domaine de Garanches, à Odenas au pied du Mont Brouilly. ${wine.description || ""}`);
+    const gamme = (await load(params))?.gamme;
+    if (!gamme) return {};
+    const title = titreGoogle(gamme);
+    const premier = String(gamme.millesimes[0]?.description || "").split(/\n\s*\n/)[0];
+    const description = resume(`${gamme.name} du domaine de Garanches, à Odenas au pied du Mont Brouilly${annees(gamme) ? `, millésimes ${annees(gamme)}` : ""}. ${premier}`);
     return {
         title,
         description,
-        alternates: { canonical: cuveeHref(wine) },
+        alternates: { canonical: gammeHref(gamme) },
         ...partage({
-            chemin: cuveeHref(wine),
-            titre: `${nomComplet(wine)} | ${SITE_NAME}`,
+            chemin: gammeHref(gamme),
+            titre: `${gamme.name} | ${SITE_NAME}`,
             description,
-            image: image(wine),
-            alt: `Bouteille de ${nomComplet(wine)}, domaine de Garanches`,
+            image: image(gamme),
+            alt: `Bouteille de ${gamme.name}, domaine de Garanches`,
         }),
     };
 }
 
-// « Brouilly 2023 » : nom suivi du millésime quand il est connu.
-function nomComplet(wine: any): string {
-    return nomMillesime(wine);
-}
-
 // Titre pour Google : le nom, puis seulement les mots du sous-titre qui n'y sont pas déjà
-// (« Beaujolais-Villages blanc 2025 » plutôt que « … – Beaujolais-Villages — Blanc »).
-function titreGoogle(wine: any): string {
-    const nom = nomComplet(wine);
-    const reste = String(wine.subtitle || "")
+// (« Beaujolais-Villages blanc » plutôt que « … – Beaujolais-Villages — Blanc »).
+function titreGoogle(gamme: Gamme): string {
+    const nom = gamme.name;
+    const reste = String(gamme.subtitle || "")
         .split(/\s+[—–-]\s+/)
         .map((s: string) => s.trim())
         .filter((s: string) => s && !nom.toLowerCase().includes(s.toLowerCase()));
@@ -69,52 +68,58 @@ function resume(texte: string) {
     return propre.slice(0, 154).replace(/\s+\S*$/, "") + "…";
 }
 
-function image(wine: any): string {
-    return absolu(wine.image || "/images/bouteilles/brouilly.jpg");
-}
-
-// Section masquée tant que son texte n'est pas saisi dans le studio.
-function Section({ title, text, background }: { title: string; text?: string; background: string }) {
-    if (!text) return null;
-    return (
-        <section className={`py-16 md:py-24 ${background}`}>
-            <FadeIn className="max-w-3xl mx-auto px-6 text-center">
-                <h2 className="text-3xl md:text-4xl font-serif text-red-900 mb-6">{title}</h2>
-                <RichText text={text} className="text-gray-800 leading-relaxed text-base md:text-lg" />
-            </FadeIn>
-        </section>
-    );
+function image(g: { image?: string }): string {
+    return absolu(g.image || "/images/bouteilles/brouilly.jpg");
 }
 
 const CEPAGES = ["gamay", "chardonnay", "pinot noir", "aligoté"];
 const estCepage = (tag: string) => CEPAGES.includes(stegaClean(tag).trim().toLowerCase());
 
+function Caracteristiques({ items }: { items: { label: string; value?: string }[] }) {
+    const remplis = items.filter((d) => d.value);
+    if (!remplis.length) return null;
+    return (
+        <dl className="grid grid-cols-2 gap-4">
+            {remplis.map((d) => (
+                <div key={d.label} className="bg-white border border-stone-200 p-4">
+                    <dt className="text-red-900 text-sm font-bold mb-1">{d.label}</dt>
+                    <dd className="text-gray-700 text-sm">{d.value}</dd>
+                </div>
+            ))}
+        </dl>
+    );
+}
+
 export default async function CuveePage({ params }: Props) {
     const data = await load(params);
-    if (!data?.wine) notFound();
-    const { wine, wines } = data;
+    if (data?.redirection) permanentRedirect(data.redirection);
+    if (!data?.gamme) notFound();
+    const { gamme, gammes } = data;
     const contenu = await getContenuSite();
     const photoHaut = photoDe(contenu, "cuvees.fiche.photo");
     const pageCuvees = contenu.pages["les-vins/cuvees"]?.titre ?? "Les cuvées";
-    const autres = wines.filter((w: any) => w.id !== wine.id);
+    const autres = gammes.filter((g) => g.slug !== gamme.slug);
+    const tags: string[] = gamme.millesimes.find((w) => w.tags?.length)?.tags ?? [];
+    const volume = gamme.millesimes.find((w) => w.volume)?.volume;
+    const plusieurs = gamme.millesimes.length > 1;
 
     return (
         <main className="min-h-screen text-gray-800 font-sans">
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{
-                    __html: serialiserJsonLd({
+                    __html: serialiserJsonLd(gamme.millesimes.map((w) => ({
                         "@context": "https://schema.org",
                         "@type": "Product",
-                        name: nomComplet(wine),
-                        description: wine.description,
-                        image: image(wine),
-                        url: absolu(cuveeHref(wine)),
+                        name: nomMillesime(w),
+                        description: w.description,
+                        image: image(gamme),
+                        url: absolu(`${gammeHref(gamme)}${w.millesime ? `#${w.millesime}` : ""}`),
                         brand: { "@type": "Brand", name: SITE_NAME },
                         manufacturer: { "@id": WINERY_ID },
                         category: "Vin",
                         countryOfOrigin: "FR",
-                    }),
+                    }))),
                 }}
             />
             <script
@@ -123,7 +128,7 @@ export default async function CuveePage({ params }: Props) {
                     __html: serialiserJsonLd(filAriane([
                         { nom: "Les Vins", chemin: "/les-vins" },
                         { nom: "Les cuvées", chemin: "/les-vins/cuvees" },
-                        { nom: nomComplet(wine), chemin: cuveeHref(wine) },
+                        { nom: gamme.name, chemin: gammeHref(gamme) },
                     ])),
                 }}
             />
@@ -135,63 +140,89 @@ export default async function CuveePage({ params }: Props) {
                     <Link href="/les-vins/cuvees" className="text-sm md:text-base text-white underline underline-offset-4 decoration-1">
                         {pageCuvees}
                     </Link>
-                    <h1 className="normal-case tracking-normal font-serif text-4xl sm:text-5xl md:text-7xl leading-tight text-white mt-4 mb-4">{nomComplet(wine)}</h1>
-                    {wine.subtitle && <p className="text-white/80 text-sm mb-6">{wine.subtitle}</p>}
+                    <h1 className="normal-case tracking-normal font-serif text-4xl sm:text-5xl md:text-7xl leading-tight text-white mt-4 mb-4">{gamme.name}</h1>
+                    {gamme.subtitle && <p className="text-white/80 text-sm mb-6">{gamme.subtitle}</p>}
                     <div className="w-16 h-0.5 md:w-24 md:h-1 bg-white"></div>
                 </FadeIn>
             </section>
 
-            <section className="py-20 md:py-28 bg-stone-50">
-                <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 md:gap-20 items-center">
-                    <FadeIn direction="right">
-                        <div className="relative h-[420px] bg-white" data-sanity={wine.cliquerImage}>
-                            <Image
-                                src={wine.image || "/images/bouteilles/brouilly.jpg"}
-                                alt={`${nomComplet(wine)} - Domaine de Garanches`}
-                                fill
-                                sizes="(max-width: 768px) 100vw, 50vw"
-                                className="object-contain p-8 mix-blend-multiply"
-                            />
-                        </div>
-                    </FadeIn>
-                    <FadeIn direction="left" delay={0.2}>
-                        {wine.description && (
-                            <RichText text={wine.description} className="text-gray-800 leading-relaxed text-base md:text-lg mb-8" />
-                        )}
-                        <dl className="grid grid-cols-2 gap-4 mb-8">
-                            {[
-                                { label: "Millésime", value: wine.millesime },
-                                { label: "Volume", value: wine.volume },
-                                { label: "Alcool", value: wine.alcohol },
-                                // Le cépage a sa propre case, la ligne « À table » ne garde que les plats.
-                                { label: "Cépage", value: wine.tags?.filter(estCepage).join(", ") },
-                                { label: "À table", value: wine.tags?.filter((t: string) => !estCepage(t)).join(" • ") },
-                            ].filter((d) => d.value).map((d) => (
-                                <div key={d.label} className="bg-white border border-stone-200 p-4">
-                                    <dt className="text-red-900 text-sm font-bold mb-1">{d.label}</dt>
-                                    <dd className="text-gray-700 text-sm">{d.value}</dd>
+            {/* Une seule bouteille pour le vin, puis ce qui est commun à tous ses millésimes */}
+            <section className="py-16 md:py-24 bg-stone-50">
+                <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10 md:gap-20 items-center">
+                    <div className="relative h-[380px] md:h-[460px] bg-white" data-sanity={gamme.cliquerImage}>
+                        <Image
+                            src={gamme.image || "/images/bouteilles/brouilly.jpg"}
+                            alt={`Bouteille de ${gamme.name} - Domaine de Garanches`}
+                            fill
+                            sizes="(max-width: 768px) 100vw, 50vw"
+                            className="object-contain p-8 mix-blend-multiply"
+                        />
+                    </div>
+                    <div>
+                        {plusieurs && (
+                            <>
+                                <p className="text-red-900 text-sm font-bold mb-3">Millésimes</p>
+                                <div className="flex flex-wrap gap-3 mb-8">
+                                    {gamme.millesimes.map((w) => (
+                                        <a key={w.id} href={`#${w.millesime}`} className="px-5 py-2 border border-wine-900 text-wine-900 text-base hover:bg-wine-900 hover:text-white transition-colors">
+                                            {w.millesime}
+                                        </a>
+                                    ))}
                                 </div>
-                            ))}
-                        </dl>
-                        <RequestBottlesButton wine={wine} />
-                    </FadeIn>
+                            </>
+                        )}
+                        <Caracteristiques
+                            items={[
+                                // Le cépage a sa propre case, la ligne « À table » ne garde que les plats.
+                                { label: "Cépage", value: tags.filter(estCepage).join(", ") },
+                                { label: "À table", value: tags.filter((t) => !estCepage(t)).join(" • ") },
+                                { label: "Volume", value: volume },
+                                ...(!plusieurs ? [{ label: "Millésime", value: gamme.millesimes[0]?.millesime }] : []),
+                            ]}
+                        />
+                    </div>
                 </div>
             </section>
 
-            <Section title={texteDe(contenu, "cuvees.fiche.parcelle")} text={wine.parcelle} background="bg-white" />
-            <Section title={texteDe(contenu, "cuvees.fiche.vinification")} text={wine.vinification} background="bg-stone-50" />
+            {/* Chaque millésime : sa description et ses caractéristiques */}
+            {gamme.millesimes.map((w, i) => (
+                <section key={w.id} id={w.millesime || w.id} className={`scroll-mt-24 py-16 md:py-24 ${i % 2 === 0 ? "bg-white" : "bg-stone-50"}`}>
+                    <div className="max-w-3xl mx-auto px-6">
+                        <h2 className="normal-case tracking-normal text-3xl md:text-5xl font-serif text-red-900 mb-6 md:mb-8 leading-tight">{nomMillesime(w)}</h2>
+                        {w.description && <RichText text={w.description} className="text-gray-800 leading-relaxed text-base md:text-lg" />}
+                        {w.alcohol && (
+                            <div className="mt-8">
+                                <Caracteristiques items={[{ label: "Alcool", value: w.alcohol }]} />
+                            </div>
+                        )}
+                        {w.parcelle && (
+                            <div className="mt-10">
+                                <h3 className="text-2xl md:text-3xl font-serif text-wine-900 mb-4">{texteDe(contenu, "cuvees.fiche.parcelle")}</h3>
+                                <RichText text={w.parcelle} className="text-gray-800 leading-relaxed text-base md:text-lg" />
+                            </div>
+                        )}
+                        {w.vinification && (
+                            <div className="mt-10">
+                                <h3 className="text-2xl md:text-3xl font-serif text-wine-900 mb-4">{texteDe(contenu, "cuvees.fiche.vinification")}</h3>
+                                <RichText text={w.vinification} className="text-gray-800 leading-relaxed text-base md:text-lg" />
+                            </div>
+                        )}
+                        <RequestBottlesButton wine={w} />
+                    </div>
+                </section>
+            ))}
 
             {autres.length > 0 && (
                 <section className="py-20 bg-stone-100">
                     <div className="max-w-6xl mx-auto px-6">
                         <h2 className="text-3xl font-serif text-wine-900 text-center mb-12">{texteDe(contenu, "cuvees.fiche.autres")}</h2>
                         <div className="grid grid-cols-2 gap-4 sm:flex sm:flex-wrap sm:justify-center sm:gap-6">
-                            {autres.map((w: any) => (
-                                <Link key={w.id} href={cuveeHref(w)} className="group sm:w-44 text-center">
+                            {autres.map((g) => (
+                                <Link key={g.slug} href={gammeHref(g)} className="group sm:w-44 text-center">
                                     <div className="relative h-44 sm:h-48 bg-white mb-3">
-                                        <Image src={w.image || "/images/bouteilles/brouilly.jpg"} alt={`Bouteille de ${nomComplet(w)}`} fill sizes="176px" className="object-contain p-3" />
+                                        <Image src={g.image || "/images/bouteilles/brouilly.jpg"} alt={`Bouteille de ${g.name}`} fill sizes="176px" className="object-contain p-3" />
                                     </div>
-                                    <span className="font-serif text-base sm:text-lg text-wine-900 group-hover:text-red-900 transition-colors">{nomComplet(w)}</span>
+                                    <span className="font-serif text-base sm:text-lg text-wine-900 group-hover:text-red-900 transition-colors">{g.name}</span>
                                 </Link>
                             ))}
                         </div>
@@ -203,4 +234,3 @@ export default async function CuveePage({ params }: Props) {
         </main>
     );
 }
-

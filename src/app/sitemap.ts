@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 import { GENERIC_PATHS } from '@/data/architecture';
 import { getCarnets } from '@/sanity/lib/queries';
-import { getWines } from '@/lib/wines';
+import { getGammes } from '@/lib/wines';
 import { cuveeHref } from '@/lib/wineSlug';
 import { SITE_URL } from '@/lib/site';
 
@@ -9,7 +9,7 @@ export const revalidate = 3600;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const baseUrl = SITE_URL;
-    const [carnets, wines] = await Promise.all([getCarnets(), getWines()]);
+    const [carnets, wines] = await Promise.all([getCarnets(), getGammes()]);
 
     // Pas de date de modification inventée : Google ne retient que des dates fiables (ici, celles des Carnets).
     const entry = (path: string, priority: number, changeFrequency: 'weekly' | 'monthly' | 'yearly' = 'yearly', lastModified?: Date) => ({

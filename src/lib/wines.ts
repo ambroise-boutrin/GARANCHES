@@ -22,7 +22,46 @@ export async function getWines() {
     return PRODUCTS.map(sansPrix);
 }
 
-export async function getWine(slug: string) {
+// Un vin et tous ses millésimes : une seule bouteille montrée, puis chaque millésime décliné.
+// Les millésimes d'un même vin portent le même nom dans le studio (« Brouilly »).
+// L'adresse du vin est celle de la fiche sans année (« brouilly ») ; « brouilly-2024 » renvoie vers « brouilly#2024 ».
+export type Gamme = { id: string; slug: string; name: string; subtitle?: string; image?: string; cliquerImage?: string; tags?: string[]; volume?: string; millesimes: any[] };
+
+const sansAnnee = (slug: string) => slug.replace(/-\d{4}$/, "");
+
+export async function getGammes(): Promise<Gamme[]> {
     const wines = await getWines();
-    return { wine: wines.find((w: any) => wineSlug(w) === slug) ?? wines.find((w: any) => w.id === slug), wines };
+    const parNom = new Map<string, any[]>();
+    for (const w of wines) {
+        const cle = String(w.name).trim().toLowerCase();
+        parNom.set(cle, [...(parNom.get(cle) ?? []), w]);
+    }
+    return [...parNom.values()].map((vins) => {
+        const principal = vins.find((w) => sansAnnee(wineSlug(w)) === wineSlug(w)) ?? vins[0];
+        const avecPhoto = principal.image ? principal : vins.find((w) => w.image) ?? principal;
+        const millesimes = [...vins].sort((a, b) => String(a.millesime ?? "").localeCompare(String(b.millesime ?? "")));
+        return {
+            id: principal.id,
+            slug: sansAnnee(wineSlug(principal)),
+            name: principal.name,
+            subtitle: principal.subtitle,
+            image: avecPhoto.image,
+            cliquerImage: avecPhoto.cliquerImage,
+            tags: vins.find((w) => w.tags?.length)?.tags,
+            volume: vins.find((w) => w.volume)?.volume,
+            millesimes,
+        };
+    });
+}
+
+// Le vin demandé, ou l'adresse où renvoyer une ancienne fiche de millésime.
+export async function getGamme(slug: string): Promise<{ gamme?: Gamme; gammes: Gamme[]; redirection?: string }> {
+    const gammes = await getGammes();
+    const gamme = gammes.find((g) => g.slug === slug);
+    if (gamme) return { gamme, gammes };
+    for (const g of gammes) {
+        const vin = g.millesimes.find((w) => wineSlug(w) === slug || w.id === slug);
+        if (vin) return { gammes, redirection: `/les-vins/cuvees/${g.slug}${vin.millesime ? `#${vin.millesime}` : ""}` };
+    }
+    return { gammes };
 }

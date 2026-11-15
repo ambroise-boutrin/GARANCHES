@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { getWines } from "@/lib/wines";
+import { getGammes } from "@/lib/wines";
 import { getPageContent } from "@/sanity/lib/queries";
 import HomePageClient from "@/components/HomePageClient";
 import { getContenuSite } from "@/sanity/lib/contenu";
@@ -19,8 +19,8 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function Home() {
-  // Même catalogue que la boutique et le paiement (Sanity, sinon la liste statique)
-  const products = await getWines();
+  // Un vin par carte (tous ses millésimes sont sur sa fiche)
+  const products = await getGammes();
 
   // Récupération du contenu de la page d'accueil depuis Sanity
   const content = await getPageContent('home');

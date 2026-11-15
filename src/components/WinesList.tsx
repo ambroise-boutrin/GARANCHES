@@ -7,6 +7,12 @@ import FadeIn from "@/components/FadeIn";
 import { cuveeHref, nomMillesime } from "@/lib/wineSlug";
 import { useTexte } from "@/components/Contenu";
 
+// Première phrase de la présentation (« Un beau vin de garde. »), ou le début du texte s'il n'a qu'un paragraphe.
+function premierParagraphe(texte?: string) {
+    const p = String(texte || "").split(/\n\s*\n/)[0].trim();
+    return p.length > 140 ? p.slice(0, 139).replace(/\s+\S*$/, "") + "…" : p;
+}
+
 export default function WinesList({ wines }: { wines: any[] }) {
     const decouvrir = useTexte("cuvees.decouvrir");
     const questionTitre = useTexte("cuvees.question.titre");
@@ -46,10 +52,17 @@ export default function WinesList({ wines }: { wines: any[] }) {
                                         {wine.subtitle || "Domaine de Garanches"}
                                     </p>
 
-                                    <p className="text-gray-800 text-sm leading-relaxed mb-6 line-clamp-3">
-                                        {/* Description non traduite car dynamique */}
-                                        {wine.description}
-                                    </p>
+                                    {/* Chaque millésime et sa phrase de présentation, la suite est sur la fiche du vin */}
+                                    <ul className="text-left text-sm leading-relaxed mb-6 divide-y divide-stone-200 border-y border-stone-200">
+                                        {(wine.millesimes ?? [wine]).map((m: any) => (
+                                            <li key={m.id}>
+                                                <Link href={`${cuveeHref(wine)}${m.millesime ? `#${m.millesime}` : ""}`} className="flex gap-4 py-3 hover:text-red-900 transition-colors">
+                                                    <span className="font-bold text-wine-900 w-12 flex-shrink-0">{m.millesime}</span>
+                                                    <span className="text-gray-800">{premierParagraphe(m.description)}</span>
+                                                </Link>
+                                            </li>
+                                        ))}
+                                    </ul>
 
                                     <Link href={cuveeHref(wine)} className="inline-block mb-6 text-base underline underline-offset-4 decoration-1 text-red-900 hover:text-red-700 transition-colors">
                                         {decouvrir}
@@ -57,8 +70,7 @@ export default function WinesList({ wines }: { wines: any[] }) {
 
                                     <div className="flex flex-wrap justify-center md:justify-start items-center gap-x-4 gap-y-2 text-xs text-gray-700 mb-6">
                                         {wine.volume && <span>{wine.volume}</span>}
-                                        {wine.alcohol && <span className="border-l border-gray-300 pl-4">{wine.alcohol}</span>}
-                                        <span className="border-l border-gray-300 pl-3" title="Déconseillé aux femmes enceintes">
+                                                                                <span className="border-l border-gray-300 pl-3" title="Déconseillé aux femmes enceintes">
                                             <svg viewBox="0 0 64 64" className="w-5 h-5 opacity-60 fill-current text-gray-600">
                                                 <circle cx="32" cy="32" r="30" fill="none" stroke="currentColor" strokeWidth="3" />
                                                 <line x1="12" y1="52" x2="52" y2="12" stroke="currentColor" strokeWidth="3" />

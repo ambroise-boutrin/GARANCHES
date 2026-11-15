@@ -10,7 +10,7 @@ import { cuveeHref } from "@/lib/wineSlug";
 import { getBlocs } from "@/sanity/lib/queries";
 import { getContenuSite } from "@/sanity/lib/contenu";
 import { stegaClean } from "next-sanity";
-import { getWines } from "@/lib/wines";
+import { getGammes } from "@/lib/wines";
 import { SITE_NAME, WINERY_ID, absolu, filAriane, partage } from "@/lib/site";
 import { altPhoto } from "@/data/alts";
 
@@ -39,19 +39,19 @@ export async function pageMetadata(path: string): Promise<Metadata> {
 }
 
 async function Cuvees() {
-    const wines = await getWines();
+    const wines = await getGammes();
     const jsonLd = {
         "@context": "https://schema.org",
         "@type": "ItemList",
         inLanguage: "fr-FR",
-        itemListElement: wines.map((wine: any, index: number) => ({
+        itemListElement: wines.map((wine, index) => ({
             "@type": "ListItem",
             position: index + 1,
             item: {
                 "@type": "Product",
-                name: wine.millesime ? `${wine.name} ${wine.millesime}` : wine.name,
+                name: wine.name,
                 url: absolu(cuveeHref(wine)),
-                description: wine.description,
+                description: String(wine.millesimes[0]?.description || "").split(/\n\s*\n/)[0],
                 image: absolu(wine.image || "/images/bouteilles/brouilly.jpg"),
                 brand: { "@type": "Brand", name: SITE_NAME },
                 manufacturer: { "@id": WINERY_ID },
