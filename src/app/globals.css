@@ -130,3 +130,17 @@ select,
 textarea {
   color-scheme: light;
 }
+
+/* Case de date sur iPhone : Safari lui donne sa propre largeur, qui dépassait du cadre. */
+input[type="date"] {
+  -webkit-appearance: none;
+  appearance: none;
+  display: block;
+  min-width: 0;
+  max-width: 100%;
+  min-height: 3.5rem;
+}
+
+input[type="date"]::-webkit-date-and-time-value {
+  text-align: left;
+}

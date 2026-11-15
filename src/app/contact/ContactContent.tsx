@@ -175,7 +175,7 @@ export default function ContactContent({ sujet, vin }: { sujet?: string; vin?: s
                                 <div className="grid md:grid-cols-3 gap-6">
                                     <div>
                                         <label className="block text-sm text-gray-700 mb-2 font-bold ml-2">Date souhaitée</label>
-                                        <input type="date" name="date" className="w-full bg-white border border-gray-100 p-4 rounded-md focus:outline-none focus:ring-2 focus:ring-wine-100 focus:border-wine-300 transition-all" />
+                                        <input type="date" name="date" className="block w-full min-w-0 bg-white border border-gray-100 p-4 rounded-md focus:outline-none focus:ring-2 focus:ring-wine-100 focus:border-wine-300 transition-all" />
                                     </div>
                                     <div>
                                         <label className="block text-sm text-gray-700 mb-2 font-bold ml-2">Personnes</label>
