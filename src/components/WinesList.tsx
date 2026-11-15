@@ -81,7 +81,7 @@ export default function WinesList({ wines }: { wines: any[] }) {
                                     </div>
 
                                     <div className="flex flex-wrap gap-2 justify-center md:justify-start mb-8">
-                                        {wine.tags?.map((tag: string) => (
+                                        {wine.tags?.filter((tag: string) => ["gamay", "chardonnay", "pinot noir", "aligoté"].includes(tag.trim().toLowerCase())).map((tag: string) => (
                                             <span key={tag} className="px-3 py-1 bg-wine-50 text-wine-800 text-xs border border-wine-100">
                                                 {tag}
                                             </span>

@@ -135,9 +135,8 @@ export default async function CuveePage({ params }: Props) {
                 cliquerImage={gamme.cliquerImage}
                 nom={gamme.name}
                 communs={[
-                    // Le cépage a sa propre case, la ligne « À table » ne garde que les plats.
+                    // Seul le cépage est affiché : les accords mets-vins de l'ancien site ne sont pas repris.
                     { label: "Cépage", value: tags.filter(estCepage).join(", ") },
-                    { label: "À table", value: tags.filter((t) => !estCepage(t)).join(" • ") },
                     { label: "Volume", value: volume },
                 ]}
                 titreParcelle={texteDe(contenu, "cuvees.fiche.parcelle")}
