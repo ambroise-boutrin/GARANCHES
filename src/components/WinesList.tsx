@@ -7,12 +7,6 @@ import FadeIn from "@/components/FadeIn";
 import { cuveeHref, nomMillesime } from "@/lib/wineSlug";
 import { useTexte, useUi } from "@/components/Contenu";
 
-// Première phrase de la présentation (« Un beau vin de garde. »), ou le début du texte s'il n'a qu'un paragraphe.
-function premierParagraphe(texte?: string) {
-    const p = String(texte || "").split(/\n\s*\n/)[0].trim();
-    return p.length > 140 ? p.slice(0, 139).replace(/\s+\S*$/, "") + "…" : p;
-}
-
 export default function WinesList({ wines }: { wines: any[] }) {
     const ui = useUi();
     const decouvrir = useTexte("cuvees.decouvrir");
@@ -28,7 +22,7 @@ export default function WinesList({ wines }: { wines: any[] }) {
 
                     {wines.map((wine: any, index: number) => (
                         <FadeIn key={wine.id} delay={index * 0.1}>
-                            <div className="group flex flex-col md:flex-row gap-4 md:gap-8 items-center bg-white p-4 md:p-10 border border-gray-100">
+                            <div className="group relative flex flex-col md:flex-row gap-4 md:gap-8 items-center bg-white p-4 md:p-10 border border-gray-100 hover:border-wine-200 transition-colors">
 
                                 <div className="w-full md:w-1/3 h-72 md:h-80 relative flex-shrink-0 bg-gray-50 overflow-hidden" data-sanity={wine.cliquerImage}>
                                     <div className="absolute inset-0 flex items-center justify-center p-4">
@@ -46,24 +40,12 @@ export default function WinesList({ wines }: { wines: any[] }) {
 
                                 <div className="w-full md:w-2/3 text-center md:text-left">
                                     <div className="flex flex-col md:flex-row justify-between items-center mb-2">
-                                        <h2 className="normal-case tracking-normal text-3xl font-serif text-wine-900"><Link href={cuveeHref(wine)} className="hover:text-red-900 transition-colors">{nomMillesime(wine)}</Link></h2>
+                                        <h2 className="normal-case tracking-normal text-3xl font-serif text-wine-900"><Link href={cuveeHref(wine)} className="group-hover:text-red-900 transition-colors after:absolute after:inset-0 after:content-['']">{nomMillesime(wine)}</Link></h2>
                                     </div>
 
                                     <p className="text-wine-700 text-sm font-bold mb-4">
                                         {wine.subtitle || "Domaine de Garanches"}
                                     </p>
-
-                                    {/* Chaque millésime et sa phrase de présentation, la suite est sur la fiche du vin */}
-                                    <ul className="text-left text-sm leading-relaxed mb-6 divide-y divide-stone-200 border-y border-stone-200">
-                                        {(wine.millesimes ?? [wine]).map((m: any) => (
-                                            <li key={m.id}>
-                                                <Link href={`${cuveeHref(wine)}${m.millesime ? `#${m.millesime}` : ""}`} className="flex gap-4 py-3 hover:text-red-900 transition-colors">
-                                                    <span className="font-bold text-wine-900 w-12 flex-shrink-0">{m.millesime}</span>
-                                                    <span className="text-gray-800">{premierParagraphe(m.description)}</span>
-                                                </Link>
-                                            </li>
-                                        ))}
-                                    </ul>
 
                                     <Link href={cuveeHref(wine)} className="inline-block mb-6 text-base underline underline-offset-4 decoration-1 text-red-900 hover:text-red-700 transition-colors">
                                         {decouvrir}
@@ -89,7 +71,7 @@ export default function WinesList({ wines }: { wines: any[] }) {
                                         ))}
                                     </div>
 
-                                    <RequestBottlesButton wine={wine} />
+                                    <div className="relative z-10">{/* au-dessus du lien de la carte */}<RequestBottlesButton wine={wine} /></div>
                                 </div>
                             </div>
                         </FadeIn>
