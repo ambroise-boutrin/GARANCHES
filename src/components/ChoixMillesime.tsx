@@ -69,7 +69,7 @@ export default function ChoixMillesime({
                     <Image src={image} alt={`Bouteille de ${nom} - Domaine de Garanches`} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-contain p-8 mix-blend-multiply" />
                 </div>
                 <div>
-                    {millesimes.length > 1 && (
+                    {millesimes.length > 0 && (
                         <div role="tablist" aria-label="Millésimes" className="flex flex-wrap gap-3 mb-10">
                             {millesimes.map((w) => {
                                 const actif = cle(w) === choisi;
