@@ -6,7 +6,7 @@ import { photoDe, texteDe } from "@/lib/contenu";
 
 export { Lignes } from "@/lib/contenu";
 import { PORTES, type Porte } from "@/data/architecture";
-import { TELEPHONES } from "@/data/contacts";
+import { TELEPHONES, estPrincipal } from "@/data/contacts";
 import { FAQS } from "@/data/faq";
 
 // Contenu modifié dans le studio, lu une fois par le serveur et partagé avec tous les composants du navigateur.
@@ -29,7 +29,9 @@ export function usePhoto(cle: string): PhotoPrete {
 
 // Numéros du domaine (studio › Téléphones), sinon la liste du code.
 export function useTelephones() {
-    return useContenu().telephones ?? TELEPHONES;
+    const liste = useContenu().telephones ?? TELEPHONES;
+    // Isabelle et Aurélie d'abord, quel que soit l'ordre saisi dans le studio.
+    return [...liste.filter((t) => estPrincipal(t.nom)), ...liste.filter((t) => !estPrincipal(t.nom))];
 }
 
 // Questions fréquentes (studio › Questions fréquentes), sinon la liste du code.

@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { GENERIC_PATHS, type Porte } from "@/data/architecture";
 import { usePortes, useTelephones, useTexte } from "@/components/Contenu";
-import { telHref } from "@/data/contacts";
+import { estPrincipal, telHref } from "@/data/contacts";
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
@@ -264,7 +264,7 @@ export default function Navbar() {
                                             {/* Deux colonnes pour que le bas du menu reste visible au-dessus de la barre de Safari. */}
                                             <div className="mt-2 grid grid-cols-2 gap-x-3 text-white">
                                                 {telephones.map((t) => (
-                                                    <a key={t.nom + t.numero} href={telHref(t.numero)} className="py-2">{t.nom}<br /><span className="whitespace-nowrap underline underline-offset-4 decoration-1">{t.numero}</span></a>
+                                                    <a key={t.nom + t.numero} href={telHref(t.numero)} className={`py-2 ${estPrincipal(t.nom) ? "font-bold" : ""}`}>{t.nom}<br /><span className="whitespace-nowrap underline underline-offset-4 decoration-1">{t.numero}</span></a>
                                                 ))}
                                             </div>
                                         </div>

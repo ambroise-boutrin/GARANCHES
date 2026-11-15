@@ -9,7 +9,7 @@ import { WINERY_ID, filAriane, partage } from "@/lib/site";
 // Titre et description pour Google : studio (Pages › Contact › Google), sinon ceux-ci.
 export async function generateMetadata(): Promise<Metadata> {
     const infos = (await getContenuSite()).pages.contact;
-    const description = stegaClean(infos?.seoDescription) || "Domaine de Garanches, 345 chemin de Garanches, 69460 Odenas, au pied du Mont Brouilly. Ouvert du lundi au samedi de 9h à 18h. Tél. 07 82 24 94 36.";
+    const description = stegaClean(infos?.seoDescription) || "Domaine de Garanches, 345 chemin de Garanches, 69460 Odenas, au pied du Mont Brouilly. Ouvert du lundi au samedi de 9h à 18h. Tél. 06 61 73 56 67.";
     return {
         title: stegaClean(infos?.seoTitre) || "Contact et accès au domaine, Odenas",
         description,

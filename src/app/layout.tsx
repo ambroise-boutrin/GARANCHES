@@ -93,7 +93,7 @@ const jsonLd = {
         absolu("/images/garanches/maison-domaine.jpg"),
         absolu("/images/smugmug/cave-foudres.jpg"),
       ],
-      "telephone": "+33782249436",
+      "telephone": "+33661735667",
       "email": "contact@domainedegaranches.com",
       "vatID": "FR95400409173",
       "foundingDate": "1788",

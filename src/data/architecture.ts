@@ -392,9 +392,9 @@ Puis goûtons quelques cuvées au cœur de leur histoire.
                 body: `Le domaine est ouvert du lundi au samedi, de 9h à 18h. Il est fermé le dimanche et les jours fériés.
 
 Nous recevons avec plaisir les visiteurs individuels comme les groupes. Pour vous garantir le meilleur accueil, **une réservation est conseillée**, par téléphone ou avec le bouton ci-dessous :
+**Isabelle : 06 61 73 56 67**
+**Aurélie : 06 58 83 46 80**
 Romain : 07 82 24 94 36
-Aurélie : 06 58 83 46 80
-Isabelle : 06 61 73 56 67
 Michel : 06 09 41 97 02
 
 345 chemin de Garanches, 69460 Odenas.`,
@@ -523,9 +523,9 @@ Nous choisissons ensemble ce qui donnera à ce moment sa couleur.
                 body: `**1. Choisissez vos vins** parmi nos cuvées.
 
 **2. Envoyez-nous votre commande** avec le bouton ci-dessous, ou appelez-nous. Nous vous répondons sous 24 heures.
+**Isabelle : 06 61 73 56 67**
+**Aurélie : 06 58 83 46 80**
 Romain : 07 82 24 94 36
-Aurélie : 06 58 83 46 80
-Isabelle : 06 61 73 56 67
 Michel : 06 09 41 97 02
 
 **3. Retrait ou livraison** : nous vous confirmons la commande, puis nous l'expédions depuis notre cave à Odenas, partout en France, ou nous la préparons pour un retrait au domaine.

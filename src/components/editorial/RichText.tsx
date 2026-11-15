@@ -21,7 +21,7 @@ export default function RichText({ text, className = "" }: { text: string; class
                             {j > 0 && <br />}
                             {line.split(/(\*\*[^*]+\*\*)/g).map((part, k) =>
                                 part.startsWith("**") && part.endsWith("**") ? (
-                                    <strong key={k} className="font-medium text-wine-900"><AvecTelephones texte={part.slice(2, -2)} /></strong>
+                                    <strong key={k} className={`${/\d{2}[\s\u00a0.]?\d{2}[\s\u00a0.]?\d{2}/.test(part) ? "font-bold" : "font-medium"} text-wine-900`}><AvecTelephones texte={part.slice(2, -2)} /></strong>
                                 ) : (
                                     <AvecTelephones key={k} texte={part} />
                                 )
