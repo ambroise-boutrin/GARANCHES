@@ -25,14 +25,11 @@ export default async function MentionsLegales() {
                 <p>
                     <strong>GFA Domaine de Garanches</strong><br />
                     345 chemin de Garanches, 69460 Odenas<br />
-                    Téléphone : +33 7 82 24 94 36 (Romain) · +33 6 58 83 46 80 (Aurélie) · +33 6 61 73 56 67 (Isabelle) · +33 6 09 41 97 02 (Michel)<br />
+                    Téléphone : +33 7 82 24 94 36<br />
                     Email : contact@domainedegaranches.com<br />
                     <br />
-                    <strong>Forme juridique :</strong> Groupement foncier agricole<br />
                     <strong>SIREN :</strong> 400 409 173<br />
-                    <strong>SIRET (siège) :</strong> 400 409 173 00012<br />
                     <strong>Numéro RCS :</strong> 400 409 173 R.C.S. Villefranche-Tarare<br />
-                    <strong>Inscription au RCS et au RNE :</strong> le 31/10/2002<br />
                     <strong>Numéro de TVA :</strong> FR95400409173<br />
                     <strong>Directeur de la publication :</strong> Ambroise Boutrin
                 </p>
@@ -44,22 +41,9 @@ export default async function MentionsLegales() {
                     Site : vercel.com · Contact : vercel.com/help
                 </p>
 
-                <h3>Propriété intellectuelle</h3>
-                <p>
-                    L'ensemble de ce site relève de la législation française et internationale sur le droit d'auteur et la propriété intellectuelle. Tous les droits de reproduction sont réservés.
-                </p>
+                <h3>Crédits photo</h3>
                 <p>
                     Photographies : Vianney Tisseau et Domaine de Garanches.
-                </p>
-
-                <h3>Données personnelles</h3>
-                <p>
-                    Pour savoir quelles données nous recevons et comment exercer vos droits, consultez notre <a href="/politique-confidentialite">politique de confidentialité</a>.
-                </p>
-
-                <h3>Alcool</h3>
-                <p>
-                    La vente d'alcool aux mineurs est interdite. L'abus d'alcool est dangereux pour la santé, à consommer avec modération.
                 </p>
             </div>
         </main>
