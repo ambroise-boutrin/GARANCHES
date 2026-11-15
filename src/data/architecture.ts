@@ -137,6 +137,10 @@ Premier de la lignée familiale à s'installer à Garanches, Jean Buy prend part
 Engagé dans la collecte des doléances de 1789, au-delà de la seule paroisse d'Odenas, il devient le premier maire de la commune en 1790.
 
 Son parcours s'inscrit dans une époque de profondes transformations politiques, économiques et agricoles, qui façonneront progressivement le Beaujolais viticole que nous connaissons aujourd'hui.`,
+                image: "/images/garanches/jean-buy-marqueterie-1790.jpg",
+                alt: "Marqueterie datée de 1790 représentant Jean Buy, seule image connue de lui",
+                document: true,
+                agrandir: true,
             },
             {
                 id: "emmanuel-bender",
