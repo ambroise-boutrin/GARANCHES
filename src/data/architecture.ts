@@ -112,6 +112,7 @@ Aujourd'hui, nous en gardons les traces et nous continuons à les faire vivre.`,
                 image: "/images/garanches/diplome-lyon-1894.jpg",
                 alt: "Diplôme de l'Exposition universelle et coloniale de Lyon, 1894",
                 document: true,
+                agrandir: true,
             },
             {
                 id: "personnages-cles",
@@ -123,7 +124,7 @@ Jean Buy, Emmanuel Bender, Émile Bender et d'autres ont laissé leur empreinte 
 Nous avons choisi de raconter leurs histoires simplement, à partir des traces qu'ils nous ont laissées.
 
 Parce qu'un lieu se comprend aussi à travers celles et ceux qui l'ont façonné.`,
-                image: "/images/garanches/diplome-encadre.jpg", document: true,
+                image: "/images/garanches/diplome-encadre.jpg", document: true, agrandir: true,
                 alt: "Diplôme d'honneur encadré, archives de Garanches",
             },
             {
@@ -191,7 +192,7 @@ Ici, l'histoire se découvre au fil des traces.`,
                 cta: { label: "Voir les Carnets", href: "/carnets" },
             },
             { id: "plants-anciens", title: "Plants anciens" },
-            { id: "documents", title: "Documents", image: "/images/garanches/concours-macon-1968.jpg", alt: "Diplôme du concours des grands vins de France, Mâcon 1968", document: true },
+            { id: "documents", title: "Documents", image: "/images/garanches/concours-macon-1968.jpg", alt: "Diplôme du concours des grands vins de France, Mâcon 1968", document: true, agrandir: true },
         ],
         children: ["le-lieu/histoire", "carnets"],
     },
