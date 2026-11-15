@@ -8,6 +8,7 @@ export default {
         { name: 'essentiel', title: 'Essentiel', default: true },
         { name: 'vente', title: 'Prix et vente' },
         { name: 'details', title: 'Détails' },
+        { name: 'anglais', title: 'En anglais' },
     ],
     fields: [
         {
@@ -151,6 +152,12 @@ export default {
             rows: 6,
             group: 'details',
         },
+        // Version anglaise du site (/en). Le nom et le millésime ne se traduisent pas.
+        { name: 'subtitleEn', title: 'Appellation et couleur en anglais', description: 'Par exemple « Beaujolais cru — Red ». Laissé vide : la traduction anglaise prévue dans le site s’affiche.', type: 'string', group: 'anglais' },
+        { name: 'descriptionEn', title: 'Présentation en anglais', type: 'text', rows: 5, group: 'anglais' },
+        { name: 'tagsEn', title: 'Cépage et accords en anglais', description: 'Un mot par ligne : « Gamay », « Red meat »…', type: 'array', of: [{ type: 'string' }], group: 'anglais' },
+        { name: 'parcelleEn', title: 'Parcelle et terroir en anglais', type: 'text', rows: 6, group: 'anglais' },
+        { name: 'vinificationEn', title: 'Assemblage et élevage en anglais', type: 'text', rows: 6, group: 'anglais' },
     ],
     orderings: [
         { title: "Ordre d'affichage", name: 'ordre', by: [{ field: 'ordre', direction: 'asc' }] },

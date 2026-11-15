@@ -28,6 +28,7 @@ export default {
                         { name: 'estPhoto', title: 'Emplacement de photo', type: 'boolean', hidden: true },
                         { name: 'libelle', title: 'Emplacement', type: 'string', readOnly: true },
                         { name: 'texte', title: 'Texte', type: 'text', rows: 3, hidden: ({ parent }: any) => Boolean(parent?.estPhoto) },
+                        { name: 'texteEn', title: 'Texte en anglais', description: 'Laissé vide : la traduction anglaise prévue dans le site s’affiche.', type: 'text', rows: 3, hidden: ({ parent }: any) => Boolean(parent?.estPhoto) },
                         { name: 'photo', title: 'Photo', type: 'image', options: { hotspot: true }, description: 'Placez le rond sur le sujet pour qu’il reste visible sur téléphone.', hidden: ({ parent }: any) => !parent?.estPhoto },
                     ],
                     preview: {

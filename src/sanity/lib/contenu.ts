@@ -2,6 +2,7 @@ import { cache } from 'react';
 import { stegaClean } from 'next-sanity';
 import { cliquable, sanityFetch } from './fetch';
 import { photoSanity } from './photo';
+import { langueCourante } from '@/lib/langueServeur';
 
 import type { ContenuSite, InfosPage, PhotoPrete } from './contenuTypes';
 import { CONTENU_VIDE } from './contenuTypes';
@@ -16,13 +17,19 @@ function prete(photo: any, largeur: number, cliquer?: string): PhotoPrete | unde
 }
 
 // Une seule lecture Sanity par page affichée (mise en cache pendant le rendu).
-export const getContenuSite = cache(async (): Promise<ContenuSite> => {
+// En anglais, on lit les champs « … en anglais » du studio (texteEn, titreEn…) à la place des champs français ;
+// un champ anglais vide laisse la traduction prévue dans le code (src/i18n/en).
+export const getContenuSite = (): Promise<ContenuSite> => contenuDansLaLangue(langueCourante());
+
+const contenuDansLaLangue = cache(async (langue: 'fr' | 'en'): Promise<ContenuSite> => {
+    const en = langue === 'en';
+    const champ = (nom: string) => (en ? `"${nom}": ${nom}En` : nom);
     try {
         const r = await sanityFetch<any>(`{
-            "zones": *[_type == "zone"]{ _id, entrees[]{ _key, cle, texte, "photo": photo${PHOTO} } },
-            "pages": *[_type == "bandeau" && defined(page)]{ _id, page, titre, motsCles, description, bouton, seoTitre, seoDescription, "image": image${PHOTO} },
+            "zones": *[_type == "zone"]{ _id, entrees[]{ _key, cle, ${champ('texte')}, "photo": photo${PHOTO} } },
+            "pages": *[_type == "bandeau" && defined(page)]{ _id, page, ${['titre', 'motsCles', 'description', 'bouton', 'seoTitre', 'seoDescription'].map(champ).join(', ')}, "image": image${PHOTO} },
             "telephones": *[_type == "telephones"][0].numeros[]{ nom, numero },
-            "faq": *[_type == "faq"][0].questions[]{ question, reponse }
+            "faq": *[_type == "faq"][0].questions[]{ ${champ('question')}, ${champ('reponse')} }
         }`);
 
         const textes: ContenuSite['textes'] = {};
@@ -51,10 +58,10 @@ export const getContenuSite = cache(async (): Promise<ContenuSite> => {
         const telephones = (r.telephones ?? []).filter((t: any) => t?.nom && t?.numero).map((t: any) => ({ nom: t.nom, numero: stegaClean(t.numero) }));
         const faq = (r.faq ?? []).filter((f: any) => f?.question && f?.reponse);
 
-        return { textes, photos, pages, telephones: telephones.length ? telephones : null, faq: faq.length ? faq : null };
+        return { langue, textes, photos, pages, telephones: telephones.length ? telephones : null, faq: faq.length ? faq : null };
     } catch (error) {
         console.error('Sanity: contenu du site indisponible', error);
-        return CONTENU_VIDE;
+        return { ...CONTENU_VIDE, langue };
     }
 });
 
@@ -72,9 +79,11 @@ export async function getEquipe(): Promise<{ nom: string; photo?: PhotoPrete }[]
 }
 
 // Page légale (mentions, CGV, confidentialité) : null tant qu'elle n'est pas dans le studio.
+// En anglais : les champs « en anglais » de la page, sinon null (la traduction du code s'affiche).
 export async function getPageLegale(page: string): Promise<{ titre: string; contenu: any[] } | null> {
     try {
-        const doc = await sanityFetch<any>(`*[_type == "pageLegale" && page == $page][0]{ titre, contenu }`, { page });
+        const en = langueCourante() === 'en';
+        const doc = await sanityFetch<any>(`*[_type == "pageLegale" && page == $page][0]{ ${en ? '"titre": titreEn, "contenu": contenuEn' : 'titre, contenu'} }`, { page });
         return doc?.titre && doc?.contenu?.length ? doc : null;
     } catch (error) {
         console.error('Sanity: page légale indisponible', error);

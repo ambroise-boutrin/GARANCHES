@@ -1,15 +1,27 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useUi } from "@/components/Contenu";
+
+// Jour (0 = dimanche) et heure à Odenas, quel que soit le fuseau horaire du visiteur.
+function maintenantAOdenas() {
+    const parties = new Intl.DateTimeFormat("en-GB", { timeZone: "Europe/Paris", weekday: "short", hour: "numeric", hourCycle: "h23" }).formatToParts(new Date());
+    const jour = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].indexOf(parties.find((p) => p.type === "weekday")?.value ?? "");
+    const heure = Number(parties.find((p) => p.type === "hour")?.value);
+    if (jour < 0 || Number.isNaN(heure)) {
+        const d = new Date();
+        return { day: d.getDay(), hour: d.getHours() };
+    }
+    return { day: jour, hour: heure };
+}
 
 const OpeningStatus = ({ compact = false, className = "" }: { compact?: boolean; className?: string }) => {
     const [status, setStatus] = useState<{ isOpen: boolean; text: string } | null>(null);
+    const ui = useUi();
 
     useEffect(() => {
         const updateStatus = () => {
-            const now = new Date();
-            const day = now.getDay(); // 0 = Dimanche, 1 = Lundi, ..., 6 = Samedi
-            const hour = now.getHours();
+            const { day, hour } = maintenantAOdenas(); // day : 0 = Dimanche, 1 = Lundi, ..., 6 = Samedi
 
             // Horaires : Lundi (1) au Samedi (6), de 9h à 18h
             // Pause déjeuner ? (Souvent 12h-14h) -> On simplifie 9-18h pour le moment
@@ -17,24 +29,24 @@ const OpeningStatus = ({ compact = false, className = "" }: { compact?: boolean;
             const isOpenHour = hour >= 9 && hour < 18;
 
             if (isOpenDay && isOpenHour) {
-                setStatus({ isOpen: true, text: "Ouvert actuellement" });
+                setStatus({ isOpen: true, text: ui.ouvert });
             } else {
                 let nextOpenText = "";
                 if (!isOpenDay) {
                     // Si on est Dimanche -> Ouvre Lundi 9h
-                    nextOpenText = "Ouvre Lun. 9h";
+                    nextOpenText = ui.ouvreLundi;
                 } else if (hour < 9) {
                     // Si on est le matin avant 9h -> Ouvre à 9h
-                    nextOpenText = "Ouvre à 9h";
+                    nextOpenText = ui.ouvreA9h;
                 } else {
                     // Si on est le soir après 18h -> Ouvre demain 9h
                     // (Sauf si demain est dimanche)
-                    nextOpenText = day === 6 ? "Ouvre Lun. 9h" : "Ouvre Demain 9h";
+                    nextOpenText = day === 6 ? ui.ouvreLundi : ui.ouvreDemain;
                 }
 
                 // En mode compact, on affiche juste "Fermé".
                 // En mode normal, on affiche "Fermé • Ouvre..."
-                const finalText = compact ? "Fermé" : `Fermé • ${nextOpenText}`;
+                const finalText = compact ? ui.ferme : `${ui.ferme} • ${nextOpenText}`;
 
                 setStatus({ isOpen: false, text: finalText });
             }
@@ -43,7 +55,7 @@ const OpeningStatus = ({ compact = false, className = "" }: { compact?: boolean;
         updateStatus();
         const interval = setInterval(updateStatus, 60000); // Mise à jour chaque minute
         return () => clearInterval(interval);
-    }, [compact]);
+    }, [compact, ui]);
 
     if (!status) return null; // Rien côté serveur pour éviter mismatch
 

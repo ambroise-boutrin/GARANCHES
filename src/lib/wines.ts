@@ -1,6 +1,9 @@
 import { wineSlug } from "@/lib/wineSlug";
 import { PRODUCTS } from "@/data/products";
 import { getWines as getSanityWines } from "@/sanity/lib/queries";
+import { langueCourante } from "@/lib/langueServeur";
+import { MOTS_VINS_EN, SOUS_TITRES_EN, VINS_EN } from "@/i18n/en/divers";
+import { stegaClean } from "next-sanity";
 
 // Catalogue : les vins du studio Sanity, sinon la liste statique (avant le premier import, ou si Sanity ne répond pas).
 // Aucun prix ne doit apparaître sur le site, même dans le code des pages : le prix, le stock et la mention
@@ -9,17 +12,45 @@ function sansPrix({ price, prix, stock, allergens, ...vin }: any): any {
     return vin;
 }
 
+// Version anglaise d'un vin : champs « en anglais » du studio, sinon la traduction du code (src/i18n/en/divers.ts).
+// Le nom et le millésime ne se traduisent pas.
+const motEn = (mot: string) => MOTS_VINS_EN[stegaClean(mot).trim().toLowerCase()] ?? mot;
+const sousTitreEn = (texte: string) =>
+    String(texte || "").split(/(\s+[—–-]\s+)/).map((m) => SOUS_TITRES_EN[stegaClean(m).trim().toLowerCase()] ?? m).join("");
+
+function enAnglais({ subtitleEn, descriptionEn, tagsEn, parcelleEn, vinificationEn, ...vin }: any): any {
+    const code = VINS_EN[wineSlug(vin)] ?? {};
+    return {
+        ...vin,
+        subtitle: subtitleEn || code.subtitle || sousTitreEn(vin.subtitle),
+        description: descriptionEn || code.description || vin.description,
+        // Sections détaillées : masquées en anglais tant qu'elles ne sont pas traduites.
+        parcelle: parcelleEn || code.parcelle || undefined,
+        vinification: vinificationEn || code.vinification || undefined,
+        tags: tagsEn?.length ? tagsEn : vin.tags?.map(motEn),
+    };
+}
+
+// En français, on retire les champs anglais.
+function enFrancais({ subtitleEn, descriptionEn, tagsEn, parcelleEn, vinificationEn, ...vin }: any): any {
+    return vin;
+}
+
+function dansLaLangue(vins: any[]) {
+    return vins.map(langueCourante() === "en" ? enAnglais : enFrancais);
+}
+
 export async function getWines() {
     try {
         const sanityWines = await getSanityWines();
         if (sanityWines && sanityWines.length > 0) {
-            return sanityWines.map(sansPrix);
+            return dansLaLangue(sanityWines.map(sansPrix));
         }
     } catch (error) {
         console.error("Sanity: vins indisponibles", error);
     }
 
-    return PRODUCTS.map(sansPrix);
+    return dansLaLangue(PRODUCTS.map(sansPrix));
 }
 
 // Un vin et tous ses millésimes : une seule bouteille montrée, puis chaque millésime décliné.

@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/Lien";
 import { useTexte } from "@/components/Contenu";
 import { nomMillesime } from "@/lib/wineSlug";
 

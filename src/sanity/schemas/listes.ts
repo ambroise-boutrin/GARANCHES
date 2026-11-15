@@ -76,6 +76,8 @@ export const faq = {
                     fields: [
                         { name: 'question', title: 'Question', type: 'string', validation: (Rule: any) => Rule.required() },
                         { name: 'reponse', title: 'Réponse', type: 'text', rows: 4, validation: (Rule: any) => Rule.required() },
+                        { name: 'questionEn', title: 'Question en anglais', description: 'Pour la version anglaise du site. Si aucune question n’a de version anglaise, les questions prévues dans le site s’affichent.', type: 'string' },
+                        { name: 'reponseEn', title: 'Réponse en anglais', type: 'text', rows: 4 },
                     ],
                     preview: { select: { title: 'question', subtitle: 'reponse' } },
                 },

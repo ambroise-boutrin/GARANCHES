@@ -3,9 +3,11 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/Lien";
 import { usePathname } from "next/navigation";
 import { calculerAge, trancheDe } from "@/data/tranchesAge";
+import { useUi } from "@/components/Contenu";
+import { sansLangue } from "@/lib/langue";
 
 type Champ = "jour" | "mois" | "annee";
 const LONGUEUR: Record<Champ, number> = { jour: 2, mois: 2, annee: 4 };
@@ -15,7 +17,9 @@ const PAGES_LIBRES = ["/politique-confidentialite", "/mentions-legales"];
 
 export default function AgeGate() {
 
-    const pathname = usePathname();
+    // Chemin sans /en : les pages libres sont les mêmes dans les deux langues.
+    const pathname = sansLangue(usePathname() || "/");
+    const ui = useUi();
     const [isVisible, setIsVisible] = useState(true);
     const [date, setDate] = useState<Record<Champ, string>>({ jour: "", mois: "", annee: "" });
     const [erreur, setErreur] = useState("");
@@ -27,7 +31,11 @@ export default function AgeGate() {
     };
 
     useEffect(() => {
-        if (document.documentElement.classList.contains("age-ok")) setIsVisible(false);
+        // Âge déjà confirmé : classe posée par le script du <head>, ou (pages rendues dans le navigateur,
+        // comme la page introuvable) cookie et mémoire du navigateur relus ici.
+        let deja = document.documentElement.classList.contains("age-ok") || document.cookie.includes("age-confirmed=true");
+        try { deja = deja || Boolean(localStorage.getItem("age-confirmed")); } catch { }
+        if (deja) setIsVisible(false);
     }, []);
 
     useEffect(() => {
@@ -70,7 +78,7 @@ export default function AgeGate() {
 
         const age = calculerAge(Number(date.jour), Number(date.mois), Number(date.annee));
         if (date.annee.length !== 4 || age === null) {
-            setErreur("Cette date ne semble pas valide.");
+            setErreur(ui.dateInvalide);
             return;
         }
         if (age < 18) {
@@ -134,38 +142,38 @@ export default function AgeGate() {
                 >
                     <div className="text-center w-full max-w-sm relative z-10 py-10">
                         <div className="mb-6 sm:mb-8 relative h-16 w-[122px] sm:h-20 sm:w-[152px] mx-auto">
-                            <Image src="/images/logo-maison.png" alt="Logo" fill sizes="152px" className="object-contain opacity-80" priority unoptimized />
+                            <Image src="/images/logo-maison.png" alt={ui.logo} fill sizes="152px" className="object-contain opacity-80" priority unoptimized />
                         </div>
 
                         <motion.div
                         >
-                            <div id="age-gate-title" className="text-3xl font-serif text-white mb-2 uppercase tracking-[0.04em]">Bienvenue au Domaine</div>
+                            <div id="age-gate-title" className="text-3xl font-serif text-white mb-2 uppercase tracking-[0.04em]">{ui.bienvenue}</div>
                             <div className="w-16 h-px bg-white/60 mx-auto mb-6"></div>
 
                             {mineur ? (
                                 <div role="alert">
                                     <p className="text-stone-300 leading-relaxed mb-10">
-                                        L'accès à ce site est réservé aux personnes majeures. Nous serons heureux de vous accueillir plus tard.
+                                        {ui.mineur}
                                     </p>
                                     <a
                                         href="https://www.google.com"
                                         className="text-stone-400 text-sm underline underline-offset-4 hover:text-white transition-colors"
                                     >
-                                        Quitter le site
+                                        {ui.quitter}
                                     </a>
                                 </div>
                             ) : (
                                 <form onSubmit={handleConfirm} noValidate>
                                     <p className="text-stone-300 mb-8 leading-relaxed">
-                                        L'accès à ce site est réservé aux personnes majeures. Merci d'indiquer votre date de naissance.
+                                        {ui.ageConsigne}
                                     </p>
 
                                     <fieldset className="mb-3">
-                                        <legend className="sr-only">Date de naissance</legend>
+                                        <legend className="sr-only">{ui.dateNaissance}</legend>
                                         <div className="flex items-start justify-center gap-4">
-                                            {champ("jour", "JJ", "Jour", "w-14")}
-                                            {champ("mois", "MM", "Mois", "w-14")}
-                                            {champ("annee", "AAAA", "Année", "w-24")}
+                                            {champ("jour", ui.jourCourt, ui.jour, "w-14")}
+                                            {champ("mois", ui.moisCourt, ui.mois, "w-14")}
+                                            {champ("annee", ui.anneeCourt, ui.annee, "w-24")}
                                         </div>
                                     </fieldset>
 
@@ -175,13 +183,13 @@ export default function AgeGate() {
                                         type="submit"
                                         className="pointer-events-auto cursor-pointer w-full py-4 bg-white text-stone-900 text-base font-medium hover:bg-stone-200 transition-colors duration-300 relative z-50"
                                     >
-                                        Entrer
+                                        {ui.entrer}
                                     </button>
 
                                     <p className="mt-6 text-[11px] leading-relaxed text-stone-400">
-                                        Votre date de naissance n'est pas conservée. Seule votre tranche d'âge est comptée, de façon anonyme, pour mieux connaître nos visiteurs.{" "}
+                                        {ui.ageViePrivee}{" "}
                                         <Link href="/politique-confidentialite#tranches-age" className="underline underline-offset-2 hover:text-stone-300">
-                                            En savoir plus
+                                            {ui.enSavoirPlus}
                                         </Link>
                                     </p>
 
@@ -189,7 +197,7 @@ export default function AgeGate() {
                                         href="https://www.google.com"
                                         className="inline-block pointer-events-auto cursor-pointer text-stone-400 text-sm underline underline-offset-4 hover:text-white transition-colors mt-6 relative z-50"
                                     >
-                                        Quitter le site
+                                        {ui.quitter}
                                     </a>
                                 </form>
                             )}

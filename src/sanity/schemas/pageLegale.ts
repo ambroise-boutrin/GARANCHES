@@ -34,6 +34,29 @@ export default {
                 },
             ],
         },
+        { name: 'titreEn', title: 'Titre en anglais', type: 'string' },
+        {
+            name: 'contenuEn',
+            title: 'Texte en anglais',
+            description: 'Version anglaise du site. Laissé vide : la traduction prévue dans le site s’affiche.',
+            type: 'array',
+            of: [
+                {
+                    type: 'block',
+                    styles: [
+                        { title: 'Paragraphe', value: 'normal' },
+                        { title: 'Intertitre', value: 'h3' },
+                    ],
+                    lists: [{ title: 'Liste à puces', value: 'bullet' }],
+                    marks: {
+                        decorators: [{ title: 'Gras', value: 'strong' }],
+                        annotations: [
+                            { name: 'link', type: 'object', title: 'Lien', fields: [{ name: 'href', type: 'string', title: 'Adresse' }] },
+                        ],
+                    },
+                },
+            ],
+        },
     ],
     preview: {
         select: { page: 'page', titre: 'titre' },

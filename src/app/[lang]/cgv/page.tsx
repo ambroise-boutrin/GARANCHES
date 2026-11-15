@@ -1,0 +1,116 @@
+import type { Metadata } from "next";
+import { partage } from "@/lib/site";
+import { alternatives } from "@/lib/langue";
+import { definirLangue } from "@/lib/langueServeur";
+import { CgvEn } from "@/i18n/en/legal";
+import PageLegale from "@/components/PageLegale";
+import { getPageLegale } from "@/sanity/lib/contenu";
+
+type Props = { params: { lang: string } };
+
+export function generateMetadata({ params }: Props): Metadata {
+    const langue = definirLangue(params.lang);
+    const en = langue === "en";
+    return {
+        title: en ? "General terms of sale" : "Conditions Générales de Vente",
+        description: en ? "General terms of sale of Domaine de Garanches: orders, prices, delivery and returns." : "Consultez les conditions générales de vente du Domaine de Garanches. Commandes, tarifs, livraison et politique de retour.",
+        alternates: alternatives("/cgv", langue),
+        ...partage({ chemin: "/cgv", titre: en ? "General terms of sale | Domaine de Garanches" : "Conditions générales de vente | Domaine de Garanches" }),
+    };
+}
+
+export const revalidate = 60;
+
+export default async function CGVPage({ params }: Props) {
+    const langue = definirLangue(params.lang);
+    // Texte du studio s'il a été importé ou saisi, sinon celui-ci.
+    const doc = await getPageLegale("cgv");
+    if (doc) return <PageLegale titre={doc.titre} contenu={doc.contenu} />;
+    if (langue === "en") return <CgvEn />;
+    return (
+        <main className="min-h-screen pt-32 pb-20 bg-white">
+            <div className="max-w-3xl mx-auto px-6 prose prose-stone">
+                <h1 className="text-3xl font-serif text-wine-900 mb-8 border-b-2 border-wine-100 pb-4">Conditions Générales de Vente</h1>
+
+                <p className="text-sm mb-8">Dernière mise à jour : novembre 2026</p>
+
+                <h3>1. Objet</h3>
+                <p>
+                    Les présentes Conditions Générales de Vente (CGV) régissent les ventes de vins et produits associés effectuées par le GFA Domaine de Garanches
+                    (SIREN 400 409 173, R.C.S. Villefranche-Tarare), 345 chemin de Garanches, 69460 Odenas, contact@domainedegaranches.com,
+                    auprès de ses clients particuliers et professionnels. Le site ne permet pas de payer en ligne : les commandes se passent par email, par téléphone ou au domaine.
+                </p>
+
+                <h3>2. Vente d'alcool aux mineurs</h3>
+                <p>
+                    Conformément à l'article L. 3342-1 du Code de la Santé Publique, la vente d'alcool à des mineurs de moins de 18 ans est interdite.
+                    En passant commande, vous certifiez avoir 18 ans révolus.
+                </p>
+
+                <h3>3. Tarifs</h3>
+                <p>
+                    Les prix de nos produits sont indiqués en Euros toutes taxes comprises (TTC), hors participation aux frais de traitement et d'expédition.
+                    Le Domaine de Garanches se réserve le droit de modifier ses prix à tout moment, mais les produits seront facturés sur la base des tarifs en vigueur au moment de la validation de la commande.
+                </p>
+
+                <h3>4. Commande et Paiement</h3>
+                <p>
+                    Toute commande vaut acceptation des prix et descriptions des produits disponibles à la vente.
+                    Le paiement est exigible immédiatement à la commande. Les règlements peuvent s'effectuer par carte bancaire, chèque ou virement selon les modalités convenues.
+                </p>
+
+                <h3>5. Livraison</h3>
+                <p>
+                    Les produits sont livrés à l'adresse de livraison indiquée lors de la commande.
+                    Les délais de livraison sont donnés à titre indicatif. En cas de retard d'expédition, un mail vous sera adressé pour vous informer d'une éventuelle conséquence sur la date de livraison.
+                </p>
+                <p>
+                    Il appartient au client de vérifier l'état des colis et des vins à la réception et de faire toutes réserves et réclamations qui apparaîtraient justifiées, voire de refuser le colis, si celui-ci est susceptible d'avoir été ouvert ou s'il porte des traces de détérioration.
+                </p>
+
+                <h3>6. Droit de rétractation</h3>
+                <p>
+                    Conformément aux dispositions de l'article L.221-18 du Code de la Consommation, vous disposez d'un délai de rétractation de 14 jours à compter de la réception de vos produits pour exercer votre droit de rétraction sans avoir à justifier de motifs ni à payer de pénalité.
+                    Les retours sont à effectuer dans leur état d'origine et complets (bouteilles non ouvertes). Les frais de retour sont à votre charge.
+                </p>
+
+                <div className="bg-stone-50 p-6 border border-stone-200 my-6 not-prose">
+                    <h4 className="font-bold text-wine-900 mb-4">Modèle de formulaire de rétractation :</h4>
+                    <p className="text-sm mb-4">(Veuillez compléter et renvoyer le présent formulaire uniquement si vous souhaitez vous rétracter du contrat)</p>
+                    <p className="text-sm">
+                        À l'attention du <strong>Domaine de Garanches</strong>,<br />
+                        345 chemin de Garanches, 69460 Odenas<br />
+                        Email : contact@domainedegaranches.com<br /><br />
+                        Je/nous (*) vous notifie/notifions (*) par la présente ma/notre (*) rétractation du contrat portant sur la vente du bien (*)/pour la prestation de services (*) ci-dessous :<br /><br />
+                        Commandé le (*)/reçu le (*) : ..........................................................................<br />
+                        Nom du (des) consommateur(s) : ..........................................................................<br />
+                        Adresse du (des) consommateur(s) : ..........................................................................<br />
+                        Signature du (des) consommateur(s) (uniquement en cas de notification du présent formulaire sur papier) :<br /><br />
+                        Date : ..........................................................................<br />
+                        <span className="text-xs">(*) Rayez la mention inutile.</span>
+                    </p>
+                </div>
+
+                <h3>7. Garanties légales</h3>
+                <p>
+                    Nos vins bénéficient de la garantie légale de conformité (articles L.217-3 et suivants du Code de la consommation) et de la garantie des vices cachés
+                    (articles 1641 et suivants du Code civil). En cas de défaut, contactez-nous à contact@domainedegaranches.com : nous remplaçons ou remboursons le produit concerné.
+                </p>
+
+                <h3>8. Médiation de la consommation (Litiges)</h3>
+                <p>
+                    Conformément aux articles L.616-1 et R.616-1 du code de la consommation, nous proposons un dispositif de médiation de la consommation.
+                    En cas de litige non résolu par une réclamation préalable auprès de notre service client, vous pouvez contacter le médiateur de la consommation compétent.
+                    <br /><br />
+                    <strong>Médiateur de la consommation :</strong><br />
+                    Coordonnées communiquées prochainement.
+                </p>
+
+                <h3>9. Loi applicable</h3>
+                <p>
+                    Les présentes conditions de vente à distance sont soumises à la loi française.
+                </p>
+            </div>
+        </main>
+    );
+}

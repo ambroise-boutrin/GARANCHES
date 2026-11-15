@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Link from "next/link";
+import Link from "@/components/Lien";
+import { useUi } from "@/components/Contenu";
 
 interface ConsentSettings {
     necessary: boolean;
@@ -11,6 +12,7 @@ interface ConsentSettings {
 }
 
 export default function CookieConsent() {
+    const ui = useUi();
     const [isVisible, setIsVisible] = useState(false);
     const [showSettings, setShowSettings] = useState(false);
     const [consent, setConsent] = useState<ConsentSettings>({
@@ -71,13 +73,13 @@ export default function CookieConsent() {
                         {/* Bandeau simple et compact : il ne cache pas la page sur téléphone. */}
                         <div className="max-w-6xl mx-auto px-4 py-4 md:px-6 md:py-5 flex flex-col md:flex-row md:items-center gap-3 md:gap-8">
                             <p className="flex-1 text-[13px] md:text-sm text-stone-700 leading-snug">
-                                Ce site n’utilise ni publicité ni cookie de suivi : il retient seulement la vérification de votre âge et vos choix.{" "}
+                                {ui.cookiesBandeau}{" "}
                                 <Link href="/politique-confidentialite" className="text-wine-900 underline underline-offset-2">
-                                    En savoir plus
+                                    {ui.enSavoirPlus}
                                 </Link>
                                 {" · "}
                                 <button onClick={() => setShowSettings(true)} className="text-wine-900 underline underline-offset-2">
-                                    Personnaliser
+                                    {ui.personnaliser}
                                 </button>
                             </p>
                             <div className="grid grid-cols-2 gap-2 md:flex md:gap-3 shrink-0">
@@ -85,13 +87,13 @@ export default function CookieConsent() {
                                     onClick={handleDeclineAll}
                                     className="px-4 py-2.5 text-sm text-stone-800 border border-stone-400 hover:bg-stone-50 transition-colors"
                                 >
-                                    Refuser
+                                    {ui.refuser}
                                 </button>
                                 <button
                                     onClick={handleAcceptAll}
                                     className="px-4 py-2.5 text-sm font-medium text-white bg-wine-900 hover:bg-wine-800 transition-colors"
                                 >
-                                    Accepter
+                                    {ui.accepter}
                                 </button>
                             </div>
                         </div>
@@ -113,8 +115,8 @@ export default function CookieConsent() {
 
                             <div className="p-6 border-b border-stone-100 bg-stone-50/80 flex justify-between items-center sticky top-0 z-10 backdrop-blur-sm">
                                 <div>
-                                    <h3 className="normal-case tracking-normal text-xl font-serif font-bold text-stone-900">Préférences des cookies</h3>
-                                    <p className="text-sm text-stone-700 mt-1">Gérez vos choix de consentement.</p>
+                                    <h3 className="normal-case tracking-normal text-xl font-serif font-bold text-stone-900">{ui.cookiesTitre}</h3>
+                                    <p className="text-sm text-stone-700 mt-1">{ui.cookiesSousTitre}</p>
                                 </div>
                                 <button
                                     onClick={() => setShowSettings(false)}
@@ -131,41 +133,43 @@ export default function CookieConsent() {
                                 <div className="flex items-start justify-between gap-4 p-4 bg-stone-50 border border-stone-100">
                                     <div className="space-y-1">
                                         <div className="flex items-center gap-2">
-                                            <span className="font-semibold text-stone-900">Nécessaires</span>
-                                            <span className="text-[10px] font-bold text-wine-900 bg-wine-50 px-2 py-0.5 rounded-full border border-wine-100">Toujours actif</span>
+                                            <span className="font-semibold text-stone-900">{ui.necessaires}</span>
+                                            <span className="text-[10px] font-bold text-wine-900 bg-wine-50 px-2 py-0.5 rounded-full border border-wine-100">{ui.toujoursActif}</span>
                                         </div>
                                         <p className="text-sm text-stone-700">
-                                            Indispensables au bon fonctionnement du site (vérification d'âge, sécurité).
+                                            {ui.necessairesTexte}
                                         </p>
                                     </div>
-                                    <Switch checked={true} disabled />
+                                    <Switch checked={true} disabled label={ui.necessaires} />
                                 </div>
 
 
                                 <div className="flex items-start justify-between gap-4 p-4 border border-stone-100 hover:border-stone-200 transition-colors">
                                     <div className="space-y-1">
-                                        <span className="font-semibold text-stone-900 block">Analytiques</span>
+                                        <span className="font-semibold text-stone-900 block">{ui.analytiques}</span>
                                         <p className="text-sm text-stone-700">
-                                            Nous permettent de mesurer l'audience (Google Analytics, etc.). <span className="text-xs text-stone-600">Non utilisé actuellement.</span>
+                                            {ui.analytiquesTexte} <span className="text-xs text-stone-600">{ui.nonUtilise}</span>
                                         </p>
                                     </div>
                                     <Switch
                                         checked={consent.analytics}
                                         onChange={() => toggleConsent("analytics")}
+                                        label={ui.analytiques}
                                     />
                                 </div>
 
 
                                 <div className="flex items-start justify-between gap-4 p-4 border border-stone-100 hover:border-stone-200 transition-colors">
                                     <div className="space-y-1">
-                                        <span className="font-semibold text-stone-900 block">Marketing</span>
+                                        <span className="font-semibold text-stone-900 block">{ui.marketing}</span>
                                         <p className="text-sm text-stone-700">
-                                            Publicités ciblées. <span className="text-xs text-stone-600">Non utilisé actuellement.</span>
+                                            {ui.marketingTexte} <span className="text-xs text-stone-600">{ui.nonUtilise}</span>
                                         </p>
                                     </div>
                                     <Switch
                                         checked={consent.marketing}
                                         onChange={() => toggleConsent("marketing")}
+                                        label={ui.marketing}
                                     />
                                 </div>
 
@@ -177,13 +181,13 @@ export default function CookieConsent() {
                                     onClick={handleDeclineAll}
                                     className="px-5 py-2.5 text-sm font-medium text-stone-800 hover:text-stone-900 hover:bg-stone-200/50 transition-colors"
                                 >
-                                    Tout refuser
+                                    {ui.toutRefuser}
                                 </button>
                                 <button
                                     onClick={handleSavePreferences}
                                     className="px-6 py-2.5 text-sm font-bold text-white bg-stone-900 hover:bg-stone-800 transition-colors"
                                 >
-                                    Sauvegarder
+                                    {ui.sauvegarder}
                                 </button>
                             </div>
                         </motion.div>
@@ -197,7 +201,7 @@ export default function CookieConsent() {
                     whileHover={{ scale: 1.1 }}
                     onClick={() => setShowSettings(true)}
                     className="hidden md:block fixed bottom-4 left-4 z-[140] p-3 bg-white/80 backdrop-blur border border-stone-100 rounded-full text-stone-600 hover:text-wine-900 transition-colors group"
-                    title="Gérer les cookies"
+                    title={ui.gererCookies} aria-label={ui.gererCookies}
                 >
                     <CookieIcon className="w-5 h-5" />
                 </motion.button>
@@ -208,15 +212,17 @@ export default function CookieConsent() {
 
 // Helper Components
 
-function Switch({ checked, onChange, disabled }: { checked: boolean; onChange?: () => void; disabled?: boolean }) {
+function Switch({ checked, onChange, disabled, label }: { checked: boolean; onChange?: () => void; disabled?: boolean; label: string }) {
     return (
         <button
             onClick={onChange}
             disabled={disabled}
+            role="switch"
+            aria-checked={checked}
             className={`relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-wine-900 focus:ring-offset-2 ${checked ? "bg-wine-900" : "bg-stone-200"
                 } ${disabled ? "opacity-50 cursor-not-allowed" : ""}`}
         >
-            <span className="sr-only">Toggle setting</span>
+            <span className="sr-only">{label}</span>
             <span
                 aria-hidden="true"
                 className={`pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out ${checked ? "translate-x-5" : "translate-x-0"

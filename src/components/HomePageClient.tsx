@@ -2,28 +2,31 @@
 
 import Image from "next/image";
 import { flou } from "@/data/flous";
-import Link from "next/link";
+import Link from "@/components/Lien";
 import FadeIn from "@/components/FadeIn";
 import ParallaxImage from "@/components/ParallaxImage";
 import RichText from "@/components/editorial/RichText";
-import { Lignes, useContenu } from "@/components/Contenu";
+import { Lignes, useContenu, useUi } from "@/components/Contenu";
 import { photoDe, texteDe } from "@/lib/contenu";
 import RequestBottlesButton from "@/components/RequestBottlesButton";
-import { HOME_PORTES, HERO_VIDEO } from "@/data/architecture";
+import { homePortesDe, HERO_VIDEO } from "@/data/architecture";
 import { cuveeHref, nomMillesime } from "@/lib/wineSlug";
 
 export default function HomePageClient({ products, content }: { products: any[], content?: any }) {
     const heroVideo = content?.hero?.videoUrl || HERO_VIDEO;
     const contenu = useContenu();
+    const ui = useUi();
+    // Anciens textes « Texte de l'accueil » du studio : en français seulement.
+    const ancien = contenu.langue === "fr" ? content : undefined;
     // Textes et photos de l'accueil : ceux du studio (Textes et photos du site › Accueil), sinon ceux de src/data/textes.ts.
     // Les anciens textes « Texte de l'accueil » du studio restent pris en compte.
     const t = (cle: string) => texteDe(contenu, cle);
     const photo = (cle: string) => photoDe(contenu, cle);
     const photoHaut = photo("accueil.photo-haut");
     const photoHistoire = photo("accueil.histoire.photo");
-    const phrase = contenu.textes["accueil.phrase"] ?? content?.hero?.content ?? t("accueil.phrase");
-    const histoireTitre = contenu.textes["accueil.histoire.titre"] ?? content?.philosophy?.title ?? t("accueil.histoire.titre");
-    const histoireTexte = contenu.textes["accueil.histoire.texte"] ?? content?.philosophy?.content ?? t("accueil.histoire.texte");
+    const phrase = contenu.textes["accueil.phrase"] ?? ancien?.hero?.content ?? t("accueil.phrase");
+    const histoireTitre = contenu.textes["accueil.histoire.titre"] ?? ancien?.philosophy?.title ?? t("accueil.histoire.titre");
+    const histoireTexte = contenu.textes["accueil.histoire.texte"] ?? ancien?.philosophy?.content ?? t("accueil.histoire.texte");
 
     return (
         <main className="min-h-screen text-gray-800 font-sans selection:bg-red-900 selection:text-white">
@@ -32,7 +35,7 @@ export default function HomePageClient({ products, content }: { products: any[],
                 <div className="absolute inset-0 z-0" data-sanity={photoHaut.cliquer}>
                     <Image
                         src={photoHaut.src}
-                        alt="Vignes du Domaine de Garanches s'étendant au pied du Mont Brouilly à Odenas"
+                        alt={ui.altAccueil}
                         fill
                         sizes="100vw"
                         className="object-cover brightness-75"
@@ -103,7 +106,7 @@ export default function HomePageClient({ products, content }: { products: any[],
                     </FadeIn>
 
                     <div className="grid md:grid-cols-3 gap-8">
-                        {HOME_PORTES.map(({ path, page, entrees }, index) => {
+                        {homePortesDe(contenu.langue).map(({ path, page, entrees }, index) => {
                             const image = photo(`accueil.porte.${path}.photo`);
                             const infos = contenu.pages[path];
                             return (
@@ -159,7 +162,7 @@ export default function HomePageClient({ products, content }: { products: any[],
                                 position={photoHistoire.position}
                                 blur={photoHistoire.blur}
                                 parallaxe
-                                alt="Grappe de raisin Gamay du Beaujolais sur cep de vigne"
+                                alt={ui.altGrappe}
                                 className="h-full w-full"
                                 sizes="(max-width: 768px) 100vw, 50vw"
                             />
@@ -219,7 +222,7 @@ export default function HomePageClient({ products, content }: { products: any[],
                                         <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors z-10 duration-500"></div>
                                         <Image
                                             src={wine.image || "/images/bouteilles/brouilly.jpg"}
-                                            alt={`${nomMillesime(wine)} - Domaine de Garanches`}
+                                            alt={ui.vinDomaine(nomMillesime(wine))}
                                             fill
                                             sizes="(max-width: 768px) 100vw, 33vw"
                                             loading="lazy"
@@ -233,7 +236,7 @@ export default function HomePageClient({ products, content }: { products: any[],
                                         </h3>
                                         <div className="h-[1px] w-10 bg-gray-300 mx-auto my-4 group-hover:bg-red-900 transition-colors"></div>
                                         <p className="text-sm text-gray-700 font-bold mb-2">
-                                            {wine.subtitle || "Vin du Domaine"}
+                                            {wine.subtitle || ui.vinDuDomaine}
                                         </p>
                                     </div>
                                 </Link>

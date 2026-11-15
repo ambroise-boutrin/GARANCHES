@@ -4,8 +4,13 @@ import { notFound } from "next/navigation";
 import EditorialPage from "./EditorialPage";
 import Team from "./Team";
 import WinesList from "@/components/WinesList";
-import { PAGES } from "@/data/architecture";
+import { pagesDe } from "@/data/architecture";
 import { SEO } from "@/data/seo";
+import { SEO_EN } from "@/i18n/en/seo";
+import { ALTS_EN } from "@/i18n/en/divers";
+import { UI } from "@/i18n/ui";
+import { CODE_LANGUE, alternatives, lienLangue } from "@/lib/langue";
+import { langueCourante } from "@/lib/langueServeur";
 import { cuveeHref } from "@/lib/wineSlug";
 import { getBlocs } from "@/sanity/lib/queries";
 import { getContenuSite } from "@/sanity/lib/contenu";
@@ -16,46 +21,48 @@ import { altPhoto } from "@/data/alts";
 
 // Titre et description pour Google : ceux saisis dans le studio (Pages › Google), sinon ceux de src/data/seo.ts.
 export async function pageMetadata(path: string): Promise<Metadata> {
-    const page = PAGES[path];
+    const langue = langueCourante();
+    const page = pagesDe(langue)[path];
     if (!page) return {};
     const infos = (await getContenuSite()).pages[path];
     const label = stegaClean(infos?.titre) ?? page.label;
-    const seo = SEO[path] ?? { title: label, description: page.description };
+    const seo = (langue === "en" ? SEO_EN : SEO)[path] ?? { title: label, description: page.description };
     const title = stegaClean(infos?.seoTitre) || seo.title;
     const description = stegaClean(infos?.seoDescription) || seo.description;
     const image = infos?.photo?.src ?? page.image;
     return {
         title,
         description,
-        alternates: { canonical: `/${path}` },
+        alternates: alternatives(`/${path}`, langue),
         ...partage({
             chemin: `/${path}`,
             titre: `${label} | ${SITE_NAME}`,
             description,
             image,
-            alt: altPhoto(page.image, label),
+            alt: langue === "en" ? ALTS_EN[page.image] ?? label : altPhoto(page.image, label),
         }),
     };
 }
 
 async function Cuvees() {
     const wines = await getGammes();
+    const langue = langueCourante();
     const jsonLd = {
         "@context": "https://schema.org",
         "@type": "ItemList",
-        inLanguage: "fr-FR",
+        inLanguage: CODE_LANGUE[langue],
         itemListElement: wines.map((wine, index) => ({
             "@type": "ListItem",
             position: index + 1,
             item: {
                 "@type": "Product",
                 name: wine.name,
-                url: absolu(cuveeHref(wine)),
+                url: absolu(lienLangue(cuveeHref(wine), langue)),
                 description: String(wine.millesimes[0]?.description || "").split(/\n\s*\n/)[0],
                 image: absolu(wine.image || "/images/bouteilles/brouilly.jpg"),
                 brand: { "@type": "Brand", name: SITE_NAME },
                 manufacturer: { "@id": WINERY_ID },
-                category: "Vin",
+                category: UI[langue].categorieVin,
             },
         })),
     };
@@ -75,10 +82,12 @@ const EXTRAS: Record<string, () => JSX.Element | Promise<JSX.Element>> = {
 };
 
 export async function renderPage(path: string) {
+    const langue = langueCourante();
+    const PAGES = pagesDe(langue);
     const page = PAGES[path];
     if (!page) notFound();
 
-    const [overrides, contenu] = await Promise.all([getBlocs(), getContenuSite()]);
+    const [overrides, contenu] = await Promise.all([getBlocs(langue), getContenuSite()]);
     const Extra = EXTRAS[path];
     // Fil d'Ariane pour Google : Accueil › Le Lieu › L'histoire.
     const parent = path.includes("/") ? PAGES[path.split("/")[0]] : undefined;
