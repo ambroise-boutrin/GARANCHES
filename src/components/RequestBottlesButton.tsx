@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useTexte } from "@/components/Contenu";
+import { nomMillesime } from "@/lib/wineSlug";
 
 // Pas de boutique en ligne pour l'instant : le bouton mène au formulaire de contact,
 // sujet « Commande & Expédition » et message pré-rempli avec le nom du vin.
@@ -11,7 +12,7 @@ export function requestBottlesHref(wineName: string) {
 }
 
 // Vin décoché « En vente » dans le studio : mention « Épuisé » à la place du bouton.
-export default function RequestBottlesButton({ wine }: { wine: { name: string; enVente?: boolean } }) {
+export default function RequestBottlesButton({ wine }: { wine: { name: string; millesime?: string; enVente?: boolean } }) {
     const bouton = useTexte("cuvees.bouton");
     const epuise = useTexte("cuvees.epuise");
     if (wine.enVente === false) {
@@ -19,7 +20,7 @@ export default function RequestBottlesButton({ wine }: { wine: { name: string; e
     }
     return (
         <Link
-            href={requestBottlesHref(wine.name)}
+            href={requestBottlesHref(nomMillesime(wine))}
             className="inline-flex items-center justify-center w-full md:w-auto mt-6 px-8 py-3 text-base font-medium border border-wine-900 bg-wine-900 text-white hover:bg-white hover:text-wine-900 transition-colors duration-300"
         >
             {bouton}

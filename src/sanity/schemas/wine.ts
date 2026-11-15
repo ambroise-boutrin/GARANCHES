@@ -132,6 +132,7 @@ export default {
         {
             name: 'allergens',
             title: 'Mentions',
+            description: "N'apparaît pas sur le site (choix du domaine).",
             type: 'string',
             group: 'details',
             initialValue: 'Contient des sulfites',

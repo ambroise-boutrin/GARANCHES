@@ -10,8 +10,7 @@ import { Lignes, useContenu } from "@/components/Contenu";
 import { photoDe, texteDe } from "@/lib/contenu";
 import RequestBottlesButton from "@/components/RequestBottlesButton";
 import { HOME_PORTES, HERO_VIDEO } from "@/data/architecture";
-import { cuveeHref } from "@/lib/wineSlug";
-import { prixAffiche } from "@/lib/prix";
+import { cuveeHref, nomMillesime } from "@/lib/wineSlug";
 
 export default function HomePageClient({ products, content }: { products: any[], content?: any }) {
     const heroVideo = content?.hero?.videoUrl || HERO_VIDEO;
@@ -220,7 +219,7 @@ export default function HomePageClient({ products, content }: { products: any[],
                                         <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors z-10 duration-500"></div>
                                         <Image
                                             src={wine.image || "/images/bouteilles/brouilly.jpg"}
-                                            alt={`${wine.name} - Domaine de Garanches`}
+                                            alt={`${nomMillesime(wine)} - Domaine de Garanches`}
                                             fill
                                             sizes="(max-width: 768px) 100vw, 33vw"
                                             loading="lazy"
@@ -230,14 +229,11 @@ export default function HomePageClient({ products, content }: { products: any[],
                                     </div>
                                     <div className="text-center px-4">
                                         <h3 className="text-2xl md:text-3xl font-serif text-gray-900 group-hover:text-red-900 transition-colors">
-                                            {wine.name}
+                                            {nomMillesime(wine)}
                                         </h3>
                                         <div className="h-[1px] w-10 bg-gray-300 mx-auto my-4 group-hover:bg-red-900 transition-colors"></div>
                                         <p className="text-sm text-gray-700 font-bold mb-2">
                                             {wine.subtitle || "Vin du Domaine"}
-                                        </p>
-                                        <p className="text-xl font-bold text-red-900 mb-4">
-                                            {prixAffiche(wine)}
                                         </p>
                                     </div>
                                 </Link>

@@ -47,6 +47,8 @@ export default function ImportTool() {
             const h1 = zone.querySelector('h1');
             const titre = h1?.textContent?.trim() || p.title;
             h1?.remove();
+            // Les sous-titres de la page deviennent des intertitres dans l'éditeur.
+            zone.querySelectorAll('h2').forEach((h) => { const h3 = doc.createElement('h3'); h3.innerHTML = h.innerHTML; h.replaceWith(h3); });
             const blocs = htmlToBlocks(zone.innerHTML, typeContenu, {
                 parseHtml: (h: string) => new DOMParser().parseFromString(h, 'text/html'),
             }).map((b: any) => ({ ...b, _key: b._key || cle() }));

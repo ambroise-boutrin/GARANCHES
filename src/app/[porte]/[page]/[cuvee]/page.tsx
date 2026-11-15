@@ -9,8 +9,7 @@ import RequestBottlesButton from "@/components/RequestBottlesButton";
 import RichText from "@/components/editorial/RichText";
 import PageCards from "@/components/editorial/PageCards";
 import { getWine } from "@/lib/wines";
-import { cuveeHref } from "@/lib/wineSlug";
-import { prixAffiche } from "@/lib/prix";
+import { cuveeHref, nomMillesime } from "@/lib/wineSlug";
 import { getContenuSite } from "@/sanity/lib/contenu";
 import { photoDe, texteDe } from "@/lib/contenu";
 import { SITE_NAME, WINERY_ID, absolu, filAriane, partage } from "@/lib/site";
@@ -46,7 +45,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 // « Brouilly 2023 » : nom suivi du millésime quand il est connu.
 function nomComplet(wine: any): string {
-    return wine.millesime ? `${wine.name} ${wine.millesime}` : wine.name;
+    return nomMillesime(wine);
 }
 
 // Titre pour Google : le nom, puis seulement les mots du sous-titre qui n'y sont pas déjà
@@ -73,16 +72,14 @@ function image(wine: any): string {
     return absolu(wine.image || "/images/bouteilles/brouilly.jpg");
 }
 
+// Section masquée tant que son texte n'est pas saisi dans le studio.
 function Section({ title, text, background }: { title: string; text?: string; background: string }) {
+    if (!text) return null;
     return (
         <section className={`py-16 md:py-24 ${background}`}>
             <FadeIn className="max-w-3xl mx-auto px-6 text-center">
                 <h2 className="text-3xl md:text-4xl font-serif text-red-900 mb-6">{title}</h2>
-                {text ? (
-                    <RichText text={text} className="text-gray-800 leading-relaxed text-base md:text-lg" />
-                ) : (
-                    <p className="text-gray-600">Texte à venir.</p>
-                )}
+                <RichText text={text} className="text-gray-800 leading-relaxed text-base md:text-lg" />
             </FadeIn>
         </section>
     );
@@ -113,16 +110,6 @@ export default async function CuveePage({ params }: Props) {
                         manufacturer: { "@id": WINERY_ID },
                         category: "Vin",
                         countryOfOrigin: "FR",
-                        ...(typeof wine.price === "number" && {
-                            offers: {
-                                "@type": "Offer",
-                                priceCurrency: "EUR",
-                                price: (wine.price / 100).toFixed(2),
-                                availability: wine.enVente === false ? "https://schema.org/OutOfStock" : "https://schema.org/InStock",
-                                url: absolu(cuveeHref(wine)),
-                                seller: { "@id": WINERY_ID },
-                            },
-                        }),
                     }),
                 }}
             />
@@ -144,7 +131,7 @@ export default async function CuveePage({ params }: Props) {
                     <Link href="/les-vins/cuvees" className="text-sm md:text-base text-white underline underline-offset-4 decoration-1">
                         {pageCuvees}
                     </Link>
-                    <h1 className="normal-case tracking-normal font-serif text-4xl sm:text-5xl md:text-7xl leading-tight text-white mt-4 mb-4">{wine.name}</h1>
+                    <h1 className="normal-case tracking-normal font-serif text-4xl sm:text-5xl md:text-7xl leading-tight text-white mt-4 mb-4">{nomComplet(wine)}</h1>
                     {wine.subtitle && <p className="text-white/80 text-sm mb-6">{wine.subtitle}</p>}
                     <div className="w-16 h-0.5 md:w-24 md:h-1 bg-white"></div>
                 </FadeIn>
@@ -156,7 +143,7 @@ export default async function CuveePage({ params }: Props) {
                         <div className="relative h-[420px] bg-white" data-sanity={wine.cliquerImage}>
                             <Image
                                 src={wine.image || "/images/bouteilles/brouilly.jpg"}
-                                alt={`${wine.name} - Domaine de Garanches`}
+                                alt={`${nomComplet(wine)} - Domaine de Garanches`}
                                 fill
                                 sizes="(max-width: 768px) 100vw, 50vw"
                                 className="object-contain p-8 mix-blend-multiply"
@@ -165,7 +152,7 @@ export default async function CuveePage({ params }: Props) {
                     </FadeIn>
                     <FadeIn direction="left" delay={0.2}>
                         {wine.description && (
-                            <p className="text-gray-800 leading-relaxed text-base md:text-lg mb-8">{wine.description}</p>
+                            <RichText text={wine.description} className="text-gray-800 leading-relaxed text-base md:text-lg mb-8" />
                         )}
                         <dl className="grid grid-cols-2 gap-4 mb-8">
                             {[
@@ -173,7 +160,6 @@ export default async function CuveePage({ params }: Props) {
                                 { label: "Volume", value: wine.volume },
                                 { label: "Alcool", value: wine.alcohol },
                                 { label: "À table", value: wine.tags?.join(" • ") },
-                                { label: "Mentions", value: wine.allergens },
                             ].filter((d) => d.value).map((d) => (
                                 <div key={d.label} className="bg-white border border-stone-200 p-4">
                                     <dt className="text-red-900 text-sm font-bold mb-1">{d.label}</dt>
@@ -181,9 +167,6 @@ export default async function CuveePage({ params }: Props) {
                                 </div>
                             ))}
                         </dl>
-                        <p className="text-2xl font-bold text-red-900 mb-6">
-                            {prixAffiche(wine)}
-                        </p>
                         <RequestBottlesButton wine={wine} />
                     </FadeIn>
                 </div>
@@ -202,7 +185,7 @@ export default async function CuveePage({ params }: Props) {
                                     <div className="relative h-44 sm:h-48 bg-white mb-3">
                                         <Image src={w.image || "/images/bouteilles/brouilly.jpg"} alt={`Bouteille de ${nomComplet(w)}`} fill sizes="176px" className="object-contain p-3" />
                                     </div>
-                                    <span className="font-serif text-base sm:text-lg text-wine-900 group-hover:text-red-900 transition-colors">{w.name}</span>
+                                    <span className="font-serif text-base sm:text-lg text-wine-900 group-hover:text-red-900 transition-colors">{nomComplet(w)}</span>
                                 </Link>
                             ))}
                         </div>

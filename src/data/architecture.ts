@@ -397,6 +397,8 @@ Puis quatre vins à goûter, pour retrouver dans le verre ce que nous venons de 
                     { label: "Accès", value: "345 chemin de Garanches, Odenas" },
                 ],
                 booking: { label: "Réserver", sujet: "Découvrir les vignes" },
+                image: "/images/garanches/verre-dans-les-vignes.jpg", paysage: true,
+                alt: "Un verre de Brouilly servi au milieu des vignes de Garanches",
             },
         ],
         children: ["rencontrons-garanches/deguster-au-domaine", "les-vins/terroirs"],
