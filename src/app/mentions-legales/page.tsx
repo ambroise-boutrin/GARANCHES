@@ -28,7 +28,9 @@ export default async function MentionsLegales() {
                     Téléphone : +33 7 82 24 94 36 (Romain) · +33 6 58 83 46 80 (Aurélie) · +33 6 61 73 56 67 (Isabelle) · +33 6 09 41 97 02 (Michel)<br />
                     Email : contact@domainedegaranches.com<br />
                     <br />
+                    <strong>Forme juridique :</strong> Groupement foncier agricole<br />
                     <strong>SIREN :</strong> 400 409 173<br />
+                    <strong>SIRET (siège) :</strong> 400 409 173 00012<br />
                     <strong>Numéro RCS :</strong> 400 409 173 R.C.S. Villefranche-Tarare<br />
                     <strong>Numéro de TVA :</strong> FR95400409173<br />
                     <strong>Directeur de la publication :</strong> Ambroise Boutrin
