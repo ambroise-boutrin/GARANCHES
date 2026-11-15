@@ -113,6 +113,7 @@ const jsonLd = (langue: Langue) => ({
       "telephone": "+33661735667",
       "email": "contact@domainedegaranches.com",
       "vatID": "FR95400409173",
+      "knowsLanguage": ["fr", "en"],
       "foundingDate": "1788",
       "address": {
         "@type": "PostalAddress",
