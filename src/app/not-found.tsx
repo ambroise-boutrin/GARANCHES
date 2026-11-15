@@ -14,13 +14,13 @@ const PHOTO = "/images/garanches/verre-dans-les-vignes.jpg";
 // Fond clair en haut, pour que le menu (texte foncé sur les pages sans grande photo) reste lisible.
 export default function NotFound() {
     return (
-        <main className="bg-stone-50 pt-28 md:pt-32">
-            <div className="max-w-6xl mx-auto md:grid md:grid-cols-2 md:gap-16 md:items-center md:px-6 md:pb-20">
+        <main className="bg-stone-50 pt-24 md:pt-32">
+            <div className="max-w-6xl mx-auto md:grid md:grid-cols-2 md:gap-16 md:items-start md:px-6 md:pb-16">
                 <div className="px-6 pb-12 md:px-0 md:pb-0">
-                    <h1 className="font-serif font-semibold uppercase text-4xl md:text-5xl leading-[1.1] text-stone-900 mb-6">
+                    <h1 className="font-serif font-semibold uppercase text-4xl md:text-5xl leading-[1.1] text-stone-900 mb-4">
                         Page introuvable
                     </h1>
-                    <p className="text-lg text-stone-800 leading-relaxed mb-10 max-w-md">
+                    <p className="text-lg text-stone-800 leading-relaxed mb-8 max-w-md">
                         Cette page n&apos;existe pas ou a changé d&apos;adresse. Le domaine, lui, est toujours là&nbsp;: reprenez le chemin par l&apos;une de ces portes.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-3">
@@ -35,7 +35,7 @@ export default function NotFound() {
                         </Link>
                     </div>
                 </div>
-                <div className="relative w-full aspect-[4/3] md:aspect-[4/5]">
+                <div className="relative w-full aspect-[4/3] md:aspect-[4/3]">
                     <Image
                         src={PHOTO}
                         alt="Un verre de vin posé dans les vignes du domaine de Garanches"
