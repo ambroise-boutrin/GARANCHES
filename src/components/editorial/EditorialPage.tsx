@@ -19,6 +19,7 @@ import { ALTS_EN } from "@/i18n/en/divers";
 import { UI } from "@/i18n/ui";
 import { langueCourante } from "@/lib/langueServeur";
 import { typo } from "@/lib/typo";
+import { stegaClean } from "next-sanity";
 
 // Photo d'ouverture des pages, partagée avec les Carnets.
 export function PageHero({ image: imageCode, label, parent, photo }: { image: string; label: string; parent?: { path: string; label: string }; photo?: PhotoPrete }) {
@@ -27,17 +28,18 @@ export function PageHero({ image: imageCode, label, parent, photo }: { image: st
     const langue = langueCourante();
     const alt = langue === "en" ? ALTS_EN[image] ?? UI.en.altPage(label) : altPhoto(image, UI.fr.altPage(label));
     return (
-        <section className="relative h-[70vh] min-h-[480px] bg-stone-900 flex flex-col justify-center items-center overflow-hidden">
+        // Sur téléphone, bandeau bas (environ un tiers de l'écran) pour voir le contenu tout de suite.
+        <section className="relative h-[38svh] min-h-[280px] md:h-[70vh] md:min-h-[480px] bg-stone-900 flex flex-col justify-center items-center overflow-hidden">
             <div className="absolute inset-0 z-0" data-sanity={photo?.cliquer}>
                 <Image src={image} alt={alt} fill sizes="100vw" priority quality={75} {...flou(image, photo?.blur)} style={{ objectPosition: photo ? photo.position : cadrage(image) }} className="object-cover brightness-[.6]" />
             </div>
-            <FadeIn direction="down" className="relative text-center px-4 pt-20 flex flex-col items-center">
+            <FadeIn direction="down" className="relative text-center px-4 pt-16 md:pt-20 flex flex-col items-center">
                 {parent && (
                     <Link href={`/${parent.path}`} className="text-sm md:text-base text-white underline underline-offset-4 decoration-1">
                         {parent.label}
                     </Link>
                 )}
-                <h1 className="font-serif text-4xl sm:text-5xl md:text-7xl leading-tight text-white mt-4 mb-8">{label}</h1>
+                <h1 className="font-serif text-4xl sm:text-5xl md:text-7xl leading-tight text-white mt-3 md:mt-4 mb-0 md:mb-8">{label}</h1>
             </FadeIn>
         </section>
     );
@@ -47,8 +49,16 @@ export function bookingHref(sujet: string) {
     return `/contact?sujet=${encodeURIComponent(sujet)}#formulaire`;
 }
 
-function BlocSection({ bloc, override, index, texteAVenir }: { bloc: Bloc; override?: BlocOverride; index: number; texteAVenir: string }) {
-    const title = typo(override?.titre || bloc.title || "");
+// Compare deux titres sans tenir compte des majuscules, accents ni ponctuation.
+function memeTitre(a: string, b: string) {
+    const n = (t: string) => t.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+    return n(a) === n(b);
+}
+
+function BlocSection({ bloc, override, index, texteAVenir, titrePage }: { bloc: Bloc; override?: BlocOverride; index: number; texteAVenir: string; titrePage: string }) {
+    const titreBloc = typo(override?.titre || bloc.title || "");
+    // Le premier bloc ne répète pas le titre déjà affiché sur la photo du haut.
+    const title = index === 0 && memeTitre(stegaClean(titreBloc), stegaClean(titrePage)) ? "" : titreBloc;
     const body = override?.texte || bloc.body;
     const sanity = photoSanity(override?.image, 1800);
     const image = sanity?.src ?? bloc.image;
@@ -95,7 +105,7 @@ function BlocSection({ bloc, override, index, texteAVenir }: { bloc: Bloc; overr
     );
 
     return (
-        <section id={bloc.id} className={`scroll-mt-36 lg:scroll-mt-24 py-20 md:py-32 overflow-hidden ${background}`}>
+        <section id={bloc.id} className={`scroll-mt-36 lg:scroll-mt-24 ${index === 0 ? "pt-10" : "pt-20"} pb-20 md:py-32 overflow-hidden ${background}`}>
             {image ? (
                 <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 md:gap-20 items-center">
                     <FadeIn direction={imageFirst ? "left" : "right"} className={imageFirst ? "md:order-2" : ""}>
@@ -164,7 +174,7 @@ export default async function EditorialPage({
             <SousNav path={page.path} />
 
             {page.blocs.map((bloc, i) => (
-                <BlocSection key={bloc.id} bloc={bloc} override={overrides[`${page.path}#${bloc.id}`]} index={i} texteAVenir={texteAVenir} />
+                <BlocSection key={bloc.id} bloc={bloc} override={overrides[`${page.path}#${bloc.id}`]} index={i} texteAVenir={texteAVenir} titrePage={infos?.titre ?? page.label} />
             ))}
 
             {children}

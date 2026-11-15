@@ -65,7 +65,7 @@ export default function ChoixMillesime({
     };
 
     return (
-        <section className="py-16 md:py-24 bg-stone-50">
+        <section className="pt-10 pb-16 md:py-24 bg-stone-50">
             <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10 md:gap-20 items-start">
                 <div className="relative h-[380px] md:h-[520px] bg-white md:sticky md:top-28" data-sanity={cliquerImage}>
                     <Image src={image} alt={ui.bouteilleDomaine(nom)} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-contain p-8 mix-blend-multiply" />

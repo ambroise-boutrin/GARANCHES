@@ -45,7 +45,7 @@ export default async function CarnetsPage({ params, searchParams }: Props) {
             <PageHero image={CARNETS_CARD.image} label={infos?.titre ?? CARNETS_CARD.label} parent={{ path: "le-lieu", label: contenu.pages["le-lieu"]?.titre ?? pagesDe(langue)["le-lieu"].label }} photo={infos?.photo} />
             <SousNav path="le-lieu" current="/carnets" />
 
-            <FadeIn direction="down" className="text-center px-6 pt-16 md:pt-24 mb-16">
+            <FadeIn direction="down" className="text-center px-6 pt-10 md:pt-24 mb-16">
                 <h2 className="text-2xl md:text-3xl font-serif text-wine-900 mb-6">{texteDe(contenu, "carnets.intro.titre")}</h2>
                 <RichText text={texteDe(contenu, "carnets.intro.texte")} className="max-w-2xl mx-auto text-gray-700 leading-relaxed text-lg" />
             </FadeIn>

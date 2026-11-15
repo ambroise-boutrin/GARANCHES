@@ -25,7 +25,8 @@ export default function Navbar() {
     // - Autres : Noir au début (sur fond blanc) -> Blanc au scroll (sur fond sombre)
     // - Mobile Open : Toujours blanc (car l'overlay est sombre)
     // Les pages de l'arborescence ouvrent sur une grande photo sombre, comme l'accueil.
-    const hasDarkHero = isHome || GENERIC_PATHS.includes(pathname.slice(1));
+    // Les fiches vin et les Carnets aussi.
+    const hasDarkHero = isHome || GENERIC_PATHS.includes(pathname.slice(1)) || pathname.startsWith("/les-vins/cuvees/") || pathname === "/carnets";
     const useDarkText = !hasDarkHero && !scrolled && !isOpen;
 
     useEffect(() => {

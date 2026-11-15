@@ -122,17 +122,16 @@ export default async function CuveePage({ params }: Props) {
                     ])),
                 }}
             />
-            <section className="relative h-[60vh] min-h-[420px] flex flex-col justify-center items-center overflow-hidden">
+            <section className="relative h-[38svh] min-h-[280px] md:h-[60vh] md:min-h-[420px] bg-stone-900 flex flex-col justify-center items-center overflow-hidden">
                 <div className="absolute inset-0 z-0" data-sanity={photoHaut.cliquer}>
                     <Image src={photoHaut.src} alt={ui.altVendanges} fill sizes="100vw" priority quality={75} {...flou(photoHaut.src, photoHaut.blur)} style={{ objectPosition: photoHaut.position }} className="object-cover brightness-[.6]" />
                 </div>
-                <FadeIn direction="down" className="relative text-center px-4 pt-20 flex flex-col items-center">
+                <FadeIn direction="down" className="relative text-center px-4 pt-16 md:pt-20 flex flex-col items-center">
                     <Link href="/les-vins/cuvees" className="text-sm md:text-base text-white underline underline-offset-4 decoration-1">
                         {pageCuvees}
                     </Link>
-                    <h1 className="normal-case tracking-normal font-serif text-4xl sm:text-5xl md:text-7xl leading-tight text-white mt-4 mb-4">{gamme.name}</h1>
-                    {gamme.subtitle && <p className="text-white/80 text-sm mb-6">{gamme.subtitle}</p>}
-                    <div className="w-16 h-0.5 md:w-24 md:h-1 bg-white"></div>
+                    <h1 className="normal-case tracking-normal font-serif text-4xl sm:text-5xl md:text-7xl leading-tight text-white mt-3 md:mt-4 mb-2 md:mb-4">{gamme.name}</h1>
+                    {gamme.subtitle && <p className="text-white/80 text-sm md:mb-6">{gamme.subtitle}</p>}
                 </FadeIn>
             </section>
 
