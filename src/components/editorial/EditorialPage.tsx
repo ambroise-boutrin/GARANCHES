@@ -109,14 +109,9 @@ function BlocSection({ bloc, override, index, texteAVenir }: { bloc: Bloc; overr
                                         className={`object-contain mix-blend-multiply ${bloc.portrait ? "p-3 md:p-6" : "p-5 md:p-8"}`}
                                     />
                                     {bloc.agrandir && (
-                                        <a href={image} target="_blank" rel="noopener" className="absolute inset-0" aria-label={`Voir en grand : ${bloc.alt || "document"}`} />
+                                        <a href={image} target="_blank" rel="noopener" className="absolute inset-0 cursor-zoom-in" aria-label={`Voir en grand : ${bloc.alt || "document"}`} />
                                     )}
                                 </div>
-                                {bloc.agrandir && (
-                                    <a href={image} target="_blank" rel="noopener" className="inline-block mt-4 text-red-900 text-base border-b border-red-900 pb-1 hover:text-red-700 hover:border-red-700">
-                                        Lire le document en grand
-                                    </a>
-                                )}
                             </div>
                         ) : (
                             // Cadre au format de la photo, pour ne pas couper les visages sur téléphone.
