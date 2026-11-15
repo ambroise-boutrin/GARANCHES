@@ -6,8 +6,7 @@ import Link from "next/link";
 import { notFound, permanentRedirect } from "next/navigation";
 import { stegaClean } from "@sanity/client/stega";
 import FadeIn from "@/components/FadeIn";
-import RequestBottlesButton from "@/components/RequestBottlesButton";
-import RichText from "@/components/editorial/RichText";
+import ChoixMillesime from "@/components/ChoixMillesime";
 import PageCards from "@/components/editorial/PageCards";
 import { getGamme, type Gamme } from "@/lib/wines";
 import { nomMillesime } from "@/lib/wineSlug";
@@ -75,21 +74,6 @@ function image(g: { image?: string }): string {
 const CEPAGES = ["gamay", "chardonnay", "pinot noir", "aligoté"];
 const estCepage = (tag: string) => CEPAGES.includes(stegaClean(tag).trim().toLowerCase());
 
-function Caracteristiques({ items }: { items: { label: string; value?: string }[] }) {
-    const remplis = items.filter((d) => d.value);
-    if (!remplis.length) return null;
-    return (
-        <dl className="grid grid-cols-2 gap-4">
-            {remplis.map((d) => (
-                <div key={d.label} className="bg-white border border-stone-200 p-4">
-                    <dt className="text-red-900 text-sm font-bold mb-1">{d.label}</dt>
-                    <dd className="text-gray-700 text-sm">{d.value}</dd>
-                </div>
-            ))}
-        </dl>
-    );
-}
-
 export default async function CuveePage({ params }: Props) {
     const data = await load(params);
     if (data?.redirection) permanentRedirect(data.redirection);
@@ -101,7 +85,6 @@ export default async function CuveePage({ params }: Props) {
     const autres = gammes.filter((g) => g.slug !== gamme.slug);
     const tags: string[] = gamme.millesimes.find((w) => w.tags?.length)?.tags ?? [];
     const volume = gamme.millesimes.find((w) => w.volume)?.volume;
-    const plusieurs = gamme.millesimes.length > 1;
 
     return (
         <main className="min-h-screen text-gray-800 font-sans">
@@ -146,71 +129,20 @@ export default async function CuveePage({ params }: Props) {
                 </FadeIn>
             </section>
 
-            {/* Une seule bouteille pour le vin, puis ce qui est commun à tous ses millésimes */}
-            <section className="py-16 md:py-24 bg-stone-50">
-                <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10 md:gap-20 items-center">
-                    <div className="relative h-[380px] md:h-[460px] bg-white" data-sanity={gamme.cliquerImage}>
-                        <Image
-                            src={gamme.image || "/images/bouteilles/brouilly.jpg"}
-                            alt={`Bouteille de ${gamme.name} - Domaine de Garanches`}
-                            fill
-                            sizes="(max-width: 768px) 100vw, 50vw"
-                            className="object-contain p-8 mix-blend-multiply"
-                        />
-                    </div>
-                    <div>
-                        {plusieurs && (
-                            <>
-                                <p className="text-red-900 text-sm font-bold mb-3">Millésimes</p>
-                                <div className="flex flex-wrap gap-3 mb-8">
-                                    {gamme.millesimes.map((w) => (
-                                        <a key={w.id} href={`#${w.millesime}`} className="px-5 py-2 border border-wine-900 text-wine-900 text-base hover:bg-wine-900 hover:text-white transition-colors">
-                                            {w.millesime}
-                                        </a>
-                                    ))}
-                                </div>
-                            </>
-                        )}
-                        <Caracteristiques
-                            items={[
-                                // Le cépage a sa propre case, la ligne « À table » ne garde que les plats.
-                                { label: "Cépage", value: tags.filter(estCepage).join(", ") },
-                                { label: "À table", value: tags.filter((t) => !estCepage(t)).join(" • ") },
-                                { label: "Volume", value: volume },
-                                ...(!plusieurs ? [{ label: "Millésime", value: gamme.millesimes[0]?.millesime }] : []),
-                            ]}
-                        />
-                    </div>
-                </div>
-            </section>
-
-            {/* Chaque millésime : sa description et ses caractéristiques */}
-            {gamme.millesimes.map((w, i) => (
-                <section key={w.id} id={w.millesime || w.id} className={`scroll-mt-24 py-16 md:py-24 ${i % 2 === 0 ? "bg-white" : "bg-stone-50"}`}>
-                    <div className="max-w-3xl mx-auto px-6">
-                        <h2 className="normal-case tracking-normal text-3xl md:text-5xl font-serif text-red-900 mb-6 md:mb-8 leading-tight">{nomMillesime(w)}</h2>
-                        {w.description && <RichText text={w.description} className="text-gray-800 leading-relaxed text-base md:text-lg" />}
-                        {w.alcohol && (
-                            <div className="mt-8">
-                                <Caracteristiques items={[{ label: "Alcool", value: w.alcohol }]} />
-                            </div>
-                        )}
-                        {w.parcelle && (
-                            <div className="mt-10">
-                                <h3 className="text-2xl md:text-3xl font-serif text-wine-900 mb-4">{texteDe(contenu, "cuvees.fiche.parcelle")}</h3>
-                                <RichText text={w.parcelle} className="text-gray-800 leading-relaxed text-base md:text-lg" />
-                            </div>
-                        )}
-                        {w.vinification && (
-                            <div className="mt-10">
-                                <h3 className="text-2xl md:text-3xl font-serif text-wine-900 mb-4">{texteDe(contenu, "cuvees.fiche.vinification")}</h3>
-                                <RichText text={w.vinification} className="text-gray-800 leading-relaxed text-base md:text-lg" />
-                            </div>
-                        )}
-                        <RequestBottlesButton wine={w} />
-                    </div>
-                </section>
-            ))}
+            <ChoixMillesime
+                millesimes={gamme.millesimes}
+                image={gamme.image || "/images/bouteilles/brouilly.jpg"}
+                cliquerImage={gamme.cliquerImage}
+                nom={gamme.name}
+                communs={[
+                    // Le cépage a sa propre case, la ligne « À table » ne garde que les plats.
+                    { label: "Cépage", value: tags.filter(estCepage).join(", ") },
+                    { label: "À table", value: tags.filter((t) => !estCepage(t)).join(" • ") },
+                    { label: "Volume", value: volume },
+                ]}
+                titreParcelle={texteDe(contenu, "cuvees.fiche.parcelle")}
+                titreVinification={texteDe(contenu, "cuvees.fiche.vinification")}
+            />
 
             {autres.length > 0 && (
                 <section className="py-20 bg-stone-100">
