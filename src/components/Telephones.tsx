@@ -11,7 +11,7 @@ export default function Telephones({ className = "", lien = "" }: { className?: 
                 <div key={t.nom} className={`contents ${estPrincipal(t.nom) ? "[&>*]:font-bold" : ""}`}>
                     <dt>{t.nom}</dt>
                     <dd>
-                        <a href={telHref(t.numero)} className={`whitespace-nowrap ${lien} ${estPrincipal(t.nom) ? "!font-bold" : ""}`}>{t.numero}</a>
+                        <a href={telHref(t.numero)} className={`whitespace-nowrap ${lien} ${estPrincipal(t.nom) ? "!font-bold" : "!font-normal"}`}>{t.numero}</a>
                     </dd>
                 </div>
             ))}

@@ -10,6 +10,9 @@ export const TELEPHONES = [
 
 // Celles qui répondent le plus (demande d'Ambroise) : en premier et en gras partout.
 const PRINCIPAUX = ["isabelle", "aurélie"];
-export const estPrincipal = (nom: string) => PRINCIPAUX.includes(stegaClean(nom).trim().toLowerCase());
+const rang = (nom: string) => PRINCIPAUX.indexOf(stegaClean(nom).trim().toLowerCase());
+export const estPrincipal = (nom: string) => rang(nom) >= 0;
+// Ordre d'affichage : Isabelle, Aurélie, puis les autres dans l'ordre saisi.
+export const rangPrincipal = (nom: string) => (rang(nom) >= 0 ? rang(nom) : PRINCIPAUX.length);
 
 export const telHref = (numero: string) => `tel:+33${numero.replace(/\D/g, "").slice(1)}`;
