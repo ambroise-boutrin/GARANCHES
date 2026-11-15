@@ -33,6 +33,7 @@ export const FLOUS: Record<string, string> = {
     "/images/garanches/vendanges-raisins.jpg": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAAAQAgCdASoMAAgAAsBMJQBOgMUy4SJfpKO0AOJ/0dyKYrByag9PrNVtGHkzezDaPy+5/3Ru05Yv0RmSCfu7ajdBaYHRoqYAhDyQ5/9OHUAl1x4u70k9lIAA",
     "/images/garanches/video-accueil.jpg": "data:image/webp;base64,UklGRkIAAABXRUJQVlA4IDYAAADQAQCdASoMAAcAAsBMJYwAAuX7ey9LAAD+eT+nA6tP6xamHKn0hlplxo6+/TzJ99GGofMQAAA=",
     "/images/garanches/vignes-cabane.jpg": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAADwAQCdASoKAAwAAsBMJbACdAEOPSXqKcAA/urzpMIVKjQA8GdvDoumYUxs9mNkQBfuMO1FCWkpfjR5omz1SN/E8+AhNmbNIzXwwVT4w+esIJkxAhcwAA==",
+    "/images/garanches/verre-dans-les-vignes.jpg": "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAAAQAgCdASoMAAcAAsBMJZACdAEfpz9H896AAP7VFRwR7uvkssJJfHaYKUT0jcmKnd1IzQn4CSYnFZ4wHXh791BRviYZpYAA",
     "/images/garanches/vignes-cadole.jpg": "data:image/webp;base64,UklGRkoAAABXRUJQVlA4ID4AAADwAQCdASoMAAcAAsBMJbACdAEOaCa6ZAAA/uevgxh1RrdtGLZnJNFvnAoq5aaNjmfEHi1v+TGMdApBgd9AAA==",
     "/images/garanches/vignes-parc.jpg": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAADQAQCdASoMAAkAAsBMJbACdAEPORXIKAD+4AvK8czERWm+ZGAsP8Elov5ZqKNgQfVct1eoRWf4FZ+1yZ6E74G4dh6K0P0xLX1HlFcEAAA=",
     "/images/smugmug/aurelie-crozet.jpg": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAADQAQCdASoIAAwAAsBMJQBOgBupHLTooAD+8a40nd3wLueAs5fyDEu2ly1E5zxD+6HhaiSPXbh2eEO0ET55wfxdnvsCXrpRTxgQAA==",
