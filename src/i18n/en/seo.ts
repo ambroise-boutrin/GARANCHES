@@ -9,8 +9,8 @@ export const SEO_EN: Record<string, { title: string; description: string }> = {
         description: "The Garanches vineyard at the foot of Mont Brouilly: blue to pink granite, plots and old vines nearly 150 years old, in Odenas, Beaujolais.",
     },
     "le-lieu/histoire": {
-        title: "History of the estate, Beaujolais",
-        description: "The history of the Garanches estate in Odenas and the people who shaped it, from Jean Buy to Emmanuel and Émile Bender.",
+        title: "Jean Buy, Emmanuel and Émile Bender: history",
+        description: "Jean Buy, first mayor of Odenas in 1790; Emmanuel Bender, who replanted the Beaujolais after phylloxera; Émile Bender and the 1927 Capus-Bender law.",
     },
     "le-lieu/traces": {
         title: "Archives and old vines of the estate",

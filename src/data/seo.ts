@@ -11,8 +11,8 @@ export const SEO: Record<string, { title: string; description: string }> = {
         description: "Les vignes de Garanches au pied du Mont Brouilly : granit bleu à rose, parcelles et vieilles vignes de près de 150 ans, à Odenas dans le Beaujolais.",
     },
     "le-lieu/histoire": {
-        title: "Histoire du domaine, Beaujolais",
-        description: "L'histoire du domaine de Garanches à Odenas et de celles et ceux qui l'ont marqué, de Jean Buy à Emmanuel et Émile Bender.",
+        title: "Jean Buy, Emmanuel et Émile Bender : l'histoire",
+        description: "Jean Buy, premier maire d'Odenas en 1790, Emmanuel Bender, reconstitution du Beaujolais après le phylloxéra, Émile Bender, loi Capus-Bender de 1927.",
     },
     "le-lieu/traces": {
         title: "Archives et plants anciens du domaine",
