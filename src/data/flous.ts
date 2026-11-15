@@ -41,7 +41,6 @@ export const FLOUS: Record<string, string> = {
     "/images/smugmug/chai-pressoir.jpg": "data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAAAQAgCdASoMAAgAAsBMJbACdLoAAuQDujG0AP6bHrbXxZJv9V92q3uM0sD56rZ7femOHiXU2y5+GDpm/bv/rkcKxzyAdMgkxzov7G+BIzUChwYQd6CZB7egB7c0zmIVM3P5Y8AA",
     "/images/smugmug/cour-visite.jpg": "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAADwAQCdASoMAAgAAsBMJZACdAEU8rmKVFAA+pDafCp/56Jevy5nJYGkML8RcSMfSpYjK0HmeRtcLa5AIrgZiMBQuT4AAA==",
     "/images/smugmug/domaine-drone-maison.jpg": "data:image/webp;base64,UklGRkoAAABXRUJQVlA4ID4AAADQAQCdASoMAAgAAsBMJQBOgCHYK1rEAAD8j/aYU2poDQv9B3eEbVM8xiyw43v9glL0tBdvTi3/Jjx85wAAAA==",
-    "/images/smugmug/etiquette-maison.jpg": "data:image/webp;base64,UklGRkQAAABXRUJQVlA4IDgAAADQAQCdASoMAAkAAsBMJaQAAxbld+jrqAD+92mVY2q8TCKrSvF8mVDAA3vGNVOIrHSpUK2DGR4AAA==",
     "/images/smugmug/gamme-trois-vins.jpg": "data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAABQAgCdASoLAAwAAsBMJZQCdH8AgqybvirmYAAA/vOvm3fiN1pgAYErxH7zlPAsRCP6WC48d3/WxzLSepjHhIedWgUOcjDgLz82a8mkI587Ww1iKEp71BGOmlASWxXFI1TyKE4YAAA=",
     "/images/smugmug/partage-domaine.jpg": "data:image/webp;base64,UklGRkgAAABXRUJQVlA4IDwAAAAQAgCdASoMAAYAAsBMJQBOgCPQPJxv5rfAAP4mPBrF4jFAjwDn/iUGLimmWUZhBpzT2e+Q3RucYfwAAAA=",
     "/images/smugmug/portail-garanches.jpg": "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAADQAQCdASoMAAgAAsBMJZgCdADdiXERAAD+wdj5DK+qGg8q6tZFOcZpMhrhNbjhx6YW56SRc82NEgIneqqe4d8ltsAS5QvgAAA=",
