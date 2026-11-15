@@ -112,7 +112,6 @@ const jsonLd = {
       },
       "hasMap": "https://www.google.com/maps/search/?api=1&query=Domaine+de+Garanches+345+chemin+de+Garanches+69460+Odenas",
       "areaServed": "FR",
-      "priceRange": "€€",
       "currenciesAccepted": "EUR",
       "openingHoursSpecification": [
         {
