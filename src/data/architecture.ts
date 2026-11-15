@@ -346,7 +346,21 @@ Un vin raconte une histoire.
 Une histoire en appelle une autre...
 Partageons nos impressions, nos questions, nos découvertes, et laissons la conversation nous emmener.`,
             },
-            { id: "esprit", title: "L'esprit de la rencontre" },
+            {
+                id: "esprit",
+                title: "La table d'hôtes de Garanches",
+                body: `**On arrive parfois inconnus, on repart souvent amis !**
+
+Seul, à deux ou entre amis, prenez place autour de notre table, aux côtés de convives venus d'ici et d'ailleurs.
+
+Romain imagine un repas gourmand pour révéler les saveurs de nos vins.
+
+On goûte, on échange, on rit, les conversations s'animent... et les affinités se créent !
+
+À la fin du repas, les adresses s'échangent, les retrouvailles s'organisent... parfois même autour d'une prochaine table à Garanches.
+
+**Un moment à savourer, où le vin nous rassemble et la rencontre fait le reste.**`,
+            },
             {
                 id: "comment-ca-se-passe",
                 title: "Comment ça se passe ?",
@@ -492,7 +506,23 @@ Nous choisissons ensemble ce qui donnera à ce moment sa couleur.
         image: "/images/garanches/maison-parc-pierre.jpg",
         cta: "Découvrir les événements",
         blocs: [
-            { id: "introduction", title: "Événements", image: "/images/smugmug/table-bouteilles.jpg", paysage: true, alt: "Un Beaujolais-Villages blanc et un Brouilly du domaine de Garanches sur la table" },
+            {
+                id: "introduction",
+                title: "Vos événements à Garanches",
+                body: `**Il y a des moments qui méritent un lieu à part.**
+
+Réunir une équipe, célébrer une réussite, fêter un anniversaire ou simplement partager le plaisir d'être ensemble...
+
+À Garanches, chaque occasion prend une dimension particulière.
+
+Autour d'un repas imaginé par Romain et des vins du domaine, nous créons avec vous un moment qui vous ressemble.
+
+On se retrouve, on échange, on célèbre... et l'on repart avec des souvenirs qui restent.
+
+**À Garanches, les moments partagés deviennent des souvenirs mémorables.**`,
+                image: "/images/smugmug/table-bouteilles.jpg", paysage: true,
+                alt: "Un Beaujolais-Villages blanc et un Brouilly du domaine de Garanches sur la table",
+            },
             {
                 id: "comment-ca-se-passe",
                 title: "Comment ça se passe ?",

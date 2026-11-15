@@ -64,7 +64,7 @@ export const SEO: Record<string, { title: string; description: string }> = {
     },
     "rencontrons-garanches/evenements": {
         title: "Événements au domaine",
-        description: "Repas et rencontres au domaine de Garanches à Odenas, au fil de l'année, autour de nos vins du Mont Brouilly.",
+        description: "Réunir une équipe, célébrer une réussite, fêter un anniversaire : vos événements au domaine de Garanches à Odenas, autour d'un repas de Romain et des vins du domaine.",
     },
     "acheter": {
         title: "Commander nos vins de Brouilly",
