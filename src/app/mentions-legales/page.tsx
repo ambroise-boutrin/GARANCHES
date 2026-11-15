@@ -25,7 +25,7 @@ export default async function MentionsLegales() {
                 <p>
                     <strong>GFA Domaine de Garanches</strong><br />
                     345 chemin de Garanches, 69460 Odenas<br />
-                    Téléphone : +33 7 82 24 94 36<br />
+                    Téléphone : +33 7 82 24 94 36 (Romain) · +33 6 58 83 46 80 (Aurélie) · +33 6 61 73 56 67 (Isabelle) · +33 6 09 41 97 02 (Michel)<br />
                     Email : contact@domainedegaranches.com<br />
                     <br />
                     <strong>SIREN :</strong> 400 409 173<br />
