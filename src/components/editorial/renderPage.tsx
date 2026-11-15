@@ -56,16 +56,6 @@ async function Cuvees() {
                 brand: { "@type": "Brand", name: SITE_NAME },
                 manufacturer: { "@id": WINERY_ID },
                 category: "Vin",
-                ...(typeof wine.price === "number" && {
-                    offers: {
-                        "@type": "Offer",
-                        priceCurrency: "EUR",
-                        price: (wine.price / 100).toFixed(2),
-                        availability: wine.enVente === false ? "https://schema.org/OutOfStock" : "https://schema.org/InStock",
-                        url: absolu(cuveeHref(wine)),
-                        seller: { "@id": WINERY_ID },
-                    },
-                }),
             },
         })),
     };
