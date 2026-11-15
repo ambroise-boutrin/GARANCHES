@@ -1,4 +1,6 @@
 import { PortableText, type PortableTextComponents } from "@portabletext/react";
+import { UI } from "@/i18n/ui";
+import { langueCourante } from "@/lib/langueServeur";
 
 // Mentions légales, CGV, confidentialité saisies dans le studio (Pages légales).
 const composants: PortableTextComponents = {
@@ -15,6 +17,7 @@ export default function PageLegale({ titre, contenu }: { titre: string; contenu:
         <main className="min-h-screen pt-32 pb-20 bg-white">
             <div className="max-w-3xl mx-auto px-6 prose prose-stone">
                 <h1 className="text-3xl font-serif text-wine-900 mb-8 border-b-2 border-wine-100 pb-4">{titre}</h1>
+                {langueCourante() === "en" && <p className="text-sm text-stone-700">{UI.en.versionFrancaiseFaitFoi}</p>}
                 <PortableText value={contenu} components={composants} />
             </div>
         </main>

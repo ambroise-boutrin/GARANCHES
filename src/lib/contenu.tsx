@@ -1,11 +1,12 @@
 import { Fragment } from "react";
 import type { ContenuSite, PhotoPrete } from "@/sanity/lib/contenuTypes";
 import { TEXTES } from "@/data/textes";
+import { TEXTES_EN } from "@/i18n/en/textes";
 import { cadrage } from "@/data/cadrages";
 import { telHref } from "@/data/contacts";
 
-// Numéro français écrit dans un texte (06 12 34 56 78, 06.12.34.56.78, 0612345678).
-const NUMERO = /(0[1-9](?:[\s\u00a0\u202f.-]?\d{2}){4})/g;
+// Numéro français écrit dans un texte (06 12 34 56 78, 06.12.34.56.78, 0612345678, +33 6 12 34 56 78).
+const NUMERO = /((?:\+33[\s\u00a0\u202f]?[1-9]|0[1-9])(?:[\s\u00a0\u202f.-]?\d{2}){4})/g;
 
 // Texte où chaque numéro de téléphone devient un lien qui lance l'appel sur téléphone.
 export function AvecTelephones({ texte }: { texte: string }) {
@@ -26,9 +27,12 @@ export function AvecTelephones({ texte }: { texte: string }) {
     );
 }
 
-// Lecture d'un texte ou d'une photo du site (serveur et navigateur) : la valeur du studio, sinon celle de src/data/textes.ts.
+// Lecture d'un texte ou d'une photo du site (serveur et navigateur) : la valeur du studio, sinon celle de src/data/textes.ts
+// (ou de src/i18n/en/textes.ts sur la version anglaise).
 export function texteDe(contenu: ContenuSite, cle: string): string {
-    return contenu.textes[cle] ?? TEXTES[cle]?.defaut ?? "";
+    if (contenu.textes[cle] !== undefined) return contenu.textes[cle];
+    if (contenu.langue === "en" && TEXTES_EN[cle] !== undefined) return TEXTES_EN[cle];
+    return TEXTES[cle]?.defaut ?? "";
 }
 
 export function photoDe(contenu: ContenuSite, cle: string): PhotoPrete {

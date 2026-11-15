@@ -1,8 +1,8 @@
 import Image from "next/image";
 import { cadrage } from "@/data/cadrages";
-import Link from "next/link";
+import Link from "@/components/Lien";
 import FadeIn from "@/components/FadeIn";
-import { card } from "@/data/architecture";
+import { carteDe } from "@/data/architecture";
 import { getContenuSite } from "@/sanity/lib/contenu";
 import { texteDe } from "@/lib/contenu";
 
@@ -11,7 +11,7 @@ export default async function PageCards({ paths, title: titre }: { paths: string
     const contenu = await getContenuSite();
     const title = titre ?? texteDe(contenu, "pages.poursuivre");
     const cards = paths.map((path) => {
-        const c = card(path);
+        const c = carteDe(path, contenu.langue);
         const infos = contenu.pages[path];
         return {
             ...c,

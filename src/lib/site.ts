@@ -1,3 +1,6 @@
+import { LOCALE_OG, LANGUES, lienLangue, type Langue } from "@/lib/langue";
+import { langueCourante } from "@/lib/langueServeur";
+
 // Adresse publique du site, utilisée pour Google (adresses canoniques, plan du site, partages).
 // Tant que domainedegaranches.com affiche encore l'ancien site, on reste sur l'adresse Vercel.
 // Le jour où le domaine pointe vers ce site : remplacer SITE_URL_PAR_DEFAUT ici ET dans
@@ -17,17 +20,19 @@ export function absolu(chemin: string) {
 // Balises de partage (Facebook, WhatsApp, LinkedIn…) complètes pour une page.
 // Next remplace tout le bloc openGraph du parent dès qu'une page en définit un :
 // on redonne donc à chaque fois le nom du site, la langue et l'image.
-export function partage({ chemin, titre, description, image, alt, type = "website" }: {
-    chemin: string; titre: string; description?: string; image?: string; alt?: string; type?: "website" | "article";
+// Le chemin est celui de la page française ("/contact") : il est mis dans la langue de la page.
+export function partage({ chemin, titre, description, image, alt, type = "website", langue = langueCourante() }: {
+    chemin: string; titre: string; description?: string; image?: string; alt?: string; type?: "website" | "article"; langue?: Langue;
 }) {
     const img = image || DEFAULT_OG_IMAGE;
     return {
         openGraph: {
             title: titre,
             description,
-            url: chemin,
+            url: lienLangue(chemin, langue),
             siteName: SITE_NAME,
-            locale: "fr_FR",
+            locale: LOCALE_OG[langue],
+            alternateLocale: LANGUES.filter((l) => l !== langue).map((l) => LOCALE_OG[l]),
             type,
             images: [{ url: img, alt: alt || titre }],
         },
@@ -41,16 +46,20 @@ export function partage({ chemin, titre, description, image, alt, type = "websit
 }
 
 // Fil d'Ariane pour Google (affiché sous le titre dans les résultats).
-export function filAriane(etapes: { nom: string; chemin: string }[]) {
+// Chemins français ("/les-vins") : ils sont mis dans la langue de la page.
+export function filAriane(etapes: { nom: string; chemin: string }[], langue: Langue = langueCourante()) {
     return {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
-        itemListElement: [{ nom: "Accueil", chemin: "/" }, ...etapes].map((e, i) => ({
-            "@type": "ListItem",
-            position: i + 1,
-            name: e.nom,
-            item: absolu(e.chemin === "/" ? "" : e.chemin),
-        })),
+        itemListElement: [{ nom: langue === "en" ? "Home" : "Accueil", chemin: "/" }, ...etapes].map((e, i) => {
+            const chemin = lienLangue(e.chemin, langue);
+            return {
+                "@type": "ListItem",
+                position: i + 1,
+                name: e.nom,
+                item: absolu(chemin === "/" ? "" : chemin),
+            };
+        }),
     };
 }
 

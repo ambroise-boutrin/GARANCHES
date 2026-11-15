@@ -6,6 +6,8 @@ export default {
     name: 'bloc',
     title: 'Bloc de texte',
     type: 'document',
+    // Version anglaise du site (/en) : mêmes champs, regroupés et repliés.
+    fieldsets: [{ name: 'anglais', title: 'Version anglaise', description: 'Laissé vide : la traduction anglaise prévue dans le site s’affiche.', options: { collapsible: true, collapsed: true } }],
     fields: [
         {
             name: 'cle',
@@ -44,6 +46,25 @@ export default {
             title: 'Informations pratiques',
             description: 'Durée, personnes, tarifs, accès… Remplace toute la liste prévue pour ce bloc.',
             type: 'array',
+            of: [
+                {
+                    type: 'object',
+                    fields: [
+                        { name: 'label', title: 'Intitulé', type: 'string' },
+                        { name: 'value', title: 'Valeur', type: 'string' },
+                    ],
+                    preview: { select: { title: 'label', subtitle: 'value' } },
+                },
+            ],
+        },
+        { name: 'titreEn', title: 'Titre en anglais', type: 'string', fieldset: 'anglais' },
+        { name: 'texteEn', title: 'Texte en anglais', type: 'text', rows: 12, fieldset: 'anglais', description: 'Mêmes règles que le texte français (ligne vide, **gras**).' },
+        { name: 'boutonEn', title: 'Texte du bouton en anglais', type: 'string', fieldset: 'anglais' },
+        {
+            name: 'pratiqueEn',
+            title: 'Informations pratiques en anglais',
+            type: 'array',
+            fieldset: 'anglais',
             of: [
                 {
                     type: 'object',

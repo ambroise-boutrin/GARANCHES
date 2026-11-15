@@ -1,12 +1,14 @@
 "use client";
 
-import Link from 'next/link';
-import { Lignes, useContenu, usePortes, useTexte } from '@/components/Contenu';
+import Link from "@/components/Lien";
+import { Lignes, useContenu, usePortes, useTexte, useUi } from '@/components/Contenu';
+import ChoixLangue from '@/components/ChoixLangue';
 
 export default function Footer() {
     const currentYear = new Date().getFullYear();
     const portes = usePortes();
     const { pages } = useContenu();
+    const ui = useUi();
     const nom = useTexte('pied.nom');
     const adresse = useTexte('pied.adresse');
     const contact = useTexte('pied.contact');
@@ -31,15 +33,16 @@ export default function Footer() {
                     {portes.map((porte) => (
                         <Link key={porte.path} href={porte.path} className="py-2 md:py-0 hover:text-white transition-colors">{porte.label}</Link>
                     ))}
-                    <Link href="/carnets" className="py-2 md:py-0 hover:text-white transition-colors">{pages.carnets?.titre ?? "Les Carnets"}</Link>
-                    <Link href="/acheter" className="py-2 md:py-0 hover:text-white transition-colors">{pages.acheter?.titre ?? "Acheter / Trouver Garanches"}</Link>
+                    <Link href="/carnets" className="py-2 md:py-0 hover:text-white transition-colors">{pages.carnets?.titre ?? ui.carnets}</Link>
+                    <Link href="/acheter" className="py-2 md:py-0 hover:text-white transition-colors">{pages.acheter?.titre ?? ui.acheter}</Link>
                 </div>
 
                 <div className="flex flex-col items-center md:items-start gap-1 md:gap-4 text-sm uppercase tracking-widest font-semibold text-gray-300">
-                    <Link href="/contact" className="py-2 md:py-0 hover:text-white transition-colors">Contact</Link>
-                    <Link href="/mentions-legales" className="py-2 md:py-0 hover:text-white transition-colors">Mentions légales</Link>
-                    <Link href="/politique-confidentialite" className="py-2 md:py-0 hover:text-white transition-colors">Confidentialité</Link>
-                    <Link href="/cgv" className="py-2 md:py-0 hover:text-white transition-colors">CGV</Link>
+                    <Link href="/contact" className="py-2 md:py-0 hover:text-white transition-colors">{ui.contact}</Link>
+                    <Link href="/mentions-legales" className="py-2 md:py-0 hover:text-white transition-colors">{ui.mentionsLegales}</Link>
+                    <Link href="/politique-confidentialite" className="py-2 md:py-0 hover:text-white transition-colors">{ui.confidentialite}</Link>
+                    <Link href="/cgv" className="py-2 md:py-0 hover:text-white transition-colors">{ui.cgv}</Link>
+                    <ChoixLangue long className="py-2 md:py-0 hover:text-white transition-colors" />
                 </div>
             </div>
 

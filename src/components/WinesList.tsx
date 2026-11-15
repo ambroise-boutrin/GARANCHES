@@ -1,11 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/Lien";
 import RequestBottlesButton from "@/components/RequestBottlesButton";
 import FadeIn from "@/components/FadeIn";
 import { cuveeHref, nomMillesime } from "@/lib/wineSlug";
-import { useTexte } from "@/components/Contenu";
+import { useTexte, useUi } from "@/components/Contenu";
 
 // Première phrase de la présentation (« Un beau vin de garde. »), ou le début du texte s'il n'a qu'un paragraphe.
 function premierParagraphe(texte?: string) {
@@ -14,6 +14,7 @@ function premierParagraphe(texte?: string) {
 }
 
 export default function WinesList({ wines }: { wines: any[] }) {
+    const ui = useUi();
     const decouvrir = useTexte("cuvees.decouvrir");
     const questionTitre = useTexte("cuvees.question.titre");
     const questionTexte = useTexte("cuvees.question.texte");
@@ -33,7 +34,7 @@ export default function WinesList({ wines }: { wines: any[] }) {
                                     <div className="absolute inset-0 flex items-center justify-center p-4">
                                         <Image
                                             src={wine.image || "/images/bouteilles/brouilly.jpg"}
-                                            alt={`${nomMillesime(wine)} - Domaine de Garanches`}
+                                            alt={ui.vinDomaine(nomMillesime(wine))}
                                             fill
                                             sizes="(max-width: 768px) 100vw, 33vw"
                                             loading="lazy"
@@ -70,8 +71,8 @@ export default function WinesList({ wines }: { wines: any[] }) {
 
                                     <div className="flex flex-wrap justify-center md:justify-start items-center gap-x-4 gap-y-2 text-xs text-gray-700 mb-6">
                                         {wine.volume && <span>{wine.volume}</span>}
-                                                                                <span className="border-l border-gray-300 pl-3" title="Déconseillé aux femmes enceintes">
-                                            <svg viewBox="0 0 64 64" className="w-5 h-5 opacity-60 fill-current text-gray-600">
+                                                                                <span className="border-l border-gray-300 pl-3" title={ui.grossesse}>
+                                            <svg viewBox="0 0 64 64" role="img" aria-label={ui.grossesse} className="w-5 h-5 opacity-60 fill-current text-gray-600">
                                                 <circle cx="32" cy="32" r="30" fill="none" stroke="currentColor" strokeWidth="3" />
                                                 <line x1="12" y1="52" x2="52" y2="12" stroke="currentColor" strokeWidth="3" />
                                                 <path d="M32 10a10 10 0 0 1 10 10c0 5-4 15-10 15s-10-10-10-15a10 10 0 0 1 10-10z" fill="currentColor" />

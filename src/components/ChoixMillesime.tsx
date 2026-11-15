@@ -5,6 +5,7 @@ import Image from "next/image";
 import RequestBottlesButton from "@/components/RequestBottlesButton";
 import RichText from "@/components/editorial/RichText";
 import { nomMillesime } from "@/lib/wineSlug";
+import { useUi } from "@/components/Contenu";
 
 type Caracteristique = { label: string; value?: string };
 
@@ -43,6 +44,7 @@ export default function ChoixMillesime({
     titreParcelle: string;
     titreVinification: string;
 }) {
+    const ui = useUi();
     const cle = (w: any) => String(w.millesime || w.id);
     const [choisi, setChoisi] = useState(cle(millesimes[0]));
 
@@ -66,11 +68,11 @@ export default function ChoixMillesime({
         <section className="py-16 md:py-24 bg-stone-50">
             <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10 md:gap-20 items-start">
                 <div className="relative h-[380px] md:h-[520px] bg-white md:sticky md:top-28" data-sanity={cliquerImage}>
-                    <Image src={image} alt={`Bouteille de ${nom} - Domaine de Garanches`} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-contain p-8 mix-blend-multiply" />
+                    <Image src={image} alt={ui.bouteilleDomaine(nom)} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-contain p-8 mix-blend-multiply" />
                 </div>
                 <div>
                     {millesimes.length > 0 && (
-                        <div role="tablist" aria-label="Millésimes" className="flex flex-wrap gap-3 mb-10">
+                        <div role="tablist" aria-label={ui.millesimes} className="flex flex-wrap gap-3 mb-10">
                             {millesimes.map((w) => {
                                 const actif = cle(w) === choisi;
                                 return (
@@ -93,7 +95,7 @@ export default function ChoixMillesime({
                             <h2 className="normal-case tracking-normal text-3xl md:text-5xl font-serif text-red-900 mb-6 leading-tight">{nomMillesime(w)}</h2>
                             {w.description && <RichText text={w.description} className="text-gray-800 leading-relaxed text-base md:text-lg" />}
                             <div className="mt-8">
-                                <Caracteristiques items={[...communs, { label: "Alcool", value: w.alcohol }]} />
+                                <Caracteristiques items={[...communs, { label: ui.alcool, value: w.alcohol }]} />
                             </div>
                             {w.parcelle && (
                                 <div className="mt-10">

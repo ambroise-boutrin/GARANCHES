@@ -12,6 +12,7 @@ export default {
     groups: [
         { name: 'page', title: 'Page', default: true },
         { name: 'google', title: 'Google' },
+        { name: 'anglais', title: 'En anglais' },
     ],
     fields: [
         {
@@ -81,6 +82,13 @@ export default {
             group: 'google',
             validation: (Rule: any) => Rule.max(170).warning('Google coupe les descriptions trop longues.'),
         },
+        // Version anglaise du site (/en). Laissé vide : la traduction prévue dans le site s'affiche.
+        { name: 'titreEn', title: 'Nom de la page en anglais', description: 'Laissé vide : la traduction anglaise prévue dans le site s’affiche.', type: 'string', group: 'anglais', hidden: ({ document }: any) => sansPhoto(document) },
+        { name: 'motsClesEn', title: 'Mots-clés du menu en anglais', type: 'string', group: 'anglais', hidden: ({ document }: any) => sansPhoto(document) },
+        { name: 'descriptionEn', title: 'Texte de la carte en anglais', type: 'text', rows: 2, group: 'anglais', hidden: ({ document }: any) => sansPhoto(document) },
+        { name: 'boutonEn', title: 'Lien de la carte en anglais', type: 'string', group: 'anglais', hidden: ({ document }: any) => sansPhoto(document) },
+        { name: 'seoTitreEn', title: 'Titre dans Google en anglais', type: 'string', group: 'anglais', validation: (Rule: any) => Rule.max(70).warning('Google coupe les titres trop longs.') },
+        { name: 'seoDescriptionEn', title: 'Description dans Google en anglais', type: 'text', rows: 3, group: 'anglais', validation: (Rule: any) => Rule.max(170).warning('Google coupe les descriptions trop longues.') },
     ],
     preview: {
         select: { page: 'page', titre: 'titre', media: 'image' },

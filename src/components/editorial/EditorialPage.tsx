@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/Lien";
 import type { ReactNode } from "react";
 import FadeIn from "@/components/FadeIn";
 import ParallaxImage from "@/components/ParallaxImage";
@@ -7,7 +7,7 @@ import RichText from "./RichText";
 import Agrandir from "./Agrandir";
 import PageCards from "./PageCards";
 import SousNav from "./SousNav";
-import { PAGES, type Bloc, type Page } from "@/data/architecture";
+import { pagesDe, type Bloc, type Page } from "@/data/architecture";
 import type { BlocOverride } from "@/sanity/lib/queries";
 import { getContenuSite, type PhotoPrete } from "@/sanity/lib/contenu";
 import { texteDe } from "@/lib/contenu";
@@ -15,16 +15,21 @@ import { photoSanity } from "@/sanity/lib/photo";
 import { cadrage } from "@/data/cadrages";
 import { flou } from "@/data/flous";
 import { altPhoto } from "@/data/alts";
+import { ALTS_EN } from "@/i18n/en/divers";
+import { UI } from "@/i18n/ui";
+import { langueCourante } from "@/lib/langueServeur";
 import { typo } from "@/lib/typo";
 
 // Photo d'ouverture des pages, partagée avec les Carnets.
 export function PageHero({ image: imageCode, label, parent, photo }: { image: string; label: string; parent?: { path: string; label: string }; photo?: PhotoPrete }) {
     // Photo changée dans le studio (Pages › Photo du haut), sinon celle prévue dans le code.
     const image = photo?.src ?? imageCode;
+    const langue = langueCourante();
+    const alt = langue === "en" ? ALTS_EN[image] ?? UI.en.altPage(label) : altPhoto(image, UI.fr.altPage(label));
     return (
         <section className="relative h-[70vh] min-h-[480px] bg-stone-900 flex flex-col justify-center items-center overflow-hidden">
             <div className="absolute inset-0 z-0" data-sanity={photo?.cliquer}>
-                <Image src={image} alt={altPhoto(image, `${label}, domaine de Garanches à Odenas`)} fill sizes="100vw" priority quality={75} {...flou(image, photo?.blur)} style={{ objectPosition: photo ? photo.position : cadrage(image) }} className="object-cover brightness-[.6]" />
+                <Image src={image} alt={alt} fill sizes="100vw" priority quality={75} {...flou(image, photo?.blur)} style={{ objectPosition: photo ? photo.position : cadrage(image) }} className="object-cover brightness-[.6]" />
             </div>
             <FadeIn direction="down" className="relative text-center px-4 pt-20 flex flex-col items-center">
                 {parent && (
@@ -148,7 +153,7 @@ export default async function EditorialPage({
 }) {
     const contenu = await getContenuSite();
     const infos = contenu.pages[page.path];
-    const parentCode = page.path.includes("/") ? PAGES[page.path.split("/")[0]] : undefined;
+    const parentCode = page.path.includes("/") ? pagesDe(contenu.langue)[page.path.split("/")[0]] : undefined;
     const parent = parentCode && { path: parentCode.path, label: contenu.pages[parentCode.path]?.titre ?? parentCode.label };
     const texteAVenir = texteDe(contenu, "pages.a-venir");
 

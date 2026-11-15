@@ -1,3 +1,6 @@
+import type { Langue } from "../lib/langue";
+import { CARNETS_CARD_EN, CARNETS_INTRO_EN, CARNETS_MENU_EN, CARNET_THEMES_EN, HOME_PORTES_EN, MOTS_CLES_EN, PAGES_EN, SIGNATURE_EN } from "../i18n/en/architecture";
+
 // Arborescence du site, d'après le document maître « Architecture site Garanches ».
 // Chaque bloc peut être remplacé depuis le studio Sanity (document « Bloc de texte »),
 // avec la clé `${page.path}#${bloc.id}`. Sans contenu Sanity, les textes ci-dessous s'affichent.
@@ -703,3 +706,82 @@ export const HOME_PORTES = [
         ],
     },
 ].map((porte) => ({ ...porte, page: PAGES[porte.path] }));
+
+
+// ─────────────── VERSION ANGLAISE ───────────────
+// Mêmes pages, mêmes photos, textes de src/i18n/en/architecture.ts.
+
+function enAnglais(p: Page): Page {
+    const en = PAGES_EN[p.path];
+    if (!en) return p;
+    return {
+        ...p,
+        label: en.label,
+        description: en.description,
+        cta: en.cta,
+        blocs: p.blocs.map((b) => {
+            const t = en.blocs?.[b.id];
+            if (!t) return b;
+            return {
+                ...b,
+                title: t.title ?? b.title,
+                body: t.body ?? b.body,
+                alt: t.alt ?? b.alt,
+                ...(b.cta && { cta: { ...b.cta, label: t.bouton ?? b.cta.label } }),
+                ...(b.booking && { booking: { ...b.booking, label: t.bouton ?? b.booking.label } }),
+                pratique: t.pratique ?? b.pratique,
+            };
+        }),
+    };
+}
+
+const PAGES_EN_COMPLETES: Record<string, Page> = Object.fromEntries(PAGE_LIST.map((p) => [p.path, enAnglais(p)]));
+
+export function pagesDe(langue: Langue): Record<string, Page> {
+    return langue === "en" ? PAGES_EN_COMPLETES : PAGES;
+}
+
+export function carnetsCarteDe(langue: Langue) {
+    return langue === "en" ? { ...CARNETS_CARD, ...CARNETS_CARD_EN } : CARNETS_CARD;
+}
+
+export function carnetsIntroDe(langue: Langue) {
+    return langue === "en" ? CARNETS_INTRO_EN : CARNETS_INTRO;
+}
+
+export function carnetThemesDe(langue: Langue) {
+    return langue === "en" ? CARNET_THEMES.map((t) => ({ ...t, title: CARNET_THEMES_EN[t.value] ?? t.title })) : CARNET_THEMES;
+}
+
+export function carteDe(path: string, langue: Langue) {
+    if (path === "carnets") return carnetsCarteDe(langue);
+    const p = pagesDe(langue)[path];
+    return { path, label: p.label, description: p.description, image: p.image, cta: p.cta };
+}
+
+const PORTES_EN: Porte[] = Object.entries(SOUS_MENUS).map(([path, items]) => ({
+    path: `/${path}`,
+    label: PAGES_EN_COMPLETES[path].label,
+    children: items.map((item) => ({
+        label: item.path === "carnets" ? CARNETS_MENU_EN : carteDe(item.path, "en").label,
+        href: `/${item.path}`,
+        motsCles: MOTS_CLES_EN[item.path] ?? item.motsCles,
+    })),
+}));
+
+export function portesDe(langue: Langue): Porte[] {
+    return langue === "en" ? PORTES_EN : PORTES;
+}
+
+export function signatureDe(langue: Langue) {
+    return langue === "en" ? SIGNATURE_EN : SIGNATURE;
+}
+
+export function homePortesDe(langue: Langue) {
+    if (langue === "fr") return HOME_PORTES;
+    return HOME_PORTES.map((porte) => ({
+        ...porte,
+        page: PAGES_EN_COMPLETES[porte.path],
+        entrees: porte.entrees.map((e, i) => ({ ...e, ...HOME_PORTES_EN[porte.path]?.[i] })),
+    }));
+}

@@ -24,7 +24,12 @@ export async function getWines() {
     volume,
     allergens,
     parcelle,
-    vinification
+    vinification,
+    subtitleEn,
+    descriptionEn,
+    tagsEn,
+    parcelleEn,
+    vinificationEn
   }`);
     // Les adresses et liens ne doivent pas porter les marques invisibles de l'aperçu.
     return wines.map((w) => ({
@@ -64,9 +69,13 @@ export type BlocOverride = { cliquerImage?: string; titre?: string; texte?: stri
 
 // Blocs de texte modifiés dans le studio, indexés par clé « chemin#bloc ».
 // En cas d'erreur Sanity, le site affiche les textes par défaut.
-export async function getBlocs(): Promise<Record<string, BlocOverride>> {
+// En anglais, ce sont les champs « en anglais » du studio qui remplacent les textes (la photo reste commune).
+export async function getBlocs(langue: 'fr' | 'en' = 'fr'): Promise<Record<string, BlocOverride>> {
     try {
-        const blocs = await sanityFetch<any[]>(`*[_type == "bloc" && defined(cle)]{ _id, cle, titre, texte, "image": image${PHOTO}, bouton, pratique }`);
+        const champs = langue === 'en'
+            ? `"titre": titreEn, "texte": texteEn, "bouton": boutonEn, "pratique": pratiqueEn`
+            : `titre, texte, bouton, pratique`;
+        const blocs = await sanityFetch<any[]>(`*[_type == "bloc" && defined(cle)]{ _id, cle, ${champs}, "image": image${PHOTO} }`);
         return Object.fromEntries(blocs.map((b) => [stegaClean(b.cle), { ...b, cliquerImage: cliquable(b._id, 'bloc', 'image') }]));
     } catch (error) {
         console.error('Sanity: blocs indisponibles', error);

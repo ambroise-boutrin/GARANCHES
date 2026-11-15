@@ -1,17 +1,21 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/Lien";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { GENERIC_PATHS, type Porte } from "@/data/architecture";
-import { usePortes, useTelephones, useTexte } from "@/components/Contenu";
+import { usePortes, useTelephones, useTexte, useUi } from "@/components/Contenu";
+import ChoixLangue from "@/components/ChoixLangue";
+import { sansLangue } from "@/lib/langue";
 import { estPrincipal, telHref } from "@/data/contacts";
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
-    const pathname = usePathname();
+    // Chemin sans /en : les menus comparent les pages de la même façon dans les deux langues.
+    const pathname = sansLangue(usePathname() || "/");
+    const ui = useUi();
     const isHome = pathname === "/";
     // Menu déroulant refermé après un clic, jusqu'à ce que la souris quitte l'onglet.
     const [menuFerme, setMenuFerme] = useState<string | null>(null);
@@ -53,7 +57,7 @@ export default function Navbar() {
     const telephones = useTelephones();
     const navLinks: { name: string; href: string; children: Porte["children"] }[] = [
         ...portes.map((porte) => ({ name: porte.label, href: porte.path, children: porte.children })),
-        { name: "Contact", href: "/contact", children: [] },
+        { name: ui.contact, href: "/contact", children: [] },
     ];
     // Menu mobile : porte dont on affiche les pages (null = liste des portes).
     const [openPorte, setOpenPorte] = useState<string | null>(null);
@@ -76,7 +80,7 @@ export default function Navbar() {
                     <div className={`relative md:transition-all md:duration-500 ${scrolled ? "w-[68px] h-9" : "w-[84px] h-11"}`}>
                         <Image
                             src="/images/logo-maison.png"
-                            alt="Logo Domaine de Garanches"
+                            alt={ui.logo}
                             fill
                             // Si useDarkText est vrai, on inverse les couleurs (White -> Black) pour qu'il soit visible sur fond blanc
                             className={`object-contain md:transition-all md:duration-300 ${useDarkText ? "invert" : ""}`}
@@ -140,6 +144,7 @@ export default function Navbar() {
                         >
                             {commander}
                         </Link>
+                        <ChoixLangue className={`px-2 py-2 text-xs tracking-widest font-bold transition-colors duration-300 ${useDarkText && !scrolled ? "text-stone-900 hover:text-wine-900" : "text-white hover:text-white/70"}`} />
                     </div>
                 </div>
 
@@ -150,12 +155,12 @@ export default function Navbar() {
 
                     <button
                         onClick={() => setIsOpen(!isOpen)}
-                        aria-label={isOpen ? "Fermer le menu" : "Ouvrir le menu"}
+                        aria-label={isOpen ? ui.fermerMenu : ui.ouvrirMenu}
                         aria-expanded={isOpen}
                         className={`relative h-10 flex items-center gap-3 group ${useDarkText && !isOpen ? "text-stone-900" : "text-white"}`}
                     >
                         {/* Le mot à côté de l'icône, pour qu'on sache que c'est le menu. */}
-                        <span className="text-xs uppercase tracking-widest font-bold">{isOpen ? "Fermer" : "Menu"}</span>
+                        <span className="text-xs uppercase tracking-widest font-bold">{isOpen ? ui.fermer : ui.menu}</span>
                         <span className="w-6 h-10 flex flex-col justify-center items-end gap-1.5">
                         <span className={`h-0.5 rounded-full transition-all duration-300 ${useDarkText && !isOpen ? "bg-stone-900" : "bg-white"} ${isOpen ? "w-6 rotate-45 translate-y-2 bg-white" : "w-6"}`} />
                         <span className={`h-0.5 rounded-full transition-all duration-300 ${useDarkText && !isOpen ? "bg-stone-900" : "bg-white"} ${isOpen ? "opacity-0" : "w-4 group-hover:w-6"}`} />
@@ -182,7 +187,7 @@ export default function Navbar() {
                                         className="flex items-center gap-2 py-3 text-xs uppercase tracking-widest text-white/60"
                                     >
                                         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
-                                        Menu
+                                        {ui.menu}
                                     </button>
                                     <Link
                                         href={openPorteLink.href}
@@ -191,7 +196,7 @@ export default function Navbar() {
                                     >
                                         <span className="block font-serif text-3xl text-white uppercase tracking-[0.04em]">{openPorteLink.name}</span>
                                         <span className="mt-2 inline-flex items-center gap-2 text-xs uppercase tracking-widest text-white">
-                                            Voir la page
+                                            {ui.voirLaPage}
                                             <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
                                         </span>
                                     </Link>
@@ -233,7 +238,7 @@ export default function Navbar() {
                                                         <button
                                                             type="button"
                                                             onClick={() => setOpenPorte(link.href)}
-                                                            aria-label={`Afficher les pages de ${link.name}`}
+                                                            aria-label={ui.pagesDe(link.name)}
                                                             className="w-full flex items-center justify-between gap-4 py-4 text-left"
                                                         >
                                                             {contenu}
@@ -251,6 +256,8 @@ export default function Navbar() {
                                             );
                                         })}
                                     </ul>
+                                    {/* Sur téléphone, l'autre langue est ici (la barre du haut est déjà pleine). */}
+                                    <ChoixLangue long className="self-start mt-6 py-2 text-sm text-white underline underline-offset-4 decoration-1" />
                                     <div className="mt-auto pt-10 space-y-6">
                                         <Link
                                             href="/acheter"
