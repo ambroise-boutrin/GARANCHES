@@ -75,6 +75,26 @@ async function Cuvees() {
     );
 }
 
+// Personnes présentées sur la page (blocs dont le titre est un nom, comme Jean Buy sur L'histoire) :
+// données pour Google et les assistants IA, avec leur portrait quand il y en a un.
+function personnes(page: { path: string; blocs: { title?: string; body?: string; image?: string; nom?: boolean }[] }, langue: "fr" | "en") {
+    return page.blocs
+        .filter((b) => b.nom && b.title)
+        .map((b) => {
+            const dates = b.title!.match(/\((\d{4})\s*[–-]\s*(\d{4})\)/);
+            const paragraphes = String(b.body || "").split(/\n\s*\n/).map((t) => t.replace(/\*\*/g, "").trim()).filter(Boolean);
+            return {
+                "@context": "https://schema.org",
+                "@type": "Person",
+                name: b.title!.replace(/\s*\(.*\)\s*$/, ""),
+                ...(dates && { birthDate: dates[1], deathDate: dates[2] }),
+                description: paragraphes.slice(0, 2).join(" "),
+                ...(b.image && { image: absolu(b.image) }),
+                subjectOf: { "@type": "WebPage", url: absolu(lienLangue(`/${page.path}`, langue)), inLanguage: CODE_LANGUE[langue] },
+            };
+        });
+}
+
 // Contenu propre à certaines pages, affiché après leurs blocs de texte.
 const EXTRAS: Record<string, () => JSX.Element | Promise<JSX.Element>> = {
     "les-vins/cuvees": Cuvees,
@@ -95,10 +115,12 @@ export async function renderPage(path: string) {
         ...(parent ? [{ nom: stegaClean(contenu.pages[parent.path]?.titre) ?? parent.label, chemin: `/${parent.path}` }] : []),
         { nom: stegaClean(contenu.pages[path]?.titre) ?? page.label, chemin: `/${path}` },
     ]);
+    const gens = personnes(page, langue);
 
     return (
         <EditorialPage page={page} overrides={overrides}>
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serialiserJsonLd(ariane) }} />
+            {gens.length > 0 && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serialiserJsonLd(gens) }} />}
             {Extra && <Extra />}
         </EditorialPage>
     );

@@ -90,6 +90,7 @@ The first of the family line to settle at Garanches, Jean Buy took part in the p
 Involved in gathering the grievances of 1789, well beyond the parish of Odenas, he became the village's first mayor in 1790.
 
 His life belongs to a time of deep political, economic and agricultural change, which gradually shaped the wine-growing Beaujolais we know today.`,
+                alt: "Marquetry dated 1790 showing Jean Buy, the only known image of him",
             },
             "emmanuel-bender": {
                 title: "Emmanuel Bender (1840–1900)",

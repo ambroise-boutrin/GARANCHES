@@ -2,6 +2,7 @@ import { wineSlug } from "@/lib/wineSlug";
 import { PRODUCTS } from "@/data/products";
 import { getWines as getSanityWines } from "@/sanity/lib/queries";
 import { langueCourante } from "@/lib/langueServeur";
+import type { Langue } from "@/lib/langue";
 import { MOTS_VINS_EN, SOUS_TITRES_EN, VINS_EN } from "@/i18n/en/divers";
 import { stegaClean } from "next-sanity";
 
@@ -36,21 +37,22 @@ function enFrancais({ subtitleEn, descriptionEn, tagsEn, parcelleEn, vinificatio
     return vin;
 }
 
-function dansLaLangue(vins: any[]) {
-    return vins.map(langueCourante() === "en" ? enAnglais : enFrancais);
+// La langue de la page en cours, ou celle demandée (fichiers sans page, comme /llms.txt).
+function dansLaLangue(vins: any[], langue: Langue = langueCourante()) {
+    return vins.map(langue === "en" ? enAnglais : enFrancais);
 }
 
-export async function getWines() {
+export async function getWines(langue?: Langue) {
     try {
         const sanityWines = await getSanityWines();
         if (sanityWines && sanityWines.length > 0) {
-            return dansLaLangue(sanityWines.map(sansPrix));
+            return dansLaLangue(sanityWines.map(sansPrix), langue);
         }
     } catch (error) {
         console.error("Sanity: vins indisponibles", error);
     }
 
-    return dansLaLangue(PRODUCTS.map(sansPrix));
+    return dansLaLangue(PRODUCTS.map(sansPrix), langue);
 }
 
 // Un vin et tous ses millésimes : une seule bouteille montrée, puis chaque millésime décliné.
@@ -60,8 +62,8 @@ export type Gamme = { id: string; slug: string; name: string; subtitle?: string;
 
 const sansAnnee = (slug: string) => slug.replace(/-\d{4}$/, "");
 
-export async function getGammes(): Promise<Gamme[]> {
-    const wines = await getWines();
+export async function getGammes(langue?: Langue): Promise<Gamme[]> {
+    const wines = await getWines(langue);
     const parNom = new Map<string, any[]>();
     for (const w of wines) {
         const cle = String(w.name).trim().toLowerCase();
