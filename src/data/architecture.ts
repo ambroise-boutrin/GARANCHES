@@ -273,7 +273,7 @@ Des vins qui racontent Garanches, chacun à leur manière.`,
             {
                 id: "introduction",
                 title: "Les cuvées",
-                body: `Trois vins, chacun avec son millésime : un Brouilly rouge, un Beaujolais-Villages blanc et un Bourgogne blanc.`,
+                body: `Le Brouilly, le Beaujolais-Villages blanc et le Bourgogne blanc du domaine, présentés millésime par millésime.`,
                 image: "/images/smugmug/gamme-trois-vins.jpg", document: true,
                 alt: "Les trois vins du domaine de Garanches : Beaujolais-Villages blanc, Brouilly et Bourgogne blanc",
             },
