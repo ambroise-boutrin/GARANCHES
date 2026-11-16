@@ -178,8 +178,56 @@ Wines that tell the story of Garanches, each in its own way.`,
         cta: "Discover our approach",
         blocs: {
             introduction: { title: "Our approach", alt: "Aurélie Crozet showing a vine in the Garanches vineyard" },
-            "terre-vignes-saisons": { title: "Soil, vines and seasons", alt: "The Garanches vineyard in autumn, in front of the tall trees of the park" },
-            "millesime-et-temps": { title: "Vintage and time", alt: "A vine with red leaves in autumn" },
+            "terre-vignes-saisons": {
+                title: "At Garanches, we cultivate our convictions",
+                body: `The seasons set the pace. Our work tells of our choices.
+
+### Winter — Preparing for tomorrow
+
+In the rows, every vine calls for a close look, a choice, a gesture. The next harvest begins here.
+
+### Spring — Working the soil
+
+The vines wake up. Romain and Gandhi, our Percheron mare, return to the granite soils. Everything starts again!
+
+### Summer — Keeping a close watch
+
+We lift, we trim, we observe. Each plot moves at its own pace and needs our attention.
+
+### Autumn — Harvesting the fruit of the year
+
+The grapes are ripe. They are picked by hand, then the bunches go to the cuverie.
+
+### In the cuverie — Letting the fruit speak
+
+Gamay in whole bunches, Chardonnay pressed straight away, gentle extraction and measured ageing: each wine expresses where it comes from.
+
+From soil to wine, our choices give Garanches its character.`,
+                alt: "The Garanches vineyard in autumn, in front of the tall trees of the park",
+            },
+            "millesime-et-temps": {
+                title: "Each vintage tells the story of a year",
+                body: `Four years, four expressions of Garanches.
+
+### 2023 — Generous fruit
+
+A mild spring followed by a hot summer. Perfectly healthy grapes and a generous harvest give rich, fruit-driven wines that are a pleasure to drink.
+
+### 2024 — Freshness and finesse
+
+A cool year, marked by spring frosts. Small berries with raspberry aromas give precise, structured wines, built to age.
+
+### 2025 — Concentration
+
+A mild winter, then heat that lasted until the harvest. Yields are low, but the grapes, concentrated by the heatwave, give rich and intense juice.
+
+### 2026 — Nature's trial
+
+As in 2025, heat marks the season. But hail strikes Garanches hard, destroying nearly 95% of the vineyard.
+
+A year that reminds us how closely the winegrower's work remains bound to the forces of nature.`,
+                alt: "A vine with red leaves in autumn",
+            },
         },
     },
     "les-vins/cuvees": {
@@ -199,7 +247,21 @@ Wines that tell the story of Garanches, each in its own way.`,
         description: "Plots, soils and granite: the terroirs of Garanches.",
         cta: "Discover the terroirs",
         blocs: {
-            introduction: { title: "The terroirs", alt: "The vineyard plots around Garanches, seen from the sky" },
+            introduction: {
+                title: "The terroir — One land, many expressions",
+                body: `At Garanches, each soil leaves its own signature on the wine.
+
+Granite brings lightness, finesse and elegance.
+
+Clay brings structure and depth.
+
+Silty soils give roundness and a silky texture, while keeping the freshness and liveliness of our whites.
+
+With an average age of 45 years, our vines draw the full richness of their expression from this diversity.
+
+Different terroirs, one shared search for balance.`,
+                alt: "The vineyard plots around Garanches, seen from the sky",
+            },
         },
     },
     "les-vins/a-table": {

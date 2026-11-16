@@ -271,13 +271,55 @@ Des vins qui racontent Garanches, chacun à leur manière.`,
             { id: "introduction", title: "Notre façon de faire", image: "/images/smugmug/vignes-geste.jpg", paysage: true, personne: true, alt: "Aurélie Crozet montre un cep dans les vignes de Garanches" },
             {
                 id: "terre-vignes-saisons",
-                title: "Terre, vignes et saisons",
+                title: "À Garanches, nous cultivons nos convictions",
+                body: `Les saisons donnent le rythme. Nos gestes racontent nos choix.
+
+### Hiver — Préparons demain
+
+Dans les rangs, chaque cep demande un regard, un choix, un geste. La prochaine récolte commence ici.
+
+### Printemps — Cultivons la terre
+
+La vigne s'éveille. Romain et Gandhi, notre jument percheronne, retrouvent les sols granitiques. Tout repart !
+
+### Été — Veillons au grain
+
+On relève, on cisaille, on observe. Chaque parcelle avance à son rythme et réclame notre attention.
+
+### Automne — Récoltons le fruit de l'année
+
+Les raisins sont mûrs. Les vendanges se font à la main, puis les grappes rejoignent le cuvage.
+
+### Au cuvage — Laissons parler le fruit
+
+Gamays en grappes entières, Chardonnays pressés directement, extractions douces et élevages mesurés : chaque vin exprime son origine.
+
+De la terre au vin, nos choix donnent à Garanches son caractère.`,
                 image: "/images/garanches/vignes-parc.jpg", paysage: true,
                 alt: "Les vignes de Garanches en automne, devant les grands arbres du parc",
             },
             {
                 id: "millesime-et-temps",
-                title: "Millésime et temps",
+                title: "Chaque millésime raconte une année",
+                body: `Quatre années, quatre expressions de Garanches.
+
+### 2023 — La générosité du fruit
+
+Un printemps clément, suivi d'un été chaud. Des raisins parfaitement sains et une vendange généreuse donnent naissance à des vins gourmands, riches en fruit.
+
+### 2024 — La fraîcheur et la finesse
+
+Une année fraîche, marquée par les gelées printanières. De petites baies aux arômes de framboise donnent des vins précis, structurés, taillés pour la garde.
+
+### 2025 — La concentration
+
+Un hiver doux, puis une chaleur persistante jusqu'aux vendanges. Les rendements sont faibles, mais les raisins, concentrés par la canicule, offrent des jus riches et intenses.
+
+### 2026 — L'épreuve de la nature
+
+Comme en 2025, la chaleur marque la saison. Mais la grêle frappe durement Garanches, détruisant près de 95 % du vignoble.
+
+Une année qui rappelle combien le travail du vigneron reste lié aux forces de la nature.`,
                 image: "/images/garanches/cep-automne.jpg",
                 alt: "Un cep de vigne aux feuilles rouges, à l'automne",
             },
@@ -307,7 +349,25 @@ Des vins qui racontent Garanches, chacun à leur manière.`,
         description: "Parcelles, sols et granit : les terroirs de Garanches.",
         image: "/images/garanches/mont-brouilly-coteaux.jpg",
         cta: "Découvrir les terroirs",
-        blocs: [{ id: "introduction", title: "Les terroirs", image: "/images/garanches/parcelles-ciel.jpg", alt: "Les parcelles de vigne autour de Garanches, vues du ciel" }],
+        blocs: [
+            {
+                id: "introduction",
+                title: "Le terroir — Une terre, plusieurs expressions",
+                body: `À Garanches, chaque sol apporte sa signature au vin.
+
+Le granit donne légèreté, finesse et élégance.
+
+L'argile apporte structure et profondeur.
+
+Les sols limoneux offrent rondeur et texture soyeuse, tout en préservant la fraîcheur et la vivacité de nos blancs.
+
+Avec 45 ans d'âge moyen, nos vignes puisent dans cette diversité toute la richesse de leur expression.
+
+Des terroirs différents, une même recherche d'équilibre.`,
+                image: "/images/garanches/parcelles-ciel.jpg",
+                alt: "Les parcelles de vigne autour de Garanches, vues du ciel",
+            },
+        ],
         children: ["le-lieu/le-domaine", "rencontrons-garanches/decouvrir-les-vignes"],
     },
     {

@@ -4,7 +4,8 @@ import { typo } from "@/lib/typo";
 import { AvecTelephones } from "@/lib/contenu";
 
 // Affiche un texte du document maître : une ligne vide sépare deux paragraphes,
-// un simple retour à la ligne est conservé, **texte** passe en gras.
+// un simple retour à la ligne est conservé, **texte** passe en gras,
+// un paragraphe qui commence par ### devient un intertitre (casse normale).
 export default function RichText({ text, className = "" }: { text: string; className?: string }) {
     // Dans le mode visuel du studio, le texte se termine par des marques invisibles qui le rendent cliquable :
     // on les met de côté avant la mise en forme, puis on les remet après le dernier paragraphe.
@@ -14,7 +15,12 @@ export default function RichText({ text, className = "" }: { text: string; class
 
     return (
         <div className={`space-y-5 ${className}`}>
-            {paragraphs.map((paragraph, i) => (
+            {paragraphs.map((paragraph, i) => paragraph.startsWith("### ") ? (
+                <h3 key={i} className="font-serif text-2xl md:text-3xl text-red-900 leading-snug normal-case tracking-normal pt-4 !mb-[-0.5rem]">
+                    {paragraph.slice(4).trim()}
+                    {i === paragraphs.length - 1 && marque}
+                </h3>
+            ) : (
                 <p key={i}>
                     {paragraph.split("\n").map((line, j) => (
                         <Fragment key={j}>
