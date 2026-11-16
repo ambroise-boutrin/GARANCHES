@@ -1,5 +1,6 @@
 import { stegaClean } from "next-sanity";
 import { getGammes } from "@/lib/wines";
+import { separeLieuDit } from "@/lib/wineSlug";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 import { TELEPHONES, numeroInternational } from "@/data/contacts";
 import type { Langue } from "@/lib/langue";
@@ -18,7 +19,8 @@ export async function GET() {
             const millesimes = g.millesimes
                 .map((w) => `- ${propre(w.name)} ${propre(w.millesime)} (${base}#${propre(w.millesime)})${langue === "en" ? ":" : " :"} ${propre(w.description)}`)
                 .join("\n");
-            return `### ${propre(g.name)}${g.subtitle ? ` — ${propre(g.subtitle)}` : ""}\n${millesimes}`;
+            const { lieuDit, reste } = separeLieuDit(g.subtitle);
+            return `### ${propre(g.name)}${lieuDit ? ` ${propre(lieuDit)}` : ""}${reste ? ` — ${propre(reste)}` : ""}\n${millesimes}`;
         })
         .join("\n\n");
     const vins = listeVins(gammes, "fr");

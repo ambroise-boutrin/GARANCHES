@@ -9,7 +9,7 @@ import FadeIn from "@/components/FadeIn";
 import ChoixMillesime from "@/components/ChoixMillesime";
 import PageCards from "@/components/editorial/PageCards";
 import { getGamme, type Gamme } from "@/lib/wines";
-import { nomMillesime } from "@/lib/wineSlug";
+import { nomMillesime, separeLieuDit } from "@/lib/wineSlug";
 import { getContenuSite } from "@/sanity/lib/contenu";
 import { photoDe, texteDe } from "@/lib/contenu";
 import { SITE_NAME, WINERY_ID, absolu, filAriane, partage } from "@/lib/site";
@@ -55,8 +55,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 // Titre pour Google : le nom, puis seulement les mots du sous-titre qui n'y sont pas déjà
 // (« Beaujolais-Villages blanc » plutôt que « … – Beaujolais-Villages — Blanc »).
 function titreGoogle(gamme: Gamme): string {
-    const nom = gamme.name;
-    const reste = String(gamme.subtitle || "")
+    const { lieuDit, reste: sousTitre } = separeLieuDit(gamme.subtitle);
+    const nom = lieuDit ? `${gamme.name} ${lieuDit}` : gamme.name;
+    const reste = String(sousTitre || "")
         .split(/\s+[—–-]\s+/)
         .map((s: string) => s.trim())
         .filter((s: string) => s && !nom.toLowerCase().includes(s.toLowerCase()));
@@ -92,6 +93,8 @@ export default async function CuveePage({ params }: Props) {
     const autres = gammes.filter((g) => g.slug !== gamme.slug);
     const tags: string[] = gamme.millesimes.find((w) => w.tags?.length)?.tags ?? [];
     const volume = gamme.millesimes.find((w) => w.volume)?.volume;
+
+    const { lieuDit, reste: sousTitre } = separeLieuDit(gamme.subtitle);
 
     return (
         <main className="min-h-screen text-gray-800 font-sans">
@@ -132,7 +135,8 @@ export default async function CuveePage({ params }: Props) {
                         {pageCuvees}
                     </Link>
                     <h1 className="normal-case tracking-normal font-serif text-4xl sm:text-5xl md:text-7xl leading-tight text-white mt-3 md:mt-4 mb-2 md:mb-4">{gamme.name}</h1>
-                    {gamme.subtitle && <p className="text-white/80 text-sm md:mb-6">{gamme.subtitle}</p>}
+                    {lieuDit && <p className="font-serif text-white text-2xl sm:text-3xl md:text-4xl leading-tight mb-2 md:mb-4">{lieuDit}</p>}
+                    {sousTitre && <p className="text-white/80 text-sm md:mb-6">{sousTitre}</p>}
                 </FadeIn>
             </section>
 

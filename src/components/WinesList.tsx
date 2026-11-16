@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "@/components/Lien";
 import RequestBottlesButton from "@/components/RequestBottlesButton";
 import FadeIn from "@/components/FadeIn";
-import { cuveeHref, nomMillesime } from "@/lib/wineSlug";
+import { cuveeHref, nomMillesime, separeLieuDit } from "@/lib/wineSlug";
 import { useTexte, useUi } from "@/components/Contenu";
 
 export default function WinesList({ wines }: { wines: any[] }) {
@@ -43,8 +43,11 @@ export default function WinesList({ wines }: { wines: any[] }) {
                                         <h2 className="normal-case tracking-normal text-3xl font-serif text-wine-900"><Link href={cuveeHref(wine)} className="group-hover:text-red-900 transition-colors after:absolute after:inset-0 after:content-['']">{nomMillesime(wine)}</Link></h2>
                                     </div>
 
+                                    {separeLieuDit(wine.subtitle).lieuDit && (
+                                        <p className="font-serif text-wine-900 text-2xl leading-tight mb-2">{separeLieuDit(wine.subtitle).lieuDit}</p>
+                                    )}
                                     <p className="text-wine-700 text-sm font-bold mb-4">
-                                        {wine.subtitle || "Domaine de Garanches"}
+                                        {separeLieuDit(wine.subtitle).reste || "Domaine de Garanches"}
                                     </p>
 
                                     <Link href={cuveeHref(wine)} className="inline-block mb-6 text-base underline underline-offset-4 decoration-1 text-red-900 hover:text-red-700 transition-colors">
