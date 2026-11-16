@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 import { flou } from "@/data/flous";
 import Link from "@/components/Lien";
 import FadeIn from "@/components/FadeIn";
@@ -15,6 +16,17 @@ import { cuveeHref, nomMillesime } from "@/lib/wineSlug";
 export default function HomePageClient({ products, content }: { products: any[], content?: any }) {
     const heroVideo = content?.hero?.videoUrl || HERO_VIDEO;
     const contenu = useContenu();
+    // Si le téléphone refuse la lecture automatique (mode économie d'énergie sur iPhone,
+    // économiseur de données sur Android), on retire la vidéo : la photo reste, sans bouton lecture.
+    const videoRef = useRef<HTMLVideoElement>(null);
+    const [videoRefusee, setVideoRefusee] = useState(false);
+    useEffect(() => {
+        const video = videoRef.current;
+        if (!video) return;
+        video.muted = true;
+        const essai = video.play();
+        if (essai) essai.catch((e) => { if (e?.name === "NotAllowedError") setVideoRefusee(true); });
+    }, [heroVideo]);
     const ui = useUi();
     // Anciens textes « Texte de l'accueil » du studio : en français seulement.
     const ancien = contenu.langue === "fr" ? content : undefined;
@@ -45,14 +57,19 @@ export default function HomePageClient({ products, content }: { products: any[],
                         style={{ objectPosition: photoHaut.position }}
                         fetchPriority="high"
                     />
-                    {heroVideo && (
+                    {heroVideo && !videoRefusee && (
                         // La photo reste en dessous : elle s'affiche le temps du chargement et si le mouvement est réduit.
                         <video
-                            className="absolute inset-0 h-full w-full object-cover brightness-75 motion-reduce:hidden"
+                            ref={videoRef}
+                            className="video-fond absolute inset-0 h-full w-full object-cover brightness-75 motion-reduce:hidden"
                             autoPlay
                             muted
                             loop
                             playsInline
+                            controls={false}
+                            disablePictureInPicture
+                            disableRemotePlayback
+                            tabIndex={-1}
                             preload="metadata"
                             poster={photoHaut.src}
                             aria-hidden="true"

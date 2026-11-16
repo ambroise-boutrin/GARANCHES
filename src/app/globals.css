@@ -154,3 +154,14 @@ input[type="date"] {
 input[type="date"]::-webkit-date-and-time-value {
   text-align: left;
 }
+
+/* Vidéo de fond de l'accueil : jamais de bouton lecture ni de commandes du navigateur. */
+.video-fond { pointer-events: none; }
+.video-fond::-webkit-media-controls,
+.video-fond::-webkit-media-controls-panel,
+.video-fond::-webkit-media-controls-overlay-play-button,
+.video-fond::-webkit-media-controls-start-playback-button {
+  display: none !important;
+  -webkit-appearance: none;
+  opacity: 0 !important;
+}
