@@ -173,6 +173,10 @@ Député puis sénateur du Rhône, Émile Bender fut l'un des artisans de la con
 Aux côtés d'autres parlementaires, notamment Joseph Capus, il contribua à faire évoluer la notion d'appellation d'origine, en associant le nom d'un vin à son territoire, à ses cépages et aux usages de production.
 
 Son travail législatif, notamment à travers la loi Capus-Bender du 22 juillet 1927, participa à poser les fondements du futur système des appellations d'origine contrôlées.`,
+                image: "/images/garanches/emile-bender-portrait.jpg",
+                alt: "Portrait photographique d'Émile Bender",
+                document: true,
+                portrait: true,
             },
         ],
         children: ["le-lieu/traces", "le-lieu/ceux-qui-le-font-vivre"],

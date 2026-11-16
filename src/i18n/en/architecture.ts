@@ -114,6 +114,7 @@ A member of parliament and then senator for the Rhône, Émile Bender was one of
 Alongside other members of parliament, notably Joseph Capus, he helped shape the idea of an appellation of origin, linking the name of a wine to its land, its grape varieties and its ways of making wine.
 
 His work as a lawmaker, notably the Capus-Bender law of 22 July 1927, helped lay the foundations of the future system of controlled appellations of origin (AOC).`,
+                alt: "Photographic portrait of Émile Bender",
             },
         },
     },
