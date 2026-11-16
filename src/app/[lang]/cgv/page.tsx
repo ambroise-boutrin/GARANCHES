@@ -30,7 +30,7 @@ export default async function CGVPage({ params }: Props) {
     return (
         <main className="min-h-screen pt-32 pb-20 bg-white">
             <div className="max-w-3xl mx-auto px-6 prose prose-stone">
-                <h1 className="text-3xl font-serif text-wine-900 mb-8 border-b-2 border-wine-100 pb-4">Conditions Générales de Vente</h1>
+                <h1 className="text-2xl sm:text-3xl leading-tight font-serif text-wine-900 mb-8 border-b-2 border-wine-100 pb-4">Conditions Générales de Vente</h1>
 
                 <p className="text-sm mb-8">Dernière mise à jour : novembre 2026</p>
 

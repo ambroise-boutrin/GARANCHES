@@ -236,7 +236,10 @@ export default function HomePageClient({ products, content }: { products: any[],
                                         </h3>
                                         <div className="h-[1px] w-10 bg-gray-300 mx-auto my-4 group-hover:bg-red-900 transition-colors"></div>
                                         <p className="text-sm text-gray-700 font-bold mb-2">
-                                            {wine.subtitle || ui.vinDuDomaine}
+                                            {/* « Cru du Beaujolais — Rouge — Lieu-dit Garanches » : ne passe à la ligne qu'aux tirets. */}
+                                            {String(wine.subtitle || ui.vinDuDomaine).split(/\s+([—–])\s+/).map((morceau: string, i: number) =>
+                                                i % 2 ? ` ${morceau} ` : <span key={i} className="whitespace-nowrap">{morceau}</span>
+                                            )}
                                         </p>
                                     </div>
                                 </Link>

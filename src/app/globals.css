@@ -134,6 +134,26 @@ h2 {
   overflow-wrap: break-word;
 }
 
+/* Titres : lignes équilibrées (pas un mot seul en dernière ligne sur téléphone)
+   et chiffres alignés (Cormorant dessine par défaut des chiffres « à l'ancienne » qui montent et descendent). */
+h1,
+h2,
+h3 {
+  text-wrap-style: balance;
+  font-variant-numeric: lining-nums;
+}
+
+/* Paragraphes : le navigateur évite un mot seul sur la dernière ligne quand il le peut. */
+p,
+li {
+  text-wrap-style: pretty;
+}
+
+/* Un numéro de téléphone ne se coupe jamais en deux. */
+a[href^="tel:"] {
+  white-space: nowrap;
+}
+
 /* Champs du formulaire (date, nombre) toujours clairs, même si le téléphone est en mode sombre. */
 input,
 select,

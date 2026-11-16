@@ -55,6 +55,19 @@ function memeTitre(a: string, b: string) {
     return n(a) === n(b);
 }
 
+// Nom de personne suivi de ses dates, « Émile Bender (1871–1953) » : les dates passent sur leur propre ligne,
+// plus petites et sans parenthèses, pour ne jamais couper « (1871– / 1953) » sur téléphone.
+function NomEtDates({ titre }: { titre: string }) {
+    const m = stegaClean(titre).match(/^(.*?)\s*\((\d{3,4})\s*[–-]\s*(\d{3,4})\)\s*$/);
+    if (!m) return <>{titre}</>;
+    return (
+        <>
+            {m[1]}
+            <span className="block mt-2 text-xl md:text-3xl text-stone-600 whitespace-nowrap">{m[2]}–{m[3]}</span>
+        </>
+    );
+}
+
 function BlocSection({ bloc, override, index, texteAVenir, titrePage }: { bloc: Bloc; override?: BlocOverride; index: number; texteAVenir: string; titrePage: string }) {
     const titreBloc = typo(override?.titre || bloc.title || "");
     // Le premier bloc ne répète pas le titre déjà affiché sur la photo du haut.
@@ -73,7 +86,7 @@ function BlocSection({ bloc, override, index, texteAVenir, titrePage }: { bloc: 
 
     const text = (
         <div>
-            {title && <h2 className={`text-3xl md:text-5xl font-serif text-red-900 mb-6 md:mb-8 leading-tight ${bloc.nom ? "normal-case tracking-normal" : ""}`}>{title}</h2>}
+            {title && <h2 className={`text-3xl md:text-5xl font-serif text-red-900 mb-6 md:mb-8 leading-tight ${bloc.nom ? "normal-case tracking-normal" : ""}`}>{bloc.nom ? <NomEtDates titre={title} /> : title}</h2>}
             {body ? (
                 <RichText text={body} className="text-gray-800 leading-relaxed text-base md:text-lg" />
             ) : (

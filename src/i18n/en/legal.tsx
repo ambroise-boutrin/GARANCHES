@@ -13,7 +13,7 @@ export function MentionsLegalesEn() {
     return (
         <main className="min-h-screen pt-32 pb-20 bg-white">
             <div className="max-w-3xl mx-auto px-6 prose prose-stone">
-                <h1 className="text-3xl font-serif text-red-900 mb-8">Legal notice</h1>
+                <h1 className="text-2xl sm:text-3xl leading-tight font-serif text-red-900 mb-8">Legal notice</h1>
                 <Avertissement />
 
                 <h3>Site publisher</h3>
@@ -51,7 +51,7 @@ export function CgvEn() {
     return (
         <main className="min-h-screen pt-32 pb-20 bg-white">
             <div className="max-w-3xl mx-auto px-6 prose prose-stone">
-                <h1 className="text-3xl font-serif text-wine-900 mb-8 border-b-2 border-wine-100 pb-4">General terms of sale</h1>
+                <h1 className="text-2xl sm:text-3xl leading-tight font-serif text-wine-900 mb-8 border-b-2 border-wine-100 pb-4">General terms of sale</h1>
                 <Avertissement />
 
                 <p className="text-sm mb-8">Last updated: November 2026</p>
@@ -142,7 +142,7 @@ export function ConfidentialiteEn() {
     return (
         <main className="min-h-screen pt-32 pb-20 bg-white">
             <div className="max-w-3xl mx-auto px-6 prose prose-stone">
-                <h1 className="text-3xl font-serif text-wine-900 mb-8 border-b-2 border-wine-100 pb-4">Privacy policy</h1>
+                <h1 className="text-2xl sm:text-3xl leading-tight font-serif text-wine-900 mb-8 border-b-2 border-wine-100 pb-4">Privacy policy</h1>
                 <Avertissement />
 
                 <p className="text-sm text-stone-700 mb-8">

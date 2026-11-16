@@ -202,7 +202,7 @@ export default function ContactContent({ sujet, vin }: { sujet?: string; vin?: s
                             </button>
 
                             <p className="text-sm text-gray-700 text-center mt-4">
-                                {ui.messagerieOuvre} <span className="break-all">{EMAIL}</span>. {delai}
+                                {ui.messagerieOuvre} <span className="[overflow-wrap:anywhere]">{EMAIL}</span>. {delai}
                             </p>
                         </form>
                     </div>
