@@ -70,7 +70,7 @@ export const VINS_EN: Record<string, { subtitle?: string; description?: string; 
     },
     "beaujolais-villages-blanc": {
         subtitle: "Beaujolais-Villages — White",
-        description: "A true spring Beaujolais, a perfect match for your aperitifs.\n\nThe Beaujolais-Villages blanc shows an appealing balance, floral, fruity and tangy, thanks to the freshness of the vintage. Lemon, acacia and hawthorn blossom are the very identity of this wine, with a fresh, mouth-watering finish.",
+        description: "A true spring Beaujolais.\n\nThe Beaujolais-Villages blanc shows an appealing balance, floral, fruity and tangy, thanks to the freshness of the vintage. Lemon, acacia and hawthorn blossom are the very identity of this wine, with a fresh, mouth-watering finish.",
     },
 };
 
