@@ -76,7 +76,7 @@ export const PRODUCTS: {
         price: null,
         description: "Un vrai Beaujolais de printemps.\n\nLe Beaujolais-Villages blanc présente un équilibre attrayant, floral, fruité et acidulé, dû à la fraîcheur du millésime. Citron, acacia et fleurs d'aubépine sont l'identité même de ce vin, avec une finale fraîche et salivante.",
         image: "/images/bouteilles/beaujolais-villages-blanc.jpg",
-        tags: ["Chardonnay"],
+        tags: [],
         alcohol: "12 %",
         volume: "75cl",
         allergens: "Contient des sulfites"
