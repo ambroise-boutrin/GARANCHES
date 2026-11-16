@@ -8,7 +8,7 @@ export const PRODUCTS: {
     {
         id: "brouilly",
         name: "Brouilly",
-        subtitle: "Cru du Beaujolais — Rouge",
+        subtitle: "Cru du Beaujolais — Rouge — Lieu-dit Garanches",
         millesime: "2023",
         price: 1200,
         description: "Un vin gourmand qui prend sa structure au fil du temps. Première cuvée de Romain et Aurélie sur Garanches.\n\nFramboise et figue fraîche prédominent au nez comme en bouche. Une belle attaque donnant l'impression de croquer dans un fruit. Les tanins sont soyeux et la longueur en bouche généreuse.",
@@ -21,7 +21,7 @@ export const PRODUCTS: {
     {
         id: "brouilly-2024",
         name: "Brouilly",
-        subtitle: "Cru du Beaujolais — Rouge",
+        subtitle: "Cru du Beaujolais — Rouge — Lieu-dit Garanches",
         millesime: "2024",
         price: null,
         description: "Un beau vin de garde.\n\nFramboises et fraises des bois prédominent au nez comme en bouche. Une belle attaque donne l'impression de croquer dans un fruit frais et acidulé. Les tanins sont soyeux et la longueur en bouche généreuse. La fraîcheur du millésime habille entièrement l'élevage sous bois, qui équilibre parfaitement les arômes.",
@@ -34,7 +34,7 @@ export const PRODUCTS: {
     {
         id: "brouilly-2025",
         name: "Brouilly",
-        subtitle: "Cru du Beaujolais — Rouge",
+        subtitle: "Cru du Beaujolais — Rouge — Lieu-dit Garanches",
         millesime: "2025",
         price: null,
         description: "Un beau vin de garde.\n\nUn nez de fraises fraîchement écrasées et de petits fruits rouges. Une bouche solaire, pleine d’énergie, portée par une belle intensité et des tanins fins. La finale, fraîche et salivante, invite à prolonger la conversation… et le plaisir du partage.",

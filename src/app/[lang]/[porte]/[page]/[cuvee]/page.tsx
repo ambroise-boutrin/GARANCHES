@@ -103,6 +103,7 @@ export default async function CuveePage({ params }: Props) {
                         "@type": "Product",
                         name: nomMillesime(w),
                         description: w.description,
+                        disambiguatingDescription: gamme.subtitle || undefined,
                         image: image(gamme),
                         url: absolu(`${lienLangue(gammeHref(gamme), langue)}${w.millesime ? `#${w.millesime}` : ""}`),
                         brand: { "@type": "Brand", name: SITE_NAME },

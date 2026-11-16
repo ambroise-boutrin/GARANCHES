@@ -30,7 +30,7 @@ export const SEO_EN: Record<string, { title: string; description: string }> = {
     },
     "les-vins/cuvees": {
         title: "Our cuvées: Brouilly, Bourgogne blanc",
-        description: "The cuvées of the Garanches estate: Brouilly, Beaujolais-Villages blanc and Bourgogne blanc. Order from the estate, shipped anywhere in France.",
+        description: "The cuvées of the Garanches estate: Brouilly lieu-dit Garanches, Beaujolais-Villages blanc and Bourgogne blanc. Order from the estate, shipped anywhere in France.",
     },
     "les-vins/terroirs": {
         title: "The granite terroirs of Mont Brouilly",

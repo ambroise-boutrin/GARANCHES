@@ -48,16 +48,16 @@ export const FAQS_EN = [
 // Textes des vins, par adresse de la fiche (slug). Le nom et le millésime ne se traduisent pas.
 export const VINS_EN: Record<string, { subtitle?: string; description?: string; parcelle?: string; vinification?: string }> = {
     brouilly: {
-        subtitle: "Beaujolais cru — Red",
+        subtitle: "Beaujolais cru — Red — Lieu-dit Garanches",
         description: "A generous wine that builds its structure over time. Romain and Aurélie's first cuvée at Garanches.\n\nRaspberry and fresh fig lead on the nose and on the palate. A lovely attack that feels like biting into fruit. The tannins are silky and the finish long and generous.",
     },
     "brouilly-2024": {
-        subtitle: "Beaujolais cru — Red",
+        subtitle: "Beaujolais cru — Red — Lieu-dit Garanches",
         description: "A fine wine for laying down.\n\nRaspberries and wild strawberries lead on the nose and on the palate. A lovely attack that feels like biting into fresh, tangy fruit. The tannins are silky and the finish long and generous. The freshness of the vintage fully envelops the oak ageing, which balances the aromas perfectly.",
         vinification: "This Brouilly is aged as several separate cuvées.\n\n**Le musée cuvée**\nLe musée is an old vineyard on sandy granite soil, mostly pink. This gives tauter, fresher wines with a tangy palate: wild strawberry, blackcurrant, raspberry. Its south-facing exposure brings earlier flowering, faster-ripening berries and an intense aromatic richness. Sunshine and sand give the wine lightness and make it enjoyable young.\n\n**Le parc cuvée**\nLe parc faces east, on more clay-rich granite soil, which gives the wine more breadth and depth on the palate. The fruit stays fresh but juicier, with aromas of intense cherry and soft, peppery spice.\n\n**Barrel cuvée, 24 months in demi-muids**\nA generous nose of ripe black fruit and juicy cherry, with delicate smoky and vanilla notes lifted by hints of coffee and cocoa. The palate is broad and fleshy, with a rich fruitiness. The perfectly integrated oak accompanies the wine elegantly without masking the fruit.",
     },
     "brouilly-2025": {
-        subtitle: "Beaujolais cru — Red",
+        subtitle: "Beaujolais cru — Red — Lieu-dit Garanches",
         description: "A fine wine for laying down.\n\nA nose of freshly crushed strawberries and small red berries. A sunny palate, full of energy, carried by lovely intensity and fine tannins. The fresh, mouth-watering finish invites you to linger over the conversation… and the pleasure of sharing.",
     },
     "bourgogne-blanc": {
@@ -99,6 +99,7 @@ export const MOTS_VINS_EN: Record<string, string> = {
 // Appellation et couleur saisies dans le studio (« Cru du Beaujolais — Rouge »), mot à mot.
 export const SOUS_TITRES_EN: Record<string, string> = {
     "cru du beaujolais": "Beaujolais cru",
+    "lieu-dit garanches": "Lieu-dit Garanches",
     rouge: "Red",
     blanc: "White",
     rosé: "Rosé",
