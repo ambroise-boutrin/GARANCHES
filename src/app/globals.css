@@ -118,6 +118,16 @@ select {
   }
 }
 
+/* Barre du haut sur téléphone : fondu du fond et réduction du logo, uniquement en opacité et transform
+   (fluide sur iPhone). Gardée même avec « Réduire les animations » : c'est un fondu court, pas un mouvement de page. */
+@media (max-width: 767px) {
+  .barre-t {
+    transition-property: opacity, transform, color, filter !important;
+    transition-duration: 400ms !important;
+    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1) !important;
+  }
+}
+
 /* Grande police réglée sur le téléphone : un long titre passe à la ligne au lieu de déborder. */
 h1,
 h2 {
