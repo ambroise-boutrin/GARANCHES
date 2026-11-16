@@ -37,7 +37,7 @@ export const PRODUCTS: {
         subtitle: "Cru du Beaujolais — Rouge",
         millesime: "2025",
         price: null,
-        description: "Un beau vin de garde.\n\nUn nez gourmand aux arômes de fruits exotiques, où se mêlent l'ananas et la mangue, accompagnés de délicates notes miellées. La bouche, suave et généreuse, dévoile une belle expression fruitée, portée par une fraîcheur qui apporte équilibre et éclat à l'ensemble.",
+        description: "Un beau vin de garde.\n\nUn nez de fraises fraîchement écrasées et de petits fruits rouges. Une bouche solaire, pleine d’énergie, portée par une belle intensité et des tanins fins. La finale, fraîche et salivante, invite à prolonger la conversation… et le plaisir du partage.",
         image: "/images/bouteilles/brouilly.jpg",
         tags: ["Gamay", "Viandes rouges", "Fromages"],
         volume: "75cl",

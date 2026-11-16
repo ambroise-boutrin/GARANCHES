@@ -58,7 +58,7 @@ export const VINS_EN: Record<string, { subtitle?: string; description?: string; 
     },
     "brouilly-2025": {
         subtitle: "Beaujolais cru — Red",
-        description: "A fine wine for laying down.\n\nA generous nose of exotic fruit, where pineapple and mango mingle with delicate honeyed notes. The palate is smooth and generous, with a lovely fruit expression carried by a freshness that brings balance and brightness.",
+        description: "A fine wine for laying down.\n\nA nose of freshly crushed strawberries and small red berries. A sunny palate, full of energy, carried by lovely intensity and fine tannins. The fresh, mouth-watering finish invites you to linger over the conversation… and the pleasure of sharing.",
     },
     "bourgogne-blanc": {
         subtitle: "Chardonnay",
