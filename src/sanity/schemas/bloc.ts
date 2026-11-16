@@ -27,7 +27,7 @@ export default {
             title: 'Texte',
             type: 'text',
             rows: 12,
-            description: 'Une ligne vide sépare deux paragraphes. Entourez un passage de **deux astérisques** pour le mettre en gras.',
+            description: 'Une ligne vide sépare deux paragraphes. Entourez un passage de **deux astérisques** pour le mettre en gras. Commencez un paragraphe par ### pour en faire un intertitre.',
         },
         {
             name: 'image',
@@ -58,7 +58,7 @@ export default {
             ],
         },
         { name: 'titreEn', title: 'Titre en anglais', type: 'string', fieldset: 'anglais' },
-        { name: 'texteEn', title: 'Texte en anglais', type: 'text', rows: 12, fieldset: 'anglais', description: 'Mêmes règles que le texte français (ligne vide, **gras**).' },
+        { name: 'texteEn', title: 'Texte en anglais', type: 'text', rows: 12, fieldset: 'anglais', description: 'Mêmes règles que le texte français (ligne vide, **gras**, ### intertitre).' },
         { name: 'boutonEn', title: 'Texte du bouton en anglais', type: 'string', fieldset: 'anglais' },
         {
             name: 'pratiqueEn',
