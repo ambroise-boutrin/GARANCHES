@@ -4,6 +4,8 @@ import { useState } from "react";
 import FadeIn from "@/components/FadeIn";
 import { useFaq, useTexte } from "@/components/Contenu";
 import { AvecTelephones } from "@/lib/contenu";
+import { typo } from "@/lib/typo";
+import { sansCoupure } from "@/lib/sansCoupure";
 
 export default function FAQ() {
     const faqs = useFaq();
@@ -34,7 +36,7 @@ export default function FAQ() {
                                     className="w-full flex items-center justify-between p-6 text-left focus:outline-none hover:bg-gray-50 transition-colors"
                                 >
                                     <span className={`font-serif text-xl ${openIndex === index ? "text-wine-900" : "text-gray-800"}`}>
-                                        {faq.question}
+                                        {sansCoupure(typo(faq.question))}
                                     </span>
                                     <span className={`transform transition-transform duration-300 ${openIndex === index ? "rotate-45" : "rotate-0"}`}>
                                         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-red-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">

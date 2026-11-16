@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { sansCoupure } from "@/lib/sansCoupure";
 import { flou } from "@/data/flous";
 import Link from "@/components/Lien";
 import FadeIn from "@/components/FadeIn";
@@ -232,7 +233,7 @@ export default function HomePageClient({ products, content }: { products: any[],
                                     </div>
                                     <div className="text-center px-4">
                                         <h3 className="text-2xl md:text-3xl font-serif text-gray-900 group-hover:text-red-900 transition-colors">
-                                            {nomMillesime(wine)}
+                                            {sansCoupure(nomMillesime(wine))}
                                         </h3>
                                         <div className="h-[1px] w-10 bg-gray-300 mx-auto my-4 group-hover:bg-red-900 transition-colors"></div>
                                         <p className="text-sm text-gray-700 font-bold mb-2">

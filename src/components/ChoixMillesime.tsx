@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { sansCoupure } from "@/lib/sansCoupure";
 import Image from "next/image";
 import RequestBottlesButton from "@/components/RequestBottlesButton";
 import RichText from "@/components/editorial/RichText";
@@ -92,7 +93,7 @@ export default function ChoixMillesime({
                     )}
                     {millesimes.map((w) => (
                         <div key={w.id} id={cle(w)} role="tabpanel" hidden={cle(w) !== choisi} className="scroll-mt-28">
-                            <h2 className="normal-case tracking-normal text-3xl md:text-5xl font-serif text-red-900 mb-6 leading-tight">{nomMillesime(w)}</h2>
+                            <h2 className="normal-case tracking-normal text-3xl md:text-5xl font-serif text-red-900 mb-6 leading-tight">{sansCoupure(nomMillesime(w))}</h2>
                             {w.description && <RichText text={w.description} className="text-gray-800 leading-relaxed text-base md:text-lg" />}
                             <div className="mt-8">
                                 <Caracteristiques items={[...communs, { label: ui.alcool, value: w.alcohol }]} />

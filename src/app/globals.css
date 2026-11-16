@@ -140,6 +140,12 @@ h1,
 h2,
 h3 {
   text-wrap-style: balance;
+}
+
+h1,
+h2,
+h3,
+.font-serif {
   font-variant-numeric: lining-nums;
 }
 

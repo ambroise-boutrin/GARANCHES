@@ -1,4 +1,5 @@
 import { serialiserJsonLd } from '@/lib/jsonLd';
+import { sansCoupure } from "@/lib/sansCoupure";
 import type { Metadata } from "next";
 import Image from "next/image";
 import { flou } from "@/data/flous";
@@ -134,7 +135,7 @@ export default async function CuveePage({ params }: Props) {
                     <Link href="/les-vins/cuvees" className="text-sm md:text-base text-white underline underline-offset-4 decoration-1">
                         {pageCuvees}
                     </Link>
-                    <h1 className="normal-case tracking-normal font-serif text-4xl sm:text-5xl md:text-7xl leading-tight text-white mt-3 md:mt-4 mb-2 md:mb-4">{gamme.name}</h1>
+                    <h1 className="normal-case tracking-normal font-serif text-4xl sm:text-5xl md:text-7xl leading-tight text-white mt-3 md:mt-4 mb-2 md:mb-4">{sansCoupure(gamme.name)}</h1>
                     {lieuDit && <p className="font-serif text-white text-2xl sm:text-3xl md:text-4xl leading-tight mb-2 md:mb-4">{lieuDit}</p>}
                     {sousTitre && <p className="text-white/80 text-sm md:mb-6">{sousTitre}</p>}
                 </FadeIn>
@@ -164,7 +165,7 @@ export default async function CuveePage({ params }: Props) {
                                     <div className="relative h-44 sm:h-48 bg-white mb-3">
                                         <Image src={g.image || "/images/bouteilles/brouilly.jpg"} alt={ui.bouteilleDe(g.name)} fill sizes="176px" className="object-contain p-3" />
                                     </div>
-                                    <span className="font-serif text-base sm:text-lg text-wine-900 group-hover:text-red-900 transition-colors">{g.name}</span>
+                                    <span className="font-serif text-base sm:text-lg text-wine-900 group-hover:text-red-900 transition-colors">{sansCoupure(g.name)}</span>
                                 </Link>
                             ))}
                         </div>
