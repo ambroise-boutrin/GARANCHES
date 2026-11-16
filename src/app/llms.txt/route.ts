@@ -43,8 +43,9 @@ ${vins}
 
 - [Les cuvées](${SITE_URL}/les-vins/cuvees) : tous les vins et leurs millésimes
 - [Commander](${SITE_URL}/acheter) : comment commander des bouteilles
-- [Déguster au domaine](${SITE_URL}/rencontrons-garanches/deguster-au-domaine)
-- [Découvrir les vignes](${SITE_URL}/rencontrons-garanches/decouvrir-les-vignes)
+- [Les tables d'hôtes](${SITE_URL}/rencontrons-garanches/les-rencontres) : 4 heures, de 8 à 14 personnes, 50 € par personne, 4 vins compris
+- [Déguster au domaine](${SITE_URL}/rencontrons-garanches/deguster-au-domaine) : visite de la cave, 1 heure, 20 € par personne, 2 personnes minimum
+- [Découvrir les vignes](${SITE_URL}/rencontrons-garanches/decouvrir-les-vignes) : visite de la vigne, 1 heure, 20 € par personne ; vigne et cave, 2 heures, 35 € par personne ; 2 personnes minimum
 - [Le domaine](${SITE_URL}/le-lieu/le-domaine)
 - [L'histoire](${SITE_URL}/le-lieu/histoire)
 - [Contact](${SITE_URL}/contact)
@@ -74,8 +75,9 @@ ${vinsEn}
 
 - [Our cuvées](${en}/les-vins/cuvees): all the wines and their vintages
 - [Order](${en}/acheter): how to order bottles
-- [Wine tasting at the estate](${en}/rencontrons-garanches/deguster-au-domaine)
-- [Vineyard walk](${en}/rencontrons-garanches/decouvrir-les-vignes)
+- [Shared tables](${en}/rencontrons-garanches/les-rencontres): 4 hours, 8 to 14 people, €50 per person, 4 wines included
+- [Wine tasting at the estate](${en}/rencontrons-garanches/deguster-au-domaine): cellar tour, 1 hour, €20 per person, 2 people minimum
+- [Vineyard walk](${en}/rencontrons-garanches/decouvrir-les-vignes): vineyard tour, 1 hour, €20 per person; vineyard and cellar, 2 hours, €35 per person; 2 people minimum
 - [The estate](${en}/le-lieu/le-domaine)
 - [History](${en}/le-lieu/histoire)
 - [Contact](${en}/contact)

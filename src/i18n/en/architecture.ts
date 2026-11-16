@@ -322,9 +322,9 @@ At the end of the meal, addresses are swapped and reunions planned... sometimes 
             "comment-ca-se-passe": {
                 title: "How does it work?",
                 pratique: [
-                    { label: "Duration", value: A_PRECISER },
-                    { label: "Guests", value: A_PRECISER },
-                    { label: "Rates", value: A_PRECISER },
+                    { label: "Duration", value: "4 hours" },
+                    { label: "Guests", value: "8 to 14 people" },
+                    { label: "Rate", value: "€50 per person, 4 wines included" },
                     ACCES,
                 ],
                 bouton: "Book",
@@ -363,9 +363,9 @@ Michel: +33 6 09 41 97 02
 
 345 chemin de Garanches, 69460 Odenas, France.`,
                 pratique: [
-                    { label: "Duration", value: A_PRECISER },
-                    { label: "Guests", value: "Individuals and groups" },
-                    { label: "Rates", value: A_PRECISER },
+                    { label: "Cellar tour", value: "1 hour, €20 per person" },
+                    { label: "Vineyard and cellar", value: "2 hours, €35 per person" },
+                    { label: "Guests", value: "2 people minimum" },
                     ACCES,
                 ],
                 bouton: "Book",
@@ -389,9 +389,9 @@ Then four wines to taste, to find in the glass what we have just discovered amon
             "comment-ca-se-passe": {
                 title: "How does it work?",
                 pratique: [
-                    { label: "Duration", value: A_PRECISER },
-                    { label: "Guests", value: A_PRECISER },
-                    { label: "Rates", value: A_PRECISER },
+                    { label: "Vineyard tour", value: "1 hour, €20 per person" },
+                    { label: "Vineyard and cellar", value: "2 hours, €35 per person" },
+                    { label: "Guests", value: "2 people minimum" },
                     ACCES,
                 ],
                 bouton: "Book",

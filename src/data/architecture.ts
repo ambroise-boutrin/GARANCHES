@@ -445,9 +445,9 @@ On goûte, on échange, on rit, les conversations s'animent... et les affinités
                 id: "comment-ca-se-passe",
                 title: "Comment ça se passe ?",
                 pratique: [
-                    { label: "Durée", value: "À préciser" },
-                    { label: "Personnes", value: "À préciser" },
-                    { label: "Tarifs", value: "À préciser" },
+                    { label: "Durée", value: "4 heures" },
+                    { label: "Personnes", value: "De 8 à 14 personnes" },
+                    { label: "Tarif", value: "50 € par personne, 4 vins compris" },
                     { label: "Accès", value: "345 chemin de Garanches, Odenas" },
                 ],
                 booking: { label: "Réserver", sujet: "Les tables d'hôtes" },
@@ -493,9 +493,9 @@ Michel : 06 09 41 97 02
 
 345 chemin de Garanches, 69460 Odenas.`,
                 pratique: [
-                    { label: "Durée", value: "À préciser" },
-                    { label: "Personnes", value: "Individuels et groupes" },
-                    { label: "Tarifs", value: "À préciser" },
+                    { label: "Visite de la cave", value: "1 heure, 20 € par personne" },
+                    { label: "Vigne et cave", value: "2 heures, 35 € par personne" },
+                    { label: "Personnes", value: "2 personnes minimum" },
                     { label: "Accès", value: "345 chemin de Garanches, Odenas" },
                 ],
                 booking: { label: "Réserver", sujet: "Déguster au domaine" },
@@ -525,9 +525,9 @@ Puis quatre vins à goûter, pour retrouver dans le verre ce que nous venons de 
                 id: "comment-ca-se-passe",
                 title: "Comment ça se passe ?",
                 pratique: [
-                    { label: "Durée", value: "À préciser" },
-                    { label: "Personnes", value: "À préciser" },
-                    { label: "Tarifs", value: "À préciser" },
+                    { label: "Visite de la vigne", value: "1 heure, 20 € par personne" },
+                    { label: "Vigne et cave", value: "2 heures, 35 € par personne" },
+                    { label: "Personnes", value: "2 personnes minimum" },
                     { label: "Accès", value: "345 chemin de Garanches, Odenas" },
                 ],
                 booking: { label: "Réserver", sujet: "Découvrir les vignes" },
