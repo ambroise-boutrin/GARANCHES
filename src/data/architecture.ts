@@ -202,7 +202,16 @@ Ici, l'histoire se découvre au fil des traces.`,
                 alt: "Un vieux loquet sur une porte du domaine",
                 cta: { label: "Voir les Carnets", href: "/carnets" },
             },
-            { id: "plants-anciens", title: "Plants anciens" },
+            {
+                id: "le-musee",
+                title: "Le Musée, une parcelle témoin de l'histoire viticole",
+                body: `Cette parcelle conserve la mémoire des travaux de recherche menés par Emmanuel Bender à la fin du XIXᵉ siècle pour lutter contre le phylloxéra et reconstruire le vignoble.
+
+Un témoignage vivant de l'histoire de Garanches.`,
+                image: "/images/garanches/musee-parcelle-bender.jpg",
+                alt: "Le Musée, parcelle de vieilles vignes de Garanches devant la maison cachée par les arbres",
+                paysage: true,
+            },
             { id: "documents", title: "Documents", image: "/images/garanches/concours-macon-1968.jpg", alt: "Diplôme du concours des grands vins de France, Mâcon 1968", document: true, agrandir: true },
         ],
         children: ["le-lieu/histoire", "carnets"],

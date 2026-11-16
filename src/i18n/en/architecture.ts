@@ -135,7 +135,13 @@ Here, history is discovered trace by trace.`,
                 alt: "An old latch on one of the estate's doors",
                 bouton: "Read the Notebooks",
             },
-            "plants-anciens": { title: "Old vines" },
+            "le-musee": {
+                title: "The Musée, a plot bearing witness to wine history",
+                body: `This plot keeps the memory of the research carried out by Emmanuel Bender at the end of the 19th century to fight phylloxera and rebuild the vineyard.
+
+A living testimony to the history of Garanches.`,
+                alt: "The Musée, a plot of old vines at Garanches in front of the house hidden by trees",
+            },
             documents: { title: "Documents", alt: "Diploma from the great wines of France competition, Mâcon 1968" },
         },
     },

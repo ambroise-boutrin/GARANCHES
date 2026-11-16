@@ -32,6 +32,7 @@ export const FLOUS: Record<string, string> = {
     "/images/garanches/registre-cave.jpg": "data:image/webp;base64,UklGRjwAAABXRUJQVlA4IDAAAADQAQCdASoMAAcAAsBMJQBOgCP34HXEAAD+8+yx8VpMpsBvkXFroF6iZZjfUFfxpAA=",
     "/images/garanches/vendanges-raisins.jpg": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAAAQAgCdASoMAAgAAsBMJQBOgMUy4SJfpKO0AOJ/0dyKYrByag9PrNVtGHkzezDaPy+5/3Ru05Yv0RmSCfu7ajdBaYHRoqYAhDyQ5/9OHUAl1x4u70k9lIAA",
     "/images/garanches/video-accueil.jpg": "data:image/webp;base64,UklGRkIAAABXRUJQVlA4IDYAAADQAQCdASoMAAcAAsBMJYwAAuX7ey9LAAD+eT+nA6tP6xamHKn0hlplxo6+/TzJ99GGofMQAAA=",
+    "/images/garanches/musee-parcelle-bender.jpg": "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAADQAQCdASoMAAkAA4BaJagC7ADhjFGUCAD+5Sb4/10+SiAyqjVqiUt+/42LNmSNtj1YE3X4y0EoaslNJJ+0Z4gAAAA=",
     "/images/garanches/vignes-cabane.jpg": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAADwAQCdASoKAAwAAsBMJbACdAEOPSXqKcAA/urzpMIVKjQA8GdvDoumYUxs9mNkQBfuMO1FCWkpfjR5omz1SN/E8+AhNmbNIzXwwVT4w+esIJkxAhcwAA==",
     "/images/garanches/verre-dans-les-vignes.jpg": "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAAAQAgCdASoMAAcAAsBMJZACdAEfpz9H896AAP7VFRwR7uvkssJJfHaYKUT0jcmKnd1IzQn4CSYnFZ4wHXh791BRviYZpYAA",
     "/images/garanches/vignes-cadole.jpg": "data:image/webp;base64,UklGRkoAAABXRUJQVlA4ID4AAADwAQCdASoMAAcAAsBMJbACdAEOaCa6ZAAA/uevgxh1RrdtGLZnJNFvnAoq5aaNjmfEHi1v+TGMdApBgd9AAA==",
