@@ -89,6 +89,10 @@ const fr = {
     pasDeMessagerie: "Votre messagerie ne s'ouvre pas ? Écrivez-nous directement à",
     copierAdresse: "Copier l'adresse",
     adresseCopiee: "Adresse copiée",
+    envoiEnCours: "Envoi en cours…",
+    messageEnvoye: "Merci, votre message est bien envoyé. Nous vous répondons sous 24 heures.",
+    envoiEchoue: "L'envoi n'a pas fonctionné. Réessayez, appelez-nous, ou écrivez-nous à l'adresse ci-dessous.",
+    ecrireDirectement: "Vous pouvez aussi nous écrire directement à",
     messageVin: (vin: string) => `Bonjour,\n\nJe souhaiterais prendre des bouteilles de ${vin}.\nNombre de bouteilles : \nRetrait au domaine ou livraison (adresse) : \n\nMerci !`,
     messageCommande: `Bonjour,\n\nJe souhaiterais commander :\n- vin et nombre de bouteilles : \n- \nRetrait au domaine ou livraison (adresse) : \n\nMerci !`,
 
@@ -249,6 +253,10 @@ const en: TextesUi = {
     pasDeMessagerie: "Email app not opening? Write to us directly at",
     copierAdresse: "Copy the address",
     adresseCopiee: "Address copied",
+    envoiEnCours: "Sending…",
+    messageEnvoye: "Thank you, your message has been sent. We reply within 24 hours.",
+    envoiEchoue: "Sending did not work. Please try again, call us, or write to us at the address below.",
+    ecrireDirectement: "You can also write to us directly at",
     messageVin: (vin: string) => `Hello,\n\nI would like to order some bottles of ${vin}.\nNumber of bottles: \nCollection at the estate or delivery (address): \n\nThank you!`,
     messageCommande: `Hello,\n\nI would like to order:\n- wine and number of bottles: \n- \nCollection at the estate or delivery (address): \n\nThank you!`,
 

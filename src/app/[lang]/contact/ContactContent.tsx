@@ -16,6 +16,8 @@ const InteractiveMap = dynamic(() => import("@/components/InteractiveMap"), {
 });
 
 // Valeurs reçues dans l'adresse (?sujet=…) : toujours en français. Le visiteur voit leur traduction (src/i18n/ui.ts).
+const CLE_ENVOI = process.env.NEXT_PUBLIC_WEB3FORMS_KEY || "";
+
 const SUJETS = [
     "Les tables d'hôtes",
     "Déguster au domaine",
@@ -54,10 +56,14 @@ export default function ContactContent({ sujet, vin }: { sujet?: string; vin?: s
         } catch { }
     };
 
-    // Pas de serveur d'envoi : le message s'ouvre, pré-rempli, dans la messagerie du visiteur.
-    const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    // Envoi direct par Web3Forms (clé NEXT_PUBLIC_WEB3FORMS_KEY dans Vercel). Sans clé, ou si l'envoi échoue,
+    // le message s'ouvre, pré-rempli, dans la messagerie du visiteur.
+    const [etat, setEtat] = useState<"pret" | "envoi" | "envoye" | "erreur">("pret");
+    const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        const data = new FormData(event.currentTarget);
+        const formulaireHtml = event.currentTarget;
+        const data = new FormData(formulaireHtml);
+        if (data.get("botcheck")) return;
         const details = [
             data.get("nom"),
             data.get("societe") && `${ui.mailSociete} ${data.get("societe")}`,
@@ -68,7 +74,31 @@ export default function ContactContent({ sujet, vin }: { sujet?: string; vin?: s
         const body = `${data.get("message") || ""}\n\n${details.join("\n")}`;
         // Objet du message : le sujet tel que le visiteur l'a lu (en anglais sur la version anglaise).
         const objet = ui.sujets[subject] ?? subject;
-        window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(objet)}&body=${encodeURIComponent(body)}`;
+        const ouvrirMessagerie = () => {
+            window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(objet)}&body=${encodeURIComponent(body)}`;
+        };
+        if (!CLE_ENVOI) return ouvrirMessagerie();
+        setEtat("envoi");
+        try {
+            const reponse = await fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                headers: { "Content-Type": "application/json", Accept: "application/json" },
+                body: JSON.stringify({
+                    access_key: CLE_ENVOI,
+                    subject: `Site Garanches : ${objet}`,
+                    from_name: String(data.get("nom") || "Site Garanches"),
+                    email: data.get("email"),
+                    replyto: data.get("email"),
+                    message: body,
+                }),
+            });
+            const resultat = await reponse.json().catch(() => ({}));
+            if (!reponse.ok || !resultat.success) throw new Error("envoi");
+            setEtat("envoye");
+            formulaireHtml.reset();
+        } catch {
+            setEtat("erreur");
+        }
     };
 
     const isBooking = SUJETS.slice(0, 5).includes(subject);
@@ -214,20 +244,30 @@ export default function ContactContent({ sujet, vin }: { sujet?: string; vin?: s
                                 <textarea id="f-message" name="message" rows={vinDemande ? 8 : 5} defaultValue={messageInitial} className="w-full bg-white border border-gray-100 p-4 rounded-md focus:outline-none focus:ring-2 focus:ring-wine-100 focus:border-wine-300 transition-all resize-none" placeholder={ui.commentAider}></textarea>
                             </div>
 
-                            <button type="submit" className="w-full bg-wine-900 text-white py-4 text-base font-medium hover:bg-wine-800 transition-colors">
-                                {isBooking ? ui.envoyerDemande : ui.envoyerMessage}
+                            {/* Champ piège invisible : les robots le remplissent, pas les visiteurs. */}
+                            <input type="checkbox" name="botcheck" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden />
+
+                            <button type="submit" disabled={etat === "envoi"} className="w-full bg-wine-900 text-white py-4 text-base font-medium hover:bg-wine-800 transition-colors disabled:opacity-70">
+                                {etat === "envoi" ? ui.envoiEnCours : isBooking ? ui.envoyerDemande : ui.envoyerMessage}
                             </button>
 
+                            {etat === "envoye" && (
+                                <p role="status" className="bg-white border border-green-700 text-green-800 p-4 text-center">{ui.messageEnvoye}</p>
+                            )}
+                            {etat === "erreur" && (
+                                <p role="alert" className="bg-white border border-red-800 text-red-900 p-4 text-center">{ui.envoiEchoue}</p>
+                            )}
+
                             <p className="text-sm text-gray-700 text-center mt-4">
-                                {ui.messagerieOuvre} <span className="break-all">{EMAIL}</span>. {delai}
+                                {CLE_ENVOI ? null : <>{ui.messagerieOuvre} <span className="break-all">{EMAIL}</span>. </>}{delai}
                             </p>
-                            <div className="text-sm text-gray-700 text-center">
-                                {ui.pasDeMessagerie}{" "}
+                            {(!CLE_ENVOI || etat === "erreur") && <div className="text-sm text-gray-700 text-center">
+                                {CLE_ENVOI ? ui.ecrireDirectement : ui.pasDeMessagerie}{" "}
                                 <a href={`mailto:${EMAIL}`} className="block whitespace-nowrap underline underline-offset-4 decoration-1 text-red-900">{EMAIL}</a>
                                 <button type="button" onClick={copierAdresse} className="block mx-auto mt-2 min-h-11 px-4 border border-stone-300 text-gray-800 hover:border-wine-700 transition-colors" aria-live="polite">
                                     {copie ? ui.adresseCopiee : ui.copierAdresse}
                                 </button>
-                            </div>
+                            </div>}
                         </form>
                     </div>
                 </FadeIn>
