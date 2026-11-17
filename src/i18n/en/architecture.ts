@@ -142,7 +142,7 @@ Here, history is discovered trace by trace.`,
 A living testimony to the history of Garanches.`,
                 alt: "The Musée, a plot of old vines at Garanches in front of the house hidden by trees",
             },
-            documents: { title: "Documents", alt: "Diploma from the great wines of France competition, Mâcon 1968" },
+            documents: { title: "Documents", alt: "Diploma from the great wines of France competition, Mâcon 1988, bronze medal for the Brouilly" },
         },
     },
     "le-lieu/ceux-qui-le-font-vivre": {
@@ -266,7 +266,7 @@ Different terroirs, one shared search for balance.`,
     },
     "les-vins/a-table": {
         label: "At the table",
-        description: "Dishes, pairings and tasting moments with the wines of Garanches.",
+        description: "Dishes and tasting moments with the wines of Garanches.",
         cta: "At the table",
         blocs: {
             introduction: { title: "At the table" },
@@ -374,14 +374,14 @@ Michel: +33 6 09 41 97 02
     },
     "rencontrons-garanches/decouvrir-les-vignes": {
         label: "Vineyard walk",
-        description: "A walk through the Garanches plots, followed by four wines to taste.",
+        description: "A walk through the Garanches plots, followed by a tasting of our wines.",
         cta: "Walk the vineyard",
         blocs: {
             introduction: {
                 title: "Put on your boots and become a winegrower for the length of a visit!",
                 body: `A walk through our plots to discover the vine through the seasons, understand what we do and see the terroir with new eyes.
 
-Then four wines to taste, to find in the glass what we have just discovered among the vines.
+Then a tasting of our wines, to find in the glass what we have just discovered among the vines.
 
 **From soil to glass, step into the world of Garanches.**`,
                 alt: "The rows of vines at Garanches, lined with a grassy path",
@@ -535,7 +535,7 @@ export const MOTS_CLES_EN: Record<string, string> = {
     "les-vins/notre-facon-de-faire": "Soil • seasons • vintages",
     "les-vins/cuvees": "Plots • blends",
     "les-vins/terroirs": "Soils • granite • plots",
-    "les-vins/a-table": "Dishes • pairings • moments",
+    "les-vins/a-table": "Dishes • moments",
     "rencontrons-garanches/les-rencontres": "Shared tables • conversations",
     "rencontrons-garanches/deguster-au-domaine": "The cellar • the wines",
     "rencontrons-garanches/decouvrir-les-vignes": "Walk • seasons",

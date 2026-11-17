@@ -16,7 +16,7 @@ export function AvecTelephones({ texte }: { texte: string }) {
         <>
             {morceaux.map((morceau, i) =>
                 i % 2 === 1 ? (
-                    <a key={i} href={telHref(morceau.replace(/[^\d]/g, ""))} className="whitespace-nowrap underline underline-offset-4 decoration-1">
+                    <a key={i} href={telHref(morceau.replace(/[^\d]/g, ""))} className="whitespace-nowrap underline underline-offset-4 decoration-1 py-2.5">
                         {morceau}
                     </a>
                 ) : (

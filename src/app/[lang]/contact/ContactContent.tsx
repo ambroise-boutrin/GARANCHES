@@ -45,6 +45,14 @@ export default function ContactContent({ sujet, vin }: { sujet?: string; vin?: s
     const delai = t("contact.delai");
     const allerFormulaire = t("contact.aller-formulaire");
     const [subject, setSubject] = useState(sujet && SUJETS.includes(sujet) ? sujet : SUJETS[SUJETS.length - 1]);
+    const [copie, setCopie] = useState(false);
+    const copierAdresse = async () => {
+        try {
+            await navigator.clipboard.writeText(EMAIL);
+            setCopie(true);
+            setTimeout(() => setCopie(false), 2500);
+        } catch { }
+    };
 
     // Pas de serveur d'envoi : le message s'ouvre, pré-rempli, dans la messagerie du visiteur.
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -52,6 +60,7 @@ export default function ContactContent({ sujet, vin }: { sujet?: string; vin?: s
         const data = new FormData(event.currentTarget);
         const details = [
             data.get("nom"),
+            data.get("societe") && `${ui.mailSociete} ${data.get("societe")}`,
             data.get("telephone") && `${ui.mailTel} ${data.get("telephone")}`,
             data.get("date") && `${ui.mailDate} ${data.get("date")}`,
             data.get("personnes") && `${ui.mailPersonnes} ${data.get("personnes")}`,
@@ -63,6 +72,10 @@ export default function ContactContent({ sujet, vin }: { sujet?: string; vin?: s
     };
 
     const isBooking = SUJETS.slice(0, 5).includes(subject);
+    // Date et nombre de personnes : réservations, et professionnels (agences, groupes).
+    const avecDate = isBooking || subject === "Partenariat Professionnel";
+    const champ = "w-full bg-white border border-gray-100 p-4 rounded-md focus:outline-none focus:ring-2 focus:ring-wine-100 focus:border-wine-300 transition-all";
+    const etiquette = "block text-sm text-gray-700 mb-2 font-bold ml-2";
     // Arrivée depuis le bouton « Demander des bouteilles » d'une cuvée.
     const vinDemande = vin?.slice(0, 80);
     const messageInitial = vinDemande
@@ -150,19 +163,27 @@ export default function ContactContent({ sujet, vin }: { sujet?: string; vin?: s
                         <form key={`${sujet}-${vin}`} className="space-y-6" onSubmit={handleSubmit}>
                             <div className="grid md:grid-cols-2 gap-6">
                                 <div>
-                                    <label className="block text-sm text-gray-700 mb-2 font-bold ml-2">{ui.nom}</label>
-                                    <input type="text" name="nom" required className="w-full bg-white border border-gray-100 p-4 rounded-md focus:outline-none focus:ring-2 focus:ring-wine-100 focus:border-wine-300 transition-all" placeholder={ui.votreNom} />
+                                    <label htmlFor="f-nom" className={etiquette}>{ui.nom}</label>
+                                    <input id="f-nom" type="text" name="nom" required autoComplete="name" className={champ} placeholder={ui.votreNom} />
                                 </div>
                                 <div>
-                                    <label className="block text-sm text-gray-700 mb-2 font-bold ml-2">{ui.email}</label>
-                                    <input type="email" name="email" className="w-full bg-white border border-gray-100 p-4 rounded-md focus:outline-none focus:ring-2 focus:ring-wine-100 focus:border-wine-300 transition-all" placeholder={ui.votreEmail} />
+                                    <label htmlFor="f-email" className={etiquette}>{ui.email}</label>
+                                    <input id="f-email" type="email" name="email" required autoComplete="email" className={champ} placeholder={ui.votreEmail} />
+                                </div>
+                                <div>
+                                    <label htmlFor="f-telephone" className={etiquette}>{ui.telephoneFacultatif}</label>
+                                    <input id="f-telephone" type="tel" name="telephone" autoComplete="tel" className={champ} />
+                                </div>
+                                <div>
+                                    <label htmlFor="f-societe" className={etiquette}>{ui.societe}</label>
+                                    <input id="f-societe" type="text" name="societe" autoComplete="organization" className={champ} />
                                 </div>
                             </div>
 
                             <div>
-                                <label className="block text-sm text-gray-700 mb-2 font-bold ml-2">{ui.sujet}</label>
+                                <label htmlFor="f-sujet" className={etiquette}>{ui.sujet}</label>
                                 <div className="relative">
-                                    <select value={subject} onChange={(e) => setSubject(e.target.value)} className="w-full bg-white border border-gray-100 p-4 rounded-md focus:outline-none focus:ring-2 focus:ring-wine-100 focus:border-wine-300 transition-all text-gray-700 appearance-none cursor-pointer">
+                                    <select id="f-sujet" value={subject} onChange={(e) => setSubject(e.target.value)} className={`${champ} text-gray-700 appearance-none cursor-pointer`}>
                                         {SUJETS.map((s) => (
                                             <option key={s} value={s}>{ui.sujets[s] ?? s}</option>
                                         ))}
@@ -175,26 +196,22 @@ export default function ContactContent({ sujet, vin }: { sujet?: string; vin?: s
                                 </div>
                             </div>
 
-                            {isBooking && (
-                                <div className="grid md:grid-cols-3 gap-6">
+                            {avecDate && (
+                                <div className="grid md:grid-cols-2 gap-6">
                                     <div>
-                                        <label className="block text-sm text-gray-700 mb-2 font-bold ml-2">{ui.dateSouhaitee}</label>
-                                        <input type="date" name="date" className="block w-full min-w-0 bg-white border border-gray-100 p-4 rounded-md focus:outline-none focus:ring-2 focus:ring-wine-100 focus:border-wine-300 transition-all" />
+                                        <label htmlFor="f-date" className={etiquette}>{ui.dateSouhaitee}</label>
+                                        <input id="f-date" type="date" name="date" className={`block min-w-0 ${champ}`} />
                                     </div>
                                     <div>
-                                        <label className="block text-sm text-gray-700 mb-2 font-bold ml-2">{ui.personnes}</label>
-                                        <input type="number" name="personnes" min={1} max={30} className="w-full bg-white border border-gray-100 p-4 rounded-md focus:outline-none focus:ring-2 focus:ring-wine-100 focus:border-wine-300 transition-all" />
-                                    </div>
-                                    <div>
-                                        <label className="block text-sm text-gray-700 mb-2 font-bold ml-2">{ui.telephone}</label>
-                                        <input type="tel" name="telephone" className="w-full bg-white border border-gray-100 p-4 rounded-md focus:outline-none focus:ring-2 focus:ring-wine-100 focus:border-wine-300 transition-all" />
+                                        <label htmlFor="f-personnes" className={etiquette}>{ui.personnes}</label>
+                                        <input id="f-personnes" type="number" name="personnes" min={1} inputMode="numeric" className={champ} />
                                     </div>
                                 </div>
                             )}
 
                             <div>
-                                <label className="block text-sm text-gray-700 mb-2 font-bold ml-2">{ui.message}</label>
-                                <textarea name="message" rows={vinDemande ? 8 : 5} defaultValue={messageInitial} className="w-full bg-white border border-gray-100 p-4 rounded-md focus:outline-none focus:ring-2 focus:ring-wine-100 focus:border-wine-300 transition-all resize-none" placeholder={ui.commentAider}></textarea>
+                                <label htmlFor="f-message" className={etiquette}>{ui.message}</label>
+                                <textarea id="f-message" name="message" rows={vinDemande ? 8 : 5} defaultValue={messageInitial} className="w-full bg-white border border-gray-100 p-4 rounded-md focus:outline-none focus:ring-2 focus:ring-wine-100 focus:border-wine-300 transition-all resize-none" placeholder={ui.commentAider}></textarea>
                             </div>
 
                             <button type="submit" className="w-full bg-wine-900 text-white py-4 text-base font-medium hover:bg-wine-800 transition-colors">
@@ -204,6 +221,13 @@ export default function ContactContent({ sujet, vin }: { sujet?: string; vin?: s
                             <p className="text-sm text-gray-700 text-center mt-4">
                                 {ui.messagerieOuvre} <span className="break-all">{EMAIL}</span>. {delai}
                             </p>
+                            <div className="text-sm text-gray-700 text-center">
+                                {ui.pasDeMessagerie}{" "}
+                                <a href={`mailto:${EMAIL}`} className="block whitespace-nowrap underline underline-offset-4 decoration-1 text-red-900">{EMAIL}</a>
+                                <button type="button" onClick={copierAdresse} className="block mx-auto mt-2 min-h-11 px-4 border border-stone-300 text-gray-800 hover:border-wine-700 transition-colors" aria-live="polite">
+                                    {copie ? ui.adresseCopiee : ui.copierAdresse}
+                                </button>
+                            </div>
                         </form>
                     </div>
                 </FadeIn>

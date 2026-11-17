@@ -123,7 +123,7 @@ export default function AgeGate() {
                 placeholder={placeholder}
                 aria-label={label}
                 aria-invalid={erreur !== ""}
-                className="w-full bg-transparent border-b border-stone-600 focus:border-white outline-none text-center text-white text-2xl font-serif tracking-[0.15em] py-2 placeholder:text-stone-600 transition-colors"
+                className="w-full bg-transparent border-b border-stone-400 focus:border-white outline-none text-center text-white text-2xl font-serif tracking-[0.15em] py-2 placeholder:text-stone-400 transition-colors"
             />
             <span className="text-sm text-stone-400">{label}</span>
         </label>

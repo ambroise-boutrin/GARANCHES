@@ -55,7 +55,7 @@ export default function WinesList({ wines }: { wines: any[] }) {
                                     </Link>
 
                                     <div className="flex flex-wrap justify-center md:justify-start items-center gap-x-4 gap-y-2 text-xs text-gray-700 mb-6">
-                                        {wine.volume && <span>{wine.volume}</span>}
+                                        {wine.volume && <span>{String(wine.volume).replace(/(\d)\s*cl\b/i, "$1\u00a0cl")}</span>}
                                                                                 <span className="border-l border-gray-300 pl-3" title={ui.grossesse}>
                                             <svg viewBox="0 0 64 64" role="img" aria-label={ui.grossesse} className="w-5 h-5 opacity-60 fill-current text-gray-600">
                                                 <circle cx="32" cy="32" r="30" fill="none" stroke="currentColor" strokeWidth="3" />

@@ -37,8 +37,8 @@ export const SEO_EN: Record<string, { title: string; description: string }> = {
         description: "Plots, soils and Mont Brouilly granite: the terroirs of the Garanches estate, in Odenas, Beaujolais.",
     },
     "les-vins/a-table": {
-        title: "Beaujolais food and wine pairings",
-        description: "Dishes, pairings and tasting moments with the wines of Garanches: what to serve with a Brouilly or a Bourgogne blanc.",
+        title: "At the table with the wines of Garanches",
+        description: "Dishes and tasting moments around the wines of Garanches, in Odenas, Beaujolais.",
     },
     "rencontrons-garanches": {
         title: "Wine tastings and visits in the Beaujolais",
@@ -54,7 +54,7 @@ export const SEO_EN: Record<string, { title: string; description: string }> = {
     },
     "rencontrons-garanches/decouvrir-les-vignes": {
         title: "Vineyard walk on Mont Brouilly",
-        description: "Put on your boots: a walk through the Garanches vineyard at the foot of Mont Brouilly, followed by four wines to taste at the estate.",
+        description: "Put on your boots: a walk through the Garanches vineyard at the foot of Mont Brouilly, followed by a tasting of our wines at the estate.",
     },
     "rencontrons-garanches/experiences-privees": {
         title: "Private groups and events at the estate",
