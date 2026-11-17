@@ -92,7 +92,8 @@ export default async function CuveePage({ params }: Props) {
     const pageCuvees = contenu.pages["les-vins/cuvees"]?.titre ?? ui.lesCuvees;
     const autres = gammes.filter((g) => g.slug !== gamme.slug);
     const tags: string[] = gamme.millesimes.find((w) => w.tags?.length)?.tags ?? [];
-    const volume = gamme.millesimes.find((w) => w.volume)?.volume;
+    // « 75cl » → « 75 cl » (espace insécable), même si le studio a gardé l'ancienne écriture.
+    const volume = gamme.millesimes.find((w) => w.volume)?.volume?.replace(/(\d)\s*cl\b/i, "$1\u00a0cl");
 
     const { lieuDit, reste: sousTitre } = separeLieuDit(gamme.subtitle);
 

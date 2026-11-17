@@ -41,7 +41,7 @@ Here the granite ranges from blue to pink, and generations of vines grow side by
     "cuvees.bouton": "Request bottles",
     "cuvees.epuise": "Sold out",
     "cuvees.decouvrir": "Discover the cuvée",
-    "cuvees.question.titre": "A question about a vintage?",
+    "cuvees.question.titre": "A question or an order?",
     "cuvees.question.texte": "Feel free to contact us to find out about shipping costs or to place an order directly.",
     "cuvees.question.lien": "Contact us",
     "cuvees.fiche.parcelle": "Plot and terroir",

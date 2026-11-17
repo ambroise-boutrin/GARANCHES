@@ -66,13 +66,13 @@ export default function ChoixMillesime({
 
     return (
         <section className="pt-10 pb-16 md:py-24 bg-stone-50">
-            <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10 md:gap-20 items-start">
-                <div className="relative h-[380px] md:h-[520px] bg-white md:sticky md:top-28" data-sanity={cliquerImage}>
+            <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-6 md:gap-20 items-start">
+                <div className="relative h-[260px] md:h-[520px] bg-white md:sticky md:top-28" data-sanity={cliquerImage}>
                     <Image src={image} alt={ui.bouteilleDomaine(nom)} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-contain p-8 mix-blend-multiply" />
                 </div>
                 <div>
                     {millesimes.length > 0 && (
-                        <div role="tablist" aria-label={ui.millesimes} className="flex flex-wrap gap-3 mb-10">
+                        <div role="tablist" aria-label={ui.millesimes} className="flex flex-wrap gap-3 mb-6 md:mb-10">
                             {millesimes.map((w) => {
                                 const actif = cle(w) === choisi;
                                 return (

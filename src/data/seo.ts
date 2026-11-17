@@ -39,8 +39,8 @@ export const SEO: Record<string, { title: string; description: string }> = {
         description: "Parcelles, sols et granit du Mont Brouilly : les terroirs du domaine de Garanches, à Odenas dans le Beaujolais.",
     },
     "les-vins/a-table": {
-        title: "Accords mets et vins du Beaujolais",
-        description: "Plats, accords et moments de dégustation avec les vins de Garanches : que servir avec un Brouilly ou un Bourgogne blanc.",
+        title: "À table avec les vins de Garanches",
+        description: "Plats et moments de dégustation autour des vins de Garanches, à Odenas dans le Beaujolais.",
     },
     "rencontrons-garanches": {
         title: "Dégustation et visites dans le Beaujolais",
@@ -56,7 +56,7 @@ export const SEO: Record<string, { title: string; description: string }> = {
     },
     "rencontrons-garanches/decouvrir-les-vignes": {
         title: "Visite des vignes au Mont Brouilly",
-        description: "Enfilez vos bottes : une promenade dans les vignes de Garanches au pied du Mont Brouilly, puis quatre vins à goûter au domaine.",
+        description: "Enfilez vos bottes : une promenade dans les vignes de Garanches au pied du Mont Brouilly, puis une dégustation de nos vins au domaine.",
     },
     "rencontrons-garanches/experiences-privees": {
         title: "Groupes et événements privés au domaine",

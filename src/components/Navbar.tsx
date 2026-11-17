@@ -78,7 +78,7 @@ export default function Navbar() {
                 et on déplace/réduit le contenu avec transform. Rien ne se recalcule, donc pas de saccade sur iPhone. */}
             <div aria-hidden className={`barre-t md:hidden pointer-events-none absolute inset-x-0 top-0 h-[calc(100%+1.5rem)] bg-gradient-to-b from-black/50 to-transparent ${scrolled || isOpen ? "opacity-0" : "opacity-100"}`} />
             <div aria-hidden className={`barre-t md:hidden pointer-events-none absolute inset-0 bg-stone-900 ${scrolled || isOpen ? "opacity-100" : "opacity-0"}`} />
-            <div className={`barre-t relative z-[101] max-w-7xl mx-auto px-6 flex justify-between items-center ${scrolled ? "" : "max-md:translate-y-3"}`}>
+            <div className={`barre-t relative z-[101] max-w-7xl mx-auto px-6 flex justify-between items-center gap-4 ${scrolled ? "" : "max-md:translate-y-3"}`}>
 
 
                 <Link href="/" className={`barre-t relative z-[101] flex items-center gap-3 group max-md:origin-left ${scrolled ? "max-md:scale-[0.84]" : ""}`}>
@@ -94,7 +94,7 @@ export default function Navbar() {
                             unoptimized
                         />
                     </div>
-                    <span className={`barre-t font-serif tracking-widest uppercase font-bold text-base md:transition-all md:duration-300 ${scrolled ? "md:text-sm" : ""} ${useDarkText ? "text-stone-900" : "text-white"}`}>
+                    <span className={`barre-t font-serif tracking-widest uppercase font-bold max-md:text-[16px] md:text-base md:transition-all md:duration-300 ${scrolled ? "md:text-sm" : ""} ${useDarkText ? "text-stone-900" : "text-white"}`}>
                         Garanches
                     </span>
                 </Link>
@@ -165,7 +165,7 @@ export default function Navbar() {
                         className={`barre-t relative h-10 flex items-center gap-3 group ${useDarkText && !isOpen ? "text-stone-900" : "text-white"}`}
                     >
                         {/* Le mot à côté de l'icône, pour qu'on sache que c'est le menu. */}
-                        <span className="text-xs uppercase tracking-widest font-bold">{isOpen ? ui.fermer : ui.menu}</span>
+                        <span className="text-[12px] uppercase tracking-widest font-bold">{isOpen ? ui.fermer : ui.menu}</span>
                         <span className="w-6 h-10 flex flex-col justify-center items-end gap-1.5">
                         <span className={`h-0.5 rounded-full transition-all duration-300 ${useDarkText && !isOpen ? "bg-stone-900" : "bg-white"} ${isOpen ? "w-6 rotate-45 translate-y-2 bg-white" : "w-6"}`} />
                         <span className={`h-0.5 rounded-full transition-all duration-300 ${useDarkText && !isOpen ? "bg-stone-900" : "bg-white"} ${isOpen ? "opacity-0" : "w-4 group-hover:w-6"}`} />

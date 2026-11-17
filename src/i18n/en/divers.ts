@@ -54,7 +54,7 @@ export const VINS_EN: Record<string, { subtitle?: string; description?: string; 
     "brouilly-2024": {
         subtitle: "Beaujolais cru — Red — Lieu-dit Garanches",
         description: "A fine wine for laying down.\n\nRaspberries and wild strawberries lead on the nose and on the palate. A lovely attack that feels like biting into fresh, tangy fruit. The tannins are silky and the finish long and generous. The freshness of the vintage fully envelops the oak ageing, which balances the aromas perfectly.",
-        vinification: "This Brouilly is aged as several separate cuvées.\n\n**Le musée cuvée**\nLe musée is an old vineyard on sandy granite soil, mostly pink. This gives tauter, fresher wines with a tangy palate: wild strawberry, blackcurrant, raspberry. Its south-facing exposure brings earlier flowering, faster-ripening berries and an intense aromatic richness. Sunshine and sand give the wine lightness and make it enjoyable young.\n\n**Le parc cuvée**\nLe parc faces east, on more clay-rich granite soil, which gives the wine more breadth and depth on the palate. The fruit stays fresh but juicier, with aromas of intense cherry and soft, peppery spice.\n\n**Barrel cuvée, 24 months in demi-muids**\nA generous nose of ripe black fruit and juicy cherry, with delicate smoky and vanilla notes lifted by hints of coffee and cocoa. The palate is broad and fleshy, with a rich fruitiness. The perfectly integrated oak accompanies the wine elegantly without masking the fruit.",
+        vinification: "This Brouilly is aged as several separate cuvées.\n\n**Le musée cuvée**\nLe musée is an old vineyard on sandy granite soil, mostly pink. This gives tauter, fresher wines with a tangy palate: wild strawberry, blackcurrant, raspberry. Its south-facing exposure brings earlier flowering, faster-ripening berries and an intense aromatic richness. Sunshine and sand give the wine lightness and make it enjoyable from its youth.\n\n**Le parc cuvée**\nLe parc faces east, on more clay-rich granite soil, which gives the wine more breadth and depth on the palate. The fruit stays fresh but juicier, with aromas of intense cherry and soft, peppery spice.\n\n**Barrel cuvée, 24 months in demi-muids**\nA generous nose of ripe black fruit and juicy cherry, with delicate smoky and vanilla notes lifted by hints of coffee and cocoa. The palate is broad and fleshy, with a rich fruitiness. The perfectly integrated oak accompanies the wine elegantly without masking the fruit.",
     },
     "brouilly-2025": {
         subtitle: "Beaujolais cru — Red — Lieu-dit Garanches",
@@ -66,11 +66,11 @@ export const VINS_EN: Record<string, { subtitle?: string; description?: string; 
     },
     "bourgogne-blanc-2025": {
         subtitle: "Chardonnay",
-        description: "A balanced vintage that gives the wine notes of exotic fruit, close to our 2023 Bourgogne.\n\nHoneyed, smooth and generous, with flowers leading on the nose and the palate. Pear, pineapple and apricot, fresh and slightly tangy, add complexity to the tasting.",
+        description: "A sun-drenched vintage that gives the wine notes of exotic fruit.\n\nHoneyed, smooth and generous, with flowers leading on the nose and the palate. Pear, pineapple and apricot, fresh and slightly tangy, add complexity to the tasting.",
     },
     "beaujolais-villages-blanc": {
         subtitle: "Beaujolais-Villages — White",
-        description: "A true spring Beaujolais.\n\nThe Beaujolais-Villages blanc shows an appealing balance, floral, fruity and tangy, thanks to the freshness of the vintage. Lemon, acacia and hawthorn blossom are the very identity of this wine, with a fresh, mouth-watering finish.",
+        description: "A true spring Beaujolais.\n\nThe Beaujolais-Villages blanc shows an appealing balance, floral, fruity and tangy. Lemon, acacia and hawthorn blossom are the very identity of this wine, with a fresh, mouth-watering finish.",
     },
 };
 

@@ -3,8 +3,7 @@
 import { useState } from "react";
 import { useLangue, useUi } from "@/components/Contenu";
 
-const LIEN_ITINERAIRE =
-    "https://www.google.com/maps/search/?api=1&query=Domaine+de+Garanches+345+chemin+de+Garanches+69460+Odenas";
+import { LIEN_ITINERAIRE } from "@/lib/itineraire";
 
 // La carte Google ne se charge qu'après un clic du visiteur : avant, aucune donnée
 // (adresse IP, cookies Google) n'est envoyée à Google, comme le demande la CNIL.

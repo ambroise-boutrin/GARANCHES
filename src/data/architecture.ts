@@ -212,7 +212,7 @@ Un témoignage vivant de l'histoire de Garanches.`,
                 alt: "Le Musée, parcelle de vieilles vignes de Garanches devant la maison cachée par les arbres",
                 paysage: true,
             },
-            { id: "documents", title: "Documents", image: "/images/garanches/concours-macon-1968.jpg", alt: "Diplôme du concours des grands vins de France, Mâcon 1968", document: true, agrandir: true },
+            { id: "documents", title: "Documents", image: "/images/garanches/concours-macon-1968.jpg", alt: "Diplôme du concours des grands vins de France, Mâcon 1988, médaille de bronze pour le Brouilly", document: true, agrandir: true },
         ],
         children: ["le-lieu/histoire", "carnets"],
     },
@@ -373,7 +373,7 @@ Des terroirs différents, une même recherche d'équilibre.`,
     {
         path: "les-vins/a-table",
         label: "À table",
-        description: "Plats, accords et moments de dégustation avec les vins de Garanches.",
+        description: "Plats et moments de dégustation avec les vins de Garanches.",
         image: "/images/smugmug/table-fromages.jpg",
         cta: "À table",
         blocs: [{ id: "introduction", title: "À table" }],
@@ -415,7 +415,7 @@ Parce qu'ici, les vins se découvrent aussi avec le lieu et avec ceux qui le fon
         label: "Les tables d'hôtes",
         description: "Table d'hôtes, vins, repas et conversations au domaine de Garanches.",
         image: "/images/smugmug/table-hotes.jpg",
-        cta: "Découvrir les Rencontres",
+        cta: "Découvrir les tables d'hôtes",
         blocs: [
             {
                 id: "introduction",
@@ -506,7 +506,7 @@ Michel : 06 09 41 97 02
     {
         path: "rencontrons-garanches/decouvrir-les-vignes",
         label: "Découvrir les vignes",
-        description: "Une promenade dans les parcelles de Garanches, puis quatre vins à goûter.",
+        description: "Une promenade dans les parcelles de Garanches, puis une dégustation de nos vins.",
         image: "/images/garanches/vignes-cadole.jpg",
         cta: "Découvrir les vignes",
         blocs: [
@@ -515,7 +515,7 @@ Michel : 06 09 41 97 02
                 title: "Enfilez vos bottes et devenez vigneron le temps d'une visite !",
                 body: `Une promenade dans nos parcelles pour découvrir la vigne au fil des saisons, comprendre nos gestes et regarder le terroir autrement.
 
-Puis quatre vins à goûter, pour retrouver dans le verre ce que nous venons de découvrir dans les vignes.
+Puis une dégustation de nos vins, pour retrouver dans le verre ce que nous venons de découvrir dans les vignes.
 
 **Du sol au verre, entrez dans l'univers de Garanches.**`,
                 image: "/images/garanches/rangs-vigne.jpg",
@@ -709,7 +709,7 @@ const SOUS_MENUS: Record<string, { path: string; motsCles: string; label?: strin
         { path: "les-vins/notre-facon-de-faire", motsCles: "Terre • saisons • millésimes" },
         { path: "les-vins/cuvees", motsCles: "Parcelles • assemblages" },
         { path: "les-vins/terroirs", motsCles: "Sols • granit • parcelles" },
-        { path: "les-vins/a-table", motsCles: "Plats • accords • moments" },
+        { path: "les-vins/a-table", motsCles: "Plats • moments" },
     ],
     "rencontrons-garanches": [
         { path: "rencontrons-garanches/les-rencontres", motsCles: "Table d'hôtes • conversations" },

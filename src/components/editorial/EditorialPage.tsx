@@ -18,6 +18,7 @@ import { altPhoto } from "@/data/alts";
 import { ALTS_EN } from "@/i18n/en/divers";
 import { UI } from "@/i18n/ui";
 import { langueCourante } from "@/lib/langueServeur";
+import { LIEN_ITINERAIRE } from "@/lib/itineraire";
 import { typo } from "@/lib/typo";
 import { stegaClean } from "next-sanity";
 
@@ -84,7 +85,11 @@ function BlocSection({ bloc, override, index, texteAVenir, titrePage }: { bloc: 
                     {pratique.map((item) => (
                         <div key={item.label} className="bg-white border border-stone-200 p-4">
                             <dt className="text-red-900 text-sm font-bold mb-1">{item.label}</dt>
-                            <dd className="text-gray-700 text-sm">{item.value}</dd>
+                            <dd className="text-gray-700 text-sm">
+                                {/^(Accès|Access)$/.test(stegaClean(item.label).trim()) ? (
+                                    <a href={LIEN_ITINERAIRE} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 decoration-1 hover:text-red-900">{item.value}</a>
+                                ) : item.value}
+                            </dd>
                         </div>
                     ))}
                 </dl>
