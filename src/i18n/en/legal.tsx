@@ -20,7 +20,7 @@ export function MentionsLegalesEn() {
                 <p>
                     <strong>GFA Domaine de Garanches</strong><br />
                     345 chemin de Garanches, 69460 Odenas, France<br />
-                    Phone: <strong><a href="tel:+33661735667">+33 6 61 73 56 67</a> (Isabelle) · <a href="tel:+33658834680">+33 6 58 83 46 80</a> (Aurélie)</strong> · <a href="tel:+33782249436">+33 7 82 24 94 36</a> (Romain) · <a href="tel:+33609419702">+33 6 09 41 97 02</a> (Michel)<br />
+                    Phone: <strong><a href="tel:+33661735667">+33 6 61 73 56 67</a> (Isabelle) · <a href="tel:+33658834680">+33 6 58 83 46 80</a> (Aurélie)</strong><br />
                     Email: contact@domainedegaranches.com<br />
                     <br />
                     <strong>Legal form:</strong> Groupement foncier agricole (agricultural land group)<br />

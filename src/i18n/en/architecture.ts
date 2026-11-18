@@ -358,8 +358,6 @@ Then taste a few cuvées at the heart of their story.
 We are happy to welcome individual visitors as well as groups. To make sure we can give you the best welcome, **booking is recommended**, by phone or with the button below:
 **Isabelle: +33 6 61 73 56 67**
 **Aurélie: +33 6 58 83 46 80**
-Romain: +33 7 82 24 94 36
-Michel: +33 6 09 41 97 02
 
 345 chemin de Garanches, 69460 Odenas, France.`,
                 pratique: [
@@ -480,8 +478,6 @@ We get together, we talk, we celebrate... and leave with memories that last.
 **2. Send us your order** with the button below, or call us. We reply within 24 hours.
 **Isabelle: +33 6 61 73 56 67**
 **Aurélie: +33 6 58 83 46 80**
-Romain: +33 7 82 24 94 36
-Michel: +33 6 09 41 97 02
 
 **3. Collection or delivery**: we confirm your order, then ship it from our cellar in Odenas anywhere in France, or prepare it for you to collect at the estate.
 

@@ -488,8 +488,6 @@ Puis goûtons quelques cuvées au cœur de leur histoire.
 Nous recevons avec plaisir les visiteurs individuels comme les groupes. Pour vous garantir le meilleur accueil, **une réservation est conseillée**, par téléphone ou avec le bouton ci-dessous :
 **Isabelle : 06 61 73 56 67**
 **Aurélie : 06 58 83 46 80**
-Romain : 07 82 24 94 36
-Michel : 06 09 41 97 02
 
 345 chemin de Garanches, 69460 Odenas.`,
                 pratique: [
@@ -635,8 +633,6 @@ On se retrouve, on échange, on célèbre... et l'on repart avec des souvenirs q
 **2. Envoyez-nous votre commande** avec le bouton ci-dessous, ou appelez-nous. Nous vous répondons sous 24 heures.
 **Isabelle : 06 61 73 56 67**
 **Aurélie : 06 58 83 46 80**
-Romain : 07 82 24 94 36
-Michel : 06 09 41 97 02
 
 **3. Retrait ou livraison** : nous vous confirmons la commande, puis nous l'expédions depuis notre cave à Odenas, partout en France, ou nous la préparons pour un retrait au domaine.
 
