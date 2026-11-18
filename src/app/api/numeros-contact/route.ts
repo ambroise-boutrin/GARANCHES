@@ -16,6 +16,10 @@ const LIGNE = /\n?[ \t]*\**[ \t]*(Romain|Michel)[ \t\u00a0\u202f]*:[ \t\u00a0\u2
 // « · +33 7 82 24 94 36 (Romain) » dans un texte suivi.
 const SUITE = /[ \u00a0]*[·,][ \u00a0]*[+\d][\d \u00a0.]*\d[ \u00a0]*\((Romain|Michel)\)/g;
 
+// Ligne de téléphone des mentions légales : réécrite avec Isabelle puis Aurélie.
+const LEGALE = /(Téléphone|Phone)[ \u00a0]*:[^\n]*\((Romain|Michel)\)[^\n]*/g;
+const legale = (_: string, mot: string) => `${mot}${mot === 'Phone' ? '' : ' '}: +33 6 61 73 56 67 (Isabelle) · +33 6 58 83 46 80 (Aurélie)`;
+
 function autorise(code: string | null) {
     if (!code) return false;
     const a = createHash('sha256').update(code).digest();
@@ -25,7 +29,7 @@ function autorise(code: string | null) {
 
 function corriger(v: unknown, chemin: string, traces: string[], restes: unknown[]): unknown {
     if (typeof v === 'string') {
-        const s = v.replace(LIGNE, '').replace(SUITE, '');
+        const s = v.replace(LEGALE, legale).replace(LIGNE, '').replace(SUITE, '');
         if (s !== v) traces.push(chemin);
         if (NUMEROS.test(s)) restes.push({ chemin, texte: s });
         return s;
