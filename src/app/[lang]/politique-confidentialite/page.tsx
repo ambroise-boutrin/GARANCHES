@@ -51,7 +51,7 @@ export default async function PolitiqueConfidentialite({ params }: Props) {
 
                 <h2 className="text-xl font-serif text-wine-800 mt-8 mb-4">2. Données que nous recevons</h2>
                 <ul className="list-disc pl-5 space-y-2">
-                    <li><strong>Vos messages :</strong> le formulaire de contact ouvre votre propre messagerie. Nous recevons donc l'email que vous nous envoyez, avec votre nom, votre adresse email et, si vous les indiquez, votre téléphone et votre message. Rien n'est enregistré par le site lui-même.</li>
+                    <li><strong>Vos messages :</strong> le formulaire de contact nous transmet votre nom, votre adresse email, votre message et, si vous les indiquez, votre téléphone et votre société. L'envoi passe par le service Web3Forms, qui nous fait suivre le message par email. Rien n'est enregistré par le site lui-même.</li>
                     <li><strong>Vos commandes et réservations :</strong> si vous nous commandez des bouteilles ou réservez une visite, nous gardons les informations utiles (nom, coordonnées, adresse de livraison, détail de la commande).</li>
                     <li id="tranches-age" className="scroll-mt-28"><strong>Vérification de l'âge :</strong> à l'entrée du site, nous vous demandons votre date de naissance pour vérifier que vous êtes majeur. Cette date est utilisée uniquement dans votre navigateur et n'est ni transmise ni conservée. Seule votre tranche d'âge (18-24, 25-34, 35-44, 45-54, 55-64, 65 ans et plus) est ajoutée à un compteur mensuel anonyme, sans adresse IP ni identifiant. Aucune donnée ne permet de vous identifier.</li>
                     <li><strong>Mesure d'audience :</strong> nous utilisons Plausible Analytics, un outil européen sans cookie qui compte les pages vues de façon anonyme, sans suivre les visiteurs d'un site à l'autre.</li>
@@ -76,7 +76,7 @@ export default async function PolitiqueConfidentialite({ params }: Props) {
                     <li>Vercel Inc. (États-Unis), hébergeur du site. Le transfert vers les États-Unis est encadré par le Data Privacy Framework et les clauses contractuelles types de la Commission européenne.</li>
                     <li>Sanity (Norvège), qui stocke les textes et photos du site ainsi que le compteur anonyme des tranches d'âge.</li>
                     <li>Plausible Analytics (Union européenne), pour la mesure d'audience anonyme.</li>
-                    <li>Notre fournisseur de messagerie, qui reçoit vos emails, et le transporteur qui livre votre commande.</li>
+                    <li>Web3Forms, qui transmet les messages du formulaire de contact, notre fournisseur de messagerie, qui reçoit vos emails, et le transporteur qui livre votre commande.</li>
                 </ul>
                 <p>Nous ne vendons ni ne louons jamais vos données.</p>
 

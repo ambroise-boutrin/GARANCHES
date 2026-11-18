@@ -164,7 +164,7 @@ export function ConfidentialiteEn() {
 
                 <h2 className={titre}>2. Data we receive</h2>
                 <ul className="list-disc pl-5 space-y-2">
-                    <li><strong>Your messages:</strong> the contact form opens your own email app. We therefore receive the email you send us, with your name, your email address and, if you provide them, your phone number and your message. Nothing is stored by the site itself.</li>
+                    <li><strong>Your messages:</strong> the contact form sends us your name, your email address, your message and, if you provide them, your phone number and your company. It is sent through the Web3Forms service, which forwards the message to us by email. Nothing is stored by the site itself.</li>
                     <li><strong>Your orders and bookings:</strong> if you order bottles or book a visit, we keep the information needed (name, contact details, delivery address, order details).</li>
                     <li id="tranches-age" className="scroll-mt-28"><strong>Age check:</strong> when you enter the site, we ask for your date of birth to check that you are of legal age. This date is used only in your browser and is neither sent nor stored. Only your age group (18-24, 25-34, 35-44, 45-54, 55-64, 65 and over) is added to an anonymous monthly counter, without IP address or identifier. No data can identify you.</li>
                     <li><strong>Audience measurement:</strong> we use Plausible Analytics, a cookie-free European tool that counts page views anonymously, without following visitors from one site to another.</li>
@@ -189,7 +189,7 @@ export function ConfidentialiteEn() {
                     <li>Vercel Inc. (United States), which hosts the site. Transfers to the United States are covered by the Data Privacy Framework and the European Commission&apos;s standard contractual clauses.</li>
                     <li>Sanity (Norway), which stores the site&apos;s texts and photos as well as the anonymous age group counter.</li>
                     <li>Plausible Analytics (European Union), for anonymous audience measurement.</li>
-                    <li>Our email provider, which receives your emails, and the carrier that delivers your order.</li>
+                    <li>Web3Forms, which forwards contact form messages, our email provider, which receives your emails, and the carrier that delivers your order.</li>
                 </ul>
                 <p>We never sell or rent your data.</p>
 
