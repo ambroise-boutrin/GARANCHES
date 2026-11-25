@@ -131,18 +131,11 @@ Here, history is discovered trace by trace.`,
             },
             "memoire-du-vin": {
                 title: "The memory of wine",
-                body: `This cellar register, kept more than a century ago, bears witness to the care taken in following the wines of Garanches.
+                body: `This register, kept more than a century ago, bears witness to the care taken in following the wines of Garanches.
 
 Behind these handwritten lines lies a standard already at work: observe, record, understand.
 
 A rigour handed down through time, which still inspires our work today.`,
-                alt: "An old handwritten register, \"État de la cave de Garanches\"",
-            },
-            "registre-municipalite": {
-                title: "The register of the first municipality of Odenas",
-                body: `Opened on 15 February 1790, this is the very first register of the new municipality of the parish of Odenas, then spelled "Audenas en Beaujolais".
-
-Its cover bears the name of Jean Buy, the first mayor of the commune and the first of the family to settle at Garanches.`,
                 alt: "Cover of the register of the new municipality of Odenas, 1790-1791, under Jean Buy, mayor",
                 bouton: "Discover Jean Buy",
             },
@@ -158,7 +151,7 @@ Its cover bears the name of Jean Buy, the first mayor of the commune and the fir
 A living testimony to the history of Garanches.`,
                 alt: "The Musée, a plot of old vines at Garanches in front of the house hidden by trees",
             },
-            documents: { title: "Documents", alt: "Diploma from the great wines of France competition, Mâcon 1988, bronze medal for the Brouilly" },
+            documents: { title: "Bronze medal, Mâcon 1988", body: `On 21 May 1988, at the 34th Concours des grands vins de France in Mâcon, the Garanches Brouilly was awarded a bronze medal.`, alt: "Diploma from the great wines of France competition, Mâcon 1988, bronze medal for the Brouilly" },
         },
     },
     "le-lieu/ceux-qui-le-font-vivre": {
