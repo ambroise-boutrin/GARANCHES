@@ -158,7 +158,7 @@ Its cover bears the name of Jean Buy, the first mayor of the commune and the fir
 A living testimony to the history of Garanches.`,
                 alt: "The Musée, a plot of old vines at Garanches in front of the house hidden by trees",
             },
-            documents: { title: "Documents", alt: "Diploma from the great wines of France competition, Mâcon 1988, bronze medal for the Brouilly" },
+            documents: { title: "Bronze medal, Mâcon 1988", body: `On 21 May 1988, at the 34th Concours des grands vins de France in Mâcon, the Garanches Brouilly was awarded a bronze medal.`, alt: "Diploma from the great wines of France competition, Mâcon 1988, bronze medal for the Brouilly" },
         },
     },
     "le-lieu/ceux-qui-le-font-vivre": {
