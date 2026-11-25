@@ -8,6 +8,7 @@ const ALTS: Record<string, string> = {
     [`${G}mont-brouilly-vignes.jpg`]: "Le Mont Brouilly et ses coteaux de vignes, dans le Beaujolais",
     [`${G}maison-facade.jpg`]: "La façade de la maison de Garanches aux volets jaunes",
     [`${G}registre-cave.jpg`]: "Un ancien registre manuscrit, « État de la cave de Garanches »",
+    [`${G}musee-parcelle-bender.jpg`]: "Le Musée, parcelle de vieilles vignes de Garanches devant la maison cachée par les arbres",
     [`${G}cuvage.jpg`]: "Le bâtiment du cuvage de Garanches, son escalier de pierre et sa porte de cave",
     [`${G}michel-stagnara.jpg`]: "Michel Stagnara, au domaine de Garanches",
     [`${G}vendanges-raisins.jpg`]: "Raisins de Gamay versés dans la cuve pendant les vendanges à Garanches",

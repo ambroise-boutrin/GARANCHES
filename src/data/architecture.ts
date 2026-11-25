@@ -18,6 +18,8 @@ export type Bloc = {
     paysage?: boolean;
     /** Photo de personnes : pas d'effet de défilement, pour ne pas couper la personne. */
     personne?: boolean;
+    // Photo sans effet de glissade : le sujet (maison, mont, objet) doit rester entier dans le cadre.
+    fixe?: boolean;
     /** Titre qui est un nom de personne : écrit en casse normale, pas en majuscules. */
     nom?: boolean;
     /** Document en hauteur (page d'archive) : cadre vertical pour qu'il reste lisible. */
@@ -61,7 +63,7 @@ const PAGE_LIST: Page[] = [
 Ses vignes, ses parcelles et ses paysages portent cette histoire.
 Une terre vit par ceux qui la travaillent, la regardent évoluer et la transmettent.
 Et aujourd'hui, par celles et ceux qui viennent la découvrir, goûter ses vins et partager un moment à Garanches.`,
-                image: "/images/garanches/maison-cour.jpg", paysage: true,
+                image: "/images/garanches/maison-cour.jpg", paysage: true, fixe: true,
                 alt: "La maison de Garanches, côté cour",
             },
         ],
@@ -82,7 +84,7 @@ Et aujourd'hui, par celles et ceux qui viennent la découvrir, goûter ses vins 
 Chaque parcelle, chaque âge de vigne, chaque exposition apporte sa propre lecture du lieu.
 
 Nous les regardons vivre au fil des saisons, avec ce qu'elles portent du passé et ce qu'elles promettent pour demain.`,
-                image: "/images/garanches/mont-brouilly-vignes.jpg", paysage: true,
+                image: "/images/garanches/mont-brouilly-vignes.jpg", paysage: true, fixe: true,
                 alt: "Le Mont Brouilly et ses coteaux de vignes, dans le Beaujolais",
                 cta: { label: "Découvrir les vignes", href: "/rencontrons-garanches/decouvrir-les-vignes" },
             },
@@ -93,7 +95,7 @@ Nous les regardons vivre au fil des saisons, avec ce qu'elles portent du passé 
         path: "le-lieu/histoire",
         label: "L'histoire",
         description: "Histoire du domaine de Garanches, personnages clés et archives.",
-        image: "/images/garanches/maison-facade.jpg",
+        image: "/images/garanches/cuvage.jpg",
         cta: "Entrer dans l'histoire",
         blocs: [
             {
@@ -173,7 +175,7 @@ Son travail législatif, notamment à travers la loi Capus-Bender du 22 juillet 
         path: "le-lieu/traces",
         label: "Traces",
         description: "Plants anciens, documents, photographies et archives de Garanches.",
-        image: "/images/garanches/cuvage.jpg",
+        image: "/images/garanches/musee-parcelle-bender.jpg",
         cta: "Voir les traces",
         blocs: [
             {
@@ -186,7 +188,7 @@ Certaines traces sont précises. D'autres ouvrent des questions.
 Nous les conservons parce qu'elles donnent à voir le domaine autrement : à travers ceux qui l'ont connu, travaillé et pensé avant nous.
 
 Ici, l'histoire se découvre au fil des traces.`,
-                image: "/images/garanches/loquet-porte.jpg",
+                image: "/images/garanches/loquet-porte.jpg", fixe: true,
                 alt: "Un vieux loquet sur une porte du domaine",
                 cta: { label: "Voir les Carnets", href: "/carnets" },
             },
@@ -198,7 +200,7 @@ Ici, l'histoire se découvre au fil des traces.`,
 Derrière ces lignes manuscrites se dessine une exigence déjà présente : observer, consigner, comprendre.
 
 Une rigueur transmise à travers le temps, qui continue d'inspirer notre travail aujourd'hui.`,
-                image: "/images/garanches/registre-cave.jpg", paysage: true,
+                image: "/images/garanches/registre-cave.jpg", paysage: true, fixe: true,
                 alt: "Un ancien registre manuscrit, « État de la cave de Garanches »",
             },
             {
@@ -218,9 +220,6 @@ Sa couverture porte le nom de Jean Buy, premier maire de la commune et premier d
                 body: `Cette parcelle conserve la mémoire des travaux de recherche menés par Emmanuel Bender à la fin du XIXᵉ siècle pour lutter contre le phylloxéra et reconstruire le vignoble.
 
 Un témoignage vivant de l'histoire de Garanches.`,
-                image: "/images/garanches/musee-parcelle-bender.jpg",
-                alt: "Le Musée, parcelle de vieilles vignes de Garanches devant la maison cachée par les arbres",
-                paysage: true,
             },
             {
                 id: "diplome-bruxelles",
@@ -352,7 +351,7 @@ Un hiver doux, puis une chaleur persistante jusqu'aux vendanges. Les rendements 
 Comme en 2025, la chaleur marque la saison. Mais la grêle frappe durement Garanches, détruisant près de 95 % du vignoble.
 
 Une année qui rappelle combien le travail du vigneron reste lié aux forces de la nature.`,
-                image: "/images/garanches/cep-automne.jpg",
+                image: "/images/garanches/cep-automne.jpg", fixe: true,
                 alt: "Un cep de vigne aux feuilles rouges, à l'automne",
             },
         ],
@@ -508,7 +507,7 @@ Découvrons les vinifications, les élevages et les choix qui façonnent nos cuv
 Puis goûtons quelques cuvées au cœur de leur histoire.
 
 **Du chai au verre, partageons le chemin du vin.**`,
-                image: "/images/smugmug/chai-pressoir.jpg", paysage: true,
+                image: "/images/smugmug/chai-pressoir.jpg", paysage: true, fixe: true,
                 alt: "Le pressoir du chai de Garanches",
             },
             {
@@ -561,7 +560,7 @@ Puis une dégustation de nos vins, pour retrouver dans le verre ce que nous veno
                     { label: "Accès", value: "345 chemin de Garanches, Odenas" },
                 ],
                 booking: { label: "Réserver", sujet: "Découvrir les vignes" },
-                image: "/images/garanches/verre-dans-les-vignes.jpg", paysage: true,
+                image: "/images/garanches/verre-dans-les-vignes.jpg", paysage: true, fixe: true,
                 alt: "Un verre de Brouilly servi au milieu des vignes de Garanches",
             },
         ],
@@ -630,7 +629,7 @@ Autour d'un repas imaginé par Romain et des vins du domaine, nous créons avec 
 On se retrouve, on échange, on célèbre... et l'on repart avec des souvenirs qui restent.
 
 **À Garanches, les moments partagés deviennent des souvenirs mémorables.**`,
-                image: "/images/smugmug/table-bouteilles.jpg", paysage: true,
+                image: "/images/smugmug/table-bouteilles.jpg", paysage: true, fixe: true,
                 alt: "Un Beaujolais-Villages blanc et un Brouilly du domaine de Garanches sur la table",
             },
             {
