@@ -8,6 +8,7 @@ export const ALTS_EN: Record<string, string> = {
     [`${G}maison-domaine.jpg`]: "The house of the Garanches estate and its park, in Odenas",
     [`${G}mont-brouilly-vignes.jpg`]: "Mont Brouilly and its vine-covered slopes, in the Beaujolais",
     [`${G}maison-facade.jpg`]: "The front of the Garanches house with its yellow shutters",
+    [`${G}cuvage.jpg`]: "The Garanches vat house, with its stone staircase and cellar door",
     [`${G}registre-cave.jpg`]: "An old handwritten register, \"État de la cave de Garanches\"",
     [`${G}michel-stagnara.jpg`]: "Michel Stagnara at the Garanches estate",
     [`${G}vendanges-raisins.jpg`]: "Gamay grapes poured into the vat during the harvest at Garanches",

@@ -160,7 +160,7 @@ export function creerImport({ client, lirePhoto, noter }: ContexteImport) {
     async function importerListes() {
         if (!(await existe(`_type == "equipe"`))) {
             const membres = [];
-            for (const p of TEAM) membres.push({ _key: cle(), _type: 'membre', nom: p.name, photo: await image(p.image) });
+            for (const p of TEAM) membres.push({ _key: cle(), _type: 'membre', nom: p.name, role: p.role, roleEn: p.roleEn, photo: await image(p.image) });
             await client.createIfNotExists({ _id: 'equipe', _type: 'equipe', membres });
             noter('Équipe ajoutée');
         } else noter('Équipe déjà présente');

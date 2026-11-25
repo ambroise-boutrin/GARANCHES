@@ -75,12 +75,6 @@ Et aujourd'hui, par celles et ceux qui viennent la découvrir, goûter ses vins 
         cta: "Découvrir le domaine",
         blocs: [
             {
-                id: "le-lieu",
-                title: "Le lieu",
-                image: "/images/garanches/maison-granit.jpg",
-                alt: "La maison de Garanches derrière un rocher de granit",
-            },
-            {
                 id: "les-vignes",
                 title: "Mont Brouilly.",
                 body: `Ici, le granit se décline du bleu au rose, et les générations de vignes se côtoient : certaines ont près de 150 ans, d'autres n'ont que quelques années.
@@ -112,10 +106,6 @@ Des hommes et des femmes y ont travaillé, réfléchi, transmis et parfois dû i
 Certaines de leurs histoires ont même dépassé Garanches et rejoint celle du vignoble français.
 
 Aujourd'hui, nous en gardons les traces et nous continuons à les faire vivre.`,
-                image: "/images/garanches/diplome-lyon-1894.jpg",
-                alt: "Diplôme de l'Exposition universelle et coloniale de Lyon, 1894",
-                document: true,
-                agrandir: true,
             },
             {
                 id: "personnages-cles",
@@ -127,8 +117,6 @@ Jean Buy, Emmanuel Bender, Émile Bender et d'autres ont laissé leur empreinte 
 Nous avons choisi de raconter leurs histoires simplement, à partir des traces qu'ils nous ont laissées.
 
 Parce qu'un lieu se comprend aussi à travers celles et ceux qui l'ont façonné.`,
-                image: "/images/garanches/diplome-encadre.jpg", document: true, agrandir: true,
-                alt: "Diplôme d'honneur encadré, archives de Garanches",
             },
             {
                 id: "jean-buy",
@@ -173,7 +161,7 @@ Député puis sénateur du Rhône, Émile Bender fut l'un des artisans de la con
 Aux côtés d'autres parlementaires, notamment Joseph Capus, il contribua à faire évoluer la notion d'appellation d'origine, en associant le nom d'un vin à son territoire, à ses cépages et aux usages de production.
 
 Son travail législatif, notamment à travers la loi Capus-Bender du 22 juillet 1927, participa à poser les fondements du futur système des appellations d'origine contrôlées.`,
-                image: "/images/garanches/emile-bender-portrait.jpg",
+                image: "/images/garanches/emile-bender-portrait-clair.jpg",
                 alt: "Portrait photographique d'Émile Bender",
                 document: true,
                 portrait: true,
@@ -185,7 +173,7 @@ Son travail législatif, notamment à travers la loi Capus-Bender du 22 juillet 
         path: "le-lieu/traces",
         label: "Traces",
         description: "Plants anciens, documents, photographies et archives de Garanches.",
-        image: "/images/garanches/registre-cave.jpg",
+        image: "/images/garanches/cuvage.jpg",
         cta: "Voir les traces",
         blocs: [
             {
@@ -203,6 +191,28 @@ Ici, l'histoire se découvre au fil des traces.`,
                 cta: { label: "Voir les Carnets", href: "/carnets" },
             },
             {
+                id: "memoire-du-vin",
+                title: "La mémoire du vin",
+                body: `Ce registre de cave, tenu il y a plus d'un siècle, témoigne du soin apporté au suivi des vins de Garanches.
+
+Derrière ces lignes manuscrites se dessine une exigence déjà présente : observer, consigner, comprendre.
+
+Une rigueur transmise à travers le temps, qui continue d'inspirer notre travail aujourd'hui.`,
+                image: "/images/garanches/registre-cave.jpg", paysage: true,
+                alt: "Un ancien registre manuscrit, « État de la cave de Garanches »",
+            },
+            {
+                id: "registre-municipalite",
+                title: "Le registre de la première municipalité d'Odenas",
+                body: `Ouvert le 15 février 1790, ce registre est le tout premier de la nouvelle municipalité de la paroisse d'Odenas, alors écrite « Audenas en Beaujolais ».
+
+Sa couverture porte le nom de Jean Buy, premier maire de la commune et premier de la famille à s'installer à Garanches.`,
+                image: "/images/garanches/registre-municipalite-odenas-1790.jpg",
+                alt: "Couverture du registre de la nouvelle municipalité d'Odenas, 1790-1791, sous Jean Buy, maire",
+                document: true, portrait: true, agrandir: true,
+                cta: { label: "Découvrir Jean Buy", href: "/le-lieu/histoire#jean-buy" },
+            },
+            {
                 id: "le-musee",
                 title: "Le Musée, une parcelle témoin de l'histoire viticole",
                 body: `Cette parcelle conserve la mémoire des travaux de recherche menés par Emmanuel Bender à la fin du XIXᵉ siècle pour lutter contre le phylloxéra et reconstruire le vignoble.
@@ -211,6 +221,13 @@ Un témoignage vivant de l'histoire de Garanches.`,
                 image: "/images/garanches/musee-parcelle-bender.jpg",
                 alt: "Le Musée, parcelle de vieilles vignes de Garanches devant la maison cachée par les arbres",
                 paysage: true,
+            },
+            {
+                id: "diplome-bruxelles",
+                title: "Diplôme d'honneur, Bruxelles 1910",
+                body: `Décerné à Émile Bender, à Odenas, lors de l'Exposition universelle de Bruxelles de 1910.`,
+                image: "/images/garanches/diplome-encadre.jpg", document: true, agrandir: true,
+                alt: "Diplôme d'honneur de l'Exposition universelle de Bruxelles 1910, décerné à Émile Bender, à Odenas",
             },
             { id: "documents", title: "Documents", image: "/images/garanches/concours-macon-1968.jpg", alt: "Diplôme du concours des grands vins de France, Mâcon 1988, médaille de bronze pour le Brouilly", document: true, agrandir: true },
         ],
@@ -226,6 +243,11 @@ Un témoignage vivant de l'histoire de Garanches.`,
             {
                 id: "introduction",
                 title: "Ceux qui le font vivre",
+                body: `Garanches est avant tout une aventure humaine.
+
+Des générations s'y sont succédé, chacune apportant son regard, ses convictions et son énergie.
+
+Aujourd'hui, des visages, des gestes et des sensibilités différentes font vivre ce lieu et écrivent la suite de son histoire.`,
             },
         ],
         children: ["le-lieu/histoire", "rencontrons-garanches"],
@@ -268,7 +290,17 @@ Des vins qui racontent Garanches, chacun à leur manière.`,
         image: "/images/garanches/grappe-vigne.jpg",
         cta: "Découvrir notre façon de faire",
         blocs: [
-            { id: "introduction", title: "Notre façon de faire", image: "/images/smugmug/vignes-geste.jpg", paysage: true, personne: true, alt: "Aurélie Crozet montre un cep dans les vignes de Garanches" },
+            {
+                id: "introduction",
+                title: "Nous cultivons nos choix",
+                body: `À Garanches, chaque parcelle et chaque millésime guident notre manière de faire le vin.
+
+Les raisins sont vendangés à la main. Nos Brouilly sont vinifiés en grappes entières, avec une extraction douce pour préserver le fruit et la finesse des tanins.
+
+Nos blancs et nos rouges sont élevés en fûts de chêne déjà utilisés, pour accompagner leur évolution sans masquer leur caractère.
+
+Notre recherche : des vins précis, élégants et équilibrés, fidèles à leur origine.`,
+                image: "/images/smugmug/vignes-geste.jpg", paysage: true, personne: true, alt: "Aurélie Crozet montre un cep dans les vignes de Garanches" },
             {
                 id: "terre-vignes-saisons",
                 title: "À Garanches, nous cultivons nos convictions",

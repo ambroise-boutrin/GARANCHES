@@ -38,10 +38,6 @@ And today, through everyone who comes to discover it, taste its wines and share 
         description: "Odenas, Mont Brouilly, granite and the vines of Garanches.",
         cta: "Discover the estate",
         blocs: {
-            "le-lieu": {
-                title: "The place",
-                alt: "The Garanches house behind a granite boulder",
-            },
             "les-vignes": {
                 title: "Mont Brouilly.",
                 body: `Here the granite ranges from blue to pink, and generations of vines grow side by side: some are nearly 150 years old, others only a few years.
@@ -68,7 +64,6 @@ Men and women worked here, thought, passed things on and sometimes had to invent
 Some of their stories even went beyond Garanches and became part of the history of French winegrowing.
 
 Today we keep their traces and keep them alive.`,
-                alt: "Diploma from the Lyon Universal and Colonial Exhibition, 1894",
             },
             "personnages-cles": {
                 title: "The people who left their mark on Garanches.",
@@ -79,7 +74,6 @@ Jean Buy, Emmanuel Bender, Émile Bender and others left their mark on the histo
 We have chosen to tell their stories simply, from the traces they left us.
 
 Because a place is also understood through the people who shaped it.`,
-                alt: "Framed diploma of honour, Garanches archives",
             },
             "jean-buy": {
                 title: "Jean Buy",
@@ -135,6 +129,28 @@ Here, history is discovered trace by trace.`,
                 alt: "An old latch on one of the estate's doors",
                 bouton: "Read the Notebooks",
             },
+            "memoire-du-vin": {
+                title: "The memory of wine",
+                body: `This cellar register, kept more than a century ago, bears witness to the care taken in following the wines of Garanches.
+
+Behind these handwritten lines lies a standard already at work: observe, record, understand.
+
+A rigour handed down through time, which still inspires our work today.`,
+                alt: "An old handwritten register, \"État de la cave de Garanches\"",
+            },
+            "registre-municipalite": {
+                title: "The register of the first municipality of Odenas",
+                body: `Opened on 15 February 1790, this is the very first register of the new municipality of the parish of Odenas, then spelled "Audenas en Beaujolais".
+
+Its cover bears the name of Jean Buy, the first mayor of the commune and the first of the family to settle at Garanches.`,
+                alt: "Cover of the register of the new municipality of Odenas, 1790-1791, under Jean Buy, mayor",
+                bouton: "Discover Jean Buy",
+            },
+            "diplome-bruxelles": {
+                title: "Diploma of honour, Brussels 1910",
+                body: `Awarded to Émile Bender, of Odenas, at the Brussels International Exhibition of 1910.`,
+                alt: "Diploma of honour from the Brussels International Exhibition of 1910, awarded to Émile Bender of Odenas",
+            },
             "le-musee": {
                 title: "The Musée, a plot bearing witness to wine history",
                 body: `This plot keeps the memory of the research carried out by Emmanuel Bender at the end of the 19th century to fight phylloxera and rebuild the vineyard.
@@ -150,7 +166,14 @@ A living testimony to the history of Garanches.`,
         description: "The people, the craft and the passing on of knowledge that keep Garanches alive.",
         cta: "Discover",
         blocs: {
-            introduction: { title: "The people behind it" },
+            introduction: {
+                title: "The people behind it",
+                body: `Garanches is above all a human adventure.
+
+Generations have followed one another here, each bringing its own outlook, convictions and energy.
+
+Today, different faces, hands and sensibilities bring this place to life and write the next chapter of its story.`,
+            },
         },
     },
 
@@ -177,7 +200,17 @@ Wines that tell the story of Garanches, each in its own way.`,
         description: "Soil, vines, seasons, vintages, ageing and blending at Garanches.",
         cta: "Discover our approach",
         blocs: {
-            introduction: { title: "Our approach", alt: "Aurélie Crozet showing a vine in the Garanches vineyard" },
+            introduction: {
+                title: "We cultivate our choices",
+                body: `At Garanches, each plot and each vintage guides the way we make wine.
+
+The grapes are picked by hand. Our Brouilly wines are vinified as whole bunches, with gentle extraction to preserve the fruit and the finesse of the tannins.
+
+Our whites and reds are aged in previously used oak barrels, to support their development without masking their character.
+
+What we seek: precise, elegant and balanced wines, true to their origin.`,
+                alt: "Aurélie Crozet showing a vine in the Garanches vineyard",
+            },
             "terre-vignes-saisons": {
                 title: "At Garanches, we cultivate our convictions",
                 body: `The seasons set the pace. Our work tells of our choices.

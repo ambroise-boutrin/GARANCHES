@@ -66,12 +66,17 @@ const contenuDansLaLangue = cache(async (langue: 'fr' | 'en'): Promise<ContenuSi
 });
 
 // Équipe (page « Ceux qui le font vivre »).
-export async function getEquipe(): Promise<{ nom: string; photo?: PhotoPrete }[] | null> {
+export async function getEquipe(): Promise<{ nom: string; role?: string; photo?: PhotoPrete }[] | null> {
     try {
-        const doc = await sanityFetch<any>(`*[_type == "equipe"][0]{ _id, membres[]{ _key, nom, "photo": photo${PHOTO} } }`);
+        const en = langueCourante() === 'en';
+        const doc = await sanityFetch<any>(`*[_type == "equipe"][0]{ _id, membres[]{ _key, nom, ${en ? '"role": roleEn' : 'role'}, "photo": photo${PHOTO} } }`);
         const membres = (doc?.membres ?? []).filter((m: any) => m?.nom);
         if (!membres.length) return null;
-        return membres.map((m: any) => ({ nom: m.nom, photo: prete(m.photo, 900, cliquable(doc._id, 'equipe', `membres[_key=="${m._key}"].photo`)) }));
+        return membres.map((m: any) => ({
+            nom: m.nom,
+            ...(typeof m.role === 'string' && stegaClean(m.role).trim() && { role: m.role }),
+            photo: prete(m.photo, 900, cliquable(doc._id, 'equipe', `membres[_key=="${m._key}"].photo`)),
+        }));
     } catch (error) {
         console.error('Sanity: équipe indisponible', error);
         return null;

@@ -17,9 +17,11 @@ export const equipe = {
                     name: 'membre',
                     fields: [
                         { name: 'nom', title: 'Prénom et nom', type: 'string', validation: (Rule: any) => Rule.required() },
+                        { name: 'role', title: 'Rôle', description: 'Affiché sous le nom, par exemple « Les projets ».', type: 'string' },
+                        { name: 'roleEn', title: 'Rôle en anglais', type: 'string' },
                         { name: 'photo', title: 'Portrait', description: 'Placez le rond sur le visage.', type: 'image', options: { hotspot: true } },
                     ],
-                    preview: { select: { title: 'nom', media: 'photo' } },
+                    preview: { select: { title: 'nom', subtitle: 'role', media: 'photo' } },
                 },
             ],
         },

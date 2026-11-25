@@ -3,13 +3,16 @@ import FadeIn from "@/components/FadeIn";
 import { cadrage } from "@/data/cadrages";
 import { flou } from "@/data/flous";
 import { getEquipe } from "@/sanity/lib/contenu";
-import { TEAM } from "@/data/equipe";
+import { TEAM, roleParDefaut } from "@/data/equipe";
+import { stegaClean } from "next-sanity";
+import { langueCourante } from "@/lib/langueServeur";
 
 export default async function Team() {
     const equipe = await getEquipe();
+    const langue = langueCourante();
     const membres = equipe
-        ? equipe.map((m) => ({ nom: m.nom, src: m.photo?.src, position: m.photo?.position, blur: m.photo?.blur, cliquer: m.photo?.cliquer }))
-        : TEAM.map((p) => ({ nom: p.name, src: p.image, position: cadrage(p.image), blur: undefined, cliquer: undefined }));
+        ? equipe.map((m) => ({ nom: m.nom, role: m.role ?? roleParDefaut(stegaClean(m.nom), langue), src: m.photo?.src, position: m.photo?.position, blur: m.photo?.blur, cliquer: m.photo?.cliquer }))
+        : TEAM.map((p) => ({ nom: p.name, role: langue === "en" ? p.roleEn : p.role, src: p.image, position: cadrage(p.image), blur: undefined, cliquer: undefined }));
 
     return (
         <section className="max-w-7xl mx-auto px-4 md:px-6 py-12 md:py-16">
@@ -30,6 +33,7 @@ export default async function Team() {
                             )}
                         </div>
                         <h3 className="text-lg md:text-2xl font-serif text-wine-900 leading-tight">{personne.nom}</h3>
+                        {personne.role && <p className="mt-1 text-sm md:text-base text-gray-700">{personne.role}</p>}
                     </FadeIn>
                 ))}
             </div>
