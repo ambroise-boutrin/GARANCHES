@@ -45,7 +45,7 @@ And today, through everyone who comes to discover it, taste its wines and share 
 Each plot, each age of vine, each exposure gives its own reading of the place.
 
 We watch them live through the seasons, with what they carry from the past and what they promise for tomorrow.`,
-                alt: "The Garanches vineyard in autumn, with a vineyard hut among the rows",
+                alt: "Mont Brouilly and its vine-covered slopes, in the Beaujolais",
                 bouton: "Walk the vineyard",
             },
         },

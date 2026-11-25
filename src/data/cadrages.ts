@@ -4,6 +4,7 @@ const G = "/images/garanches/";
 const S = "/images/smugmug/";
 
 const CADRAGES: Record<string, string> = {
+    [`${S}domaine-drone-maison.jpg`]: "47% 60%",
     [`${G}accueil-cave.jpg`]: "30% 20%",
     [`${G}accueil-terrasse.jpg`]: "55% 20%",
     [`${G}loquet-porte.jpg`]: "40% 35%",

@@ -4,6 +4,7 @@ const S = "/images/smugmug/";
 
 const ALTS: Record<string, string> = {
     [`${G}maison-domaine.jpg`]: "La maison du domaine de Garanches et son parc, à Odenas",
+    [`${S}domaine-drone-maison.jpg`]: "Le domaine de Garanches vu du ciel, au milieu des vignes, le Mont Brouilly derrière",
     [`${G}mont-brouilly-vignes.jpg`]: "Le Mont Brouilly et ses coteaux de vignes, dans le Beaujolais",
     [`${G}maison-facade.jpg`]: "La façade de la maison de Garanches aux volets jaunes",
     [`${G}registre-cave.jpg`]: "Un ancien registre manuscrit, « État de la cave de Garanches »",

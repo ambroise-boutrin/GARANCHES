@@ -71,7 +71,7 @@ Et aujourd'hui, par celles et ceux qui viennent la découvrir, goûter ses vins 
         path: "le-lieu/le-domaine",
         label: "Le domaine",
         description: "Odenas, le Mont Brouilly, le granit et les vignes de Garanches.",
-        image: "/images/garanches/mont-brouilly-vignes.jpg",
+        image: "/images/smugmug/domaine-drone-maison.jpg",
         cta: "Découvrir le domaine",
         blocs: [
             {
@@ -82,8 +82,8 @@ Et aujourd'hui, par celles et ceux qui viennent la découvrir, goûter ses vins 
 Chaque parcelle, chaque âge de vigne, chaque exposition apporte sa propre lecture du lieu.
 
 Nous les regardons vivre au fil des saisons, avec ce qu'elles portent du passé et ce qu'elles promettent pour demain.`,
-                image: "/images/garanches/vignes-cabane.jpg",
-                alt: "Les vignes de Garanches en automne, une cabane de vigne au milieu des rangs",
+                image: "/images/garanches/mont-brouilly-vignes.jpg", paysage: true,
+                alt: "Le Mont Brouilly et ses coteaux de vignes, dans le Beaujolais",
                 cta: { label: "Découvrir les vignes", href: "/rencontrons-garanches/decouvrir-les-vignes" },
             },
         ],

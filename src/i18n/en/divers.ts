@@ -6,6 +6,7 @@ const S = "/images/smugmug/";
 
 export const ALTS_EN: Record<string, string> = {
     [`${G}maison-domaine.jpg`]: "The house of the Garanches estate and its park, in Odenas",
+    [`${S}domaine-drone-maison.jpg`]: "The Garanches estate from the air, among the vines, with Mont Brouilly behind",
     [`${G}mont-brouilly-vignes.jpg`]: "Mont Brouilly and its vine-covered slopes, in the Beaujolais",
     [`${G}maison-facade.jpg`]: "The front of the Garanches house with its yellow shutters",
     [`${G}cuvage.jpg`]: "The Garanches vat house, with its stone staircase and cellar door",
