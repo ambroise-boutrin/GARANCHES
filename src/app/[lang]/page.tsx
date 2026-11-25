@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const titre = stegaClean(infos?.seoTitre);
   const parDefaut = langue === "en"
     ? SEO_AUTRES_EN.accueil.description
-    : "Domaine viticole familial à Odenas, au pied du Mont Brouilly : Brouilly, Beaujolais-Villages blanc et Bourgogne blanc. Dégustation et visite des vignes au domaine.";
+    : "Domaine viticole familial à Odenas, au pied du Mont Brouilly : Brouilly, Beaujolais-Villages blanc, Bourgogne blanc. Dégustation et visite des vignes au domaine.";
   return {
     ...(titre && { title: { absolute: `${titre} | Domaine de Garanches` } }),
     description: stegaClean(infos?.seoDescription) || parDefaut,

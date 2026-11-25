@@ -19,11 +19,14 @@ import { ALTS_EN } from "@/i18n/en/divers";
 
 type Props = { params: { lang: string }; searchParams: { theme?: string } };
 
-export function generateMetadata({ params }: Omit<Props, "searchParams">): Metadata {
+export async function generateMetadata({ params }: Omit<Props, "searchParams">): Promise<Metadata> {
     const langue = definirLangue(params.lang);
     const CARNETS_CARD = carnetsCarteDe(langue);
+    // Tant qu'aucun carnet n'est publié, la page est presque vide : Google ne la montre pas encore.
+    const carnets = await getCarnets();
     return {
         title: CARNETS_CARD.label,
+        ...(carnets.length === 0 && { robots: { index: false, follow: true } }),
         description: CARNETS_CARD.description,
         alternates: alternatives("/carnets", langue),
         ...partage({ chemin: "/carnets", titre: `${CARNETS_CARD.label} | Domaine de Garanches`, description: CARNETS_CARD.description, image: CARNETS_CARD.image, alt: langue === "en" ? ALTS_EN[CARNETS_CARD.image] : "Le portail du domaine, marqué Garanches" }),
