@@ -195,7 +195,7 @@ Ici, l'histoire se découvre au fil des traces.`,
             {
                 id: "memoire-du-vin",
                 title: "La mémoire du vin",
-                body: `Ce registre de cave, tenu il y a plus d'un siècle, témoigne du soin apporté au suivi des vins de Garanches.
+                body: `Ce registre, tenu il y a plus d'un siècle, témoigne du soin apporté au suivi des vins de Garanches.
 
 Derrière ces lignes manuscrites se dessine une exigence déjà présente : observer, consigner, comprendre.
 

@@ -131,7 +131,7 @@ Here, history is discovered trace by trace.`,
             },
             "memoire-du-vin": {
                 title: "The memory of wine",
-                body: `This cellar register, kept more than a century ago, bears witness to the care taken in following the wines of Garanches.
+                body: `This register, kept more than a century ago, bears witness to the care taken in following the wines of Garanches.
 
 Behind these handwritten lines lies a standard already at work: observe, record, understand.
 
