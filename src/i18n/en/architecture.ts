@@ -136,13 +136,6 @@ Here, history is discovered trace by trace.`,
 Behind these handwritten lines lies a standard already at work: observe, record, understand.
 
 A rigour handed down through time, which still inspires our work today.`,
-                alt: "An old handwritten register, \"État de la cave de Garanches\"",
-            },
-            "registre-municipalite": {
-                title: "The register of the first municipality of Odenas",
-                body: `Opened on 15 February 1790, this is the very first register of the new municipality of the parish of Odenas, then spelled "Audenas en Beaujolais".
-
-Its cover bears the name of Jean Buy, the first mayor of the commune and the first of the family to settle at Garanches.`,
                 alt: "Cover of the register of the new municipality of Odenas, 1790-1791, under Jean Buy, mayor",
                 bouton: "Discover Jean Buy",
             },

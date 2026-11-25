@@ -200,15 +200,6 @@ Ici, l'histoire se découvre au fil des traces.`,
 Derrière ces lignes manuscrites se dessine une exigence déjà présente : observer, consigner, comprendre.
 
 Une rigueur transmise à travers le temps, qui continue d'inspirer notre travail aujourd'hui.`,
-                image: "/images/garanches/registre-cave.jpg", paysage: true, fixe: true,
-                alt: "Un ancien registre manuscrit, « État de la cave de Garanches »",
-            },
-            {
-                id: "registre-municipalite",
-                title: "Le registre de la première municipalité d'Odenas",
-                body: `Ouvert le 15 février 1790, ce registre est le tout premier de la nouvelle municipalité de la paroisse d'Odenas, alors écrite « Audenas en Beaujolais ».
-
-Sa couverture porte le nom de Jean Buy, premier maire de la commune et premier de la famille à s'installer à Garanches.`,
                 image: "/images/garanches/registre-municipalite-odenas-1790.jpg",
                 alt: "Couverture du registre de la nouvelle municipalité d'Odenas, 1790-1791, sous Jean Buy, maire",
                 document: true, portrait: true, agrandir: true,
