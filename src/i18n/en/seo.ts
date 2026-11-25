@@ -30,7 +30,7 @@ export const SEO_EN: Record<string, { title: string; description: string }> = {
     },
     "les-vins/cuvees": {
         title: "Our cuvées: Brouilly, Bourgogne blanc",
-        description: "The cuvées of the Garanches estate: Brouilly lieu-dit Garanches, Beaujolais-Villages blanc and Bourgogne blanc. Order from the estate, shipped anywhere in France.",
+        description: "The cuvées of the Garanches estate: Brouilly lieu-dit Garanches, Beaujolais-Villages blanc, Bourgogne blanc. Order from the estate, shipped across France.",
     },
     "les-vins/terroirs": {
         title: "The granite terroirs of Mont Brouilly",
@@ -62,7 +62,7 @@ export const SEO_EN: Record<string, { title: string; description: string }> = {
     },
     "rencontrons-garanches/evenements": {
         title: "Events at the estate",
-        description: "Bringing a team together, celebrating a success, marking a birthday: your events at the Garanches estate in Odenas, with a meal by Romain and the estate's wines.",
+        description: "Bringing a team together, celebrating a success, marking a birthday: your events at the Garanches estate in Odenas, with a meal and the estate's wines.",
     },
     acheter: {
         title: "Order our Brouilly wines",
@@ -73,15 +73,15 @@ export const SEO_EN: Record<string, { title: string; description: string }> = {
 // Pages qui ont leur propre route.
 export const SEO_AUTRES_EN = {
     accueil: {
-        title: "Domaine de Garanches | Brouilly and Bourgogne blanc wines in Odenas",
-        description: "Family wine estate in Odenas, at the foot of Mont Brouilly: Brouilly, Beaujolais-Villages blanc and Bourgogne blanc. Tastings and vineyard visits at the estate.",
+        title: "Domaine de Garanches, Brouilly and Bourgogne blanc in Odenas",
+        description: "Family wine estate in Odenas, at the foot of Mont Brouilly: Brouilly, Beaujolais-Villages blanc and Bourgogne blanc. Tastings and vineyard walks at the estate.",
         partageTitre: "Domaine de Garanches, Beaujolais wines from Odenas",
         partageDescription: "A family story since 1788 at the foot of Mont Brouilly. Discover our wines and come and visit us at the estate.",
         partageAlt: "The Garanches estate surrounded by vines, seen from the sky",
     },
     contact: {
         title: "Contact and directions, Odenas",
-        description: "Domaine de Garanches, 345 chemin de Garanches, 69460 Odenas, France, at the foot of Mont Brouilly. Open Monday to Saturday, 9 am to 6 pm. Tel. +33 6 61 73 56 67.",
+        description: "Domaine de Garanches, 345 chemin de Garanches, 69460 Odenas, France, at the foot of Mont Brouilly. Open Monday to Saturday, 9 am-6 pm. Tel. +33 6 61 73 56 67.",
         partageTitre: "Contact and directions | Domaine de Garanches",
         partageDescription: "345 chemin de Garanches, 69460 Odenas, France, at the foot of Mont Brouilly. Open Monday to Saturday, 9 am to 6 pm.",
     },

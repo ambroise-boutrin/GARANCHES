@@ -52,10 +52,10 @@ export function generateMetadata({ params }: Omit<Props, "children">): Metadata 
   return {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: en ? SEO_AUTRES_EN.accueil.title : "Domaine de Garanches | Vins de Brouilly et Bourgogne blanc à Odenas",
+    default: en ? SEO_AUTRES_EN.accueil.title : "Domaine de Garanches, Brouilly et Bourgogne blanc à Odenas",
     template: "%s | Domaine de Garanches"
   },
-  description: en ? SEO_AUTRES_EN.accueil.description : "Domaine viticole familial à Odenas, au pied du Mont Brouilly : Brouilly, Beaujolais-Villages blanc et Bourgogne blanc. Dégustation et visite des vignes au domaine.",
+  description: en ? SEO_AUTRES_EN.accueil.description : "Domaine viticole familial à Odenas, au pied du Mont Brouilly : Brouilly, Beaujolais-Villages blanc, Bourgogne blanc. Dégustation et visite des vignes au domaine.",
   applicationName: SITE_NAME,
   authors: [{ name: SITE_NAME }],
   creator: SITE_NAME,

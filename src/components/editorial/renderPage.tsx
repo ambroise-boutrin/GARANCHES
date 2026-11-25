@@ -18,6 +18,7 @@ import { stegaClean } from "next-sanity";
 import { getGammes } from "@/lib/wines";
 import { SITE_NAME, WINERY_ID, absolu, filAriane, partage } from "@/lib/site";
 import { altPhoto } from "@/data/alts";
+import { pagesSansTexte } from "@/lib/pagesVides";
 
 // Titre et description pour Google : ceux saisis dans le studio (Pages › Google), sinon ceux de src/data/seo.ts.
 export async function pageMetadata(path: string): Promise<Metadata> {
@@ -30,9 +31,12 @@ export async function pageMetadata(path: string): Promise<Metadata> {
     const title = stegaClean(infos?.seoTitre) || seo.title;
     const description = stegaClean(infos?.seoDescription) || seo.description;
     const image = infos?.photo?.src ?? page.image;
+    const vide = (await pagesSansTexte()).has(path);
     return {
         title,
         description,
+        // Page encore sans texte : hors de Google jusqu'à ce qu'un texte soit saisi.
+        ...(vide && { robots: { index: false, follow: true } }),
         alternates: alternatives(`/${path}`, langue),
         ...partage({
             chemin: `/${path}`,

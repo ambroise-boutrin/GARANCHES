@@ -5,12 +5,13 @@ import { getGammes } from '@/lib/wines';
 import { cuveeHref } from '@/lib/wineSlug';
 import { SITE_URL } from '@/lib/site';
 import { lienLangue } from '@/lib/langue';
+import { pagesSansTexte } from '@/lib/pagesVides';
 
 export const revalidate = 3600;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const baseUrl = SITE_URL;
-    const [carnets, wines] = await Promise.all([getCarnets(), getGammes()]);
+    const [carnets, wines, vides] = await Promise.all([getCarnets(), getGammes(), pagesSansTexte()]);
 
     // Chaque page existe en français (/…) et en anglais (/en/…) : les deux adresses sont listées,
     // chacune avec le lien vers l'autre langue, pour que Google montre la bonne version à chacun.
@@ -31,9 +32,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     return [
         ...entrees('/', 1),
-        ...GENERIC_PATHS.flatMap((path) => entrees(`/${path}`, path.includes('/') ? 0.7 : 0.9, path === 'les-vins/cuvees' ? 'monthly' : 'yearly')),
+        ...GENERIC_PATHS.filter((path) => !vides.has(path)).flatMap((path) => entrees(`/${path}`, path.includes('/') ? 0.7 : 0.9, path === 'les-vins/cuvees' ? 'monthly' : 'yearly')),
         ...wines.flatMap((wine: any) => entrees(cuveeHref(wine), 0.7, 'monthly')),
-        ...entrees('/carnets', 0.8, 'weekly'),
+        // Les Carnets n'entrent dans le plan du site qu'avec un premier carnet publié.
+        ...(carnets.length ? entrees('/carnets', 0.8, 'weekly') : []),
         ...carnets.flatMap((c: any) => entrees(`/carnets/${c.slug}`, 0.6, 'yearly', c.date ? new Date(c.date) : undefined)),
         ...entrees('/contact', 0.6),
         ...entrees('/mentions-legales', 0.3),

@@ -39,7 +39,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const premier = String(gamme.millesimes[0]?.description || "").split(/\n\s*\n/)[0];
     const description = resume(`${ui.gammeResume(gamme.name, annees(gamme))} ${premier}`);
     return {
-        title,
+        // Titre court pour Google (50 à 60 caractères) : quand le nom porte déjà « Garanches »
+        // (Brouilly Lieu-dit Garanches), inutile d'ajouter « | Domaine de Garanches ».
+        title: /garanches/i.test(title) ? { absolute: title } : title,
         description,
         alternates: alternatives(gammeHref(gamme), langue),
         ...partage({
