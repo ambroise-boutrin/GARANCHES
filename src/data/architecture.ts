@@ -663,7 +663,6 @@ Il n'y a pas de paiement en ligne. Pour une grande quantité, demandez-nous un t
                 alt: "Une bouteille de Brouilly du domaine de Garanches",
                 booking: { label: "Passer commande", sujet: "Commande & Expédition" },
             },
-            { id: "restaurants-cavistes", title: "Restaurants et cavistes" },
             {
                 id: "professionnels",
                 title: "Professionnels",

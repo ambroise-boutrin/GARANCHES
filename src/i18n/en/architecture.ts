@@ -511,7 +511,6 @@ There is no online payment. For large quantities, ask us for a quote.`,
                 alt: "A bottle of Brouilly from the Garanches estate",
                 bouton: "Place an order",
             },
-            "restaurants-cavistes": { title: "Restaurants and wine shops" },
             professionnels: {
                 title: "Trade",
                 body: `Restaurants, wine shops, companies: write to us to receive our trade prices and arrange a tasting.`,
